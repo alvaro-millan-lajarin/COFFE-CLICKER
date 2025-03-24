@@ -35,10 +35,7 @@ public class Scene {
     public void showVisible() {
         mainFrame.setVisible(true);
     }
-    public void reload() {
-        jPanel.removeAll();
-        initialitzate();
-    }
+
     public JFrame getMainFrame() {
         return mainFrame;
     }
