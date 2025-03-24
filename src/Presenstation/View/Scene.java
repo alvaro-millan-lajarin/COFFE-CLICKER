@@ -8,7 +8,7 @@ public class Scene {
     private final static int WIDTH = 1100;
     private final static int HEIGHT = 550;
 
-    protected Scene() {
+    public Scene() {
         mainFrame = new JFrame();
         mainFrame.setSize(WIDTH, HEIGHT);
         mainFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -38,5 +38,8 @@ public class Scene {
     public void reload() {
         jPanel.removeAll();
         initialitzate();
+    }
+    public JFrame getMainFrame() {
+        return mainFrame;
     }
 }
