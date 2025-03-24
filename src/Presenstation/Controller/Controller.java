@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 
 public abstract class Controller implements ActionListener {
     private Scene view;
+    MainController mainController;
 
     public final void run() {
 
