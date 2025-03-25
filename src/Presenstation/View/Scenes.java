@@ -4,5 +4,5 @@ public enum Scenes {
     MENU,
     MAIN,
     LOGIN,
-    REGISTER
+    SIGNUP
 }
