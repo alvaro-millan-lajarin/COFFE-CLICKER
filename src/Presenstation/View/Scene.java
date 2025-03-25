@@ -18,6 +18,7 @@ public class Scene {
         jPanel = new JPanel();
     }
 
+
     public void initialitzate() {
 
     }

@@ -3,6 +3,7 @@ package Presenstation.View;
 import Presenstation.Controller.MenuController;
 import Presenstation.Controller.SignUpController;
 import Presenstation.JImagePanel;
+import Presenstation.View.WriteText.Text;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -10,13 +11,18 @@ import java.awt.*;
 
 public class SignUpScene extends Scene{
     private SignUpController signUpController;
+    public final static String ACCES = "ACCES";
+
+    private Text email;
+    private Text password;
+    private Text name;
+    private Text passwordAgain;
+
     public void initialitzate() {
         jPanel.setLayout(new BorderLayout(50, 20));
         jPanel.setBackground(new Color(210, 180, 140));
 
         jPanel.add(addTitle("COFFE CLICKER"), BorderLayout.NORTH);
-
-
 
         jPanel.add(centerPanel(), BorderLayout.CENTER);
         jPanel.add(addVacio(), BorderLayout.EAST);
@@ -36,13 +42,27 @@ public class SignUpScene extends Scene{
     }
     public JPanel centerPanel() {
         JPanel center = new JPanel(new GridLayout(1,2));
-        center.add(addVacio());
+
+        center.add(preguntasYRespuestas());
 
         JImagePanel image = new JImagePanel("data/imagenCafe2.jpeg");
         image.setOpaque(false);
         center.add(image);
         center.setOpaque(false);
         return center;
+    }
+    public JPanel preguntasYRespuestas() {
+        JPanel preguntasYRespuestas = new JPanel();
+        name = new Text("Name");
+        email = new Text("Email");
+        password = new Text("Password");
+        passwordAgain = new Text("Password Again");
+        preguntasYRespuestas.add(name.getPanelText());
+        preguntasYRespuestas.add(email.getPanelText());
+        preguntasYRespuestas.add(password.getPanelText());
+        preguntasYRespuestas.add(passwordAgain.getPanelText());
+        preguntasYRespuestas.setOpaque(false);
+        return preguntasYRespuestas;
     }
     public JPanel addAccesButton(){
         JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
@@ -52,6 +72,9 @@ public class SignUpScene extends Scene{
         accesButton.setFont(new Font("Apple casual", Font.BOLD, 20));
         accesButton.setPreferredSize(new Dimension(150, 50));
         accesButton.setOpaque(false);
+
+        accesButton.setActionCommand(ACCES);
+        accesButton.addActionListener(signUpController);
 
         buttonPanel.add(accesButton);
         return buttonPanel;
@@ -71,5 +94,8 @@ public class SignUpScene extends Scene{
         panel.setOpaque(false);
         panel.setBorder(new EmptyBorder(20, 0, 0, 0));
         return panel;
+    }
+    public String getEmail() {
+        return email.getText();
     }
 }

@@ -5,18 +5,20 @@ import Presenstation.View.Scene;
 import java.awt.event.ActionListener;
 
 public abstract class Controller implements ActionListener {
-    private Scene view;
+    private Scene scene;
     MainController mainController;
 
     public Controller(Scene view, MainController mainController) {
-        this.view = view;
+        this.scene = view;
         this.mainController = mainController;
     }
 
     public final void run() {
 
-        view.apply(mainController.getMainFrame());
+        scene.apply(mainController.getMainFrame());
     }
 
-
+    public Scene getView() {
+        return scene;
+    }
 }
