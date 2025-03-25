@@ -27,6 +27,7 @@ public class MainController {
         menuController = new MenuController(menuScene, this);
 
         menuScene.setController(menuController);
+        signUpScene.setController(signUpController);
 
     }
     public void nextScene(Scenes scenes) {
