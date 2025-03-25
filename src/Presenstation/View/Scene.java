@@ -22,6 +22,7 @@ public class Scene {
 
     }
     public void apply(JFrame mainFrame) {
+        mainFrame.getContentPane().removeAll();
         if(mainFrame.isUndecorated()) {
             mainFrame.setUndecorated(false);
         }

@@ -1,5 +1,6 @@
 package Presenstation.View;
 
+import Presenstation.Controller.MenuController;
 import Presenstation.JImagePanel;
 
 import javax.swing.*;
@@ -7,6 +8,15 @@ import javax.swing.border.EmptyBorder;
 import java.awt.*;
 
 public class MenuScene extends Scene {
+    public final static String SIGNUP = "SIGNUP";
+    public final static String LOGIN = "LOGIN";
+    private MenuController menuController;
+
+    public void setController(MenuController menuController) {
+        this.menuController = menuController;
+        initialitzate();
+    }
+
     public void initialitzate() {
         jPanel.setLayout(new BorderLayout(50, 20));
         jPanel.setBackground(new Color(210, 180, 140));
@@ -30,9 +40,13 @@ public class MenuScene extends Scene {
 
         JButton signUp = new JButton("SIGN UP");
         signUp.setPreferredSize(new Dimension(200, 120));
+        signUp.setActionCommand(SIGNUP);
+        signUp.addActionListener(menuController);
 
         JButton login = new JButton("LOGIN");
         login.setPreferredSize(new Dimension(200, 120));
+        login.setActionCommand(LOGIN);
+        login.addActionListener(menuController);
         panelIzquierdo.add(signUp, gbc);
         gbc.gridy++;
         panelIzquierdo.add(login, gbc);
