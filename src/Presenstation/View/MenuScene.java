@@ -21,7 +21,7 @@ public class MenuScene extends Scene {
         jPanel.setLayout(new BorderLayout(50, 20));
         jPanel.setBackground(new Color(210, 180, 140));
 
-        JPanel centerPanel = new JPanel(new GridLayout(1, 2));
+        JPanel centerPanel = new JPanel(new GridLayout(1, 2, 100, 20));
 
         jPanel.add(addTitle("COFFE CLICKER"), BorderLayout.NORTH);
         jPanel.add(makeCenterPanel(centerPanel), BorderLayout.CENTER);
@@ -32,11 +32,11 @@ public class MenuScene extends Scene {
 
     }
     public JPanel makeCenterPanel(JPanel centerPanel) {
-        JPanel panelIzquierdo = new JPanel(new GridBagLayout()); // Usamos GridBagLayout para centrar
+        JPanel panelIzquierdo = new JPanel(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.gridx = 0;
         gbc.gridy = 0;
-        gbc.insets = new Insets(10, 10, 10, 10); // Espaciado entre los botones
+        gbc.insets = new Insets(10, 10, 10, 10);
 
         JButton signUp = new JButton("SIGN UP");
         signUp.setPreferredSize(new Dimension(200, 120));

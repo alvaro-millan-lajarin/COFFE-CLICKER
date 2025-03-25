@@ -41,22 +41,37 @@ public class SignUpScene extends Scene{
         initialitzate();
     }
     public JPanel centerPanel() {
-        JPanel center = new JPanel(new GridLayout(1,2));
+        JPanel center = new JPanel();
+        center.setLayout(new BoxLayout(center, BoxLayout.X_AXIS));
 
-        center.add(preguntasYRespuestas());
 
-        JImagePanel image = new JImagePanel("data/imagenCafe2.jpeg");
-        image.setOpaque(false);
-        center.add(image);
+        JPanel leftPanel = new JPanel();
+        leftPanel.setLayout(new BoxLayout(leftPanel, BoxLayout.Y_AXIS));
+        leftPanel.add(preguntasYRespuestas());
+        leftPanel.setOpaque(false);
+        leftPanel.setPreferredSize(new Dimension(300, 300));
+
+
+        JImagePanel imagePanel = new JImagePanel("data/imagenCafe2.jpeg");
+        imagePanel.setOpaque(false);
+        imagePanel.setPreferredSize(new Dimension(300, 300));
+
+
+        center.add(leftPanel);
+        center.add(Box.createRigidArea(new Dimension(20, 0)));
+        center.add(imagePanel);
+
         center.setOpaque(false);
         return center;
     }
+
+
     public JPanel preguntasYRespuestas() {
-        JPanel preguntasYRespuestas = new JPanel();
-        name = new Text("Name");
-        email = new Text("Email");
-        password = new Text("Password");
-        passwordAgain = new Text("Password Again");
+        JPanel preguntasYRespuestas = new JPanel(new GridLayout(4,1));
+        name = new Text("Name", "text");
+        email = new Text("Email", "text");
+        password = new Text("Password", "password");
+        passwordAgain = new Text("Password Again", "password");
         preguntasYRespuestas.add(name.getPanelText());
         preguntasYRespuestas.add(email.getPanelText());
         preguntasYRespuestas.add(password.getPanelText());
@@ -96,12 +111,12 @@ public class SignUpScene extends Scene{
         return panel;
     }
     public String getEmail() {
-        return email.getText();
+        return email.getText("text");
     }
     public String getPassword() {
-        return password.getText();
+        return password.getText("password");
     }
     public String getPasswordAgain() {
-        return passwordAgain.getText();
+        return passwordAgain.getText("password");
     }
 }
