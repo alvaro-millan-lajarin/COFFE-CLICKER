@@ -98,4 +98,10 @@ public class SignUpScene extends Scene{
     public String getEmail() {
         return email.getText();
     }
+    public String getPassword() {
+        return password.getText();
+    }
+    public String getPasswordAgain() {
+        return passwordAgain.getText();
+    }
 }
