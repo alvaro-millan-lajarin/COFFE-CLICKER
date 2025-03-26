@@ -6,7 +6,6 @@ import Presenstation.View.Scenes;
 import java.awt.event.ActionEvent;
 
 public class GameManagementController extends Controller {
-    private static final String SIGNUP = "SIGNUP";
 
     public GameManagementController(Scene view, MainController mainController) {
         super(view, mainController);
@@ -14,6 +13,10 @@ public class GameManagementController extends Controller {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-
+        if (e.getActionCommand().equalsIgnoreCase("LOGOUT")) {
+            mainController.nextScene(Scenes.MENU);
+        }else if (e.getActionCommand().equalsIgnoreCase("DELETE")) {
+            mainController.nextScene(Scenes.MENU);
+        }
     }
 }

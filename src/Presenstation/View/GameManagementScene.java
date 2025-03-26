@@ -12,8 +12,8 @@ import java.awt.*;
 
 public class GameManagementScene extends Scene {
     private GameManagementController gameManagementController;
-    public final static String SIGNUP = "SIGNUP";
-
+    public final static String DELETE = "DELETE";
+    public final static String LOGOUT = "LOGOUT";
 
     public void initialitzate() {
         jPanel.setLayout(new BorderLayout(50, 20));
@@ -48,9 +48,17 @@ public class GameManagementScene extends Scene {
         return topPanel;
     }
     public JPanel addBotonesArribaDerecha(){
-        JPanel botonesArribaDerecha = new JPanel();
+        JPanel botonesArribaDerecha = new JPanel(new GridLayout(2, 1));
         JButton delAcc_but = new JButton("Delete Account");
         JButton logout_but = new JButton("Logout");
+        botonesArribaDerecha.add(delAcc_but);
+        botonesArribaDerecha.add(logout_but);
+        delAcc_but.setActionCommand(LOGOUT);
+        logout_but.setActionCommand(DELETE);
+        delAcc_but.addActionListener(gameManagementController);
+        logout_but.addActionListener(gameManagementController);
+
+        botonesArribaDerecha.setOpaque(false);
         return botonesArribaDerecha;
     }
     public JPanel centerPanel() {
@@ -98,7 +106,7 @@ public class GameManagementScene extends Scene {
         butNewGame.setPreferredSize(new Dimension(300, 50));
         butNewGame.setOpaque(false);
 
-        butNewGame.setActionCommand(SIGNUP);
+        //butNewGame.setActionCommand(SIGNUP);
         butNewGame.addActionListener(gameManagementController);
 
         buttonPanel.add(butNewGame);
@@ -113,7 +121,7 @@ public class GameManagementScene extends Scene {
     public JPanel addTitle(String message) {
         JPanel panel = new JPanel();
         JLabel label = new JLabel(message);
-        label.setFont(new Font("Sans Serif", Font.BOLD, 30));
+        label.setFont(new Font("Sans Serif", Font.BOLD, 15));
         label.setForeground(Color.WHITE);
         panel.add(label);
         panel.setOpaque(false);
