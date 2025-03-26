@@ -17,6 +17,8 @@ public class GameManagementController extends Controller {
             mainController.nextScene(Scenes.MENU);
         }else if (e.getActionCommand().equalsIgnoreCase("DELETE")) {
             mainController.nextScene(Scenes.MENU);
+        }else if (e.getActionCommand().equalsIgnoreCase("CREATE_GAME")) {
+            mainController.nextScene(Scenes.GAME_CREATION);
         }
     }
 }

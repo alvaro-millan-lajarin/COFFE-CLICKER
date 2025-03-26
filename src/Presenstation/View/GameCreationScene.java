@@ -1,8 +1,8 @@
 package Presenstation.View;
 
+import Presenstation.Controller.GameCreationController;
 import Presenstation.Controller.GameManagementController;
-import Presenstation.Controller.MenuController;
-import Presenstation.Controller.SignUpController;
+import Presenstation.Controller.LoginController;
 import Presenstation.JImagePanel;
 import Presenstation.View.WriteText.Text;
 
@@ -10,10 +10,14 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
 
-public class GameManagementScene extends Scene {
-    private GameManagementController gameManagementController;
-    public final static String DELETE = "DELETE";
-    public final static String LOGOUT = "LOGOUT";
+public class GameCreationScene extends Scene {
+    private GameCreationController gameCreationController;
+    public final static String GAME_MANAGEMENT = "GAME_MANAGEMENT";
+
+    private Text email;
+    private Text password;
+    private Text name;
+    private Text passwordAgain;
 
     public void initialitzate() {
         jPanel.setLayout(new BorderLayout(50, 20));
@@ -31,17 +35,17 @@ public class GameManagementScene extends Scene {
     public void apply(JFrame mainFrame) {
         initialitzate();
         super.apply(mainFrame);
-        mainFrame.setTitle("Game management");
+        mainFrame.setTitle("Login");
     }
-    public void setController(GameManagementController gameManagementController) {
-        this.gameManagementController = gameManagementController;
+    public void setController(GameCreationController gameCreationController) {
+        this.gameCreationController = gameCreationController;
         initialitzate();
     }
     public JPanel topPanel() {
         JPanel topPanel = new JPanel(new GridLayout(1, 5));
         topPanel.add(addVacio());
         topPanel.add(addVacio());
-        topPanel.add(addTitle("GAME MANAGEMENT"));
+        topPanel.add(addTitle("GAME CREATION"));
         topPanel.add(addVacio());
         topPanel.add(addBotonesArribaDerecha());
         topPanel.setOpaque(false);
@@ -53,10 +57,10 @@ public class GameManagementScene extends Scene {
         JButton logout_but = new JButton("Logout");
         botonesArribaDerecha.add(delAcc_but);
         botonesArribaDerecha.add(logout_but);
-        delAcc_but.setActionCommand(LOGOUT);
-        logout_but.setActionCommand(DELETE);
-        delAcc_but.addActionListener(gameManagementController);
-        logout_but.addActionListener(gameManagementController);
+        delAcc_but.setActionCommand("LOGOUT");
+        logout_but.setActionCommand("DELETE");
+        delAcc_but.addActionListener(gameCreationController);
+        logout_but.addActionListener(gameCreationController);
 
         botonesArribaDerecha.setOpaque(false);
         return botonesArribaDerecha;
@@ -68,12 +72,12 @@ public class GameManagementScene extends Scene {
 
         JPanel leftPanel = new JPanel();
         leftPanel.setLayout(new BoxLayout(leftPanel, BoxLayout.Y_AXIS));
-        leftPanel.add(botonesCentrales());
+        leftPanel.add(preguntasYRespuestas());
         leftPanel.setOpaque(false);
         leftPanel.setPreferredSize(new Dimension(300, 300));
 
 
-        JImagePanel imagePanel = new JImagePanel("data/cafeteria.png");
+        JImagePanel imagePanel = new JImagePanel("data/Cafe.jpg");
         imagePanel.setOpaque(false);
         imagePanel.setPreferredSize(new Dimension(300, 300));
 
@@ -87,12 +91,11 @@ public class GameManagementScene extends Scene {
     }
 
 
-    public JPanel botonesCentrales() {
+    public JPanel preguntasYRespuestas() {
         JPanel preguntasYRespuestas = new JPanel(new GridLayout(4,1));
-        JButton but_resume = new JButton("RESUME");
-        JButton but_del = new JButton("DELETE");
-        preguntasYRespuestas.add(but_resume);
-        preguntasYRespuestas.add(but_del);
+        name = new Text("Name of the new game", "text");
+
+        preguntasYRespuestas.add(name.getPanelText());
 
         preguntasYRespuestas.setOpaque(false);
         return preguntasYRespuestas;
@@ -101,15 +104,15 @@ public class GameManagementScene extends Scene {
         JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
         buttonPanel.setOpaque(false);
 
-        JButton butNewGame = new JButton("CREATE NEW GAME");
-        butNewGame.setFont(new Font("Apple casual", Font.BOLD, 20));
-        butNewGame.setPreferredSize(new Dimension(300, 50));
-        butNewGame.setOpaque(false);
+        JButton accesButton = new JButton("ACCES");
+        accesButton.setFont(new Font("Apple casual", Font.BOLD, 20));
+        accesButton.setPreferredSize(new Dimension(150, 50));
+        accesButton.setOpaque(false);
 
-        butNewGame.setActionCommand("CREATE_GAME");
-        butNewGame.addActionListener(gameManagementController);
+        accesButton.setActionCommand(GAME_MANAGEMENT);
+        accesButton.addActionListener(gameCreationController);
 
-        buttonPanel.add(butNewGame);
+        buttonPanel.add(accesButton);
         return buttonPanel;
     }
     public JPanel addVacio() {
@@ -128,5 +131,13 @@ public class GameManagementScene extends Scene {
         panel.setBorder(new EmptyBorder(20, 0, 0, 0));
         return panel;
     }
-
+    public String getEmail() {
+        return email.getText("text");
+    }
+    public String getPassword() {
+        return password.getText("password");
+    }
+    public String getPasswordAgain() {
+        return passwordAgain.getText("password");
+    }
 }
