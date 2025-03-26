@@ -22,7 +22,7 @@ public class SignUpController extends Controller {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getActionCommand().equalsIgnoreCase("ACCES")) {
+        if (e.getActionCommand().equalsIgnoreCase("SIGNUP")) {
             if (getScene().getEmail().isEmpty()) {
                 JOptionPane.showMessageDialog(
                         getScene().addAccesButton(),
@@ -68,7 +68,7 @@ public class SignUpController extends Controller {
                 }
             }
             if(errorOcurred == 0){
-                //mainController.nextScene(Scenes.LOGIN);
+                mainController.nextScene(Scenes.LOGIN);
             }
             errorOcurred = 0;
         }
