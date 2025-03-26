@@ -11,7 +11,7 @@ import java.awt.*;
 
 public class SignUpScene extends Scene{
     private SignUpController signUpController;
-    public final static String ACCES = "ACCES";
+    public final static String SIGNUP = "SIGNUP";
 
     private Text email;
     private Text password;
@@ -22,7 +22,7 @@ public class SignUpScene extends Scene{
         jPanel.setLayout(new BorderLayout(50, 20));
         jPanel.setBackground(new Color(210, 180, 140));
 
-        jPanel.add(addTitle("COFFE CLICKER"), BorderLayout.NORTH);
+        jPanel.add(addTitle("SIGNUP"), BorderLayout.NORTH);
 
         jPanel.add(centerPanel(), BorderLayout.CENTER);
         jPanel.add(addVacio(), BorderLayout.EAST);
@@ -88,7 +88,7 @@ public class SignUpScene extends Scene{
         accesButton.setPreferredSize(new Dimension(150, 50));
         accesButton.setOpaque(false);
 
-        accesButton.setActionCommand(ACCES);
+        accesButton.setActionCommand(SIGNUP);
         accesButton.addActionListener(signUpController);
 
         buttonPanel.add(accesButton);
