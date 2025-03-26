@@ -5,20 +5,20 @@ import Presenstation.View.Scenes;
 
 import java.awt.event.ActionEvent;
 
-public class GameManagementController extends Controller {
+public class GameCreationController extends Controller {
 
-    public GameManagementController(Scene view, MainController mainController) {
+    public GameCreationController(Scene view, MainController mainController) {
         super(view, mainController);
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getActionCommand().equalsIgnoreCase("LOGOUT")) {
+        if (e.getActionCommand().equalsIgnoreCase("GAME")) {
+            mainController.nextScene(Scenes.GAME);
+        }else if (e.getActionCommand().equalsIgnoreCase("LOGOUT")) {
             mainController.nextScene(Scenes.MENU);
         }else if (e.getActionCommand().equalsIgnoreCase("DELETE")) {
             mainController.nextScene(Scenes.MENU);
-        }else if (e.getActionCommand().equalsIgnoreCase("CREATE_GAME")) {
-            mainController.nextScene(Scenes.GAME_CREATION);
         }
     }
 }

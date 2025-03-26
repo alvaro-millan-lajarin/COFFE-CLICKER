@@ -11,6 +11,7 @@ public class MainController {
     private SignUpScene signUpScene;
     private LoginScene loginScene;
     private GameManagementScene gameManagementScene;
+    private GameCreationScene gameCreationScene;
 
 
 
@@ -18,6 +19,7 @@ public class MainController {
     private SignUpController signUpController;
     private MenuController menuController;
     private GameManagementController gameManagementController;
+    private GameCreationController gameCreationController;
 
     public MainController() {
         menuScene = new MenuScene();
@@ -25,17 +27,20 @@ public class MainController {
         signUpScene = new SignUpScene();
         loginScene = new LoginScene();
         gameManagementScene = new GameManagementScene();
+        gameCreationScene = new GameCreationScene();
 
 
         loginController = new LoginController(loginScene, this);
         signUpController = new SignUpController(signUpScene, this);
         menuController = new MenuController(menuScene, this);
         gameManagementController = new GameManagementController(gameManagementScene, this);
+        gameCreationController = new GameCreationController(gameCreationScene, this);
 
         menuScene.setController(menuController);
         signUpScene.setController(signUpController);
         loginScene.setController(loginController);
         gameManagementScene.setController(gameManagementController);
+        gameCreationScene.setController(gameCreationController);
 
     }
     public void nextScene(Scenes scenes) {
@@ -51,9 +56,12 @@ public class MainController {
                 signUpScene.apply(scene.getMainFrame());
                 //signUpController.run();
                 break;
-                case GAME_MANAGEMENT:
+            case GAME_MANAGEMENT:
                     gameManagementScene.apply(scene.getMainFrame());
-                    break;
+                break;
+            case GAME_CREATION:
+                    gameCreationScene.apply(scene.getMainFrame());
+                break;
 
         }
     }
