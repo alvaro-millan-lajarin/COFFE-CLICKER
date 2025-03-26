@@ -21,6 +21,7 @@ public class JImagePanel extends JPanel {
             // Not properly managed, sorry!
             e.printStackTrace();
         }
+
     }
 
     // IMPORTANT: WE override this to scale the image in layouts that stretch it horizontally while respecting its preferred vertical size
@@ -42,6 +43,9 @@ public class JImagePanel extends JPanel {
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        g.drawImage(image, 0, 0, getWidth(), getHeight(), this);
+
+        if (image != null) {
+            g.drawImage(image, 0, 0, getWidth(), getHeight(), this);
+        }
     }
 }

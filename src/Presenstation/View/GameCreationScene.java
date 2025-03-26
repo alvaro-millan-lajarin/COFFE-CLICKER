@@ -104,12 +104,12 @@ public class GameCreationScene extends Scene {
         JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
         buttonPanel.setOpaque(false);
 
-        JButton accesButton = new JButton("ACCES");
+        JButton accesButton = new JButton("PLAY");
         accesButton.setFont(new Font("Apple casual", Font.BOLD, 20));
         accesButton.setPreferredSize(new Dimension(150, 50));
         accesButton.setOpaque(false);
 
-        accesButton.setActionCommand(GAME_MANAGEMENT);
+        accesButton.setActionCommand("PLAY");
         accesButton.addActionListener(gameCreationController);
 
         buttonPanel.add(accesButton);

@@ -12,6 +12,7 @@ public class MainController {
     private LoginScene loginScene;
     private GameManagementScene gameManagementScene;
     private GameCreationScene gameCreationScene;
+    private GameScene gameScene;
 
 
 
@@ -20,6 +21,7 @@ public class MainController {
     private MenuController menuController;
     private GameManagementController gameManagementController;
     private GameCreationController gameCreationController;
+    private GameController gameController;
 
     public MainController() {
         menuScene = new MenuScene();
@@ -28,6 +30,7 @@ public class MainController {
         loginScene = new LoginScene();
         gameManagementScene = new GameManagementScene();
         gameCreationScene = new GameCreationScene();
+        gameScene = new GameScene();
 
 
         loginController = new LoginController(loginScene, this);
@@ -35,12 +38,14 @@ public class MainController {
         menuController = new MenuController(menuScene, this);
         gameManagementController = new GameManagementController(gameManagementScene, this);
         gameCreationController = new GameCreationController(gameCreationScene, this);
+        gameController = new GameController(gameScene, this);
 
         menuScene.setController(menuController);
         signUpScene.setController(signUpController);
         loginScene.setController(loginController);
         gameManagementScene.setController(gameManagementController);
         gameCreationScene.setController(gameCreationController);
+        gameScene.setController(gameController);
 
     }
     public void nextScene(Scenes scenes) {
@@ -61,6 +66,9 @@ public class MainController {
                 break;
             case GAME_CREATION:
                     gameCreationScene.apply(scene.getMainFrame());
+                break;
+            case GAME:
+                gameScene.apply(scene.getMainFrame());
                 break;
 
         }
