@@ -1,6 +1,7 @@
 package Presenstation.View;
 
-import Presenstation.Controller.LoginController;
+import Presenstation.Controller.GameManagementController;
+import Presenstation.Controller.MenuController;
 import Presenstation.Controller.SignUpController;
 import Presenstation.JImagePanel;
 import Presenstation.View.WriteText.Text;
@@ -9,20 +10,16 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
 
-public class LoginScene extends Scene {
-    private LoginController loginController;
-    public final static String GAME_MANAGEMENT = "GAME_MANAGEMENT";
+public class GameManagementScene extends Scene {
+    private GameManagementController gameManagementController;
+    public final static String SIGNUP = "SIGNUP";
 
-    private Text email;
-    private Text password;
-    private Text name;
-    private Text passwordAgain;
 
     public void initialitzate() {
         jPanel.setLayout(new BorderLayout(50, 20));
         jPanel.setBackground(new Color(210, 180, 140));
 
-        jPanel.add(addTitle("LOGIN"), BorderLayout.NORTH);
+        jPanel.add(topPanel(), BorderLayout.NORTH);
 
         jPanel.add(centerPanel(), BorderLayout.CENTER);
         jPanel.add(addVacio(), BorderLayout.EAST);
@@ -34,11 +31,27 @@ public class LoginScene extends Scene {
     public void apply(JFrame mainFrame) {
         initialitzate();
         super.apply(mainFrame);
-        mainFrame.setTitle("Login");
+        mainFrame.setTitle("Game management");
     }
-    public void setController(LoginController loginController) {
-        this.loginController = loginController;
+    public void setController(GameManagementController gameManagementController) {
+        this.gameManagementController = gameManagementController;
         initialitzate();
+    }
+    public JPanel topPanel() {
+        JPanel topPanel = new JPanel(new GridLayout(1, 5));
+        topPanel.add(addVacio());
+        topPanel.add(addVacio());
+        topPanel.add(addTitle("GAME MANAGEMENT"));
+        topPanel.add(addVacio());
+        topPanel.add(addBotonesArribaDerecha());
+        topPanel.setOpaque(false);
+        return topPanel;
+    }
+    public JPanel addBotonesArribaDerecha(){
+        JPanel botonesArribaDerecha = new JPanel();
+        JButton delAcc_but = new JButton("Delete Account");
+        JButton logout_but = new JButton("Logout");
+        return botonesArribaDerecha;
     }
     public JPanel centerPanel() {
         JPanel center = new JPanel();
@@ -47,12 +60,12 @@ public class LoginScene extends Scene {
 
         JPanel leftPanel = new JPanel();
         leftPanel.setLayout(new BoxLayout(leftPanel, BoxLayout.Y_AXIS));
-        leftPanel.add(preguntasYRespuestas());
+        leftPanel.add(botonesCentrales());
         leftPanel.setOpaque(false);
         leftPanel.setPreferredSize(new Dimension(300, 300));
 
 
-        JImagePanel imagePanel = new JImagePanel("data/Cafe.jpg");
+        JImagePanel imagePanel = new JImagePanel("data/cafeteria.png");
         imagePanel.setOpaque(false);
         imagePanel.setPreferredSize(new Dimension(300, 300));
 
@@ -66,12 +79,13 @@ public class LoginScene extends Scene {
     }
 
 
-    public JPanel preguntasYRespuestas() {
+    public JPanel botonesCentrales() {
         JPanel preguntasYRespuestas = new JPanel(new GridLayout(4,1));
-        name = new Text("Name or email", "text");
-        password = new Text("Password", "password");
-        preguntasYRespuestas.add(name.getPanelText());
-        preguntasYRespuestas.add(password.getPanelText());
+        JButton but_resume = new JButton("RESUME");
+        JButton but_del = new JButton("DELETE");
+        preguntasYRespuestas.add(but_resume);
+        preguntasYRespuestas.add(but_del);
+
         preguntasYRespuestas.setOpaque(false);
         return preguntasYRespuestas;
     }
@@ -79,15 +93,15 @@ public class LoginScene extends Scene {
         JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
         buttonPanel.setOpaque(false);
 
-        JButton accesButton = new JButton("ACCES");
-        accesButton.setFont(new Font("Apple casual", Font.BOLD, 20));
-        accesButton.setPreferredSize(new Dimension(150, 50));
-        accesButton.setOpaque(false);
+        JButton butNewGame = new JButton("CREATE NEW GAME");
+        butNewGame.setFont(new Font("Apple casual", Font.BOLD, 20));
+        butNewGame.setPreferredSize(new Dimension(300, 50));
+        butNewGame.setOpaque(false);
 
-        accesButton.setActionCommand(GAME_MANAGEMENT);
-        accesButton.addActionListener(loginController);
+        butNewGame.setActionCommand(SIGNUP);
+        butNewGame.addActionListener(gameManagementController);
 
-        buttonPanel.add(accesButton);
+        buttonPanel.add(butNewGame);
         return buttonPanel;
     }
     public JPanel addVacio() {
@@ -106,13 +120,5 @@ public class LoginScene extends Scene {
         panel.setBorder(new EmptyBorder(20, 0, 0, 0));
         return panel;
     }
-    public String getEmail() {
-        return email.getText("text");
-    }
-    public String getPassword() {
-        return password.getText("password");
-    }
-    public String getPasswordAgain() {
-        return passwordAgain.getText("password");
-    }
+
 }

@@ -6,8 +6,8 @@ import Presenstation.View.Scenes;
 import java.awt.event.ActionEvent;
 
 public class MenuController extends Controller {
-    public static final String LOGIN = "LOGIN";
-    public static final String SIGNUP = "SIGNUP";
+    private static final String LOGIN = "LOGIN";
+    private static final String SIGNUP = "SIGNUP";
 
     public MenuController(Scene view, MainController mainController) {
         super(view, mainController);
