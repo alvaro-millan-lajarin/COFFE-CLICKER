@@ -1,5 +1,6 @@
 package Presenstation.View;
 
+import Presenstation.Controller.LoginController;
 import Presenstation.Controller.SignUpController;
 import Presenstation.JImagePanel;
 import Presenstation.View.WriteText.Text;
@@ -9,8 +10,8 @@ import javax.swing.border.EmptyBorder;
 import java.awt.*;
 
 public class LoginScene extends Scene {
-    private SignUpController signUpController;
-    public final static String LOGIN = "LOGIN";
+    private LoginController loginController;
+    public final static String GAME_MANAGEMENT = "GAME_MANAGEMENT";
 
     private Text email;
     private Text password;
@@ -35,8 +36,8 @@ public class LoginScene extends Scene {
         super.apply(mainFrame);
         mainFrame.setTitle("Login");
     }
-    public void setController(SignUpController signUpController) {
-        this.signUpController = signUpController;
+    public void setController(LoginController loginController) {
+        this.loginController = loginController;
         initialitzate();
     }
     public JPanel centerPanel() {
@@ -83,8 +84,8 @@ public class LoginScene extends Scene {
         accesButton.setPreferredSize(new Dimension(150, 50));
         accesButton.setOpaque(false);
 
-        accesButton.setActionCommand(LOGIN);
-        accesButton.addActionListener(signUpController);
+        accesButton.setActionCommand(GAME_MANAGEMENT);
+        accesButton.addActionListener(loginController);
 
         buttonPanel.add(accesButton);
         return buttonPanel;
