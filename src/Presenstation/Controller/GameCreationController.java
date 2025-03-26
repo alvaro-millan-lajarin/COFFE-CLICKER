@@ -15,6 +15,10 @@ public class GameCreationController extends Controller {
     public void actionPerformed(ActionEvent e) {
         if (e.getActionCommand().equalsIgnoreCase("GAME")) {
             mainController.nextScene(Scenes.GAME);
+        }else if (e.getActionCommand().equalsIgnoreCase("LOGOUT")) {
+            mainController.nextScene(Scenes.MENU);
+        }else if (e.getActionCommand().equalsIgnoreCase("DELETE")) {
+            mainController.nextScene(Scenes.MENU);
         }
     }
 }
