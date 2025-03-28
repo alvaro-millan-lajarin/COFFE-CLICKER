@@ -71,11 +71,21 @@ public class GameScene extends Scene {
 
 
         center.add(panelIzquierdo());
-        center.add(addVacio());
+        center.add(panelDerecho());
 
 
         center.setOpaque(false);
         return center;
+    }
+    public JPanel panelDerecho() {
+        JPanel panelDerecho = new JPanel(new GridLayout(3, 1));
+        JTable tableGenerator = new JTable();
+        panelDerecho.add(tableGenerator);
+        panelDerecho.add(addVacio());
+        panelDerecho.add(addVacio());
+
+
+        return panelDerecho;
     }
 
 
