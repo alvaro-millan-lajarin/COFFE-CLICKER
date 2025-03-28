@@ -21,4 +21,8 @@ public abstract class Controller implements ActionListener {
     public Scene getView() {
         return scene;
     }
+
+    public void hello(){
+        System.out.println("Hello World");
+    }
 }
