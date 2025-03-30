@@ -40,5 +40,6 @@ public class Config {
         System.out.println( "Nom: " + nomBD );
         System.out.println( "Acces: " + accesUserBD );
         System.out.println( "Password: " + passwordBD );
+
     }
 }
