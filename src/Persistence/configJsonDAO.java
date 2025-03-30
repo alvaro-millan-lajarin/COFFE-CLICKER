@@ -25,6 +25,7 @@ public Config getConfigDAO() throws IOException {
         obj = line.split(":");
         config[i] = obj[1].replaceAll("[\\s\",]", "");
     }
+    
 
     return new Config(config[0],ip,config[1],config[2],config[3]);
 }
