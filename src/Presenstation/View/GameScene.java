@@ -1,8 +1,10 @@
 package Presenstation.View;
 
 import Presenstation.Controller.GameController;
-import Presenstation.Controller.GameCreationController;
 import Presenstation.JImagePanel;
+import Presenstation.View.Table.TableBotigaGenerators;
+import Presenstation.View.Table.TableBotigaMillores;
+import Presenstation.View.Table.TableGeneradorsDisponibles;
 import Presenstation.View.WriteText.Text;
 
 import javax.swing.*;
@@ -78,13 +80,16 @@ public class GameScene extends Scene {
         return center;
     }
     public JPanel panelDerecho() {
-        JPanel panelDerecho = new JPanel(new GridLayout(3, 1));
-        JTable tableGenerator = new JTable();
-        panelDerecho.add(tableGenerator);
-        panelDerecho.add(addVacio());
-        panelDerecho.add(addVacio());
+        JPanel panelDerecho = new JPanel(new GridLayout(3, 1, 30, 30));
+        TableBotigaGenerators tableBotigaGenerators = new TableBotigaGenerators();
+        TableBotigaMillores tableBotigaMillores = new TableBotigaMillores();
+        TableGeneradorsDisponibles tableGeneradorsDisponibles = new TableGeneradorsDisponibles();
 
+        panelDerecho.add(tableBotigaGenerators);
+        panelDerecho.add(tableBotigaMillores);
+        panelDerecho.add(tableGeneradorsDisponibles);
 
+        panelDerecho.setOpaque(false);
         return panelDerecho;
     }
 
