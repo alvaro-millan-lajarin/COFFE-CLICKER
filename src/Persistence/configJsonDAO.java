@@ -1,5 +1,5 @@
 package Persistence;
-import Business.Config;
+import Business.Entidades.Config;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
