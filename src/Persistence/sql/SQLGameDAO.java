@@ -1,7 +1,7 @@
-package Presenstation.model.dao.sql;
+package Persistence.sql;
 
-import Presenstation.model.dao.GameDAO;
-import Presenstation.model.entity.Game;
+import Persistence.GameDAO;
+import Business.entity.Game;
 
 import java.util.List;
 

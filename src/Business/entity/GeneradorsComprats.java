@@ -1,4 +1,4 @@
-package Presenstation.model.entity;
+package Business.entity;
 
 public class GeneradorsComprats {
     private int idGeneradorComprado;

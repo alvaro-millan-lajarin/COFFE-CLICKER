@@ -1,6 +1,6 @@
-package Presenstation.model.dao;
+package Persistence;
 
-import Presenstation.model.entity.Generator;
+import Business.entity.Generator;
 
 import java.util.List;
 

@@ -1,6 +1,6 @@
-package Presenstation.model.dao;
+package Persistence;
 
-import Presenstation.model.entity.User;
+import Business.entity.User;
 
 import java.util.List;
 

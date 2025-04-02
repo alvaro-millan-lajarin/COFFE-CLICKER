@@ -1,6 +1,6 @@
-package Presenstation.model.dao;
+package Persistence;
 
-import Presenstation.model.entity.GeneradorsComprats;
+import Business.entity.GeneradorsComprats;
 import java.util.List;
 
 public interface GeneradorsCompratsDAO {

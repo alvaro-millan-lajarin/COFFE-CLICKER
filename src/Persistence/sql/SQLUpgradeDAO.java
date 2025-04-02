@@ -1,7 +1,7 @@
-package Presenstation.model.dao.sql;
+package Persistence.sql;
 
-import Presenstation.model.dao.UpgradeDAO;
-import Presenstation.model.entity.Upgrade;
+import Persistence.UpgradeDAO;
+import Business.entity.Upgrade;
 
 import java.util.List;
 

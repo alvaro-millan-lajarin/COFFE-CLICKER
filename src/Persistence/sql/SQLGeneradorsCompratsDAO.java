@@ -1,7 +1,7 @@
-package Presenstation.model.dao.sql;
+package Persistence.sql;
 
-import Presenstation.model.dao.GeneradorsCompratsDAO;
-import Presenstation.model.entity.GeneradorsComprats;
+import Persistence.GeneradorsCompratsDAO;
+import Business.entity.GeneradorsComprats;
 
 
 

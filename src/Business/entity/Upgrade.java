@@ -1,4 +1,4 @@
-package Presenstation.model.entity;
+package Business.entity;
 
 public class Upgrade {
     private int id_Mejora;

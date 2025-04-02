@@ -1,4 +1,4 @@
-package Presenstation.model.entity;
+package Business.entity;
 
 public class MilloraComprada {
     private int idMejoraComprada;

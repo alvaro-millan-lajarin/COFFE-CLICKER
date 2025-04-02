@@ -1,7 +1,7 @@
-package Presenstation.model.dao.sql;
+package Persistence.sql;
 
-import Presenstation.model.dao.StatisticDAO;
-import Presenstation.model.entity.Statistic;
+import Persistence.StatisticDAO;
+import Business.entity.Statistic;
 
 
 import java.sql.Timestamp;

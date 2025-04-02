@@ -1,7 +1,7 @@
-package Presenstation.model.dao.sql;
+package Persistence.sql;
 
-import Presenstation.model.dao.MilloraCompradaDAO;
-import Presenstation.model.entity.MilloraComprada;
+import Persistence.MilloraCompradaDAO;
+import Business.entity.MilloraComprada;
 
 import java.util.ArrayList;
 import java.util.List;

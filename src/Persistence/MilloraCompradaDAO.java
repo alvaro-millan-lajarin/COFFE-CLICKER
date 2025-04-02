@@ -1,6 +1,6 @@
-package Presenstation.model.dao;
+package Persistence;
 
-import Presenstation.model.entity.MilloraComprada;
+import Business.entity.MilloraComprada;
 
 import java.util.List;
 

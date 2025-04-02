@@ -1,6 +1,6 @@
-package Presenstation.model.dao;
+package Persistence;
 
-import Presenstation.model.entity.Upgrade;
+import Business.entity.Upgrade;
 import java.util.List;
 
 public interface UpgradeDAO {

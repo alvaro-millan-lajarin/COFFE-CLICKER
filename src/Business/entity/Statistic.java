@@ -1,4 +1,4 @@
-package Presenstation.model.entity;
+package Business.entity;
 
 import java.time.LocalDateTime;
 

@@ -1,6 +1,5 @@
-package Presenstation.model.entity;
+package Business.entity;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public class Game {
