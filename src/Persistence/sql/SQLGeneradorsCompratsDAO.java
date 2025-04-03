@@ -12,8 +12,7 @@ public class SQLGeneradorsCompratsDAO implements GeneradorsCompratsDAO {
 
     @Override
     public void addGeneradorComprat(GeneradorsComprats generador) {
-        String query = "INSERT INTO GeneradorsComprats(id_generador_comprado, id_partida, id_generador, cantidad, nivel) VALUES ('" +
-                generador.getIdGeneradorComprado() + "', '" +
+        String query = "INSERT INTO GeneradorsComprats(id_partida, id_generador, cantidad, nivel) VALUES ('" +
                 generador.getIdPartida() + "', '" +
                 generador.getIdGenerador() + "', '" +
                 generador.getCantidad() + "', '" +
@@ -21,6 +20,7 @@ public class SQLGeneradorsCompratsDAO implements GeneradorsCompratsDAO {
 
         SQLConnector.getInstance().insertQuery(query);
     }
+
 
     @Override
     public void updateGeneradorComprat(GeneradorsComprats generador) {

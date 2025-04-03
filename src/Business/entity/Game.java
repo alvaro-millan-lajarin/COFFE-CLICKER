@@ -12,6 +12,14 @@ public class Game {
 
     public Game() {}
 
+    public Game(int idUser, String nombre, LocalDateTime fechaCreacion, LocalDateTime fechaModificacion, int numCafes) {
+        this.idUser = idUser;
+        this.nombre = nombre;
+        this.fechaCreacion = fechaCreacion;
+        this.fechaModificacion = fechaModificacion;
+        this.numCafes = numCafes;
+    }
+
     public Game(int id, int idUser, String nombre, LocalDateTime fechaCreacion, LocalDateTime fechaModificacion, int numCafes) {
         this.id = id;
         this.idUser = idUser;

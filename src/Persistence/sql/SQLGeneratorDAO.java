@@ -9,14 +9,14 @@ public class SQLGeneratorDAO implements GeneratorDAO {
 
     @Override
     public void addGenerator(Generator generator) {
-        String query = "INSERT INTO Generador(id_generador, nombre, precio, cafes_seg) VALUES ('" +
-                generator.getId() + "', '" +
+        String query = "INSERT INTO Generador(nombre, precio, cafes_seg) VALUES ('" +
                 generator.getNombre() + "', '" +
                 generator.getPrecio() + "', '" +
                 generator.getCafeSeg() + "')";
 
         SQLConnector.getInstance().insertQuery(query);
     }
+
 
     @Override
     public void updateGenerator(Generator generator) {

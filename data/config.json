@@ -1,9 +1,9 @@
 [
   {
-    "portConexionBD": "sql11.freesqldatabase.com",
+    "portConexionBD": "localhost",
     "ipBD": 3306,
-    "nomBD": "sql11696092",
-    "accesUserBD": "sql11696092",
-    "passwordBD": "XQ951qHNlZ"
+    "nomBD": "dpoo",
+    "accesUserBD": "root",
+    "passwordBD": ""
   }
 ]
