@@ -22,7 +22,7 @@ public class GameScene extends Scene {
 
     public void initialitzate() {
 
-        jPanel = new JImagePanel("data/game.jpg");
+        jPanel = new JImagePanel("/Users/alvaro/IdeaProjects/S2dpoCoffeclicker/data/Cafe.jpg");
         jPanel.setLayout(new BorderLayout(50, 20));
         //jPanel.setBackground(imagePanel);
 
@@ -127,7 +127,7 @@ public class GameScene extends Scene {
         JPanel panel = new JPanel(new GridLayout(1, 3));
 
         JButton imagenCafe = new JButton();
-        JImagePanel imagePanel = new JImagePanel("data/cf.png");
+        JImagePanel imagePanel = new JImagePanel("/Users/alvaro/IdeaProjects/S2dpoCoffeclicker/data/Cafe.jpg");
         imagePanel.setPreferredSize(new Dimension(200, 200));
         imagePanel.setOpaque(false);
         imagenCafe.add(imagePanel);

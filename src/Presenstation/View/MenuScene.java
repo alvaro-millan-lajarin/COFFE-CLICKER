@@ -54,7 +54,7 @@ public class MenuScene extends Scene {
         panelIzquierdo.setOpaque(false);
         centerPanel.add(panelIzquierdo);
 
-        JImagePanel image = new JImagePanel("data/imagenCafe.jpg");
+        JImagePanel image = new JImagePanel("/Users/alvaro/IdeaProjects/S2dpoCoffeclicker/data/Cafe.jpg");
         image.setOpaque(false);
         centerPanel.add(image);
         centerPanel.setOpaque(false);
