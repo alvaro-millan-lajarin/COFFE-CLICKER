@@ -73,7 +73,7 @@ public class GameManagementScene extends Scene {
         leftPanel.setPreferredSize(new Dimension(300, 300));
 
 
-        JImagePanel imagePanel = new JImagePanel("data/cafeteria.png");
+        JImagePanel imagePanel = new JImagePanel("/Users/alvaro/IdeaProjects/DPOO-S22/data/cafeteria.png");
         imagePanel.setOpaque(false);
         imagePanel.setPreferredSize(new Dimension(300, 300));
 
