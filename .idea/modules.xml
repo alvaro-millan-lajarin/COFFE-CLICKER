@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/../DPOOOs2UltimaVersion/DPOOOs2UltimaVersion.iml" filepath="$PROJECT_DIR$/../DPOOOs2UltimaVersion/DPOOOs2UltimaVersion.iml" />
+
+      <module fileurl="file://$PROJECT_DIR$/DPOO-S22.iml" filepath="$PROJECT_DIR$/DPOO-S22.iml" />
+
     </modules>
   </component>
 </project>

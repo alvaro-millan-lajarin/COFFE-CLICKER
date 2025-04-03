@@ -77,7 +77,7 @@ public class GameCreationScene extends Scene {
         leftPanel.setPreferredSize(new Dimension(300, 300));
 
 
-        JImagePanel imagePanel = new JImagePanel("data/Cafe.jpg");
+        JImagePanel imagePanel = new JImagePanel("/Users/alvaro/IdeaProjects/DPOO-S22/data/Cafe.jpg");
         imagePanel.setOpaque(false);
         imagePanel.setPreferredSize(new Dimension(300, 300));
 

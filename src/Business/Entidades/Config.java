@@ -1,4 +1,4 @@
-package Business;
+package Business.Entidades;
 
 public class Config {
     private String portConexionBD;
