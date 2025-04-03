@@ -56,6 +56,29 @@ public class SignUpController extends Controller {
                 errorOcurred =1;
             }else{
                 if(getScene().getPassword().equals(getScene().getPasswordAgain())){
+                    String password = getScene().getPassword();
+
+                    boolean hasMinLength = password.length() >= 8;
+                    boolean hasUpperCase = password.matches(".*[A-Z].*");
+                    boolean hasLowerCase = password.matches(".*[a-z].*");
+                    boolean hasDigit = password.matches(".*\\d.*");
+
+                    if (!hasMinLength) {
+                        System.out.println("La contraseña debe tener al menos 8 caracteres");
+                        errorOcurred =1;
+                    }
+                    if (!hasUpperCase) {
+                        System.out.println("La contraseña debe contener al menos una letra mayúscula");
+                        errorOcurred =1;
+                    }
+                    if (!hasLowerCase) {
+                        System.out.println("La contraseña debe contener al menos una letra minúscula");
+                        errorOcurred =1;
+                    }
+                    if (!hasDigit) {
+                        System.out.println("La contraseña debe contener al menos un número");
+                        errorOcurred =1;
+                    }
 
                 }else{
                     JOptionPane.showMessageDialog(
