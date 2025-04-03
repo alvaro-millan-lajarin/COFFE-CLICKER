@@ -1,8 +1,7 @@
 package Persistence.sql;
 
-import Business.Entidades.Upgrade;
 import Persistence.UpgradeDAO;
-
+import Business.Entidades.Upgrade;
 
 import java.util.List;
 
@@ -10,8 +9,7 @@ public class SQLUpgradeDAO implements UpgradeDAO {
 
     @Override
     public void addUpgrade(Upgrade upgrade) {
-        String query = "INSERT INTO Mejora(id_mejora, id_generador, nombre, precio, incremento) VALUES ('" +
-                upgrade.getIdMejora() + "', '" +
+        String query = "INSERT INTO Mejora(id_generador, nombre, precio, incremento) VALUES ('" +
                 upgrade.getIdGenerador() + "', '" +
                 upgrade.getNombre() + "', '" +
                 upgrade.getPrecio() + "', '" +
@@ -19,6 +17,7 @@ public class SQLUpgradeDAO implements UpgradeDAO {
 
         SQLConnector.getInstance().insertQuery(query);
     }
+
 
     @Override
     public void updateUpgrade(Upgrade upgrade) {

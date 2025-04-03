@@ -1,8 +1,7 @@
 package Persistence.sql;
 
-import Business.Entidades.User;
 import Persistence.UserDAO;
-
+import Business.Entidades.User;
 
 import java.util.List;
 
@@ -10,11 +9,12 @@ public class SQLUserDAO implements UserDAO {
 
     @Override
     public void insertUser(User user) {
-        String query = "INSERT INTO User(id_usuario, nombre_usuario, email, contrasena) VALUES ('" +
-                user.getId() + "', '" + user.getUsername() + "', '" + user.getEmail() + "', '" + user.getPassword() + "')";
+        String query = "INSERT INTO User(nombre_usuario, email, contrasena) VALUES ('" +
+                user.getUsername() + "', '" + user.getEmail() + "', '" + user.getPassword() + "')";
 
         SQLConnector.getInstance().insertQuery(query);
     }
+
 
     @Override
     public void updateUser(User user) {

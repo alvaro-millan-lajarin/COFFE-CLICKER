@@ -3,15 +3,12 @@ package Persistence.sql;
 import Business.Entidades.Game;
 import Persistence.GameDAO;
 
-
 import java.util.List;
 
 public class SQLGameDAO implements GameDAO {
 
-    @Override
     public void addGame(Game game) {
-        String query = "INSERT INTO Partida(id_partida, id_usuario, nombre_partida, fecha_creacion, fecha_ultimo_save, num_cafes) VALUES ('" +
-                game.getId() + "', '" +
+        String query = "INSERT INTO Partida(id_usuario, nombre_partida, fecha_creacion, fecha_ultimo_save, num_cafes) VALUES ('" +
                 game.getIdUser() + "', '" +
                 game.getNombre() + "', '" +
                 game.getFechaCreacion() + "', '" +
@@ -20,6 +17,7 @@ public class SQLGameDAO implements GameDAO {
 
         SQLConnector.getInstance().insertQuery(query);
     }
+
 
     @Override
     public void updateGame(Game game) {

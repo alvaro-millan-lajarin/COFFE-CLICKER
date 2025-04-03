@@ -1,7 +1,7 @@
 package Persistence.sql;
 
-import Business.Entidades.Statistic;
 import Persistence.StatisticDAO;
+import Business.Entidades.Statistic;
 
 
 import java.sql.Timestamp;
@@ -12,14 +12,14 @@ public class SQLStatisticDAO implements StatisticDAO {
 
     @Override
     public void addEstadistica(Statistic estadistica) {
-        String query = "INSERT INTO Estadisticas(id_estadisticas, id_partida, num_cafes, fechaSave) VALUES ('" +
-                estadistica.getId_Estadisticas() + "', '" +
+        String query = "INSERT INTO Estadisticas(id_partida, num_cafes, fechaSave) VALUES ('" +
                 estadistica.getIdPartida() + "', '" +
                 estadistica.getNumCafes() + "', '" +
                 Timestamp.valueOf(estadistica.getFechaSave()) + "')";
 
         SQLConnector.getInstance().insertQuery(query);
     }
+
 
     @Override
     public void updateEstadistica(Statistic estadistica) {

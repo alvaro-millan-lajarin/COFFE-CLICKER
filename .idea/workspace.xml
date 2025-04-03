@@ -4,22 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f9bbb50b-3eaf-412a-ab58-ecb07cf93455" name="Changes" comment="arreglo imagenes">
-      <change afterPath="$PROJECT_DIR$/src/Business/Entidades/Game.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Business/Entidades/GeneradorsComprats.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Business/Entidades/Generator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Business/Entidades/MilloraComprada.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Business/Entidades/Statistic.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Business/Entidades/Upgrade.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Business/Entidades/User.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Persistence/GameDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Persistence/GeneradorsCompratsDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Persistence/GeneratorDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Persistence/MilloraCompradaDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Persistence/StatisticDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Persistence/UpgradeDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Persistence/UserDAO.java" afterDir="false" />
+    <list default="true" id="f9bbb50b-3eaf-412a-ab58-ecb07cf93455" name="Changes" comment="s">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DPOO-S22.iml" beforeDir="false" afterPath="$PROJECT_DIR$/DPOO-S22.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/config.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/config.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Persistence/sql/SQLConnector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Persistence/sql/SQLConnector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Persistence/sql/SQLGameDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Persistence/sql/SQLGameDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Persistence/sql/SQLGeneradorsCompratsDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Persistence/sql/SQLGeneradorsCompratsDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Persistence/sql/SQLGeneratorDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Persistence/sql/SQLGeneratorDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Persistence/sql/SQLMilloraCompradaDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Persistence/sql/SQLMilloraCompradaDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Persistence/sql/SQLStatisticDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Persistence/sql/SQLStatisticDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Persistence/sql/SQLUpgradeDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Persistence/sql/SQLUpgradeDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Persistence/sql/SQLUserDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Persistence/sql/SQLUserDAO.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,7 +26,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="main" />
+        <entry key="$PROJECT_DIR$" value="newDev" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -60,16 +57,17 @@
     "Application.Main.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "newDev",
+    "git-widget-placeholder": "S2-NewBranch",
     "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/arnau/OneDrive/Escritorio/mysql-connector-java-8.0.23.jar",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Project",
+    "project.structure.last.edited": "Libraries",
     "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
+    "project.structure.side.proportion": "0.3321839",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -138,6 +136,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="g" />
     <MESSAGE value="arreglo imagenes" />
-    <option name="LAST_COMMIT_MESSAGE" value="arreglo imagenes" />
+    <MESSAGE value="s" />
+    <option name="LAST_COMMIT_MESSAGE" value="s" />
   </component>
 </project>
