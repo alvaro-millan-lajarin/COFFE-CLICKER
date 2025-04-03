@@ -64,19 +64,39 @@ public class SignUpController extends Controller {
                     boolean hasDigit = password.matches(".*\\d.*");
 
                     if (!hasMinLength) {
-                        System.out.println("La contraseña debe tener al menos 8 caracteres");
+                        JOptionPane.showMessageDialog(
+                                getScene().addAccesButton(),
+                                "Please you need to enter a password that contains at least 8 characters",
+                                "Missing characters",
+                                JOptionPane.WARNING_MESSAGE
+                        );
                         errorOcurred =1;
                     }
                     if (!hasUpperCase) {
-                        System.out.println("La contraseña debe contener al menos una letra mayúscula");
+                        JOptionPane.showMessageDialog(
+                                getScene().addAccesButton(),
+                                "Please you need to enter a password that contains capital letter",
+                                "Missing capital letter",
+                                JOptionPane.WARNING_MESSAGE
+                        );
                         errorOcurred =1;
                     }
                     if (!hasLowerCase) {
-                        System.out.println("La contraseña debe contener al menos una letra minúscula");
+                        JOptionPane.showMessageDialog(
+                                getScene().addAccesButton(),
+                                "Please you need to enter a password that contains lowercase letter",
+                                "Missing lower case",
+                                JOptionPane.WARNING_MESSAGE
+                        );
                         errorOcurred =1;
                     }
                     if (!hasDigit) {
-                        System.out.println("La contraseña debe contener al menos un número");
+                        JOptionPane.showMessageDialog(
+                                getScene().addAccesButton(),
+                                "Please you need to enter a password that contains al least one number",
+                                "Missing Number",
+                                JOptionPane.WARNING_MESSAGE
+                        );
                         errorOcurred =1;
                     }
 
