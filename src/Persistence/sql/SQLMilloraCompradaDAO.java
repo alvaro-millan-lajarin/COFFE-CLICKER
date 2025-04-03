@@ -1,8 +1,7 @@
 package Persistence.sql;
 
-import Business.Entidades.MilloraComprada;
 import Persistence.MilloraCompradaDAO;
-
+import Business.Entidades.MilloraComprada;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,14 +10,14 @@ public class SQLMilloraCompradaDAO implements MilloraCompradaDAO {
 
     @Override
     public void addMilloraComprada(MilloraComprada millora) {
-        String query = "INSERT INTO mejoracomprada (id_mejora_comprada, id_partida, id_mejora, nivel) VALUES ('" +
-                millora.getIdMejoraComprada() + "', '" +
+        String query = "INSERT INTO mejoracomprada (id_partida, id_mejora, nivel) VALUES ('" +
                 millora.getIdPartida() + "', '" +
                 millora.getIdMejora() + "', '" +
                 millora.getNivel() + "')";
 
         SQLConnector.getInstance().insertQuery(query);
     }
+
 
     @Override
     public void updateMilloraComprada(MilloraComprada millora) {

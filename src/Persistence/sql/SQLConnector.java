@@ -1,5 +1,8 @@
 package Persistence.sql;
 
+import Business.Entidades.Config;
+import Persistence.configJsonDAO;
+
 import java.sql.*;
 
 public class SQLConnector {
@@ -9,11 +12,24 @@ public class SQLConnector {
     private String url;
     private Connection conn;
 
-    public static SQLConnector getInstance(){
-        if (instance == null ){
-            // NOT a good practice to hardcode connection data! Be aware of this for your project delivery ;)
-            instance = new SQLConnector("root", "", "localhost", 3306, "dpoo");
-            instance.connect();
+    private SQLConnector(Config config) {
+        String url = "jdbc:mysql://" + config.getPortConexionBD() + ":" + config.getIpBD() + "/" + config.getNomBD();
+        try {
+            conn = DriverManager.getConnection(url, config.getAccesUserBD(), config.getPasswordBD());
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static SQLConnector getInstance() {
+        if (instance == null) {
+            try {
+                configJsonDAO jsonDAO = new configJsonDAO();
+                Config config = jsonDAO.getConfigDAO();  // Usamos la config única del JSON
+                instance = new SQLConnector(config);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
         return instance;
     }
