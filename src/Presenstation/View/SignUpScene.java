@@ -110,6 +110,9 @@ public class SignUpScene extends Scene{
         panel.setBorder(new EmptyBorder(20, 0, 0, 0));
         return panel;
     }
+    public String getName(){
+        return name.getText("text");
+    }
     public String getEmail() {
         return email.getText("text");
     }
