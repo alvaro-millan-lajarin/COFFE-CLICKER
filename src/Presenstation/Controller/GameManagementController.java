@@ -30,10 +30,13 @@ public class GameManagementController extends Controller {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getActionCommand().equalsIgnoreCase("LOGOUT")) {
+            //loginController.clearUserData();
+            mainController.resetLogin();
             mainController.nextScene(Scenes.MENU);
         }else if (e.getActionCommand().equalsIgnoreCase("DELETE")) {
+            mainController.resetLogin();
+            loginController.clearUserData();
             deleteUser();
-
         }else if (e.getActionCommand().equalsIgnoreCase("CREATE_GAME")) {
             mainController.nextScene(Scenes.GAME_CREATION);
         }

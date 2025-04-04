@@ -31,8 +31,11 @@ public class GameCreationController extends Controller {
         if (e.getActionCommand().equalsIgnoreCase("PLAY")) {
             mainController.nextScene(Scenes.GAME);
         }else if (e.getActionCommand().equalsIgnoreCase("LOGOUT")) {
+            mainController.resetLogin();
             mainController.nextScene(Scenes.MENU);
         }else if (e.getActionCommand().equalsIgnoreCase("DELETE")) {
+            mainController.resetLogin();
+            loginController.clearUserData();
             deleteUser();
 
         }

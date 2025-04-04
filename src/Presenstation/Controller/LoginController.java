@@ -61,5 +61,8 @@ public class LoginController extends Controller {
     public String getEmail() {
         return getScene().getEmail();
     }
+    public void clearUserData() {
+        getScene().clearUserData();
+    }
 
 }
