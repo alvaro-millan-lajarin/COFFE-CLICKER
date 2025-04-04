@@ -49,6 +49,7 @@ public class MainController {
 
     }
     public void nextScene(Scenes scenes) {
+
         switch (scenes) {
             case MENU:
                 menuController.run();
