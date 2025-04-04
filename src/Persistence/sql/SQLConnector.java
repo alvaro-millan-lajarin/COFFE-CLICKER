@@ -42,9 +42,12 @@ public class SQLConnector {
 
     public void connect() {
         try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
             conn = DriverManager.getConnection(url, username, password);
         } catch(SQLException e) {
             System.err.println("Couldn't connect to --> " + url + " (" + e.getMessage() + ")");
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
         }
     }
 
