@@ -148,4 +148,7 @@ public class SignUpController extends Controller {
                 return true;
             }
     }
+    public String getEmail() {
+        return getScene().getEmail();
+    }
 }

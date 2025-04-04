@@ -57,8 +57,8 @@ public class GameCreationScene extends Scene {
         JButton logout_but = new JButton("Logout");
         botonesArribaDerecha.add(delAcc_but);
         botonesArribaDerecha.add(logout_but);
-        delAcc_but.setActionCommand("LOGOUT");
-        logout_but.setActionCommand("DELETE");
+        delAcc_but.setActionCommand("DELETE");
+        logout_but.setActionCommand("LOGOUT");
         delAcc_but.addActionListener(gameCreationController);
         logout_but.addActionListener(gameCreationController);
 
