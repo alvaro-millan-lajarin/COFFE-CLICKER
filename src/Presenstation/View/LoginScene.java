@@ -107,12 +107,10 @@ public class LoginScene extends Scene {
         return panel;
     }
     public String getEmail() {
-        return email.getText("text");
+        return name.getText("text");
     }
     public String getPassword() {
         return password.getText("password");
     }
-    public String getPasswordAgain() {
-        return passwordAgain.getText("password");
-    }
+
 }
