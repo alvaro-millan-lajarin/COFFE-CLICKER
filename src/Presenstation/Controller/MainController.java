@@ -37,8 +37,8 @@ public class MainController {
         signUpController = new SignUpController(signUpScene, this);
         menuController = new MenuController(menuScene, this);
         gameManagementController = new GameManagementController(gameManagementScene, this, loginController, signUpController);
-        gameCreationController = new GameCreationController(gameCreationScene, this);
-        gameController = new GameController(gameScene, this);
+        gameCreationController = new GameCreationController(gameCreationScene, this, loginController, signUpController);
+        gameController = new GameController(gameScene, this, loginController, signUpController);
 
         menuScene.setController(menuController);
         signUpScene.setController(signUpController);
