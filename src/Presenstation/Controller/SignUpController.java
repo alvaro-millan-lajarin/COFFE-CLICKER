@@ -29,7 +29,7 @@ public class SignUpController extends Controller {
             comprovarErrores();
 
             if(!comprovarErrores()){
-                if(sqlUserDAO.findUserByEmail(getScene().getName()) == null){
+                if(sqlUserDAO.findUserByEmail(getScene().getEmail()) == null && sqlUserDAO.findUserByUsername(getScene().getName()) == null){
                     User user = new User();
                     user.setEmail(getScene().getEmail());
                     user.setPassword(getScene().getPassword());
@@ -38,12 +38,22 @@ public class SignUpController extends Controller {
                     sqlUserDAO.insertUser(user);
                     mainController.nextScene(Scenes.GAME_MANAGEMENT);
                 }else{
-                    JOptionPane.showMessageDialog(
-                            getScene().addAccesButton(),
-                            "Username already exists",
-                            "Username Error",
-                            JOptionPane.WARNING_MESSAGE
-                    );
+                    if(sqlUserDAO.findUserByEmail(getScene().getEmail()) != null){
+                        JOptionPane.showMessageDialog(
+                                getScene().addAccesButton(),
+                                "Email already exists",
+                                "Email Error",
+                                JOptionPane.WARNING_MESSAGE
+                        );
+                    }else{
+                        JOptionPane.showMessageDialog(
+                                getScene().addAccesButton(),
+                                "Username already exists",
+                                "Username Error",
+                                JOptionPane.WARNING_MESSAGE
+                        );
+                    }
+
                 }
             }
         }
