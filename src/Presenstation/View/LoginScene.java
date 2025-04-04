@@ -32,8 +32,11 @@ public class LoginScene extends Scene {
 
     }
     public void apply(JFrame mainFrame) {
+
         initialitzate();
+
         super.apply(mainFrame);
+
         mainFrame.setTitle("Login");
     }
     public void setController(LoginController loginController) {
@@ -114,6 +117,12 @@ public class LoginScene extends Scene {
     }
     public String getPassword() {
         return password.getText("password");
+    }
+    public void clearUserData() {
+        this.name.setField("");
+        this.password.setPassword("");
+
+
     }
 
 }

@@ -50,12 +50,15 @@ public class MainController {
     }
     public void nextScene(Scenes scenes) {
 
+
         switch (scenes) {
             case MENU:
                 menuController.run();
                 break;
             case LOGIN:
-                loginController.run();
+                loginScene.clearUserData();
+                loginScene.apply(this.getMainFrame());
+                //loginController.run();
                 break;
             case SIGNUP:
                 //scene.showVisible();

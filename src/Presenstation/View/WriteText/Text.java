@@ -62,4 +62,11 @@ public class Text {
         }
 
     }
+    public void setPassword(String password) {
+        fieldPassword.setText(password);
+
+    }
+    public void setField(String message) {
+        field.setText(message);
+    }
 }

@@ -30,8 +30,10 @@ public class GameController extends Controller {
         if (e.getActionCommand().equalsIgnoreCase("MORE_COFFE")) {
             getView().addCoffe();
         }else if (e.getActionCommand().equalsIgnoreCase("LOGOUT")) {
+            loginController.clearUserData();
             mainController.nextScene(Scenes.MENU);
         }else if (e.getActionCommand().equalsIgnoreCase("DELETE")) {
+            loginController.clearUserData();
             deleteUser();
 
         }
