@@ -55,5 +55,11 @@ public class LoginController extends Controller {
 
         }
     }
+    public String getPassword() {
+        return getScene().getPassword();
+    }
+    public String getEmail() {
+        return getScene().getEmail();
+    }
 
 }
