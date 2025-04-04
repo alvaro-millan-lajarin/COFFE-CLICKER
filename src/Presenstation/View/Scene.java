@@ -41,5 +41,7 @@ public class Scene {
     public JFrame getMainFrame() {
         return mainFrame;
     }
-
+    public void clean() {
+        mainFrame.getContentPane().removeAll();
+    }
 }

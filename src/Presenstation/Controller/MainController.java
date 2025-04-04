@@ -49,7 +49,7 @@ public class MainController {
 
     }
     public void nextScene(Scenes scenes) {
-
+        scene.clean();
 
         switch (scenes) {
             case MENU:
@@ -84,5 +84,25 @@ public class MainController {
     }
     public JFrame getMainFrame() {
         return scene.getMainFrame();
+    }
+    public void resetLogin() {
+
+        loginScene = null;
+        loginController = null;
+
+
+        signUpScene = null;
+        signUpController = null;
+
+        System.gc();
+
+
+        loginScene = new LoginScene();
+        loginController = new LoginController(loginScene, this);
+        loginScene.setController(loginController);
+
+        signUpScene = new SignUpScene();
+        signUpController = new SignUpController(signUpScene, this);
+        signUpScene.setController(signUpController);
     }
 }

@@ -122,7 +122,7 @@ public class LoginScene extends Scene {
         this.name.setField("");
         this.password.setPassword("");
 
-
     }
+
 
 }
