@@ -26,10 +26,10 @@ public class SignUpController extends Controller {
     public void actionPerformed(ActionEvent e) {
         if (e.getActionCommand().equalsIgnoreCase("SIGNUP")) {
             SQLUserDAO sqlUserDAO = new SQLUserDAO();
-            comprovarErrores();
 
-            if(!comprovarErrores()){
-                if(sqlUserDAO.findUserByEmail(getScene().getName()) == null){
+
+            if(!ErroreOcurred()){
+                if(sqlUserDAO.findUserByEmail(getScene().getEmail()) == null && sqlUserDAO.findUserByUsername(getScene().getName()) == null){
                     User user = new User();
                     user.setEmail(getScene().getEmail());
                     user.setPassword(getScene().getPassword());
@@ -38,18 +38,28 @@ public class SignUpController extends Controller {
                     sqlUserDAO.insertUser(user);
                     mainController.nextScene(Scenes.GAME_MANAGEMENT);
                 }else{
-                    JOptionPane.showMessageDialog(
-                            getScene().addAccesButton(),
-                            "Username already exists",
-                            "Username Error",
-                            JOptionPane.WARNING_MESSAGE
-                    );
+                    if(sqlUserDAO.findUserByEmail(getScene().getEmail()) != null){
+                        JOptionPane.showMessageDialog(
+                                getScene().addAccesButton(),
+                                "Email already exists",
+                                "Email Error",
+                                JOptionPane.WARNING_MESSAGE
+                        );
+                    }else{
+                        JOptionPane.showMessageDialog(
+                                getScene().addAccesButton(),
+                                "Username already exists",
+                                "Username Error",
+                                JOptionPane.WARNING_MESSAGE
+                        );
+                    }
+
                 }
             }
         }
 
     }
-    public boolean comprovarErrores(){
+    public boolean ErroreOcurred() {
         if (getScene().getEmail().isEmpty()) {
             JOptionPane.showMessageDialog(
                     getScene().addAccesButton(),
@@ -57,22 +67,22 @@ public class SignUpController extends Controller {
                     "Email is empty",
                     JOptionPane.WARNING_MESSAGE
             );
-            errorOcurred =1;
-        } else {
-            String email = getScene().getEmail();
+            return true;
+        }
 
-            if (email.contains("@")) {
+        String email = getScene().getEmail();
 
-            } else {
+            if (!email.contains("@")) {
                 JOptionPane.showMessageDialog(
                         getScene().addAccesButton(),
                         "You need to put a real email with: @ ",
                         "Not a valid email",
                         JOptionPane.WARNING_MESSAGE
                 );
-                errorOcurred =1;
+                return true;
             }
-        }
+
+
         if (getScene().getPassword().isEmpty()) {
             JOptionPane.showMessageDialog(
                     getScene().addAccesButton(),
@@ -80,8 +90,8 @@ public class SignUpController extends Controller {
                     "Password is empty",
                     JOptionPane.WARNING_MESSAGE
             );
-            errorOcurred =1;
-        }else{
+            return true;
+        }
             if(getScene().getPassword().equals(getScene().getPasswordAgain())){
                 String password = getScene().getPassword();
 
@@ -97,7 +107,7 @@ public class SignUpController extends Controller {
                             "Missing characters",
                             JOptionPane.WARNING_MESSAGE
                     );
-                    errorOcurred =1;
+                    return true;
                 }
                 if (!hasUpperCase) {
                     JOptionPane.showMessageDialog(
@@ -106,7 +116,7 @@ public class SignUpController extends Controller {
                             "Missing capital letter",
                             JOptionPane.WARNING_MESSAGE
                     );
-                    errorOcurred =1;
+                    return true;
                 }
                 if (!hasLowerCase) {
                     JOptionPane.showMessageDialog(
@@ -115,7 +125,7 @@ public class SignUpController extends Controller {
                             "Missing lower case",
                             JOptionPane.WARNING_MESSAGE
                     );
-                    errorOcurred =1;
+                    return true;
                 }
                 if (!hasDigit) {
                     JOptionPane.showMessageDialog(
@@ -124,8 +134,9 @@ public class SignUpController extends Controller {
                             "Missing Number",
                             JOptionPane.WARNING_MESSAGE
                     );
-                    errorOcurred =1;
+                    return true;
                 }
+                return false;
 
             }else{
                 JOptionPane.showMessageDialog(
@@ -134,13 +145,7 @@ public class SignUpController extends Controller {
                         "Don't match",
                         JOptionPane.WARNING_MESSAGE
                 );
-                errorOcurred =1;
+                return true;
             }
-        }
-        boolean error = false;
-        if (errorOcurred == 1) {
-            error = true;
-        }
-        return error;
     }
 }

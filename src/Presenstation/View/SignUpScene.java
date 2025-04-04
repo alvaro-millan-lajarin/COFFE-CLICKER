@@ -68,10 +68,14 @@ public class SignUpScene extends Scene{
 
     public JPanel preguntasYRespuestas() {
         JPanel preguntasYRespuestas = new JPanel(new GridLayout(4,1));
-        name = new Text("Name", "text");
-        email = new Text("Email", "text");
-        password = new Text("Password", "password");
-        passwordAgain = new Text("Password Again", "password");
+
+        if (name == null) {
+            name = new Text("Name", "text");
+            email = new Text("Email", "text");
+            password = new Text("Password", "password");
+            passwordAgain = new Text("Password Again", "password");
+        }
+
         preguntasYRespuestas.add(name.getPanelText());
         preguntasYRespuestas.add(email.getPanelText());
         preguntasYRespuestas.add(password.getPanelText());
@@ -79,6 +83,7 @@ public class SignUpScene extends Scene{
         preguntasYRespuestas.setOpaque(false);
         return preguntasYRespuestas;
     }
+
     public JPanel addAccesButton(){
         JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
         buttonPanel.setOpaque(false);

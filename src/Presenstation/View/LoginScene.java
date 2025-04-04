@@ -68,8 +68,11 @@ public class LoginScene extends Scene {
 
     public JPanel preguntasYRespuestas() {
         JPanel preguntasYRespuestas = new JPanel(new GridLayout(4,1));
-        name = new Text("Name or email", "text");
-        password = new Text("Password", "password");
+        if (name == null) {
+            name = new Text("Name or email", "text");
+            password = new Text("Password", "password");
+        }
+
         preguntasYRespuestas.add(name.getPanelText());
         preguntasYRespuestas.add(password.getPanelText());
         preguntasYRespuestas.setOpaque(false);

@@ -63,8 +63,8 @@ public class SQLUserDAO implements UserDAO {
                 return new User(
                         rs.getInt("id_usuario"),
                         rs.getString("nombre_usuario"),
-                        rs.getString("email"),
-                        rs.getString("contrasena")
+                        rs.getString("contrasena"),
+                        rs.getString("email")
                 );
             }
         } catch (Exception e) {
