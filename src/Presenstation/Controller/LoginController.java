@@ -32,7 +32,6 @@ public class LoginController extends Controller {
 
             SQLUserDAO sqlUserDAO = new SQLUserDAO();
 
-
             User existingUserByEmail = sqlUserDAO.findUserByEmail(userOrEmail);
             User existingUserByUsername = sqlUserDAO.findUserByUsername(userOrEmail);
 
