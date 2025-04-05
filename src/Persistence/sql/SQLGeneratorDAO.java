@@ -56,6 +56,7 @@ public class SQLGeneratorDAO implements GeneratorDAO {
         return null;
     }
 
+    //Stoy - 10
     @Override
     public List<Generator> getAllGenerators() {
         String query = "SELECT * FROM Generador";
