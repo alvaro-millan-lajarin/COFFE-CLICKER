@@ -140,4 +140,7 @@ public class GameCreationScene extends Scene {
     public String getPasswordAgain() {
         return passwordAgain.getText("password");
     }
+    public String getName(){
+        return name.getText("text");
+    }
 }

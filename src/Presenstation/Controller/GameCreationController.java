@@ -1,14 +1,19 @@
 package Presenstation.Controller;
 
+import Business.Entidades.Game;
 import Business.Entidades.User;
+import Persistence.sql.SQLGameDAO;
 import Persistence.sql.SQLUserDAO;
 import Presenstation.View.GameCreationScene;
 import Presenstation.View.GameManagementScene;
 import Presenstation.View.Scene;
 import Presenstation.View.Scenes;
+import java.time.LocalDateTime;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
+import java.util.ArrayList;
+import java.util.List;
 
 public class GameCreationController extends Controller {
     private LoginController loginController;
@@ -29,7 +34,37 @@ public class GameCreationController extends Controller {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getActionCommand().equalsIgnoreCase("PLAY")) {
-            mainController.nextScene(Scenes.GAME);
+            String nombreGame = getScene().getName();
+            SQLGameDAO sqlGameDAO = new SQLGameDAO();
+            List<Game> games = sqlGameDAO.getAllGames();
+            for (Game game : games) {
+                if (game.getNombre().equals(nombreGame)) {
+                    JOptionPane.showMessageDialog(
+                            getScene().addAccesButton(),
+                            "You need to put another game name",
+                            "Error game name used",
+                            JOptionPane.WARNING_MESSAGE
+                    );
+                    return;
+
+                }
+            }
+
+            String userOrEmail = loginController.getEmail();
+            String password = loginController.getPassword();
+
+            SQLUserDAO sqlUserDAO = new SQLUserDAO();
+
+            User existingUserByEmail = sqlUserDAO.findUserByEmail(userOrEmail);
+
+            LocalDateTime fechaYHoraActual = LocalDateTime.now();
+
+            if (existingUserByEmail != null && existingUserByEmail.getPassword().equals(password)) {
+                sqlGameDAO.addGame(new Game(1,existingUserByEmail.getId(),nombreGame,fechaYHoraActual,fechaYHoraActual,0));
+                mainController.nextScene(Scenes.GAME);
+
+            }
+
         }else if (e.getActionCommand().equalsIgnoreCase("LOGOUT")) {
             mainController.resetLogin();
             mainController.nextScene(Scenes.MENU);
