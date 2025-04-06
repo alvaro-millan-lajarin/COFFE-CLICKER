@@ -10,6 +10,7 @@ import Presenstation.View.WriteText.Text;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
+import java.util.ArrayList;
 
 public class GameScene extends Scene {
     private GameController gameController;
@@ -18,6 +19,10 @@ public class GameScene extends Scene {
     private Text name;
     private Integer n_cafes = 0;
     private JLabel numCafesLabel;
+
+    private TableBotigaGenerators tableBotigaGenerators = new TableBotigaGenerators();
+    private TableBotigaMillores tableBotigaMillores = new TableBotigaMillores();
+    private TableGeneradorsDisponibles tableGeneradorsDisponibles = new TableGeneradorsDisponibles();
 
 
     public void initialitzate() {
@@ -81,9 +86,7 @@ public class GameScene extends Scene {
     }
     public JPanel panelDerecho() {
         JPanel panelDerecho = new JPanel(new GridLayout(3, 1, 30, 30));
-        TableBotigaGenerators tableBotigaGenerators = new TableBotigaGenerators();
-        TableBotigaMillores tableBotigaMillores = new TableBotigaMillores();
-        TableGeneradorsDisponibles tableGeneradorsDisponibles = new TableGeneradorsDisponibles();
+
 
         panelDerecho.add(tableBotigaGenerators);
         panelDerecho.add(tableBotigaMillores);
@@ -175,11 +178,15 @@ public class GameScene extends Scene {
         panel.setBorder(new EmptyBorder(20, 0, 0, 0));
         return panel;
     }
-    public void addCoffe(){
-        n_cafes++;
-        numCafesLabel.setText(String.valueOf(n_cafes));
+    public void addCoffe(int numCafes){
+
+        numCafesLabel.setText(String.valueOf(numCafes));
         jPanel.revalidate();
         jPanel.repaint();
+    }
+    public void updteTables(ArrayList<Integer> quantitats, ArrayList<String> produccioUnitat){
+        tableGeneradorsDisponibles.setValores(quantitats, produccioUnitat);
+
     }
 
 }

@@ -2,19 +2,20 @@ package Business.Entidades;
 
 import java.util.ArrayList;
 
-public class TablaMilloresDisponibles {
+public class TablaGeneradorsDisponibles {
     private ArrayList<String> noms;
+    private ArrayList<Generator> generators;
     private ArrayList<Integer> quantitats;
     private ArrayList<String> produccioUnitat;
     private ArrayList<String> produccioTotal;
-    private ArrayList<Double> produccioGlobal;
+    private ArrayList<String> produccioGlobal;
 
-    public TablaMilloresDisponibles(ArrayList<String> noms, ArrayList<Integer> quantitats, ArrayList<String> produccioUnitat, ArrayList<String> produccioTotal, ArrayList<Double> produccioGlobal) {
-        this.noms = noms;
-        this.quantitats = quantitats;
-        this.produccioUnitat = produccioUnitat;
-        this.produccioTotal = produccioTotal;
-        this.produccioGlobal = produccioGlobal;
+    public TablaGeneradorsDisponibles() {
+        this.noms = new ArrayList<>();
+        this.quantitats = new ArrayList<>();
+        this.produccioUnitat = new ArrayList<>();
+        this.produccioTotal = new ArrayList<>();
+        this.produccioGlobal = new ArrayList<>();
     }
 
     public ArrayList<String> getNoms() {
@@ -25,7 +26,7 @@ public class TablaMilloresDisponibles {
         return produccioTotal;
     }
 
-    public ArrayList<Double> getProduccioGlobal() {
+    public ArrayList<String> getProduccioGlobal() {
         return produccioGlobal;
     }
 
@@ -53,7 +54,7 @@ public class TablaMilloresDisponibles {
         this.produccioTotal = produccioTotal;
     }
 
-    public void setProduccioGlobal(ArrayList<Double> produccioGlobal) {
+    public void setProduccioGlobal(ArrayList<String> produccioGlobal) {
         this.produccioGlobal = produccioGlobal;
     }
 }
