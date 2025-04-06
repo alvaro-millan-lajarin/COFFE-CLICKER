@@ -9,8 +9,10 @@ public class Game {
     private LocalDateTime fechaCreacion;
     private LocalDateTime fechaModificacion;
     private int numCafes;
+    private Tabla tablaDisponible;
+    private Tabla tablaMillores;
+    private Tabla tablaGeneradors;
 
-    public Game() {}
 
     public Game(int id, int idUser, String nombre, LocalDateTime fechaCreacion, LocalDateTime fechaModificacion, int numCafes) {
         this.id = id;
@@ -19,6 +21,12 @@ public class Game {
         this.fechaCreacion = fechaCreacion;
         this.fechaModificacion = fechaModificacion;
         this.numCafes = numCafes;
+
+        tablaDisponible = new Tabla();
+        tablaGeneradors = new Tabla();
+        tablaMillores = new Tabla();
+
+
     }
 
     public int getId() {
@@ -67,5 +75,12 @@ public class Game {
 
     public void setNumCafes(int numCafes) {
         this.numCafes = numCafes;
+    }
+
+    public void increaseNumCafes(){
+        this.numCafes++;
+    }
+    public void addNumCafes(Integer coffes){
+        this.numCafes = this.numCafes + coffes;
     }
 }

@@ -7,9 +7,17 @@ import javax.swing.table.TableCellRenderer;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 
 public class TableGeneradorsDisponibles extends JPanel {
+    private ArrayList<String> quantitats;
+    private ArrayList<String> produccioUnitat;
+    private ArrayList<String> produccioTotal;
+    private ArrayList<String> produccioGlobal;
+
     public TableGeneradorsDisponibles() {
+        inicializarValores();
+
         setLayout(new BorderLayout());
 
 
@@ -28,9 +36,9 @@ public class TableGeneradorsDisponibles extends JPanel {
 
         String[] columnNames = {"Nom", "Quantitat", "Produccio unitat", "% Produccio total", "Produccio global"};
         Object[][] data = {
-                {"A", 123, "0.2 c/1s", "24.6 c/s", "16.7 %"},
-                {"B", 42, "0.5 c/0.7s ", "30.0 c/s", "20.4 %"},
-                {"C", 4, "30 c/1.3s", "92.3 c/s", "62.9 %"}
+                {"Cafetera", quantitats.get(0), produccioUnitat.get(0), produccioTotal.get(0), produccioGlobal.get(0)},
+                {"CafeCheta", quantitats.get(1), produccioUnitat.get(1), produccioTotal.get(1), produccioGlobal.get(1)},
+                {"CafeGod", quantitats.get(2), produccioUnitat.get(2), produccioTotal.get(2), produccioGlobal.get(2)},
         };
 
         DefaultTableModel model = new DefaultTableModel(data, columnNames) {
@@ -80,6 +88,68 @@ public class TableGeneradorsDisponibles extends JPanel {
 
         setOpaque(false);
     }
+    public void inicializarValores() {
+        quantitats = new ArrayList<>();
+        produccioUnitat = new ArrayList<>();
+        produccioTotal = new ArrayList<>();
+        produccioGlobal = new ArrayList<>();
+        quantitats.add("0");
+        quantitats.add("0");
+        quantitats.add("0");
+
+        produccioUnitat.add("0.2 c/1s");
+        produccioUnitat.add("0.5 c/0.7s");
+        produccioUnitat.add("30 c/1.3s");
+
+        produccioTotal.add("24.6 c/s");
+        produccioTotal.add("30.0 c/3s");
+        produccioTotal.add("92.3 c/s");
+
+        produccioGlobal.add("30.0 c/3s");
+        produccioGlobal.add("92.3 c/3s");
+        produccioGlobal.add("30.0 c/3s");
+    }
+
+    public void setValores(ArrayList<Integer> quantitatsInput, ArrayList<String> produccioUnitatInput) {
+        this.quantitats = new ArrayList<>();
+        this.produccioUnitat = new ArrayList<>(produccioUnitatInput);
+        this.produccioTotal = new ArrayList<>();
+        this.produccioGlobal = new ArrayList<>();
+
+        ArrayList<Double> produccionsTotals = new ArrayList<>();
+        double sumaTotal = 0.0;
+
+
+        for (int i = 0; i < quantitatsInput.size(); i++) {
+            int quantitat = quantitatsInput.get(i);
+            String prodUnit = produccioUnitatInput.get(i);
+
+
+            String[] parts = prodUnit.split(" ");
+            double cicles = Double.parseDouble(parts[0]);
+            String temps = parts[1].replace("s", "").replace("/", ""); // por si hay espacios o formato raro
+            double segons = Double.parseDouble(temps);
+
+
+            double produccioPerUnitat = cicles / segons;
+
+
+            double total = produccioPerUnitat * quantitat;
+            produccionsTotals.add(total);
+            sumaTotal += total;
+
+
+            this.quantitats.add(String.valueOf(quantitat));
+            this.produccioTotal.add(String.format("%.2f c/s", total));
+        }
+
+
+        for (double total : produccionsTotals) {
+            double percentatge = (total / sumaTotal) * 100;
+            this.produccioGlobal.add(String.format("%.1f %%", percentatge));
+        }
+    }
+
 
 
     class ButtonRenderer extends JButton implements TableCellRenderer {

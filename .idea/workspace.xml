@@ -5,11 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f9bbb50b-3eaf-412a-ab58-ecb07cf93455" name="Changes" comment="logout">
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/mysql_connector_java_8_0_23.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/mysql_connector_java_8_0_24.xml" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/mysql_connector_java_8_0_24.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/mysql_connector_java_8_0_25.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/mysql_connector_java_8_0_26.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Business/Entidades/Tabla.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Business/ManageGame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DPOO-S22.iml" beforeDir="false" afterPath="$PROJECT_DIR$/DPOO-S22.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/config.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/config.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Business/Entidades/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Business/Entidades/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Business/Entidades/Generator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Business/Entidades/Generator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Business/Entidades/TablaMilloresDisponibles.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Business/Entidades/TablaGeneradorsDisponibles.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Presenstation/Controller/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presenstation/Controller/GameController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Presenstation/View/GameScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presenstation/View/GameScene.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Presenstation/View/Table/TableGeneradorsDisponibles.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presenstation/View/Table/TableGeneradorsDisponibles.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,7 +36,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="S9-Delete(newDev)" />
+        <entry key="$PROJECT_DIR$" value="newDev" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -37,12 +47,12 @@
     &quot;assignee&quot;: &quot;alvaromill&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/arnau-pujol/DPOO-S2.git",
-    "accountId": "e2ca6d98-8a73-4753-b502-ed6c2725bc0a"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/arnau-pujol/DPOO-S2.git&quot;,
+    &quot;accountId&quot;: &quot;e2ca6d98-8a73-4753-b502-ed6c2725bc0a&quot;
   }
-}]]></component>
+}</component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 4
 }</component>
@@ -61,7 +71,8 @@
     "Repository.Attach.Sources": "false",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "S10-GeneratorsBBDD",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "S16-ResourcesGeneration",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/arnau/OneDrive/Escritorio/mysql-connector-java-8.0.23.jar",
     "node.js.detected.package.eslint": "true",

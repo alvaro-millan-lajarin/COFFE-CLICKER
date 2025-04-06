@@ -1,24 +1,33 @@
 package Presenstation.Controller;
 
+import Business.Entidades.Game;
+import Business.Entidades.Tabla;
+import Business.Entidades.TablaGeneradorsDisponibles;
 import Business.Entidades.User;
+import Business.ManageGame;
 import Persistence.sql.SQLUserDAO;
 import Presenstation.View.GameManagementScene;
 import Presenstation.View.GameScene;
 import Presenstation.View.Scene;
 import Presenstation.View.Scenes;
+import Presenstation.View.Table.TableGeneradorsDisponibles;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
+import java.util.ArrayList;
 
 public class GameController extends Controller {
     private LoginController loginController;
     private SignUpController signUpController;
     private SQLUserDAO sqlUserDAO = new SQLUserDAO();
+    private ManageGame manageGame;
+    //private TablaGeneradorsDisponibles tablaGeneradorsDisponibles = new TablaGeneradorsDisponibles();
     public GameController(Scene view, MainController mainController, LoginController loginController, SignUpController signUpController) {
 
         super(view, mainController);
         this.loginController = loginController;
         this.signUpController = signUpController;
+        //manageGame = new ManageGame(new Game())
     }
     public GameScene getScene() {
 
@@ -28,7 +37,8 @@ public class GameController extends Controller {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getActionCommand().equalsIgnoreCase("MORE_COFFE")) {
-            getView().addCoffe();
+            manageGame.increaseNumCafes();
+            getScene().addCoffe(manageGame.getGame().getNumCafes());
         }else if (e.getActionCommand().equalsIgnoreCase("LOGOUT")) {
             mainController.resetLogin();
             mainController.nextScene(Scenes.MENU);
@@ -89,4 +99,5 @@ public class GameController extends Controller {
         }
         mainController.nextScene(Scenes.MENU);
     }
+
 }
