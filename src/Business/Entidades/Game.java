@@ -24,9 +24,9 @@ public class Game {
         this.numCafes = numCafes;
 
 
-        cafeteria = new Generator(1, "cafeteria",10, 0, 0,this);
-        cafeteriaCheta = new Generator(2, "cafeteriaCheta",150, 0, 0,this);
-        cafeteriaGod = new Generator(3, "cafeteriaGod",2000, 0, 0,this);
+        cafeteria = new Generator(1, "cafeteria",10, 0, 0,1.07,this);
+        cafeteriaCheta = new Generator(2, "cafeteriaCheta",150, 0, 0,1.15,this);
+        cafeteriaGod = new Generator(3, "cafeteriaGod",2000, 0, 0,1.12,this);
 
 
         cafeteria.start();

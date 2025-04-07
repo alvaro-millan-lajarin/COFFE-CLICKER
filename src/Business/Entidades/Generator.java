@@ -11,8 +11,9 @@ public class Generator extends Thread {
     private double cafeSeg;
     private Game game;
     private double tiempoGeneracion;
+    private double incrementCost;
 
-    public Generator(int id, String nombre, double precio, double cafeSeg, double tiempoGeneracion, Game game) {
+    public Generator(int id, String nombre, double precio, double cafeSeg, double tiempoGeneracion, double incrementCost,Game game) {
 
         this.id = id;
         this.nombre = nombre;
@@ -20,6 +21,7 @@ public class Generator extends Thread {
         this.cafeSeg = cafeSeg;
         this.game = game;
         this.tiempoGeneracion = tiempoGeneracion;
+        this.incrementCost = incrementCost;
 
     }
     @Override

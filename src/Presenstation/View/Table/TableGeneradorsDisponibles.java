@@ -97,17 +97,17 @@ public class TableGeneradorsDisponibles extends JPanel {
         quantitats.add("0");
         quantitats.add("0");
 
-        produccioUnitat.add("0.2 c/1s");
-        produccioUnitat.add("0.5 c/0.7s");
-        produccioUnitat.add("30 c/1.3s");
+        produccioUnitat.add("0");
+        produccioUnitat.add("0");
+        produccioUnitat.add("0");
 
-        produccioTotal.add("24.6 c/s");
-        produccioTotal.add("30.0 c/3s");
-        produccioTotal.add("92.3 c/s");
+        produccioTotal.add("0");
+        produccioTotal.add("0");
+        produccioTotal.add("0");
 
-        produccioGlobal.add("30.0 c/3s");
-        produccioGlobal.add("92.3 c/3s");
-        produccioGlobal.add("30.0 c/3s");
+        produccioGlobal.add("0");
+        produccioGlobal.add("0");
+        produccioGlobal.add("0");
     }
 
     public void setValores(ArrayList<Integer> quantitatsInput, ArrayList<String> produccioUnitatInput) {
