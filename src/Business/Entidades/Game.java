@@ -101,8 +101,15 @@ public class Game {
     public void addNumCafes(Integer coffes){
         this.numCafes = this.numCafes + coffes;
     }
-    public void addCafetera() {
-        quantitats.set(0, quantitats.get(0) + 1);
+    public void addCafetera(String cafetera) {
+        if(cafetera.equals("Cafetera") ){
+            quantitats.set(0, quantitats.get(0) + 1);
+        } else if (cafetera.equals("CafeCheta") ) {
+            quantitats.set(1, quantitats.get(1) + 1);
+        } else if (cafetera.equals("CafeGod")) {
+            quantitats.set(2, quantitats.get(2) + 1);
+        }
+
     }
 
     public ArrayList<Integer> getQuantitats(){

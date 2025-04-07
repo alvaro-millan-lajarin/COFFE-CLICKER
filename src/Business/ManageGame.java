@@ -22,8 +22,8 @@ public class ManageGame {
     public void setGame(Game game) {
         this.game = game;
     }
-    public void addCafetera() {
-        game.addCafetera();
+    public void addCafetera(String cafetera) {
+        game.addCafetera(cafetera);
     }
     public ArrayList<Integer> getQuantitas() {
 

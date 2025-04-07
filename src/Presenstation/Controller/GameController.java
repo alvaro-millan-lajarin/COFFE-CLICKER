@@ -46,15 +46,23 @@ public class GameController extends Controller {
             deleteUser();
 
         }else if (e.getActionCommand().equalsIgnoreCase("Cafetera")) {
-            System.out.println("Cafetera");
-            manageGame.addCafetera();
+
+            manageGame.addCafetera("Cafetera");
             ArrayList<Integer> quantitats= new ArrayList<>();
             quantitats = manageGame.getQuantitas();
             getScene().updteQuantitats(quantitats);
 
         }else if (e.getActionCommand().equalsIgnoreCase("CafeCheta")) {
+            manageGame.addCafetera("CafeCheta");
+            ArrayList<Integer> quantitats= new ArrayList<>();
+            quantitats = manageGame.getQuantitas();
+            getScene().updteQuantitats(quantitats);
 
         }else if (e.getActionCommand().equalsIgnoreCase("CafeGod")) {
+            manageGame.addCafetera("CafeGod");
+            ArrayList<Integer> quantitats= new ArrayList<>();
+            quantitats = manageGame.getQuantitas();
+            getScene().updteQuantitats(quantitats);
 
         }
     }
