@@ -14,10 +14,11 @@ public class ManageGame {
     }
 
     public void increaseNumCafes() {
-        game = getGame();
+
         game.increaseNumCafes();
     }
     public void setGame(Game game) {
         this.game = game;
     }
+
 }

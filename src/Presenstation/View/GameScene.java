@@ -11,6 +11,8 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.util.ArrayList;
+import javax.swing.Timer;
+
 
 public class GameScene extends Scene {
     private GameController gameController;
@@ -24,6 +26,7 @@ public class GameScene extends Scene {
     private TableBotigaMillores tableBotigaMillores = new TableBotigaMillores();
     private TableGeneradorsDisponibles tableGeneradorsDisponibles = new TableGeneradorsDisponibles();
 
+    private Timer updateTimer;
 
     public void initialitzate() {
 
@@ -44,7 +47,17 @@ public class GameScene extends Scene {
         initialitzate();
         super.apply(mainFrame);
         mainFrame.setTitle("Game");
+
+        // 🕒 Inicia un timer para actualizar numCafesLabel cada 1 segundo
+        updateTimer = new Timer(1000, e -> {
+            if (gameController != null && gameController.getManageGame().getGame() != null) {
+                int cafesActuales = gameController.getManageGame().getGame().getNumCafes();
+                addCoffe(cafesActuales);
+            }
+        });
+        updateTimer.start();
     }
+
     public void setController(GameController gameController) {
         this.gameController = gameController;
         initialitzate();

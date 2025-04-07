@@ -24,12 +24,12 @@ public class GameCreationController extends Controller {
     private Game game;
     private ManageGame manageGame;
 
-    public GameCreationController(Scene view, MainController mainController, LoginController loginController, SignUpController signUpController) {
+    public GameCreationController(Scene view, MainController mainController, LoginController loginController, SignUpController signUpController, ManageGame manageGame) {
 
         super(view, mainController);
         this.loginController = loginController;
         this.signUpController = signUpController;
-        manageGame = new ManageGame();
+        this.manageGame = manageGame;
 
     }
     public GameCreationScene getScene() {

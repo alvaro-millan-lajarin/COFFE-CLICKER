@@ -24,15 +24,15 @@ public class Game {
         this.numCafes = numCafes;
 
 
-        cafeteria = new Generator(1, "cafeteria",10, 0.2, this);
-        cafeteriaCheta = new Generator(2, "cafeteriaCheta",150, 0.5, this);
-        cafeteriaGod = new Generator(3, "cafeteriaGod",2000, 30, this);
+        cafeteria = new Generator(1, "cafeteria",10, 0, 0,this);
+        cafeteriaCheta = new Generator(2, "cafeteriaCheta",150, 0, 0,this);
+        cafeteriaGod = new Generator(3, "cafeteriaGod",2000, 0, 0,this);
 
-        for (int i = 0; i < 3; i++) {
-            cafeteria.start();
-            cafeteriaCheta.start();
-            cafeteriaGod.start();
-        }
+
+        cafeteria.start();
+        cafeteriaCheta.start();
+        cafeteriaGod.start();
+
 
 
     }
@@ -91,4 +91,5 @@ public class Game {
     public void addNumCafes(Integer coffes){
         this.numCafes = this.numCafes + coffes;
     }
+
 }

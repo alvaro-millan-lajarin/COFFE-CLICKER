@@ -1,5 +1,6 @@
 package Presenstation.Controller;
 
+import Business.Entidades.Game;
 import Business.Entidades.User;
 import Business.ManageGame;
 import Persistence.sql.SQLUserDAO;
@@ -15,13 +16,15 @@ public class GameController extends Controller {
     private SignUpController signUpController;
     private SQLUserDAO sqlUserDAO = new SQLUserDAO();
     private ManageGame manageGame;
+
     //private TablaGeneradorsDisponibles tablaGeneradorsDisponibles = new TablaGeneradorsDisponibles();
-    public GameController(Scene view, MainController mainController, LoginController loginController, SignUpController signUpController) {
+    public GameController(Scene view, MainController mainController, LoginController loginController, SignUpController signUpController, ManageGame manageGame) {
 
         super(view, mainController);
         this.loginController = loginController;
         this.signUpController = signUpController;
-        manageGame = new ManageGame();
+        this.manageGame = manageGame;
+
     }
     public GameScene getScene() {
 
@@ -92,6 +95,10 @@ public class GameController extends Controller {
             mainController.nextScene(Scenes.MENU);
         }
         mainController.nextScene(Scenes.MENU);
+    }
+    public ManageGame getManageGame() {
+        return manageGame;
+
     }
 
 }

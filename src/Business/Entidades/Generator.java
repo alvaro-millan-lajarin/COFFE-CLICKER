@@ -10,21 +10,33 @@ public class Generator extends Thread {
     private double precio;
     private double cafeSeg;
     private Game game;
+    private double tiempoGeneracion;
 
-    public Generator(int id, String nombre, double precio, double cafeSeg, Game game) {
+    public Generator(int id, String nombre, double precio, double cafeSeg, double tiempoGeneracion, Game game) {
 
         this.id = id;
         this.nombre = nombre;
         this.precio = precio;
         this.cafeSeg = cafeSeg;
         this.game = game;
+        this.tiempoGeneracion = tiempoGeneracion;
 
     }
+    @Override
     public void run() {
-        for (int i = 0; i < 1000; i++) {
-            game.addNumCafes(22);
+        double acumulador = 0.0;
+
+        while (!Thread.currentThread().isInterrupted()) {
+            acumulador += cafeSeg;
+
+            int cafesEnteros = (int) acumulador;
+            if (cafesEnteros >= 1) {
+                game.addNumCafes(cafesEnteros);
+                acumulador -= cafesEnteros; // dejar solo el resto decimal
+            }
+
             try {
-                Thread.sleep(1000);
+                Thread.sleep((long) (tiempoGeneracion * 1000)); // de segundos a ms
             } catch (InterruptedException e) {
                 Thread.currentThread().interrupt();
             }
