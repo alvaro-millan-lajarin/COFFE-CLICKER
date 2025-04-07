@@ -1,5 +1,6 @@
 package Presenstation.Controller;
 
+import Business.ManageGame;
 import Presenstation.View.*;
 
 import javax.swing.*;
@@ -22,6 +23,8 @@ public class MainController {
     private GameManagementController gameManagementController;
     private GameCreationController gameCreationController;
     private GameController gameController;
+
+    private ManageGame manageGame;
 
     public MainController() {
         menuScene = new MenuScene();
@@ -46,6 +49,8 @@ public class MainController {
         gameManagementScene.setController(gameManagementController);
         gameCreationScene.setController(gameCreationController);
         gameScene.setController(gameController);
+
+        manageGame = new ManageGame();
 
     }
     public void nextScene(Scenes scenes) {

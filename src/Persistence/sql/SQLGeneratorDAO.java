@@ -1,11 +1,14 @@
 package Persistence.sql;
 
+import Business.Entidades.Game;
 import Persistence.GeneratorDAO;
 import Business.Entidades.Generator;
+import Presenstation.Controller.GameManagementController;
 
 import java.util.List;
 
 public class SQLGeneratorDAO implements GeneratorDAO {
+
 
     @Override
     public void addGenerator(Generator generator) {
@@ -42,11 +45,16 @@ public class SQLGeneratorDAO implements GeneratorDAO {
 
         try {
             if (rs != null && rs.next()) {
+                int idGame = rs.getInt("id_game");
+                SQLGameDAO gameDAO = new SQLGameDAO();
+                Game game = gameDAO.getGame(idGame);
+
                 return new Generator(
                         rs.getInt("id_generador"),
                         rs.getString("nombre"),
                         rs.getDouble("precio"),
-                        rs.getDouble("cafes_seg")
+                        rs.getDouble("cafes_seg"),
+                        game
                 );
             }
         } catch (Exception e) {
@@ -56,8 +64,14 @@ public class SQLGeneratorDAO implements GeneratorDAO {
         return null;
     }
 
-    //Stoy - 10
     @Override
+    public List<Generator> getAllGenerators() {
+        return List.of();
+    }
+
+
+    //Stoy - 10
+    /*@Override
     public List<Generator> getAllGenerators() {
         String query = "SELECT * FROM Generador";
         var rs = SQLConnector.getInstance().selectQuery(query);
@@ -69,7 +83,8 @@ public class SQLGeneratorDAO implements GeneratorDAO {
                         rs.getInt("id_generador"),
                         rs.getString("nombre"),
                         rs.getDouble("precio"),
-                        rs.getDouble("cafes_seg")
+                        rs.getDouble("cafes_seg"),
+                        game
                 );
                 generators.add(generator);
             }
@@ -78,5 +93,5 @@ public class SQLGeneratorDAO implements GeneratorDAO {
         }
 
         return generators;
-    }
+    }*/
 }

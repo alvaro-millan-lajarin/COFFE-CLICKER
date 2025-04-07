@@ -9,9 +9,10 @@ public class Game {
     private LocalDateTime fechaCreacion;
     private LocalDateTime fechaModificacion;
     private int numCafes;
-    private Tabla tablaDisponible;
-    private Tabla tablaMillores;
-    private Tabla tablaGeneradors;
+
+    private Generator cafeteria;
+    private Generator cafeteriaCheta;
+    private Generator cafeteriaGod;
 
 
     public Game(int id, int idUser, String nombre, LocalDateTime fechaCreacion, LocalDateTime fechaModificacion, int numCafes) {
@@ -22,9 +23,16 @@ public class Game {
         this.fechaModificacion = fechaModificacion;
         this.numCafes = numCafes;
 
-        tablaDisponible = new Tabla(this);
-        tablaGeneradors = new Tabla(this);
-        tablaMillores = new Tabla(this);
+
+        cafeteria = new Generator(1, "cafeteria",10, 0.2, this);
+        cafeteriaCheta = new Generator(2, "cafeteriaCheta",150, 0.5, this);
+        cafeteriaGod = new Generator(3, "cafeteriaGod",2000, 30, this);
+
+        for (int i = 0; i < 3; i++) {
+            cafeteria.start();
+            cafeteriaCheta.start();
+            cafeteriaGod.start();
+        }
 
 
     }

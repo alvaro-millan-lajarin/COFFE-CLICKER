@@ -2,25 +2,27 @@ package Business.Entidades;
 
 import Presenstation.Controller.GameController;
 
+import java.time.Instant;
+
 public class Generator extends Thread {
     private int id;
     private String nombre;
     private double precio;
     private double cafeSeg;
-    private Tabla tabla;
+    private Game game;
 
-    public Generator(int id, String nombre, double precio, double cafeSeg, Tabla tabla) {
+    public Generator(int id, String nombre, double precio, double cafeSeg, Game game) {
 
         this.id = id;
         this.nombre = nombre;
         this.precio = precio;
         this.cafeSeg = cafeSeg;
-        this.tabla = tabla;
+        this.game = game;
 
     }
     public void run() {
         for (int i = 0; i < 1000; i++) {
-            tabla.addNumCafes(22);
+            game.addNumCafes(22);
             try {
                 Thread.sleep(1000);
             } catch (InterruptedException e) {

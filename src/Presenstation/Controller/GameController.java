@@ -1,20 +1,14 @@
 package Presenstation.Controller;
 
-import Business.Entidades.Game;
-import Business.Entidades.Tabla;
-import Business.Entidades.TablaGeneradorsDisponibles;
 import Business.Entidades.User;
 import Business.ManageGame;
 import Persistence.sql.SQLUserDAO;
-import Presenstation.View.GameManagementScene;
 import Presenstation.View.GameScene;
 import Presenstation.View.Scene;
 import Presenstation.View.Scenes;
-import Presenstation.View.Table.TableGeneradorsDisponibles;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
-import java.util.ArrayList;
 
 public class GameController extends Controller {
     private LoginController loginController;
@@ -27,7 +21,7 @@ public class GameController extends Controller {
         super(view, mainController);
         this.loginController = loginController;
         this.signUpController = signUpController;
-        //manageGame = new ManageGame(new Game())
+        manageGame = new ManageGame();
     }
     public GameScene getScene() {
 
