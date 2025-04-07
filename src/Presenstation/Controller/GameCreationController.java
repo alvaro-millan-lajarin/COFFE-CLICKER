@@ -2,6 +2,8 @@ package Presenstation.Controller;
 
 import Business.Entidades.Game;
 import Business.Entidades.User;
+import Business.ManageGame;
+import Persistence.GameDAO;
 import Persistence.sql.SQLGameDAO;
 import Persistence.sql.SQLUserDAO;
 import Presenstation.View.GameCreationScene;
@@ -19,12 +21,16 @@ public class GameCreationController extends Controller {
     private LoginController loginController;
     private SignUpController signUpController;
     private SQLUserDAO sqlUserDAO = new SQLUserDAO();
+    private Game game;
+    private ManageGame manageGame;
 
     public GameCreationController(Scene view, MainController mainController, LoginController loginController, SignUpController signUpController) {
 
         super(view, mainController);
         this.loginController = loginController;
         this.signUpController = signUpController;
+        manageGame = new ManageGame();
+
     }
     public GameCreationScene getScene() {
 
@@ -60,7 +66,9 @@ public class GameCreationController extends Controller {
             LocalDateTime fechaYHoraActual = LocalDateTime.now();
 
             if (existingUserByEmail != null && existingUserByEmail.getPassword().equals(password)) {
-                sqlGameDAO.addGame(new Game(1,existingUserByEmail.getId(),nombreGame,fechaYHoraActual,fechaYHoraActual,0));
+                game = new Game(1,existingUserByEmail.getId(),nombreGame,fechaYHoraActual,fechaYHoraActual,0);
+                manageGame.setGame(game);
+                sqlGameDAO.addGame(game);
                 mainController.nextScene(Scenes.GAME);
 
             }

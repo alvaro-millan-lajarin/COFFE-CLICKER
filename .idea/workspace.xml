@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f9bbb50b-3eaf-412a-ab58-ecb07cf93455" name="Changes" comment="libreria" />
+    <list default="true" id="f9bbb50b-3eaf-412a-ab58-ecb07cf93455" name="Changes" comment="arreglos newDev" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -55,7 +55,7 @@
     "Repository.Attach.Sources": "false",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "S13-GameCreationLogic",
+    "git-widget-placeholder": "S16-ResourcesGeneration",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/arnau/OneDrive/Escritorio/mysql-connector-java-8.0.23.jar",
     "node.js.detected.package.eslint": "true",
@@ -221,6 +221,7 @@
     <MESSAGE value="dlete para game management listo" />
     <MESSAGE value="logout" />
     <MESSAGE value="libreria" />
-    <option name="LAST_COMMIT_MESSAGE" value="libreria" />
+    <MESSAGE value="arreglos newDev" />
+    <option name="LAST_COMMIT_MESSAGE" value="arreglos newDev" />
   </component>
 </project>

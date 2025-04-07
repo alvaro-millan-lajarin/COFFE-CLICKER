@@ -6,7 +6,7 @@ public class ManageGame {
     private Game game;
 
     public ManageGame() {
-        this.game = new Game(); 
+
     }
 
     public Game getGame() {
@@ -17,5 +17,7 @@ public class ManageGame {
         game = getGame();
         game.increaseNumCafes();
     }
-
+    public void setGame(Game game) {
+        this.game = game;
+    }
 }
