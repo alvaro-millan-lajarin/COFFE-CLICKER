@@ -5,7 +5,7 @@ import Business.Entidades.Tabla;
 
 public class ManageGame {
     private Game game;
-    private Tabla tablaGeneradorsDisponible = new Tabla();
+
     public ManageGame(Game game) {
         this.game = game;
     }

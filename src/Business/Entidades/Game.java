@@ -22,9 +22,9 @@ public class Game {
         this.fechaModificacion = fechaModificacion;
         this.numCafes = numCafes;
 
-        tablaDisponible = new Tabla();
-        tablaGeneradors = new Tabla();
-        tablaMillores = new Tabla();
+        tablaDisponible = new Tabla(this);
+        tablaGeneradors = new Tabla(this);
+        tablaMillores = new Tabla(this);
 
 
     }
