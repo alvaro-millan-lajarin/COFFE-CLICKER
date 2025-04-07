@@ -1,15 +1,18 @@
 package Presenstation.View.Table;
 
+import Presenstation.Controller.GameController;
+
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 import javax.swing.table.TableCellRenderer;
 import java.awt.*;
+import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 public class TableBotigaGenerators extends JPanel {
-    public TableBotigaGenerators() {
+    public TableBotigaGenerators(GameController gameController) {
         setLayout(new BorderLayout());
 
 
@@ -70,7 +73,10 @@ public class TableBotigaGenerators extends JPanel {
                 int column = table.columnAtPoint(e.getPoint());
                 if (column == 0) {
                     String buttonText = table.getValueAt(row, column).toString();
-                    JOptionPane.showMessageDialog(null, "Seleccionaste: " + buttonText);
+
+                    //JOptionPane.showMessageDialog(null, "Seleccionaste: " + buttonText);
+                    ActionEvent event = new ActionEvent(table, ActionEvent.ACTION_PERFORMED, buttonText);
+                    gameController.actionPerformed(event);
                 }
             }
         });

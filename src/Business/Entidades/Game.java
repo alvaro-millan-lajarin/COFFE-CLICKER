@@ -1,6 +1,7 @@
 package Business.Entidades;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 
 public class Game {
     private int id;
@@ -15,6 +16,10 @@ public class Game {
     private Generator cafeteriaGod;
 
 
+
+    private ArrayList<Integer> quantitats;//0->cafeteria, 1->cafeteraCheta, 2->cafeteraGod
+
+
     public Game(int id, int idUser, String nombre, LocalDateTime fechaCreacion, LocalDateTime fechaModificacion, int numCafes) {
         this.id = id;
         this.idUser = idUser;
@@ -24,14 +29,19 @@ public class Game {
         this.numCafes = numCafes;
 
 
-        cafeteria = new Generator(1, "cafeteria",10, 0, 0,1.07,this);
-        cafeteriaCheta = new Generator(2, "cafeteriaCheta",150, 0, 0,1.15,this);
-        cafeteriaGod = new Generator(3, "cafeteriaGod",2000, 0, 0,1.12,this);
+        cafeteria = new Generator(1, "cafeteria",10, 0, 0,1.07,0,this);
+        cafeteriaCheta = new Generator(2, "cafeteriaCheta",150, 0, 0,1.15,0,this);
+        cafeteriaGod = new Generator(3, "cafeteriaGod",2000, 0, 0,1.12,0,this);
 
 
         cafeteria.start();
         cafeteriaCheta.start();
         cafeteriaGod.start();
+
+        quantitats = new ArrayList<>();
+        quantitats.add(0);
+        quantitats.add(0);
+        quantitats.add(0);
 
 
 
@@ -90,6 +100,13 @@ public class Game {
     }
     public void addNumCafes(Integer coffes){
         this.numCafes = this.numCafes + coffes;
+    }
+    public void addCafetera() {
+        quantitats.set(0, quantitats.get(0) + 1);
+    }
+
+    public ArrayList<Integer> getQuantitats(){
+        return quantitats;
     }
 
 }

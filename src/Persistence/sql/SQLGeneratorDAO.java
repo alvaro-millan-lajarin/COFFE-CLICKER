@@ -56,6 +56,7 @@ public class SQLGeneratorDAO implements GeneratorDAO {
                         rs.getDouble("cafes_seg"),
                         rs.getDouble("tiempoGeneracion"),
                         rs.getDouble("incrementCost"),
+                        rs.getInt("multiplicador"),
                         game
                 );
             }

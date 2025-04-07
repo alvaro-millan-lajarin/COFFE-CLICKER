@@ -1,5 +1,7 @@
 package Presenstation.View.Table;
 
+import Presenstation.Controller.GameController;
+
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
@@ -14,8 +16,9 @@ public class TableGeneradorsDisponibles extends JPanel {
     private ArrayList<String> produccioUnitat;
     private ArrayList<String> produccioTotal;
     private ArrayList<String> produccioGlobal;
+    private JTable table;
 
-    public TableGeneradorsDisponibles() {
+    public TableGeneradorsDisponibles(GameController gameController) {
         inicializarValores();
 
         setLayout(new BorderLayout());
@@ -48,7 +51,7 @@ public class TableGeneradorsDisponibles extends JPanel {
             }
         };
 
-        JTable table = new JTable(model);
+        this.table = new JTable(model);
         table.setRowHeight(20);
         table.setOpaque(true);
         table.setBackground(Color.WHITE);
@@ -66,7 +69,6 @@ public class TableGeneradorsDisponibles extends JPanel {
         table.getColumnModel().getColumn(0).setPreferredWidth(60);
         table.getColumnModel().getColumn(1).setPreferredWidth(50);
         table.getColumnModel().getColumn(2).setPreferredWidth(140);
-
 
 
         table.getColumn("Nom").setCellRenderer(new ButtonRenderer());
@@ -88,6 +90,7 @@ public class TableGeneradorsDisponibles extends JPanel {
 
         setOpaque(false);
     }
+
     public void inicializarValores() {
         quantitats = new ArrayList<>();
         produccioUnitat = new ArrayList<>();
@@ -150,7 +153,28 @@ public class TableGeneradorsDisponibles extends JPanel {
         }
     }
 
+    public void setQuantitats(ArrayList<Integer> quantitatsInput) {
 
+        // Actualizar
+        quantitats.clear();
+        quantitats.add(String.valueOf(quantitatsInput.get(0)));
+        quantitats.add(String.valueOf(quantitatsInput.get(1)));
+        quantitats.add(String.valueOf(quantitatsInput.get(2)));
+
+
+        Object[][] data = {
+                {"Cafetera", quantitats.get(0), produccioUnitat.get(0), produccioTotal.get(0), produccioGlobal.get(0)},
+                {"CafeCheta", quantitats.get(1), produccioUnitat.get(1), produccioTotal.get(1), produccioGlobal.get(1)},
+                {"CafeGod", quantitats.get(2), produccioUnitat.get(2), produccioTotal.get(2), produccioGlobal.get(2)},
+        };
+
+
+        DefaultTableModel model = (DefaultTableModel) table.getModel();
+        model.setDataVector(data, new String[]{"Nom", "Quantitat", "Produccio unitat", "% Produccio total", "Produccio global"});
+
+
+        model.fireTableDataChanged();
+    }
 
     class ButtonRenderer extends JButton implements TableCellRenderer {
         public ButtonRenderer() {

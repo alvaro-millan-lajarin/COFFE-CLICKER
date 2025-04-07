@@ -1,5 +1,7 @@
 package Presenstation.View.Table;
 
+import Presenstation.Controller.GameController;
+
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
@@ -9,7 +11,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 public class TableBotigaMillores extends JPanel {
-    public TableBotigaMillores() {
+    public TableBotigaMillores(GameController gameController) {
         setLayout(new BorderLayout());
 
 

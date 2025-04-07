@@ -10,6 +10,7 @@ import Presenstation.View.Scenes;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
+import java.util.ArrayList;
 
 public class GameController extends Controller {
     private LoginController loginController;
@@ -43,6 +44,17 @@ public class GameController extends Controller {
             mainController.resetLogin();
             loginController.clearUserData();
             deleteUser();
+
+        }else if (e.getActionCommand().equalsIgnoreCase("Cafetera")) {
+            System.out.println("Cafetera");
+            manageGame.addCafetera();
+            ArrayList<Integer> quantitats= new ArrayList<>();
+            quantitats = manageGame.getQuantitas();
+            getScene().updteQuantitats(quantitats);
+
+        }else if (e.getActionCommand().equalsIgnoreCase("CafeCheta")) {
+
+        }else if (e.getActionCommand().equalsIgnoreCase("CafeGod")) {
 
         }
     }
