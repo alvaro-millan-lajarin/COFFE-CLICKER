@@ -33,16 +33,16 @@ public class Generator extends Thread {
         double acumulador = 0.0;
 
         while (!Thread.currentThread().isInterrupted()) {
-            //acumulador += cafeSeg;
+            acumulador += cafeSeg;
 
             int cafesEnteros = (int) acumulador;
             if (cafesEnteros >= 1) {
                 game.addNumCafes(cafesEnteros);
-                acumulador -= cafesEnteros; // dejar solo el resto decimal
+                acumulador -= cafesEnteros;
             }
 
             try {
-                Thread.sleep((long) (cafeSeg * 1000)); // de segundos a ms
+                Thread.sleep((long) (tiempoGeneracion * 1000)); // de segundos a ms
             } catch (InterruptedException e) {
                 Thread.currentThread().interrupt();
             }

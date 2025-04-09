@@ -173,8 +173,17 @@ public class TableGeneradorsDisponibles extends JPanel {
 
             try {
                 String[] parts = input.split("cafès /");
+                if (parts.length < 2) throw new IllegalArgumentException("Formato inválido");
+
                 double cafes = Double.parseDouble(parts[0].trim());
                 double temps = Double.parseDouble(parts[1].replace("s", "").trim());
+
+                if (temps == 0) {
+                    // Evitar división por cero
+                    produccioUnitat.add(0.0);
+                    produccioGlobal.add(0.0);
+                    continue;
+                }
 
                 double cafesPerSegon = cafes / temps;
                 produccioUnitat.add(cafesPerSegon);
@@ -185,6 +194,7 @@ public class TableGeneradorsDisponibles extends JPanel {
                 sumaTotal += totalGenerador;
 
             } catch (Exception e) {
+                // En caso de error de formato o número inválido
                 produccioUnitat.add(0.0);
                 produccioGlobal.add(0.0);
             }
@@ -202,16 +212,16 @@ public class TableGeneradorsDisponibles extends JPanel {
 
         // Crear tabla
         Object[][] data = {
-                {"Cafetera", quantitats.get(0), proudccioUnitatInput.get(0), String.format("%.2f", produccioGlobal.get(0)), String.format("%.2f%%", produccioTotal.get(0))},
-                {"CafeCheta", quantitats.get(1), proudccioUnitatInput.get(1), String.format("%.2f", produccioGlobal.get(1)), String.format("%.2f%%", produccioTotal.get(1))},
-                {"CafeGod", quantitats.get(2), proudccioUnitatInput.get(2), String.format("%.2f", produccioGlobal.get(2)), String.format("%.2f%%", produccioTotal.get(2))},
+                {"Cafetera", quantitats.get(0), proudccioUnitatInput.get(0), String.format("%.2f", produccioGlobal.get(0))+" c/s", String.format("%.2f%%", produccioTotal.get(0))},
+                {"CafeCheta", quantitats.get(1), proudccioUnitatInput.get(1), String.format("%.2f", produccioGlobal.get(1))+" c/s", String.format("%.2f%%", produccioTotal.get(1))},
+                {"CafeGod", quantitats.get(2), proudccioUnitatInput.get(2), String.format("%.2f", produccioGlobal.get(2))+" c/s", String.format("%.2f%%", produccioTotal.get(2))},
         };
 
-
         DefaultTableModel model = (DefaultTableModel) table.getModel();
-        model.setDataVector(data, new String[]{"Nom", "Quantitat", "Produccio unitat", "% Produccio total", "Produccio global"});
+        model.setDataVector(data, new String[]{"Nom", "Quantitat", "Produccio unitat", "Produccio global", "% Produccio total"});
         model.fireTableDataChanged();
     }
+
 
 
     class ButtonRenderer extends JButton implements TableCellRenderer {

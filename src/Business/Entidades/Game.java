@@ -3,6 +3,7 @@ package Business.Entidades;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class Game {
     private int id;
@@ -12,9 +13,10 @@ public class Game {
     private LocalDateTime fechaModificacion;
     private int numCafes;
 
-    private Generator cafeteria;
-    private Generator cafeteriaCheta;
-    private Generator cafeteriaGod;
+
+
+    private List<Generator> generadoresCafetera = new ArrayList<>();
+
 
 
 
@@ -31,15 +33,6 @@ public class Game {
         this.numCafes = numCafes;
 
 
-        cafeteria = new Generator(1, "cafeteria",10,0.2 , 1,1.07,0,this);
-        cafeteriaCheta = new Generator(2, "cafeteriaCheta",150, 0.5, 0.7,1.15,0,this);
-        cafeteriaGod = new Generator(3, "cafeteriaGod",2000, 30.0, 1.3,1.12,0,this);
-
-
-        cafeteria.start();
-        cafeteriaCheta.start();
-        cafeteriaGod.start();
-
         quantitats = new ArrayList<>();
         quantitats.add(0);
         quantitats.add(0);
@@ -47,9 +40,22 @@ public class Game {
 
         produccionsUnitat = new ArrayList<>();
 
+    }
+    public void startGeneratorCafetera() {
 
-
-
+        Generator cafeteria = new Generator(1, "cafeteria",10,0.2 , 1,1.07,0,this);
+        generadoresCafetera.add(cafeteria);
+        cafeteria.start();
+    }
+    public void startGeneratorCafeteraCheta() {
+        Generator cafeteriaCheta = new Generator(2, "cafeteriaCheta",150, 0.5, 0.7,1.15,0,this);
+        generadoresCafetera.add(cafeteriaCheta);
+        cafeteriaCheta.start();
+    }
+    public void startGeneratorCafeteraGod() {
+        Generator cafeteriaGod = new Generator(3, "cafeteriaGod",2000, 30.0, 1.3,1.12,0,this);
+        generadoresCafetera.add(cafeteriaGod);
+        cafeteriaGod.start();
     }
 
     public int getId() {
@@ -120,15 +126,50 @@ public class Game {
     public ArrayList<Integer> getQuantitats(){
         return quantitats;
     }
-    public ArrayList<String> getProduccionsUnitat(){
+    public ArrayList<String> getProduccionsUnitat() {
+        ArrayList<String> produccions = new ArrayList<>();
 
-        produccionsUnitat.add(cafeteria.getCafeSeg()+" cafès / "+cafeteria.getTiempoGeneracion()+" s");
-        produccionsUnitat.add(cafeteriaCheta.getCafeSeg()+" cafès / "+cafeteriaCheta.getTiempoGeneracion()+" s");
-        produccionsUnitat.add(cafeteriaGod.getCafeSeg()+" cafès / "+cafeteriaGod.getTiempoGeneracion()+" s");
+        Generator cafetera = null;
+        Generator cheta = null;
+        Generator god = null;
 
+        int countCafetera = 0;
+        int countCheta = 0;
+        int countGod = 0;
 
+        for (Generator g : generadoresCafetera) {
+            switch (g.getNombre()) {
+                case "cafeteria":
+                    countCafetera++;
+                    if (cafetera == null) cafetera = g;
+                    break;
+                case "cafeteriaCheta":
+                    countCheta++;
+                    if (cheta == null) cheta = g;
+                    break;
+                case "cafeteriaGod":
+                    countGod++;
+                    if (god == null) god = g;
+                    break;
+            }
+        }
 
-        return produccionsUnitat;
+        if (cafetera != null)
+            produccions.add(cafetera.getCafeSeg()+" cafès / "+cafetera.getTiempoGeneracion()+" s");
+        else
+            produccions.add("0 cafès / 0 s");
 
+        if (cheta != null)
+            produccions.add(cheta.getCafeSeg()+" cafès / "+cheta.getTiempoGeneracion()+" s");
+        else
+            produccions.add("0 cafès / 0 s");
+
+        if (god != null)
+            produccions.add(god.getCafeSeg() + " cafès / " + god.getTiempoGeneracion() + " s");
+        else
+            produccions.add("0 cafès / 0 s");
+
+        return produccions;
     }
+
 }

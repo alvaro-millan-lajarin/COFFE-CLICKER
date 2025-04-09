@@ -29,11 +29,11 @@ public class TableBotigaGenerators extends JPanel {
         add(titlePanel, BorderLayout.NORTH);
 
 
-        String[] columnNames = {"Nom", "Cost", "Producció"};
+        String[] columnNames = {"Nom", "Cost", "Producció", "Increment cost"};
         Object[][] data = {
-                {"Cafetera", 10, "0.2 cafes/1s"},
-                {"CafeCheta", 150, "0.5 cafes/0.7s"},
-                {"CafeGod", 2000, "30 cafes/1.3s"}
+                {"Cafetera", 10, "0.2 cafes/1s", 1.07},
+                {"CafeCheta", 150, "0.5 cafes/0.7s", 1.15},
+                {"CafeGod", 2000, "30 cafes/1.3s",1.12}
         };
 
         DefaultTableModel model = new DefaultTableModel(data, columnNames) {

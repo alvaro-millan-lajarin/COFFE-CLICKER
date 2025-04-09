@@ -32,5 +32,13 @@ public class ManageGame {
     public ArrayList<String> getProduccionsUnitat() {
        return game.getProduccionsUnitat();
     }
-
+    public void startGeneratorCafetera(){
+        game.startGeneratorCafetera();
+    }
+    public void startGeneratorCafeteraCheta(){
+        game.startGeneratorCafeteraCheta();
+    }
+    public void startGeneratorCafeteraGod(){
+        game.startGeneratorCafeteraGod();
+    }
 }
