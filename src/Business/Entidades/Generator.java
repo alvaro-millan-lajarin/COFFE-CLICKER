@@ -58,7 +58,7 @@ public class Generator extends Thread {
         return nombre;
     }
 
-    public double getPrecio() {
+    public Double getPrecio() {
         return precio;
     }
 

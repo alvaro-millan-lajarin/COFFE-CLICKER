@@ -13,15 +13,31 @@ public class Game {
     private LocalDateTime fechaModificacion;
     private int numCafes;
 
-
-
     private List<Generator> generadoresCafetera = new ArrayList<>();
-
-
-
 
     private ArrayList<Integer> quantitats;//0->cafeteria, 1->cafeteraCheta, 2->cafeteraGod
     private ArrayList<String> produccionsUnitat;
+
+
+    //VARIABLE GENERADORES AL PRINCIPIO
+    private double cafeteriaCafeSeg = 0.2;
+    private double cafeteriaTiempoGeneracion = 1;
+    private double cafeteriaChetaCafeSeg = 0.5;
+    private double cafeteriaChetaTiempoGeneracion = 0.7;
+    private double cafeteriaGodCafeSeg = 30;
+    private double cafeteriaGodTiempoGeneracion = 1.3;
+
+    // Nuevas variables para el precio y multiplicador
+    private double cafeteriaPrecio = 10; // Precio de la cafetería básica
+    private Integer cafeteriaMultiplicador = 0; // Multiplicador de la cafetería básica
+
+    private double cafeteriaChetaPrecio = 150; // Precio de la cafetería cheta
+    private Integer cafeteriaChetaMultiplicador = 0; // Multiplicador de la cafetería cheta
+
+    private double cafeteriaGodPrecio = 2000; // Precio de la cafetería God
+    private Integer cafeteriaGodMultiplicador = 0;
+
+
 
 
     public Game(int id, int idUser, String nombre, LocalDateTime fechaCreacion, LocalDateTime fechaModificacion, int numCafes) {
@@ -43,17 +59,17 @@ public class Game {
     }
     public void startGeneratorCafetera() {
 
-        Generator cafeteria = new Generator(1, "cafeteria",10,0.2 , 1,1.07,0,this);
+        Generator cafeteria = new Generator(1, "cafeteria",cafeteriaPrecio,cafeteriaCafeSeg , cafeteriaTiempoGeneracion,1.07,cafeteriaMultiplicador,this);
         generadoresCafetera.add(cafeteria);
         cafeteria.start();
     }
     public void startGeneratorCafeteraCheta() {
-        Generator cafeteriaCheta = new Generator(2, "cafeteriaCheta",150, 0.5, 0.7,1.15,0,this);
+        Generator cafeteriaCheta = new Generator(2, "cafeteriaCheta",cafeteriaChetaPrecio, cafeteriaChetaCafeSeg, cafeteriaChetaTiempoGeneracion,cafeteriaChetaMultiplicador,0,this);
         generadoresCafetera.add(cafeteriaCheta);
         cafeteriaCheta.start();
     }
     public void startGeneratorCafeteraGod() {
-        Generator cafeteriaGod = new Generator(3, "cafeteriaGod",2000, 30.0, 1.3,1.12,0,this);
+        Generator cafeteriaGod = new Generator(3, "cafeteriaGod",cafeteriaGodPrecio, cafeteriaGodCafeSeg, cafeteriaGodTiempoGeneracion,cafeteriaGodMultiplicador,0,this);
         generadoresCafetera.add(cafeteriaGod);
         cafeteriaGod.start();
     }
@@ -172,4 +188,15 @@ public class Game {
         return produccions;
     }
 
+    public double getCafeteriaPrecio() {
+        return cafeteriaPrecio;
+    }
+
+    public double getCafeteriaChetaPrecio() {
+        return cafeteriaChetaPrecio;
+    }
+
+    public double getCafeteriaGodPrecio() {
+        return cafeteriaGodPrecio;
+    }
 }

@@ -41,4 +41,13 @@ public class ManageGame {
     public void startGeneratorCafeteraGod(){
         game.startGeneratorCafeteraGod();
     }
+    public boolean enughtCoffeCafeteria(){
+        if(game.getNumCafes()>= game.getCafeteriaPrecio()){
+            return true;
+        }
+        return false;
+    }
+    public void restarCafe(){
+
+    }
 }

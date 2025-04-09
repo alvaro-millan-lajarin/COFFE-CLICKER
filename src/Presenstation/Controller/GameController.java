@@ -47,16 +47,26 @@ public class GameController extends Controller {
             deleteUser();
 
         }else if (e.getActionCommand().equalsIgnoreCase("Cafetera")) {
-            manageGame.startGeneratorCafetera();
-            manageGame.addCafetera("Cafetera");
-            ArrayList<Integer> quantitats= new ArrayList<>();
-            ArrayList<String> proudccioUnitat = new ArrayList<>();
-            proudccioUnitat = manageGame.getProduccionsUnitat();
-            quantitats = manageGame.getQuantitas();
+            if(manageGame.enughtCoffeCafeteria()){
+                //restar coffe
+                manageGame.restarCafe();
 
+                manageGame.startGeneratorCafetera();
+                manageGame.addCafetera("Cafetera");
+                ArrayList<Integer> quantitats= new ArrayList<>();
+                ArrayList<String> proudccioUnitat = new ArrayList<>();
+                proudccioUnitat = manageGame.getProduccionsUnitat();
+                quantitats = manageGame.getQuantitas();
+                getScene().updateTablas(quantitats, proudccioUnitat);
+            }else{
+                JOptionPane.showMessageDialog(
+                        getScene().addAccesButton(),
+                        "Need to generate more coffe",
+                        "Need more coffes",
+                        JOptionPane.INFORMATION_MESSAGE
+                );
+            }
 
-
-            getScene().updateTablas(quantitats, proudccioUnitat);
 
 
         }else if (e.getActionCommand().equalsIgnoreCase("CafeCheta")) {
