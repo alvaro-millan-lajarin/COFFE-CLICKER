@@ -105,10 +105,7 @@ public class TableBotigaGenerators extends JPanel {
         }
     }
     public void setUpdateValores(ArrayList<Integer> precioBase) {
-        // Assuming `precioBase` contains the base price for each generator
-        // Let's update the "Cost" and "Producció" for each row based on the price.
 
-        // Data for each row in the table
         Object[][] data = {
                 {"Cafetera", precioBase.get(0), "0.2 cafes/1s", 1.07},
                 {"CafeCheta", precioBase.get(1), "0.5 cafes/0.7s", 1.15},
