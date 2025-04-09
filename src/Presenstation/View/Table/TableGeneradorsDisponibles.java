@@ -153,28 +153,66 @@ public class TableGeneradorsDisponibles extends JPanel {
         }
     }
 
-    public void setQuantitats(ArrayList<Integer> quantitatsInput) {
+    public void setUpdateValores(ArrayList<Integer> quantitatsInput, ArrayList<String> proudccioUnitatInput) {
 
-        // Actualizar
+        // Actualizar cantidades
         quantitats.clear();
         quantitats.add(String.valueOf(quantitatsInput.get(0)));
         quantitats.add(String.valueOf(quantitatsInput.get(1)));
         quantitats.add(String.valueOf(quantitatsInput.get(2)));
 
+        ArrayList<Double> produccioUnitat = new ArrayList<>();
+        ArrayList<Double> produccioGlobal = new ArrayList<>();
+        ArrayList<Double> produccioTotal = new ArrayList<>();
 
+        double sumaTotal = 0.0;
+
+        // Parsear producció per unitat
+        for (int i = 0; i < proudccioUnitatInput.size(); i++) {
+            String input = proudccioUnitatInput.get(i); // ej: "30 cafès / 1.3 s"
+
+            try {
+                String[] parts = input.split("cafès /");
+                double cafes = Double.parseDouble(parts[0].trim());
+                double temps = Double.parseDouble(parts[1].replace("s", "").trim());
+
+                double cafesPerSegon = cafes / temps;
+                produccioUnitat.add(cafesPerSegon);
+
+                double totalGenerador = cafesPerSegon * quantitatsInput.get(i);
+                produccioGlobal.add(totalGenerador);
+
+                sumaTotal += totalGenerador;
+
+            } catch (Exception e) {
+                produccioUnitat.add(0.0);
+                produccioGlobal.add(0.0);
+            }
+        }
+
+        // Calcular % de producció total
+        for (int i = 0; i < produccioGlobal.size(); i++) {
+            if (sumaTotal == 0) {
+                produccioTotal.add(0.0);
+            } else {
+                double percentatge = (produccioGlobal.get(i) / sumaTotal) * 100;
+                produccioTotal.add(percentatge);
+            }
+        }
+
+        // Crear tabla
         Object[][] data = {
-                {"Cafetera", quantitats.get(0), produccioUnitat.get(0), produccioTotal.get(0), produccioGlobal.get(0)},
-                {"CafeCheta", quantitats.get(1), produccioUnitat.get(1), produccioTotal.get(1), produccioGlobal.get(1)},
-                {"CafeGod", quantitats.get(2), produccioUnitat.get(2), produccioTotal.get(2), produccioGlobal.get(2)},
+                {"Cafetera", quantitats.get(0), proudccioUnitatInput.get(0), String.format("%.2f", produccioGlobal.get(0)), String.format("%.2f%%", produccioTotal.get(0))},
+                {"CafeCheta", quantitats.get(1), proudccioUnitatInput.get(1), String.format("%.2f", produccioGlobal.get(1)), String.format("%.2f%%", produccioTotal.get(1))},
+                {"CafeGod", quantitats.get(2), proudccioUnitatInput.get(2), String.format("%.2f", produccioGlobal.get(2)), String.format("%.2f%%", produccioTotal.get(2))},
         };
 
 
         DefaultTableModel model = (DefaultTableModel) table.getModel();
         model.setDataVector(data, new String[]{"Nom", "Quantitat", "Produccio unitat", "% Produccio total", "Produccio global"});
-
-
         model.fireTableDataChanged();
     }
+
 
     class ButtonRenderer extends JButton implements TableCellRenderer {
         public ButtonRenderer() {

@@ -2,6 +2,7 @@ package Business.Entidades;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Game {
     private int id;
@@ -18,6 +19,7 @@ public class Game {
 
 
     private ArrayList<Integer> quantitats;//0->cafeteria, 1->cafeteraCheta, 2->cafeteraGod
+    private ArrayList<String> produccionsUnitat;
 
 
     public Game(int id, int idUser, String nombre, LocalDateTime fechaCreacion, LocalDateTime fechaModificacion, int numCafes) {
@@ -29,9 +31,9 @@ public class Game {
         this.numCafes = numCafes;
 
 
-        cafeteria = new Generator(1, "cafeteria",10, 0, 0,1.07,0,this);
-        cafeteriaCheta = new Generator(2, "cafeteriaCheta",150, 0, 0,1.15,0,this);
-        cafeteriaGod = new Generator(3, "cafeteriaGod",2000, 0, 0,1.12,0,this);
+        cafeteria = new Generator(1, "cafeteria",10,0.2 , 1,1.07,0,this);
+        cafeteriaCheta = new Generator(2, "cafeteriaCheta",150, 0.5, 0.7,1.15,0,this);
+        cafeteriaGod = new Generator(3, "cafeteriaGod",2000, 30.0, 1.3,1.12,0,this);
 
 
         cafeteria.start();
@@ -42,6 +44,9 @@ public class Game {
         quantitats.add(0);
         quantitats.add(0);
         quantitats.add(0);
+
+        produccionsUnitat = new ArrayList<>();
+
 
 
 
@@ -115,5 +120,15 @@ public class Game {
     public ArrayList<Integer> getQuantitats(){
         return quantitats;
     }
+    public ArrayList<String> getProduccionsUnitat(){
 
+        produccionsUnitat.add(cafeteria.getCafeSeg()+" cafès / "+cafeteria.getTiempoGeneracion()+" s");
+        produccionsUnitat.add(cafeteriaCheta.getCafeSeg()+" cafès / "+cafeteriaCheta.getTiempoGeneracion()+" s");
+        produccionsUnitat.add(cafeteriaGod.getCafeSeg()+" cafès / "+cafeteriaGod.getTiempoGeneracion()+" s");
+
+
+
+        return produccionsUnitat;
+
+    }
 }

@@ -29,5 +29,8 @@ public class ManageGame {
 
         return game.getQuantitats();
     }
+    public ArrayList<String> getProduccionsUnitat() {
+       return game.getProduccionsUnitat();
+    }
 
 }

@@ -200,10 +200,14 @@ public class GameScene extends Scene {
         jPanel.revalidate();
         jPanel.repaint();
     }
-    public void updteQuantitats(ArrayList<Integer> quantitats){
-        tableGeneradorsDisponibles.setQuantitats(quantitats);
+    public void updateTablas(ArrayList<Integer> quantitats, ArrayList<String> proudccioUnitat) {
+        tableGeneradorsDisponibles.setUpdateValores(quantitats,proudccioUnitat);
+
         jPanel.revalidate();
         jPanel.repaint();
     }
+    public void updteProduccioUnitat(){
 
+
+    }
 }

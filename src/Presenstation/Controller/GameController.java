@@ -10,6 +10,7 @@ import Presenstation.View.Scenes;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class GameController extends Controller {
@@ -49,20 +50,25 @@ public class GameController extends Controller {
 
             manageGame.addCafetera("Cafetera");
             ArrayList<Integer> quantitats= new ArrayList<>();
+            ArrayList<String> proudccioUnitat = new ArrayList<>();
+            proudccioUnitat = manageGame.getProduccionsUnitat();
             quantitats = manageGame.getQuantitas();
-            getScene().updteQuantitats(quantitats);
+
+
+            getScene().updateTablas(quantitats, proudccioUnitat);
+
 
         }else if (e.getActionCommand().equalsIgnoreCase("CafeCheta")) {
             manageGame.addCafetera("CafeCheta");
             ArrayList<Integer> quantitats= new ArrayList<>();
             quantitats = manageGame.getQuantitas();
-            getScene().updteQuantitats(quantitats);
+            //getScene().updateTablas(quantitats);
 
         }else if (e.getActionCommand().equalsIgnoreCase("CafeGod")) {
             manageGame.addCafetera("CafeGod");
             ArrayList<Integer> quantitats= new ArrayList<>();
             quantitats = manageGame.getQuantitas();
-            getScene().updteQuantitats(quantitats);
+            //getScene().updateTablas(quantitats);
 
         }
     }

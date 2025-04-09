@@ -3,18 +3,20 @@ package Business.Entidades;
 import Presenstation.Controller.GameController;
 
 import java.time.Instant;
+import java.util.HashMap;
 
 public class Generator extends Thread {
     private int id;
     private String nombre;
     private double precio;
-    private double cafeSeg;
+    private Double cafeSeg;//cantidad_cafe/tiempo
     private Game game;
     private double tiempoGeneracion;
     private double incrementCost;
     private Integer multiplicador;
 
-    public Generator(int id, String nombre, double precio, double cafeSeg, double tiempoGeneracion, double incrementCost,Integer mutiplicador,Game game) {
+
+    public Generator(int id, String nombre, double precio, Double cafeSeg, double tiempoGeneracion, double incrementCost,Integer mutiplicador,Game game) {
 
         this.id = id;
         this.nombre = nombre;
@@ -31,7 +33,7 @@ public class Generator extends Thread {
         double acumulador = 0.0;
 
         while (!Thread.currentThread().isInterrupted()) {
-            acumulador += cafeSeg;
+            //acumulador += cafeSeg;
 
             int cafesEnteros = (int) acumulador;
             if (cafesEnteros >= 1) {
@@ -40,7 +42,7 @@ public class Generator extends Thread {
             }
 
             try {
-                Thread.sleep((long) (tiempoGeneracion * 1000)); // de segundos a ms
+                Thread.sleep((long) (cafeSeg * 1000)); // de segundos a ms
             } catch (InterruptedException e) {
                 Thread.currentThread().interrupt();
             }
@@ -60,7 +62,7 @@ public class Generator extends Thread {
         return precio;
     }
 
-    public double getCafeSeg() {
+    public Double getCafeSeg() {
         return cafeSeg;
     }
 
@@ -77,7 +79,15 @@ public class Generator extends Thread {
         this.precio = precio;
     }
 
-    public void setCafeSeg(double cafeSeg) {
+    public void setCafeSeg(Double cafeSeg) {
         this.cafeSeg = cafeSeg;
+    }
+
+    public double getIncrementCost() {
+        return incrementCost;
+    }
+
+    public double getTiempoGeneracion() {
+        return tiempoGeneracion;
     }
 }

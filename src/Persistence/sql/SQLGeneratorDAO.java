@@ -40,6 +40,11 @@ public class SQLGeneratorDAO implements GeneratorDAO {
 
     @Override
     public Generator getGenerator(int id) {
+        return null;
+    }
+
+   /* @Override
+    public Generator getGenerator(int id) {
         String query = "SELECT * FROM Generador WHERE id_generador = '" + id + "'";
         var rs = SQLConnector.getInstance().selectQuery(query);
 
@@ -65,7 +70,7 @@ public class SQLGeneratorDAO implements GeneratorDAO {
         }
 
         return null;
-    }
+    }*/
 
     @Override
     public List<Generator> getAllGenerators() {
