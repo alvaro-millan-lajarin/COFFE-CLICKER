@@ -10,7 +10,6 @@ public class ManageGame {
     public ManageGame() {
 
     }
-
     public Game getGame() {
         return game;
     }
