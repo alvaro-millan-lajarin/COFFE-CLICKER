@@ -10,8 +10,10 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 
 public class TableBotigaGenerators extends JPanel {
+    private JTable table;
     public TableBotigaGenerators(GameController gameController) {
         setLayout(new BorderLayout());
 
@@ -43,7 +45,7 @@ public class TableBotigaGenerators extends JPanel {
             }
         };
 
-        JTable table = new JTable(model);
+        this.table = new JTable(model);
         table.setRowHeight(20);
         table.setOpaque(true);
         table.setBackground(Color.WHITE);
@@ -102,5 +104,22 @@ public class TableBotigaGenerators extends JPanel {
             return this;
         }
     }
+    public void setUpdateValores(ArrayList<Integer> precioBase) {
+        // Assuming `precioBase` contains the base price for each generator
+        // Let's update the "Cost" and "Producció" for each row based on the price.
+
+        // Data for each row in the table
+        Object[][] data = {
+                {"Cafetera", precioBase.get(0), "0.2 cafes/1s", 1.07},
+                {"CafeCheta", precioBase.get(1), "0.5 cafes/0.7s", 1.15},
+                {"CafeGod", precioBase.get(2), "30 cafes/1.3s", 1.12}
+        };
+
+        // Update the model with new data
+        DefaultTableModel model = (DefaultTableModel) table.getModel();
+        model.setDataVector(data, new String[]{"Nom", "Cost", "Producció", "Increment cost"});
+        model.fireTableDataChanged(); // Refresh the table to show updated data
+    }
+
 }
 

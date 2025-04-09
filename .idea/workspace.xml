@@ -4,23 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f9bbb50b-3eaf-412a-ab58-ecb07cf93455" name="Changes" comment="game creation modificacion">
+    <list default="true" id="f9bbb50b-3eaf-412a-ab58-ecb07cf93455" name="Changes" comment="borrar clases inecesarias">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Business/Entidades/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Business/Entidades/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Business/Entidades/GeneradorsComprats.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Business/Entidades/Generator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Business/Entidades/Generator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Business/Entidades/MilloraComprada.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Business/Entidades/Tabla.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Business/Entidades/TablaMillores.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Business/Entidades/Upgrade.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Business/ManageGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Business/ManageGame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Persistence/GeneradorsCompratsDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Persistence/GeneradorsCompratsDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Persistence/MilloraCompradaDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Persistence/MilloraCompradaDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Persistence/UpgradeDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Persistence/UpgradeDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Persistence/sql/SQLGeneradorsCompratsDAO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Persistence/sql/SQLMilloraCompradaDAO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Persistence/sql/SQLUpgradeDAO.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Presenstation/Controller/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presenstation/Controller/GameController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Presenstation/View/GameScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presenstation/View/GameScene.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Presenstation/View/Table/TableBotigaGenerators.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presenstation/View/Table/TableBotigaGenerators.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -279,7 +269,15 @@
       <option name="project" value="LOCAL" />
       <updated>1744212083114</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="borrar clases inecesarias">
+      <option name="closed" value="true" />
+      <created>1744214976619</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1744214976619</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -326,17 +324,7 @@
     <MESSAGE value="generators" />
     <MESSAGE value="actulizar tabla disponibles" />
     <MESSAGE value="game creation modificacion" />
-    <option name="LAST_COMMIT_MESSAGE" value="game creation modificacion" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Business/Entidades/Game.java</url>
-          <line>187</line>
-          <option name="timeStamp" value="29" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="borrar clases inecesarias" />
+    <option name="LAST_COMMIT_MESSAGE" value="borrar clases inecesarias" />
   </component>
 </project>

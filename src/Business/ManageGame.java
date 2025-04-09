@@ -47,7 +47,51 @@ public class ManageGame {
         }
         return false;
     }
-    public void restarCafe(){
+    public boolean enughtCoffeCheta(){
+        if(game.getNumCafes()>= game.getCafeteriaChetaPrecio()){
+            return true;
+        }
+        return false;
+    }
+    public boolean enughtCoffeGod(){
+        if(game.getNumCafes()>= game.getCafeteriaGodPrecio()){
+            return true;
+        }
+        return false;
+    }
+    public void restarCafe(String cafetera) {
 
+        Integer cafeActual = game.getNumCafes();
+        Double costeCafe =0.0;
+        switch (cafetera) {
+            case "cafetera":
+                costeCafe = game.getCafeteriaPrecio();
+                break;
+            case "CafeCheta":
+               costeCafe = game.getCafeteriaChetaPrecio();
+               break;
+            case "cafeterGod":
+                costeCafe = game.getCafeteriaGodPrecio();
+                break;
+        }
+
+        game.setNumCafes((int) (cafeActual-costeCafe));
+
+    }
+    public void updatePriceCoffe(String cafetera) {
+        switch (cafetera) {
+            case "cafetera":
+                game.setCafeteriaPrecio();
+                break;
+            case "CafeCheta":
+                game.setCafeteriaChetaPrecio();
+                break;
+            case "CafeGod":
+                game.setCafeteriaGodPrecio();
+                break;
+        }
+    }
+    public ArrayList<Integer> getPreciosBase() {
+        return game.getPreciosBase();
     }
 }

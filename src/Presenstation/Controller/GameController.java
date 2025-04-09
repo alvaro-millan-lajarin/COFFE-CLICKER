@@ -47,47 +47,13 @@ public class GameController extends Controller {
             deleteUser();
 
         }else if (e.getActionCommand().equalsIgnoreCase("Cafetera")) {
-            if(manageGame.enughtCoffeCafeteria()){
-                //restar coffe
-                manageGame.restarCafe();
-
-                manageGame.startGeneratorCafetera();
-                manageGame.addCafetera("Cafetera");
-                ArrayList<Integer> quantitats= new ArrayList<>();
-                ArrayList<String> proudccioUnitat = new ArrayList<>();
-                proudccioUnitat = manageGame.getProduccionsUnitat();
-                quantitats = manageGame.getQuantitas();
-                getScene().updateTablas(quantitats, proudccioUnitat);
-            }else{
-                JOptionPane.showMessageDialog(
-                        getScene().addAccesButton(),
-                        "Need to generate more coffe",
-                        "Need more coffes",
-                        JOptionPane.INFORMATION_MESSAGE
-                );
-            }
-
-
+            compraCafetera();
 
         }else if (e.getActionCommand().equalsIgnoreCase("CafeCheta")) {
-            manageGame.startGeneratorCafeteraCheta();
-            manageGame.addCafetera("CafeCheta");
-            ArrayList<Integer> quantitats= new ArrayList<>();
-            ArrayList<String> proudccioUnitat = new ArrayList<>();
-            proudccioUnitat = manageGame.getProduccionsUnitat();
-            quantitats = manageGame.getQuantitas();
-
-            getScene().updateTablas(quantitats, proudccioUnitat);
+            compraCafeteraCheta();
 
         }else if (e.getActionCommand().equalsIgnoreCase("CafeGod")) {
-            manageGame.startGeneratorCafeteraGod();
-            manageGame.addCafetera("CafeGod");
-            ArrayList<Integer> quantitats= new ArrayList<>();
-            ArrayList<String> proudccioUnitat = new ArrayList<>();
-            proudccioUnitat = manageGame.getProduccionsUnitat();
-            quantitats = manageGame.getQuantitas();
-
-            getScene().updateTablas(quantitats, proudccioUnitat);
+            compraCafeGod();
 
         }else if(e.getActionCommand().equalsIgnoreCase("GAME_MANAGEMENT")){
 
@@ -147,6 +113,61 @@ public class GameController extends Controller {
     public ManageGame getManageGame() {
         return manageGame;
 
+    }
+    public void notEnoughtCoffe() {
+        JOptionPane.showMessageDialog(
+                getScene().addAccesButton(),
+                "Need to generate more coffe",
+                "Need more coffes",
+                JOptionPane.INFORMATION_MESSAGE
+        );
+    }
+    public void compraCafetera() {
+        if(manageGame.enughtCoffeCafeteria()){
+
+            manageGame.restarCafe("cafetera");//restar cafe
+            manageGame.startGeneratorCafetera();
+            manageGame.addCafetera("Cafetera");//añades la cantidad de cafetera
+            manageGame.updatePriceCoffe("cafetera");
+
+
+            updateTablas();
+
+        }else{
+            notEnoughtCoffe();
+        }
+    }
+    public void compraCafeteraCheta() {
+        if(manageGame.enughtCoffeCheta()){
+            manageGame.startGeneratorCafeteraCheta();
+            manageGame.restarCafe("CafeCheta");
+            manageGame.addCafetera("CafeCheta");
+
+            updateTablas();
+        }else{
+            notEnoughtCoffe();
+        }
+    }
+    public void compraCafeGod(){
+        if(manageGame.enughtCoffeGod()){
+            manageGame.startGeneratorCafeteraGod();
+            manageGame.restarCafe("CafeGod");
+            manageGame.addCafetera("CafeGod");
+
+            updateTablas();
+        }else{
+            notEnoughtCoffe();
+        }
+    }
+    public void updateTablas(){
+        ArrayList<Integer> quantitats= new ArrayList<>();
+        ArrayList<String> proudccioUnitat = new ArrayList<>();
+        ArrayList<Integer> precioBase = new ArrayList<>();
+
+        proudccioUnitat = manageGame.getProduccionsUnitat();
+        quantitats = manageGame.getQuantitas();
+        precioBase = manageGame.getPreciosBase();
+        getScene().updateTablas(quantitats, proudccioUnitat,precioBase);
     }
 
 }
