@@ -1,5 +1,6 @@
 package Presenstation.Controller;
 
+import Business.ManageGame;
 import Presenstation.View.*;
 
 import javax.swing.*;
@@ -23,7 +24,12 @@ public class MainController {
     private GameCreationController gameCreationController;
     private GameController gameController;
 
+    private ManageGame manageGame;
+
     public MainController() {
+
+        manageGame = new ManageGame();
+
         menuScene = new MenuScene();
         scene = new Scene();
         signUpScene = new SignUpScene();
@@ -37,8 +43,8 @@ public class MainController {
         signUpController = new SignUpController(signUpScene, this);
         menuController = new MenuController(menuScene, this);
         gameManagementController = new GameManagementController(gameManagementScene, this, loginController, signUpController);
-        gameCreationController = new GameCreationController(gameCreationScene, this, loginController, signUpController);
-        gameController = new GameController(gameScene, this, loginController, signUpController);
+        gameCreationController = new GameCreationController(gameCreationScene, this, loginController, signUpController, manageGame);
+        gameController = new GameController(gameScene, this, loginController, signUpController,manageGame);
 
         menuScene.setController(menuController);
         signUpScene.setController(signUpController);
@@ -46,6 +52,8 @@ public class MainController {
         gameManagementScene.setController(gameManagementController);
         gameCreationScene.setController(gameCreationController);
         gameScene.setController(gameController);
+
+
 
     }
     public void nextScene(Scenes scenes) {
@@ -104,5 +112,13 @@ public class MainController {
         signUpScene = new SignUpScene();
         signUpController = new SignUpController(signUpScene, this);
         signUpScene.setController(signUpController);
+    }
+    public void resetGameCreation() {
+        gameCreationScene = null;
+        gameCreationController = null;
+
+        gameCreationScene= new GameCreationScene();
+        gameCreationController= new GameCreationController(gameCreationScene,this,loginController,signUpController,manageGame);
+        gameCreationScene.setController(gameCreationController);
     }
 }

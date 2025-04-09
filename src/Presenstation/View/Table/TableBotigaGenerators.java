@@ -1,15 +1,20 @@
 package Presenstation.View.Table;
 
+import Presenstation.Controller.GameController;
+
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 import javax.swing.table.TableCellRenderer;
 import java.awt.*;
+import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 
 public class TableBotigaGenerators extends JPanel {
-    public TableBotigaGenerators() {
+    private JTable table;
+    public TableBotigaGenerators(GameController gameController) {
         setLayout(new BorderLayout());
 
 
@@ -26,11 +31,11 @@ public class TableBotigaGenerators extends JPanel {
         add(titlePanel, BorderLayout.NORTH);
 
 
-        String[] columnNames = {"Nom", "Cost", "Producció"};
+        String[] columnNames = {"Nom", "Cost", "Producció", "Increment cost"};
         Object[][] data = {
-                {"Cafetera", 10, "0.2 cafes/1s"},
-                {"CafeCheta", 150, "0.5 cafes/0.7s"},
-                {"CafeGod", 2000, "30 cafes/1.3s"}
+                {"Cafetera", 10, "0.2 cafes/1s", 1.07},
+                {"CafeCheta", 150, "0.5 cafes/0.7s", 1.15},
+                {"CafeGod", 2000, "30 cafes/1.3s",1.12}
         };
 
         DefaultTableModel model = new DefaultTableModel(data, columnNames) {
@@ -40,7 +45,7 @@ public class TableBotigaGenerators extends JPanel {
             }
         };
 
-        JTable table = new JTable(model);
+        this.table = new JTable(model);
         table.setRowHeight(20);
         table.setOpaque(true);
         table.setBackground(Color.WHITE);
@@ -70,7 +75,10 @@ public class TableBotigaGenerators extends JPanel {
                 int column = table.columnAtPoint(e.getPoint());
                 if (column == 0) {
                     String buttonText = table.getValueAt(row, column).toString();
-                    JOptionPane.showMessageDialog(null, "Seleccionaste: " + buttonText);
+
+                    //JOptionPane.showMessageDialog(null, "Seleccionaste: " + buttonText);
+                    ActionEvent event = new ActionEvent(table, ActionEvent.ACTION_PERFORMED, buttonText);
+                    gameController.actionPerformed(event);
                 }
             }
         });
@@ -96,5 +104,19 @@ public class TableBotigaGenerators extends JPanel {
             return this;
         }
     }
+    public void setUpdateValores(ArrayList<Integer> precioBase) {
+
+        Object[][] data = {
+                {"Cafetera", precioBase.get(0), "0.2 cafes/1s", 1.07},
+                {"CafeCheta", precioBase.get(1), "0.5 cafes/0.7s", 1.15},
+                {"CafeGod", precioBase.get(2), "30 cafes/1.3s", 1.12}
+        };
+
+        // Update the model with new data
+        DefaultTableModel model = (DefaultTableModel) table.getModel();
+        model.setDataVector(data, new String[]{"Nom", "Cost", "Producció", "Increment cost"});
+        model.fireTableDataChanged(); // Refresh the table to show updated data
+    }
+
 }
 

@@ -10,6 +10,9 @@ import Presenstation.View.WriteText.Text;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
+import java.util.ArrayList;
+import javax.swing.Timer;
+
 
 public class GameScene extends Scene {
     private GameController gameController;
@@ -19,6 +22,11 @@ public class GameScene extends Scene {
     private Integer n_cafes = 0;
     private JLabel numCafesLabel;
 
+    private TableBotigaGenerators tableBotigaGenerators;
+    private TableBotigaMillores tableBotigaMillores;
+    private TableGeneradorsDisponibles tableGeneradorsDisponibles;
+
+    private Timer updateTimer;
 
     public void initialitzate() {
 
@@ -39,9 +47,20 @@ public class GameScene extends Scene {
         initialitzate();
         super.apply(mainFrame);
         mainFrame.setTitle("Game");
+
+        // 🕒 Inicia un timer para actualizar numCafesLabel cada 1 segundo
+        updateTimer = new Timer(1000, e -> {
+            if (gameController != null && gameController.getManageGame().getGame() != null) {
+                int cafesActuales = gameController.getManageGame().getGame().getNumCafes();
+                addCoffe(cafesActuales);
+            }
+        });
+        updateTimer.start();
     }
+
     public void setController(GameController gameController) {
         this.gameController = gameController;
+
         initialitzate();
     }
     public JPanel topPanel() {
@@ -81,9 +100,9 @@ public class GameScene extends Scene {
     }
     public JPanel panelDerecho() {
         JPanel panelDerecho = new JPanel(new GridLayout(3, 1, 30, 30));
-        TableBotigaGenerators tableBotigaGenerators = new TableBotigaGenerators();
-        TableBotigaMillores tableBotigaMillores = new TableBotigaMillores();
-        TableGeneradorsDisponibles tableGeneradorsDisponibles = new TableGeneradorsDisponibles();
+        tableBotigaGenerators = new TableBotigaGenerators(gameController);
+        tableBotigaMillores = new TableBotigaMillores(gameController);
+        tableGeneradorsDisponibles = new TableGeneradorsDisponibles(gameController);
 
         panelDerecho.add(tableBotigaGenerators);
         panelDerecho.add(tableBotigaMillores);
@@ -175,9 +194,16 @@ public class GameScene extends Scene {
         panel.setBorder(new EmptyBorder(20, 0, 0, 0));
         return panel;
     }
-    public void addCoffe(){
-        n_cafes++;
-        numCafesLabel.setText(String.valueOf(n_cafes));
+    public void addCoffe(int numCafes){
+
+        numCafesLabel.setText(String.valueOf(numCafes));
+        jPanel.revalidate();
+        jPanel.repaint();
+    }
+    public void updateTablas(ArrayList<Integer> quantitats, ArrayList<String> proudccioUnitat, ArrayList<Integer> precioBase) {
+        tableGeneradorsDisponibles.setUpdateValores(quantitats,proudccioUnitat);
+        tableBotigaGenerators.setUpdateValores(precioBase);
+
         jPanel.revalidate();
         jPanel.repaint();
     }

@@ -38,6 +38,7 @@ public class GameManagementController extends Controller {
             loginController.clearUserData();
             deleteUser();
         }else if (e.getActionCommand().equalsIgnoreCase("CREATE_GAME")) {
+            mainController.resetGameCreation();
             mainController.nextScene(Scenes.GAME_CREATION);
         }
     }
