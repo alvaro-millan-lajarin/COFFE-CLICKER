@@ -79,6 +79,9 @@ public class GameController extends Controller {
 
             getScene().updateTablas(quantitats, proudccioUnitat);
 
+        }else if(e.getActionCommand().equalsIgnoreCase("GAME_MANAGEMENT")){
+
+            mainController.nextScene(Scenes.GAME_MANAGEMENT);
         }
     }
     @Override
