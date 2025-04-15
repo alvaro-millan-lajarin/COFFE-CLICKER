@@ -58,6 +58,15 @@ public class GameController extends Controller {
         }else if(e.getActionCommand().equalsIgnoreCase("GAME_MANAGEMENT")){
 
             mainController.nextScene(Scenes.GAME_MANAGEMENT);
+        }else if (e.getActionCommand().equalsIgnoreCase("CafeteraMejora")) {
+            cafeteraMejora();
+
+        }else if (e.getActionCommand().equalsIgnoreCase("CafeChetaMejora")) {
+            chetaMejora();
+
+        } else if (e.getActionCommand().equalsIgnoreCase("CafeGodMejora")) {
+            godMejora();
+
         }
     }
     @Override
@@ -160,14 +169,52 @@ public class GameController extends Controller {
         }
     }
     public void updateTablas(){
-        ArrayList<Integer> quantitats= new ArrayList<>();
-        ArrayList<String> proudccioUnitat = new ArrayList<>();
-        ArrayList<Integer> precioBase = new ArrayList<>();
+        ArrayList<Integer> quantitats= manageGame.getQuantitas();
+        ArrayList<String> proudccioUnitat = manageGame.getProduccionsUnitat();
+        ArrayList<Integer> precioBase = manageGame.getPreciosBase();
 
-        proudccioUnitat = manageGame.getProduccionsUnitat();
-        quantitats = manageGame.getQuantitas();
-        precioBase = manageGame.getPreciosBase();
-        getScene().updateTablas(quantitats, proudccioUnitat,precioBase);
+        //tabla generators
+        //proudccioUnitat = manageGame.getProduccionsUnitat();
+        //quantitats = manageGame.getQuantitas();
+       // precioBase = manageGame.getPreciosBase();
+
+        //tabla millores
+        ArrayList<Integer> costMultiplicadores = manageGame.getCostMultplicadors();
+        ArrayList<Integer> multiplicadores = manageGame.getMultplicadors();
+        getScene().updateTablas(quantitats, proudccioUnitat,precioBase, costMultiplicadores, multiplicadores);
+    }
+    public void cafeteraMejora() {
+        if(manageGame.enoughtCoffeMejoraCafetera()){
+            manageGame.restarCafeMejora("cafetera");
+            manageGame.mejorarCafetera();
+
+            updateTablas();
+        }else{
+            notEnoughtCoffe();
+        }
+
+    }
+    public void chetaMejora() {
+        if(manageGame.enoughtCoffeMejoraCheta()){
+            manageGame.restarCafeMejora("CafeCheta");
+            manageGame.mejorarCheta();
+
+            updateTablas();
+        }else{
+            notEnoughtCoffe();
+        }
+    }
+    public void godMejora() {
+        if(manageGame.enoughtCoffeMejoraGod()){
+            manageGame.restarCafeMejora("cafeGod");
+            manageGame.mejorarGod();
+
+            updateTablas();
+
+        }else{
+            notEnoughtCoffe();
+        }
+
     }
 
 }

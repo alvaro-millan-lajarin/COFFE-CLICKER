@@ -200,9 +200,10 @@ public class GameScene extends Scene {
         jPanel.revalidate();
         jPanel.repaint();
     }
-    public void updateTablas(ArrayList<Integer> quantitats, ArrayList<String> proudccioUnitat, ArrayList<Integer> precioBase) {
-        tableGeneradorsDisponibles.setUpdateValores(quantitats,proudccioUnitat);
-        tableBotigaGenerators.setUpdateValores(precioBase);
+    public void updateTablas(ArrayList<Integer> quantitats, ArrayList<String> proudccioUnitat, ArrayList<Integer> precioBase, ArrayList<Integer> costMultiplicadores, ArrayList<Integer> multiplicadores) {
+        tableGeneradorsDisponibles.setUpdateValores(quantitats,proudccioUnitat, multiplicadores);
+        tableBotigaGenerators.setUpdateValores(precioBase, proudccioUnitat);
+        tableBotigaMillores.setUpdateValores(costMultiplicadores, multiplicadores);
 
         jPanel.revalidate();
         jPanel.repaint();

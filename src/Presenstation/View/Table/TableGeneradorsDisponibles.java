@@ -153,7 +153,9 @@ public class TableGeneradorsDisponibles extends JPanel {
         }
     }
 
-    public void setUpdateValores(ArrayList<Integer> quantitatsInput, ArrayList<String> proudccioUnitatInput) {
+    public void setUpdateValores(ArrayList<Integer> quantitatsInput, ArrayList<String> proudccioUnitatInput, ArrayList<Integer> multiplicadoresInput) {
+
+
 
         // Actualizar cantidades
         quantitats.clear();
@@ -169,14 +171,15 @@ public class TableGeneradorsDisponibles extends JPanel {
 
         // Parsear producció per unitat
         for (int i = 0; i < proudccioUnitatInput.size(); i++) {
-            String input = proudccioUnitatInput.get(i); // ej: "30 cafès / 1.3 s"
+            String input = proudccioUnitatInput.get(i);
 
             try {
                 String[] parts = input.split("cafès /");
                 if (parts.length < 2) throw new IllegalArgumentException("Formato inválido");
 
-                double cafes = Double.parseDouble(parts[0].trim());
-                double temps = Double.parseDouble(parts[1].replace("s", "").trim());
+                double cafes = Double.parseDouble(parts[0].trim().replace(",", "."));
+                double temps = Double.parseDouble(parts[1].replace("s", "").trim().replace(",", "."));
+
 
                 if (temps == 0) {
                     // Evitar división por cero

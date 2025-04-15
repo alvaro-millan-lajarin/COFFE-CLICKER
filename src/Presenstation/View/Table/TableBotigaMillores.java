@@ -7,10 +7,13 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 import javax.swing.table.TableCellRenderer;
 import java.awt.*;
+import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 
 public class TableBotigaMillores extends JPanel {
+    private JTable table;
     public TableBotigaMillores(GameController gameController) {
         setLayout(new BorderLayout());
 
@@ -42,7 +45,7 @@ public class TableBotigaMillores extends JPanel {
             }
         };
 
-        JTable table = new JTable(model);
+        table = new JTable(model);
         table.setRowHeight(20); // Filas más pequeñas
         table.setOpaque(true);
         table.setBackground(Color.WHITE);
@@ -72,7 +75,8 @@ public class TableBotigaMillores extends JPanel {
                 int column = table.columnAtPoint(e.getPoint());
                 if (column == 0) {
                     String buttonText = table.getValueAt(row, column).toString();
-                    JOptionPane.showMessageDialog(null, "Seleccionaste: " + buttonText);
+                    ActionEvent event = new ActionEvent(table, ActionEvent.ACTION_PERFORMED, buttonText+"Mejora");
+                    gameController.actionPerformed(event);
                 }
             }
         });
@@ -81,7 +85,24 @@ public class TableBotigaMillores extends JPanel {
 
         setOpaque(false);
     }
+    public void setUpdateValores(ArrayList<Integer> costMultiplicadores, ArrayList<Integer> multiplicadores) {
+        ArrayList<Integer> multiplicadoress = new ArrayList<>();
+        multiplicadoress.add(multiplicadores.get(0)+1);
+        multiplicadoress.add(multiplicadores.get(1)+1);
+        multiplicadoress.add(multiplicadores.get(2)+1);
 
+
+        Object[][] data = {
+                {"Cafetera", costMultiplicadores.get(0), "x"+multiplicadoress.get(0)},
+                {"CafeCheta", costMultiplicadores.get(1), "x"+multiplicadoress.get(1)},
+                {"CafeGod", costMultiplicadores.get(2), "x"+multiplicadoress.get(2)},
+        };
+
+        // Update the model with new data
+        DefaultTableModel model = (DefaultTableModel) table.getModel();
+        model.setDataVector(data, new String[]{"Nom", "Coste", "Multiplicador"});
+        model.fireTableDataChanged(); // Refresh the table to show updated data
+    }
 
     class ButtonRenderer extends JButton implements TableCellRenderer {
         public ButtonRenderer() {

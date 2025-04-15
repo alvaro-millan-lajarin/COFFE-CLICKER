@@ -76,7 +76,7 @@ public class TableBotigaGenerators extends JPanel {
                 if (column == 0) {
                     String buttonText = table.getValueAt(row, column).toString();
 
-                    //JOptionPane.showMessageDialog(null, "Seleccionaste: " + buttonText);
+
                     ActionEvent event = new ActionEvent(table, ActionEvent.ACTION_PERFORMED, buttonText);
                     gameController.actionPerformed(event);
                 }
@@ -104,12 +104,12 @@ public class TableBotigaGenerators extends JPanel {
             return this;
         }
     }
-    public void setUpdateValores(ArrayList<Integer> precioBase) {
+    public void setUpdateValores(ArrayList<Integer> precioBase, ArrayList<String> produccionUnitat) {
 
         Object[][] data = {
-                {"Cafetera", precioBase.get(0), "0.2 cafes/1s", 1.07},
-                {"CafeCheta", precioBase.get(1), "0.5 cafes/0.7s", 1.15},
-                {"CafeGod", precioBase.get(2), "30 cafes/1.3s", 1.12}
+                {"Cafetera", precioBase.get(0), produccionUnitat.get(0), 1.07},
+                {"CafeCheta", precioBase.get(1), produccionUnitat.get(1), 1.15},
+                {"CafeGod", precioBase.get(2), produccionUnitat.get(2), 1.12}
         };
 
         // Update the model with new data
