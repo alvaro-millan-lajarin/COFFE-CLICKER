@@ -93,4 +93,58 @@ public class ManageGame {
     public ArrayList<Integer> getPreciosBase() {
         return game.getPreciosBase();
     }
+
+    public void mejorarCafetera(){
+        game.mejorarCafetera();
+    }
+    public void mejorarCheta(){
+        game.mejorarCheta();
+    }
+    public void mejorarGod(){
+        game.mejorarGod();
+    }
+    public ArrayList<Integer> getCostMultplicadors(){
+
+        return game.getCostMultplicadors();
+    }
+    public ArrayList<Integer> getMultplicadors(){
+        return game.getMultplicadors();
+    }
+    public boolean enoughtCoffeMejoraCafetera(){
+        if(game.getNumCafes()>= game.getCostMultplicadors().get(0)){
+            return true;
+        }
+        return false;
+    }
+    public boolean enoughtCoffeMejoraCheta(){
+        if(game.getNumCafes()>= game.getCostMultplicadors().get(1)){
+            return true;
+        }
+        return false;
+    }
+    public boolean enoughtCoffeMejoraGod(){
+        if(game.getNumCafes()>= game.getCostMultplicadors().get(2)){
+            return true;
+        }
+        return false;
+    }
+    public void restarCafeMejora(String cafetera) {
+
+        Integer cafeActual = game.getNumCafes();
+        Integer costeCafe =0;
+        switch (cafetera) {
+            case "cafetera":
+                costeCafe = game.getCostMultplicadors().get(0);
+                break;
+            case "CafeCheta":
+                costeCafe = game.getCostMultplicadors().get(1);
+                break;
+            case "cafeGod":
+                costeCafe = game.getCostMultplicadors().get(2);
+                break;
+        }
+
+        game.setNumCafes((int) (cafeActual-costeCafe));
+
+    }
 }

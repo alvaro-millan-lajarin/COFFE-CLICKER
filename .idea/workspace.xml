@@ -4,7 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f9bbb50b-3eaf-412a-ab58-ecb07cf93455" name="Changes" comment="icrementar costes formula" />
+    <list default="true" id="f9bbb50b-3eaf-412a-ab58-ecb07cf93455" name="Changes" comment="icrementar costes formula">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Business/Entidades/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Business/Entidades/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Business/Entidades/Generator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Business/Entidades/Generator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Business/ManageGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Business/ManageGame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Presenstation/Controller/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presenstation/Controller/GameController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Presenstation/View/GameScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presenstation/View/GameScene.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Presenstation/View/Table/TableBotigaGenerators.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presenstation/View/Table/TableBotigaGenerators.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Presenstation/View/Table/TableBotigaMillores.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presenstation/View/Table/TableBotigaMillores.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Presenstation/View/Table/TableGeneradorsDisponibles.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presenstation/View/Table/TableGeneradorsDisponibles.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -20,7 +30,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="S9-Delete(newDev)" />
+        <entry key="$PROJECT_DIR$" value="newDev" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -286,7 +296,31 @@
       <option name="project" value="LOCAL" />
       <updated>1744221243224</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="icrementar costes formula">
+      <option name="closed" value="true" />
+      <created>1744221288147</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1744221288147</updated>
+    </task>
+    <task id="LOCAL-00024" summary="icrementar costes formula">
+      <option name="closed" value="true" />
+      <created>1744221291531</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1744221291531</updated>
+    </task>
+    <task id="LOCAL-00025" summary="icrementar costes formula">
+      <option name="closed" value="true" />
+      <created>1744699241577</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1744699241577</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -336,5 +370,54 @@
     <MESSAGE value="borrar clases inecesarias" />
     <MESSAGE value="icrementar costes formula" />
     <option name="LAST_COMMIT_MESSAGE" value="icrementar costes formula" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Presenstation/Controller/GameManagementController.java</url>
+          <line>62</line>
+          <option name="timeStamp" value="32" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Business/Entidades/Game.java</url>
+          <line>213</line>
+          <option name="timeStamp" value="37" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Business/ManageGame.java</url>
+          <line>97</line>
+          <option name="timeStamp" value="38" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Business/Entidades/Game.java</url>
+          <line>214</line>
+          <option name="timeStamp" value="39" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Presenstation/Controller/GameController.java</url>
+          <line>173</line>
+          <option name="timeStamp" value="44" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/Business/ManageGame.java</url>
+          <line>96</line>
+          <properties class="Business.ManageGame" method="mejorarCafetera">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="40" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/Business/Entidades/Game.java</url>
+          <line>211</line>
+          <properties class="Business.Entidades.Game" method="mejorarCafetera">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="41" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

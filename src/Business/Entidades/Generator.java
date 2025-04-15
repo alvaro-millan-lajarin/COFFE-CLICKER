@@ -14,9 +14,9 @@ public class Generator extends Thread {
     private double tiempoGeneracion;
     private double incrementCost;
     private Integer multiplicador;
+    private Integer costMultiplicador;
 
-
-    public Generator(int id, String nombre, double precio, Double cafeSeg, double tiempoGeneracion, double incrementCost,Integer mutiplicador,Game game) {
+    public Generator(int id, String nombre, double precio, Double cafeSeg, double tiempoGeneracion, double incrementCost,Integer costMultiplicador, Integer mutiplicador,Game game) {
 
         this.id = id;
         this.nombre = nombre;
@@ -26,6 +26,7 @@ public class Generator extends Thread {
         this.tiempoGeneracion = tiempoGeneracion;
         this.incrementCost = incrementCost;
         this.multiplicador = mutiplicador;
+        this.costMultiplicador = costMultiplicador;
 
     }
     @Override
@@ -33,7 +34,7 @@ public class Generator extends Thread {
         double acumulador = 0.0;
 
         while (!Thread.currentThread().isInterrupted()) {
-            acumulador += cafeSeg;
+            acumulador += cafeSeg * tiempoGeneracion;
 
             int cafesEnteros = (int) acumulador;
             if (cafesEnteros >= 1) {
@@ -48,6 +49,7 @@ public class Generator extends Thread {
             }
         }
     }
+
     // Getters
     public long getId() {
 
@@ -89,5 +91,21 @@ public class Generator extends Thread {
 
     public double getTiempoGeneracion() {
         return tiempoGeneracion;
+    }
+
+    public void setMultiplicador(Integer multiplicador) {
+        this.multiplicador = multiplicador;
+    }
+
+    public Integer getMultiplicador() {
+        return multiplicador;
+    }
+
+    public Integer getCostMultiplicador() {
+        return costMultiplicador;
+    }
+
+    public void setCostMultiplicador(Integer costMultiplicador) {
+        this.costMultiplicador = costMultiplicador;
     }
 }
