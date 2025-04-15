@@ -26,7 +26,7 @@ public class SignUpController extends Controller {
     public void actionPerformed(ActionEvent e) {
         if (e.getActionCommand().equalsIgnoreCase("SIGNUP")) {
             SQLUserDAO sqlUserDAO = new SQLUserDAO();
-
+            mainController.resetGameManagement();
 
             if(!ErroreOcurred()){
                 if(sqlUserDAO.findUserByEmail(getScene().getEmail()) == null && sqlUserDAO.findUserByUsername(getScene().getName()) == null){

@@ -92,4 +92,10 @@ public class GameManagementController extends Controller {
         }
         mainController.nextScene(Scenes.MENU);
     }
+
+    public LoginController getLoginController() {
+        return loginController;
+    }
+
+
 }
