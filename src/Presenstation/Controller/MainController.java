@@ -121,4 +121,12 @@ public class MainController {
         gameCreationController= new GameCreationController(gameCreationScene,this,loginController,signUpController,manageGame);
         gameCreationScene.setController(gameCreationController);
     }
+    public void resetGameManagement() {
+        gameManagementScene = null;
+        gameManagementController = null;
+
+        gameManagementScene= new GameManagementScene();
+        gameManagementController= new GameManagementController(gameManagementScene,this,loginController,signUpController);
+        gameManagementScene.setController(gameManagementController);
+    }
 }

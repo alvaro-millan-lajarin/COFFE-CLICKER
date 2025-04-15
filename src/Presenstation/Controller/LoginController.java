@@ -26,7 +26,7 @@ public class LoginController extends Controller {
     public void actionPerformed(ActionEvent e) {
 
         if (e.getActionCommand().equalsIgnoreCase(GAME_MANAGEMENT)) {
-
+            mainController.resetGameManagement();
             String userOrEmail = getScene().getEmail();
             String password = getScene().getPassword();
 

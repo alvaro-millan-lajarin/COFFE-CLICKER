@@ -1,5 +1,9 @@
 package Presenstation.View;
 
+import Business.Entidades.Game;
+import Business.Entidades.User;
+import Persistence.sql.SQLGameDAO;
+import Persistence.sql.SQLUserDAO;
 import Presenstation.Controller.GameManagementController;
 import Presenstation.Controller.MenuController;
 import Presenstation.Controller.SignUpController;
@@ -9,6 +13,8 @@ import Presenstation.View.WriteText.Text;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class GameManagementScene extends Scene {
     private GameManagementController gameManagementController;
@@ -60,11 +66,32 @@ public class GameManagementScene extends Scene {
 
         botonesArribaDerecha.setOpaque(false);
         return botonesArribaDerecha;
+
     }
+
     public JPanel centerPanel() {
+
+        SQLGameDAO sqlGameDAO = new SQLGameDAO();
+        List<Game> games = sqlGameDAO.getAllGames();
+
+        String userOrEmail = gameManagementController.getLoginController().getEmail();
+        String password = gameManagementController.getLoginController().getPassword();
+
+        SQLUserDAO sqlUserDAO = new SQLUserDAO();
+        User existingUserByEmail = sqlUserDAO.findUserByEmail(userOrEmail);
+
+        ArrayList<Game> gamesUser = new ArrayList<>();
+        if (existingUserByEmail != null && existingUserByEmail.getPassword().equals(password)) {
+            for (Game game : games) {
+                if (game.getIdUser() == existingUserByEmail.getId()) {
+                    gamesUser.add(game);
+                }
+            }
+        }
+
         JPanel center = new JPanel();
         center.setLayout(new BoxLayout(center, BoxLayout.X_AXIS));
-
+        center.setOpaque(false);
 
         JPanel leftPanel = new JPanel();
         leftPanel.setLayout(new BoxLayout(leftPanel, BoxLayout.Y_AXIS));
@@ -72,19 +99,59 @@ public class GameManagementScene extends Scene {
         leftPanel.setOpaque(false);
         leftPanel.setPreferredSize(new Dimension(300, 300));
 
+        JPanel partidasPanel = new JPanel();
+        partidasPanel.setLayout(new BoxLayout(partidasPanel, BoxLayout.Y_AXIS));
+        partidasPanel.setOpaque(false);
+        partidasPanel.removeAll();
+        partidasPanel.revalidate();
+        partidasPanel.repaint();
 
-        JImagePanel imagePanel = new JImagePanel("data/gameManagement.jpg");
-        imagePanel.setOpaque(false);
-        imagePanel.setPreferredSize(new Dimension(300, 300));
+        List<JButton> botonesPartidas = new ArrayList<>();
 
+        if (!gamesUser.isEmpty()) {
+            for (int i = 0; i < gamesUser.size(); i++) {
+                Game game = gamesUser.get(i);
+                String text = "Game name: " + game.getNombre() + "  Num. Coffees: " + game.getNumCafes() + " - Last  Save: " + game.getFechaModificacion();
+                JButton btn = new JButton(text);
+                btn.setAlignmentX(Component.LEFT_ALIGNMENT);
+                btn.setFocusPainted(false);
+                btn.setBackground(Color.LIGHT_GRAY);
+                btn.setOpaque(true);
+                btn.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+
+                btn.addActionListener(e -> {
+                    for (JButton b : botonesPartidas) {
+                        b.setBackground(Color.LIGHT_GRAY);
+                    }
+                    btn.setBackground(Color.ORANGE);
+                });
+
+                botonesPartidas.add(btn);
+                partidasPanel.add(Box.createVerticalStrut(5));
+                partidasPanel.add(btn);
+            }
+        } else {
+            JLabel noGamesLabel = new JLabel("NO GAMES SAVED");
+            noGamesLabel.setFont(new Font("Arial", Font.BOLD, 16));
+            noGamesLabel.setForeground(Color.GRAY);
+            noGamesLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+            partidasPanel.add(Box.createVerticalStrut(100));
+            partidasPanel.add(noGamesLabel);
+        }
+
+        JScrollPane scrollPane = new JScrollPane(partidasPanel);
+        scrollPane.setPreferredSize(new Dimension(300, 300));
+        scrollPane.setOpaque(false);
+        scrollPane.getViewport().setOpaque(false);
+        scrollPane.setBorder(BorderFactory.createTitledBorder("SELECT GAME"));
 
         center.add(leftPanel);
         center.add(Box.createRigidArea(new Dimension(20, 0)));
-        center.add(imagePanel);
+        center.add(scrollPane);
 
-        center.setOpaque(false);
         return center;
     }
+
 
 
     public JPanel botonesCentrales() {
