@@ -41,6 +41,11 @@ public class GameManagementController extends Controller {
             mainController.resetGameCreation();
             mainController.nextScene(Scenes.GAME_CREATION);
         }
+
+        //Implementar els botons DELETEGAME
+
+
+
     }
     public void deleteUser() {
         int confirm = JOptionPane.showConfirmDialog(

@@ -102,4 +102,8 @@ public class SQLConnector {
             System.err.println("Problem when closing the connection --> " + e.getSQLState() + " (" + e.getMessage() + ")");
         }
     }
+
+
+
+
 }

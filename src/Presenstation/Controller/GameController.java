@@ -3,6 +3,7 @@ package Presenstation.Controller;
 import Business.Entidades.Game;
 import Business.Entidades.User;
 import Business.ManageGame;
+import Persistence.sql.SQLGameDAO;
 import Persistence.sql.SQLUserDAO;
 import Presenstation.View.GameScene;
 import Presenstation.View.Scene;
@@ -18,16 +19,19 @@ public class GameController extends Controller {
     private SignUpController signUpController;
     private SQLUserDAO sqlUserDAO = new SQLUserDAO();
     private ManageGame manageGame;
+    private SQLGameDAO sqlGameDAO = new SQLGameDAO();
+    private Game game;
+
 
     //private TablaGeneradorsDisponibles tablaGeneradorsDisponibles = new TablaGeneradorsDisponibles();
     public GameController(Scene view, MainController mainController, LoginController loginController, SignUpController signUpController, ManageGame manageGame) {
-
         super(view, mainController);
         this.loginController = loginController;
         this.signUpController = signUpController;
         this.manageGame = manageGame;
-
+        this.game = manageGame.getGame();
     }
+
     public GameScene getScene() {
 
         return (GameScene) super.getView();
@@ -215,6 +219,21 @@ public class GameController extends Controller {
             notEnoughtCoffe();
         }
 
+    }
+
+    public void deleteCurrentGame() {
+        Game currentGame = manageGame.getGame();
+        if (currentGame != null) {
+
+            sqlGameDAO.deleteGame(currentGame);
+            manageGame.setGame(null);
+        }
+
+
+    }
+
+    public void goToGameManagementScene() {
+        mainController.nextScene(Scenes.GAME_MANAGEMENT);
     }
 
 }

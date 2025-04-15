@@ -1,6 +1,7 @@
 package Presenstation.View;
 
 import Presenstation.Controller.GameController;
+import Presenstation.Controller.MainController;
 import Presenstation.JImagePanel;
 import Presenstation.View.Table.TableBotigaGenerators;
 import Presenstation.View.Table.TableBotigaMillores;
@@ -16,6 +17,8 @@ import javax.swing.Timer;
 
 public class GameScene extends Scene {
     private GameController gameController;
+    private MainController mainController;
+    private Scene scene;
     public final static String GAME_MANAGEMENT = "GAME_MANAGEMENT";
 
     private Text name;
@@ -64,15 +67,17 @@ public class GameScene extends Scene {
         initialitzate();
     }
     public JPanel topPanel() {
-        JPanel topPanel = new JPanel(new GridLayout(1, 5));
-        topPanel.add(addVacio());
+        JPanel topPanel = new JPanel(new GridLayout(1, 6));
+        topPanel.add(addBotonFinishGame());
         topPanel.add(addVacio());
         topPanel.add(addTitle("GAME"));
+        topPanel.add(addVacio());
         topPanel.add(addVacio());
         topPanel.add(addBotonesArribaDerecha());
         topPanel.setOpaque(false);
         return topPanel;
     }
+
     public JPanel addBotonesArribaDerecha(){
         JPanel botonesArribaDerecha = new JPanel(new GridLayout(2, 1));
         JButton delAcc_but = new JButton("Delete Account");
@@ -208,5 +213,24 @@ public class GameScene extends Scene {
         jPanel.revalidate();
         jPanel.repaint();
     }
+
+
+
+
+    public JButton addBotonFinishGame() {
+        JButton finishGameButton = new JButton("Finish Game");
+        finishGameButton.addActionListener(e -> {
+            int confirm = JOptionPane.showConfirmDialog(null,
+                    "¿Estás seguro de que quieres finalizar y eliminar este juego?",
+                    "Confirmar", JOptionPane.YES_NO_OPTION);
+
+            if (confirm == JOptionPane.YES_OPTION) {
+                gameController.deleteCurrentGame();
+
+                gameController.goToGameManagementScene();            }
+        });
+        return finishGameButton;
+    }
+
 
 }
