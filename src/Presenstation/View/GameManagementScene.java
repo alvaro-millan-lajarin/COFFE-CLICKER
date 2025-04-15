@@ -18,6 +18,7 @@ import java.util.List;
 
 public class GameManagementScene extends Scene {
     private GameManagementController gameManagementController;
+    private Game selectedGame;
     public final static String DELETE = "DELETE";
     public final static String LOGOUT = "LOGOUT";
 
@@ -26,23 +27,23 @@ public class GameManagementScene extends Scene {
         jPanel.setBackground(new Color(210, 180, 140));
 
         jPanel.add(topPanel(), BorderLayout.NORTH);
-
         jPanel.add(centerPanel(), BorderLayout.CENTER);
         jPanel.add(addVacio(), BorderLayout.EAST);
         jPanel.add(addVacio(), BorderLayout.WEST);
         jPanel.add(addAccesButton(), BorderLayout.SOUTH);
-
-
     }
+
     public void apply(JFrame mainFrame) {
         initialitzate();
         super.apply(mainFrame);
         mainFrame.setTitle("Game management");
     }
+
     public void setController(GameManagementController gameManagementController) {
         this.gameManagementController = gameManagementController;
         initialitzate();
     }
+
     public JPanel topPanel() {
         JPanel topPanel = new JPanel(new GridLayout(1, 5));
         topPanel.add(addVacio());
@@ -53,7 +54,8 @@ public class GameManagementScene extends Scene {
         topPanel.setOpaque(false);
         return topPanel;
     }
-    public JPanel addBotonesArribaDerecha(){
+
+    public JPanel addBotonesArribaDerecha() {
         JPanel botonesArribaDerecha = new JPanel(new GridLayout(2, 1));
         JButton delAcc_but = new JButton("Delete Account");
         JButton logout_but = new JButton("Logout");
@@ -63,14 +65,11 @@ public class GameManagementScene extends Scene {
         logout_but.setActionCommand(LOGOUT);
         delAcc_but.addActionListener(gameManagementController);
         logout_but.addActionListener(gameManagementController);
-
         botonesArribaDerecha.setOpaque(false);
         return botonesArribaDerecha;
-
     }
 
     public JPanel centerPanel() {
-
         SQLGameDAO sqlGameDAO = new SQLGameDAO();
         List<Game> games = sqlGameDAO.getAllGames();
 
@@ -124,6 +123,7 @@ public class GameManagementScene extends Scene {
                         b.setBackground(Color.LIGHT_GRAY);
                     }
                     btn.setBackground(Color.ORANGE);
+                    selectedGame = game;
                 });
 
                 botonesPartidas.add(btn);
@@ -152,18 +152,17 @@ public class GameManagementScene extends Scene {
         return center;
     }
 
-
-
     public JPanel botonesCentrales() {
         JPanel preguntasYRespuestas = new JPanel(new GridLayout(4,1));
         JButton but_resume = new JButton("RESUME");
         JButton but_del = new JButton("DELETE");
         preguntasYRespuestas.add(but_resume);
         preguntasYRespuestas.add(but_del);
-
+        but_del.addActionListener(e -> gameManagementController.deleteSelectedGame());
         preguntasYRespuestas.setOpaque(false);
         return preguntasYRespuestas;
     }
+
     public JPanel addAccesButton(){
         JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
         buttonPanel.setOpaque(false);
@@ -179,12 +178,13 @@ public class GameManagementScene extends Scene {
         buttonPanel.add(butNewGame);
         return buttonPanel;
     }
+
     public JPanel addVacio() {
         JPanel panel = new JPanel(new FlowLayout());
-
         panel.setOpaque(false);
         return panel;
     }
+
     public JPanel addTitle(String message) {
         JPanel panel = new JPanel();
         JLabel label = new JLabel(message);
@@ -196,4 +196,7 @@ public class GameManagementScene extends Scene {
         return panel;
     }
 
+    public Game getSelectedGame() {
+        return selectedGame;
+    }
 }
