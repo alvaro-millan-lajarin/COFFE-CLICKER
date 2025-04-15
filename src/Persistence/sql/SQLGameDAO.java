@@ -34,7 +34,7 @@ public class SQLGameDAO implements GameDAO {
 
     @Override
     public void deleteGame(Game game) {
-        String query = "DELETE FROM Partida WHERE id_partida = '" + game.getId() + "'";
+        String query = "DELETE FROM Partida WHERE nombre_partida = '" + game.getNombre() + "'";
         SQLConnector.getInstance().deleteQuery(query);
     }
 
