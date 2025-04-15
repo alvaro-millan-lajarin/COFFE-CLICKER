@@ -1,6 +1,9 @@
 package Presenstation.Controller;
 
+import Business.Entidades.Game;
 import Business.Entidades.User;
+import Persistence.GameDAO;
+import Persistence.sql.SQLGameDAO;
 import Persistence.sql.SQLUserDAO;
 import Presenstation.View.GameManagementScene;
 import Presenstation.View.LoginScene;
@@ -97,5 +100,24 @@ public class GameManagementController extends Controller {
         return loginController;
     }
 
+    public void deleteSelectedGame() {
+        Game selectedGame = getScene().getSelectedGame();
+        if (selectedGame != null) {
+            int confirm = JOptionPane.showConfirmDialog(
+                    getScene().getPanel(),  // <- aquí está el cambio
+                    "Are you sure you want to delete the selected game?",
+                    "Confirm Deletion",
+                    JOptionPane.YES_NO_OPTION,
+                    JOptionPane.WARNING_MESSAGE
+            );
 
+            if (confirm == JOptionPane.YES_OPTION) {
+                GameDAO sqlGameDAO = new SQLGameDAO();
+                sqlGameDAO.deleteGame(selectedGame);
+                JOptionPane.showMessageDialog(getScene().getPanel(), "Game deleted successfully.");
+            }
+        } else {
+            JOptionPane.showMessageDialog(getScene().getPanel(), "Please select a game to delete.");
+        }
+    }
 }
