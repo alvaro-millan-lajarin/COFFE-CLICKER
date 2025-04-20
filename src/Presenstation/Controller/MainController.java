@@ -16,7 +16,7 @@ public class MainController {
     private GameManagementScene gameManagementScene;
     private GameCreationScene gameCreationScene;
     private GameScene gameScene;
-
+    private StaticsScene staticsScene;
 
 
     private LoginController loginController;
@@ -25,6 +25,7 @@ public class MainController {
     private GameManagementController gameManagementController;
     private GameCreationController gameCreationController;
     private GameController gameController;
+    private StaticsController staticsController;
 
     private ManageGame manageGame;
 
@@ -39,6 +40,7 @@ public class MainController {
         gameManagementScene = new GameManagementScene();
         gameCreationScene = new GameCreationScene();
         gameScene = new GameScene();
+        staticsScene = new StaticsScene();
 
 
         loginController = new LoginController(loginScene, this);
@@ -47,6 +49,7 @@ public class MainController {
         gameManagementController = new GameManagementController(gameManagementScene, this, loginController, signUpController);
         gameCreationController = new GameCreationController(gameCreationScene, this, loginController, signUpController, manageGame);
         gameController = new GameController(gameScene, this, loginController, signUpController,manageGame);
+        staticsController = new StaticsController(staticsScene, this);
 
         menuScene.setController(menuController);
         signUpScene.setController(signUpController);
@@ -54,6 +57,7 @@ public class MainController {
         gameManagementScene.setController(gameManagementController);
         gameCreationScene.setController(gameCreationController);
         gameScene.setController(gameController);
+        staticsScene.setController(staticsController);
 
 
 
@@ -83,6 +87,9 @@ public class MainController {
                 break;
             case GAME:
                 gameScene.apply(scene.getMainFrame());
+                break;
+            case STATICS:
+                staticsScene.apply(scene.getMainFrame());
                 break;
 
         }

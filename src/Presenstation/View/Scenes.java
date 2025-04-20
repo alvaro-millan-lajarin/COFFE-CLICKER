@@ -7,5 +7,6 @@ public enum Scenes {
     SIGNUP,
     GAME_MANAGEMENT,
     GAME_CREATION,
-    GAME
+    GAME,
+    STATICS
 }
