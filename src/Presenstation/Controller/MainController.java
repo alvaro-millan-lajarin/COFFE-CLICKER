@@ -6,6 +6,7 @@ import Presenstation.View.*;
 
 import javax.swing.*;
 
+
 public class MainController {
     private MenuScene menuScene;
     private Scene scene;
@@ -15,6 +16,8 @@ public class MainController {
     private GameManagementScene gameManagementScene;
     private GameCreationScene gameCreationScene;
     private GameScene gameScene;
+    private StaticsScene staticsScene;
+
 
     private LoginController loginController;
     private SignUpController signUpController;
@@ -22,10 +25,12 @@ public class MainController {
     private GameManagementController gameManagementController;
     private GameCreationController gameCreationController;
     private GameController gameController;
+    private StaticsController staticsController;
 
     private ManageGame manageGame;
 
     public MainController() {
+
         manageGame = new ManageGame();
 
         menuScene = new MenuScene();
@@ -35,14 +40,16 @@ public class MainController {
         gameManagementScene = new GameManagementScene();
         gameCreationScene = new GameCreationScene();
         gameScene = new GameScene();
-        gameScene.setMainController(this); // ✅ Añadido
+        staticsScene = new StaticsScene();
+
 
         loginController = new LoginController(loginScene, this);
         signUpController = new SignUpController(signUpScene, this);
         menuController = new MenuController(menuScene, this);
         gameManagementController = new GameManagementController(gameManagementScene, this, loginController, signUpController);
         gameCreationController = new GameCreationController(gameCreationScene, this, loginController, signUpController, manageGame);
-        gameController = new GameController(gameScene, this, loginController, signUpController, manageGame);
+        gameController = new GameController(gameScene, this, loginController, signUpController,manageGame);
+        staticsController = new StaticsController(staticsScene, this);
 
         menuScene.setController(menuController);
         signUpScene.setController(signUpController);
@@ -50,8 +57,11 @@ public class MainController {
         gameManagementScene.setController(gameManagementController);
         gameCreationScene.setController(gameCreationController);
         gameScene.setController(gameController);
-    }
+        staticsScene.setController(staticsController);
 
+
+
+    }
     public void nextScene(Scenes scenes) {
         scene.clean();
 
@@ -62,50 +72,60 @@ public class MainController {
             case LOGIN:
                 loginScene.clearUserData();
                 loginScene.apply(this.getMainFrame());
+                //loginController.run();
                 break;
             case SIGNUP:
+                //scene.showVisible();
                 signUpScene.apply(scene.getMainFrame());
+                //signUpController.run();
                 break;
             case GAME_MANAGEMENT:
-                gameManagementScene.apply(scene.getMainFrame());
+                    gameManagementScene.apply(scene.getMainFrame());
                 break;
             case GAME_CREATION:
-                gameCreationScene.apply(scene.getMainFrame());
+                    gameCreationScene.apply(scene.getMainFrame());
                 break;
             case GAME:
                 gameScene.apply(scene.getMainFrame());
                 break;
+            case STATICS:
+                staticsScene.apply(scene.getMainFrame());
+                break;
+
         }
     }
 
-    public void resumeGame(Game game) {
+    public void     resumeGame(Game game) {
+
         manageGame.setGame(game);
         game.inicialitzarGeneradors();
         gameScene = new GameScene();
-        gameScene.setMainController(this);
         gameController = new GameController(gameScene, this, loginController, signUpController, manageGame);
 
         gameScene.setController(gameController);
         gameScene.apply(getMainFrame());
     }
 
+
     public void run() {
         scene.showVisible();
         menuScene.apply(scene.getMainFrame());
+        //musicPlayer.play();
     }
-
     public JFrame getMainFrame() {
         return scene.getMainFrame();
     }
-
     public void resetLogin() {
+
         loginScene = null;
         loginController = null;
+
 
         signUpScene = null;
         signUpController = null;
 
         System.gc();
+
 
         loginScene = new LoginScene();
         loginController = new LoginController(loginScene, this);
@@ -115,22 +135,20 @@ public class MainController {
         signUpController = new SignUpController(signUpScene, this);
         signUpScene.setController(signUpController);
     }
-
     public void resetGameCreation() {
         gameCreationScene = null;
         gameCreationController = null;
 
-        gameCreationScene = new GameCreationScene();
-        gameCreationController = new GameCreationController(gameCreationScene, this, loginController, signUpController, manageGame);
+        gameCreationScene= new GameCreationScene();
+        gameCreationController= new GameCreationController(gameCreationScene,this,loginController,signUpController,manageGame);
         gameCreationScene.setController(gameCreationController);
     }
-
     public void resetGameManagement() {
         gameManagementScene = null;
         gameManagementController = null;
 
-        gameManagementScene = new GameManagementScene();
-        gameManagementController = new GameManagementController(gameManagementScene, this, loginController, signUpController);
+        gameManagementScene= new GameManagementScene();
+        gameManagementController= new GameManagementController(gameManagementScene,this,loginController,signUpController);
         gameManagementScene.setController(gameManagementController);
     }
 }

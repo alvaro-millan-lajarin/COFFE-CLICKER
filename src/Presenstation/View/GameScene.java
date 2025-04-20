@@ -142,14 +142,22 @@ public class GameScene extends Scene {
         cafesDisponibles.add(nameLabel);
         cafesDisponibles.add(numCafesLabel);
         cafesDisponibles.add(addVacio());
-        cafesDisponibles.add(addVacio());
+        cafesDisponibles.add(addVacio());//prueba
         cafesDisponibles.add(addVacio());
         cafesDisponibles.add(addVacio());
 
         panelIzquierdo.add(cafesDisponibles);
+
         panelIzquierdo.add(panelParaImagen());
+        panelIzquierdo.add(botonStadisticas());
 
         return panelIzquierdo;
+    }
+    public JButton botonStadisticas() {
+        JButton botonStadisticas = new JButton("Stadisticas");
+        botonStadisticas.addActionListener(gameController);
+        botonStadisticas.setActionCommand("STADISTICAS");
+        return botonStadisticas;
     }
 
     public JPanel panelParaImagen(){
