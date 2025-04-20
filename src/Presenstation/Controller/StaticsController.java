@@ -1,7 +1,7 @@
 package Presenstation.Controller;
 
-import Presenstation.View.Scenes.Scene;
-import Presenstation.View.Scenes.Scenes;
+import Presenstation.View.Scene;
+import Presenstation.View.Scenes;
 
 import java.awt.event.ActionEvent;
 

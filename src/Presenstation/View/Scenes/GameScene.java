@@ -149,9 +149,16 @@ public class GameScene extends Scene {
         panelIzquierdo.add(cafesDisponibles);
 
         panelIzquierdo.add(panelParaImagen());
+        panelIzquierdo.add(botonStadisticas());
 
 
         return panelIzquierdo;
+    }
+    public JButton botonStadisticas() {
+        JButton botonStadisticas = new JButton("Stadisticas");
+        botonStadisticas.addActionListener(gameController);
+        botonStadisticas.setActionCommand("STADISTICAS");
+        return botonStadisticas;
     }
 
 
