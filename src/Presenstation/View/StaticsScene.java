@@ -5,10 +5,18 @@ import Presenstation.Controller.GameCreationController;
 import Presenstation.Controller.StaticsController;
 import Presenstation.JImagePanel;
 import Presenstation.View.WriteText.Text;
+import com.mysql.cj.conf.ConnectionUrlParser;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
+import java.time.LocalDateTime;
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartPanel;
+import org.jfree.chart.JFreeChart;
+import org.jfree.data.time.Second;
+import org.jfree.data.time.TimeSeries;
+import org.jfree.data.time.TimeSeriesCollection;
 
 public class StaticsScene extends Scene {
     private StaticsController staticsController;
@@ -66,27 +74,17 @@ public class StaticsScene extends Scene {
         center.setLayout(new BoxLayout(center, BoxLayout.X_AXIS));
 
 
-        JPanel leftPanel = new JPanel();
-        leftPanel.setLayout(new BoxLayout(leftPanel, BoxLayout.Y_AXIS));
-
-        leftPanel.setOpaque(false);
-        leftPanel.setPreferredSize(new Dimension(300, 300));
-
-
-        JImagePanel imagePanel = new JImagePanel("data/imagenCafe.jpg");
-        imagePanel.setOpaque(false);
-        imagePanel.setPreferredSize(new Dimension(300, 300));
-
-
-        center.add(leftPanel);
-        center.add(Box.createRigidArea(new Dimension(20, 0)));
-        center.add(imagePanel);
+        center.add(estadisticas());
 
         center.setOpaque(false);
         return center;
     }
 
+    public JPanel crearGraficaCafe() {
+        return
 
+
+    }
 
     public JPanel addAccesButton(){
         JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
