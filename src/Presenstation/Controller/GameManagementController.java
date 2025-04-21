@@ -43,6 +43,13 @@ public class GameManagementController extends Controller {
         }else if (e.getActionCommand().equalsIgnoreCase("CREATE_GAME")) {
             mainController.resetGameCreation();
             mainController.nextScene(Scenes.GAME_CREATION);
+        } else if (e.getActionCommand().equalsIgnoreCase("RESUME")) {
+            Game selectedGame = getScene().getSelectedGame();
+            if (selectedGame != null) {
+                mainController.resumeGame(selectedGame); // ← Esto lo implementaremos ahora
+            } else {
+                JOptionPane.showMessageDialog(null, "Selecciona una partida primero.");
+            }
         }
 
         //Implementar els botons DELETEGAME

@@ -3,7 +3,9 @@ package Persistence.sql;
 import Business.Entidades.Game;
 import Persistence.GameDAO;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class SQLGameDAO implements GameDAO {
 
@@ -26,7 +28,10 @@ public class SQLGameDAO implements GameDAO {
                 "nombre_partida = '" + game.getNombre() + "', " +
                 "fecha_creacion = '" + game.getFechaCreacion() + "', " +
                 "fecha_ultimo_save = '" + game.getFechaModificacion() + "', " +
-                "num_cafes = '" + game.getNumCafes() + "' " +
+                "num_cafes = '" + game.getNumCafes() + "', " +
+                "cantidad_cafeteras = '" + listToString(game.getQuantitats()) + "', " +
+                "multiplicadores = '" + listToString(game.getMultplicadors()) + "', " +
+                "precios = '" + listToStringDoubles(game.getPreciosBase()) + "' " +
                 "WHERE id_partida = '" + game.getId() + "'";
 
         SQLConnector.getInstance().updateQuery(query);
@@ -37,7 +42,6 @@ public class SQLGameDAO implements GameDAO {
         String query = "DELETE FROM Partida WHERE nombre_partida = '" + game.getNombre() + "'";
         SQLConnector.getInstance().deleteQuery(query);
     }
-
     @Override
     public Game getGame(int id) {
         String query = "SELECT * FROM Partida WHERE id_partida = '" + id + "'";
@@ -45,7 +49,7 @@ public class SQLGameDAO implements GameDAO {
 
         try {
             if (rs != null && rs.next()) {
-                return new Game(
+                Game game = new Game(
                         rs.getInt("id_partida"),
                         rs.getInt("id_usuario"),
                         rs.getString("nombre_partida"),
@@ -53,6 +57,25 @@ public class SQLGameDAO implements GameDAO {
                         rs.getTimestamp("fecha_ultimo_save").toLocalDateTime(),
                         rs.getInt("num_cafes")
                 );
+
+
+                String[] qs = rs.getString("cantidad_cafeteras").split(",");
+                String[] ms = rs.getString("multiplicadores").split(",");
+                String[] ps = rs.getString("precios").split(",");
+
+                ArrayList<Integer> quantitats = new ArrayList<>();
+                ArrayList<Integer> multiplicadores = new ArrayList<>();
+                ArrayList<Double> precios = new ArrayList<>();
+
+                for (String q : qs) quantitats.add(Integer.parseInt(q));
+                for (String m : ms) multiplicadores.add(Integer.parseInt(m));
+                for (String p : ps) precios.add(Double.parseDouble(p));
+
+                game.setQuantitats(quantitats);
+                game.setMultiplicadors(multiplicadores);
+                game.setPrecios(precios);
+
+                return game;
             }
         } catch (Exception e) {
             System.err.println("Error retrieving game: " + e.getMessage());
@@ -65,7 +88,7 @@ public class SQLGameDAO implements GameDAO {
     public List<Game> getAllGames() {
         String query = "SELECT * FROM Partida";
         var rs = SQLConnector.getInstance().selectQuery(query);
-        List<Game> games = new java.util.ArrayList<>();
+        List<Game> games = new ArrayList<>();
 
         try {
             while (rs != null && rs.next()) {
@@ -77,6 +100,39 @@ public class SQLGameDAO implements GameDAO {
                         rs.getTimestamp("fecha_ultimo_save").toLocalDateTime(),
                         rs.getInt("num_cafes")
                 );
+
+                // Leer valores de las columnas nuevas
+                String cantidadStr = rs.getString("cantidad_cafeteras");
+                String multiStr = rs.getString("multiplicadores");
+                String precioStr = rs.getString("precios");
+
+                ArrayList<Integer> quantitats = new ArrayList<>();
+                ArrayList<Integer> multiplicadores = new ArrayList<>();
+                ArrayList<Double> precios = new ArrayList<>();
+
+
+                if (cantidadStr != null) {
+                    for (String q : cantidadStr.split(",")) quantitats.add(Integer.parseInt(q));
+                } else {
+                    quantitats.add(0); quantitats.add(0); quantitats.add(0);
+                }
+
+                if (multiStr != null) {
+                    for (String m : multiStr.split(",")) multiplicadores.add(Integer.parseInt(m));
+                } else {
+                    multiplicadores.add(1); multiplicadores.add(1); multiplicadores.add(1);
+                }
+
+                if (precioStr != null) {
+                    for (String p : precioStr.split(",")) precios.add(Double.parseDouble(p));
+                } else {
+                    precios.add(10.0); precios.add(150.0); precios.add(2000.0);
+                }
+
+                game.setQuantitats(quantitats);
+                game.setMultiplicadors(multiplicadores);
+                game.setPrecios(precios);
+
                 games.add(game);
             }
         } catch (Exception e) {
@@ -85,4 +141,13 @@ public class SQLGameDAO implements GameDAO {
 
         return games;
     }
+
+
+    private String listToString(List<Integer> list) {
+        return list.stream().map(String::valueOf).collect(Collectors.joining(","));
+    }
+    private String listToStringDoubles(List<Integer> list) {
+        return list.stream().map(String::valueOf).collect(Collectors.joining(","));
+    }
+
 }

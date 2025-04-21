@@ -156,6 +156,9 @@ public class GameManagementScene extends Scene {
         JPanel preguntasYRespuestas = new JPanel(new GridLayout(4,1));
         JButton but_resume = new JButton("RESUME");
         JButton but_del = new JButton("DELETE");
+
+        but_resume.setActionCommand("RESUME");
+        but_resume.addActionListener(gameManagementController);
         preguntasYRespuestas.add(but_resume);
         preguntasYRespuestas.add(but_del);
         but_del.addActionListener(e -> gameManagementController.deleteSelectedGame());

@@ -41,6 +41,7 @@ public class GameController extends Controller {
     public void actionPerformed(ActionEvent e) {
         if (e.getActionCommand().equalsIgnoreCase("MORE_COFFE")) {
             manageGame.increaseNumCafes();
+            sqlGameDAO.updateGame(manageGame.getGame());
             getScene().addCoffe(manageGame.getGame().getNumCafes());
         }else if (e.getActionCommand().equalsIgnoreCase("LOGOUT")) {
             mainController.resetLogin();
@@ -143,8 +144,9 @@ public class GameController extends Controller {
             manageGame.addCafetera("Cafetera");//añades la cantidad de cafetera
             manageGame.updatePriceCoffe("cafetera");
 
-
+            sqlGameDAO.updateGame(manageGame.getGame());
             updateTablas();
+
 
         }else{
             notEnoughtCoffe();
@@ -155,7 +157,7 @@ public class GameController extends Controller {
             manageGame.startGeneratorCafeteraCheta();
             manageGame.restarCafe("CafeCheta");
             manageGame.addCafetera("CafeCheta");
-
+            sqlGameDAO.updateGame(manageGame.getGame());
             updateTablas();
         }else{
             notEnoughtCoffe();
@@ -166,7 +168,7 @@ public class GameController extends Controller {
             manageGame.startGeneratorCafeteraGod();
             manageGame.restarCafe("CafeGod");
             manageGame.addCafetera("CafeGod");
-
+            sqlGameDAO.updateGame(manageGame.getGame());
             updateTablas();
         }else{
             notEnoughtCoffe();
@@ -191,7 +193,7 @@ public class GameController extends Controller {
         if(manageGame.enoughtCoffeMejoraCafetera()){
             manageGame.restarCafeMejora("cafetera");
             manageGame.mejorarCafetera();
-
+            sqlGameDAO.updateGame(manageGame.getGame());
             updateTablas();
         }else{
             notEnoughtCoffe();
@@ -202,7 +204,7 @@ public class GameController extends Controller {
         if(manageGame.enoughtCoffeMejoraCheta()){
             manageGame.restarCafeMejora("CafeCheta");
             manageGame.mejorarCheta();
-
+            sqlGameDAO.updateGame(manageGame.getGame());
             updateTablas();
         }else{
             notEnoughtCoffe();
@@ -212,7 +214,7 @@ public class GameController extends Controller {
         if(manageGame.enoughtCoffeMejoraGod()){
             manageGame.restarCafeMejora("cafeGod");
             manageGame.mejorarGod();
-
+            sqlGameDAO.updateGame(manageGame.getGame());
             updateTablas();
 
         }else{

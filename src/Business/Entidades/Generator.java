@@ -37,6 +37,7 @@ public class Generator extends Thread {
             acumulador += cafeSeg * tiempoGeneracion;
 
             int cafesEnteros = (int) acumulador;
+
             if (cafesEnteros >= 1) {
                 game.addNumCafes(cafesEnteros);
                 acumulador -= cafesEnteros;
@@ -68,7 +69,7 @@ public class Generator extends Thread {
         return cafeSeg;
     }
 
-    // Setters
+
     public void setId(int id) {
         this.id = id;
     }
