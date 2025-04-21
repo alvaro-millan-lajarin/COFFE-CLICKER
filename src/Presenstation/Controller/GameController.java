@@ -72,8 +72,6 @@ public class GameController extends Controller {
         } else if (e.getActionCommand().equalsIgnoreCase("CafeGodMejora")) {
             godMejora();
 
-        }else if (e.getActionCommand().equals("STADISTICAS")) {
-            mainController.nextScene(Scenes.STATICS);
         }
     }
     @Override
