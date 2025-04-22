@@ -4,9 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f9bbb50b-3eaf-412a-ab58-ecb07cf93455" name="Changes" comment="delete gmaes">
+    <list default="true" id="f9bbb50b-3eaf-412a-ab58-ecb07cf93455" name="Changes" comment="comprobar id">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Persistence/sql/SQLGameDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Persistence/sql/SQLGameDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Persistence/sql/SQLUserDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Persistence/sql/SQLUserDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Presenstation/Controller/GameCreationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presenstation/Controller/GameCreationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Presenstation/Controller/SignUpController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presenstation/Controller/SignUpController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Presenstation/View/Grafica/Grafica.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presenstation/View/Grafica/Grafica.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,7 +54,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "Application.Main.executor": "Debug",
+    "Application.Main.executor": "Run",
     "Downloaded.Files.Path.Enabled": "false",
     "Repository.Attach.Annotations": "false",
     "Repository.Attach.JavaDocs": "false",
@@ -345,7 +348,15 @@
       <option name="project" value="LOCAL" />
       <updated>1745332952784</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="comprobar id">
+      <option name="closed" value="true" />
+      <created>1745334305899</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1745334305899</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -398,7 +409,8 @@
     <MESSAGE value="nueva sql" />
     <MESSAGE value="estadisticas" />
     <MESSAGE value="delete gmaes" />
-    <option name="LAST_COMMIT_MESSAGE" value="delete gmaes" />
+    <MESSAGE value="comprobar id" />
+    <option name="LAST_COMMIT_MESSAGE" value="comprobar id" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -417,6 +429,21 @@
           <url>file://$PROJECT_DIR$/src/Presenstation/Controller/GameManagementController.java</url>
           <line>58</line>
           <option name="timeStamp" value="47" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Business/ManageGame.java</url>
+          <line>22</line>
+          <option name="timeStamp" value="48" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Business/ManageGame.java</url>
+          <line>23</line>
+          <option name="timeStamp" value="49" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Presenstation/Controller/GameCreationController.java</url>
+          <line>62</line>
+          <option name="timeStamp" value="50" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

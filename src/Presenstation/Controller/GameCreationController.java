@@ -55,6 +55,10 @@ public class GameCreationController extends Controller {
 
             String userOrEmail = loginController.getEmail();
             String password = loginController.getPassword();
+            if (userOrEmail.isEmpty() || password.isEmpty()) {
+                userOrEmail= signUpController.getEmail();
+                password = signUpController.getPassword();
+            }
 
             SQLUserDAO sqlUserDAO = new SQLUserDAO();
 
@@ -67,7 +71,6 @@ public class GameCreationController extends Controller {
                 manageGame.setGame(game);
                 sqlGameDAO.addGame(game);
                 mainController.nextScene(Scenes.GAME);
-
             }
 
         }else if (e.getActionCommand().equalsIgnoreCase("LOGOUT")) {

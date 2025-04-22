@@ -150,4 +150,7 @@ public class SignUpController extends Controller {
     public String getEmail() {
         return getScene().getEmail();
     }
+    public String getPassword() {
+        return getScene().getPassword();
+    }
 }
