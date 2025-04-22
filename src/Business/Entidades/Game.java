@@ -230,6 +230,23 @@ public class Game {
             generator.setCostMultiplicador(generator.getCostMultiplicador()*2);
         }
     }
+
+    public void setQuantitats(ArrayList<Integer> quantitats) {
+        this.quantitats = quantitats;
+    }
+
+    public void setMultiplicadors(ArrayList<Integer> multipliers) {
+        this.cafeteriaMultiplicador = multipliers.get(0);
+        this.cafeteriaChetaMultiplicador = multipliers.get(1);
+        this.cafeteriaGodMultiplicador = multipliers.get(2);
+    }
+
+    public void setPrecios(ArrayList<Double> precios) {
+        this.cafeteriaPrecio = precios.get(0);
+        this.cafeteriaChetaPrecio = precios.get(1);
+        this.cafeteriaGodPrecio = precios.get(2);
+    }
+
     public void mejorarGod(){
 
         for(Generator generator: generadoresGod){
@@ -255,6 +272,13 @@ public class Game {
         Multplicadors.add(cafeteriaGodMultiplicador);
         return Multplicadors;
     }
+
+    public void inicialitzarGeneradors() {
+        for (int i = 0; i < quantitats.get(0); i++) startGeneratorCafetera();
+        for (int i = 0; i < quantitats.get(1); i++) startGeneratorCafeteraCheta();
+        for (int i = 0; i < quantitats.get(2); i++) startGeneratorCafeteraGod();
+    }
+
 
 
 }

@@ -1,5 +1,6 @@
 package Presenstation.Controller;
 
+import Business.Entidades.Game;
 import Business.ManageGame;
 import Presenstation.View.*;
 
@@ -11,6 +12,7 @@ public class MainController {
     private Scene scene;
     private SignUpScene signUpScene;
     private LoginScene loginScene;
+    private Game game;
     private GameManagementScene gameManagementScene;
     private GameCreationScene gameCreationScene;
     private GameScene gameScene;
@@ -85,6 +87,19 @@ public class MainController {
 
         }
     }
+
+    public void     resumeGame(Game game) {
+
+        manageGame.setGame(game);
+        game.inicialitzarGeneradors();
+        gameScene = new GameScene();
+        gameController = new GameController(gameScene, this, loginController, signUpController, manageGame);
+
+        gameScene.setController(gameController);
+        gameScene.apply(getMainFrame());
+    }
+
+
     public void run() {
         scene.showVisible();
         menuScene.apply(scene.getMainFrame());
