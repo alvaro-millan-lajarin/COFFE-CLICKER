@@ -104,6 +104,9 @@ public class SQLConnector {
     }
 
 
+    public Connection getConnection() {
+        return conn;
+    }
 
 
 }

@@ -1,26 +1,16 @@
-package Presenstation.View;
+package Presenstation.View.Scenes;
 
-import Presenstation.Controller.GameController;
-import Presenstation.Controller.GameCreationController;
 import Presenstation.Controller.StaticsController;
-import Presenstation.JImagePanel;
-import Presenstation.View.WriteText.Text;
-import com.mysql.cj.conf.ConnectionUrlParser;
+import Presenstation.View.Grafica.Grafica;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
-import java.time.LocalDateTime;
-import org.jfree.chart.ChartFactory;
-import org.jfree.chart.ChartPanel;
-import org.jfree.chart.JFreeChart;
-import org.jfree.data.time.Second;
-import org.jfree.data.time.TimeSeries;
-import org.jfree.data.time.TimeSeriesCollection;
 
 public class StaticsScene extends Scene {
     private StaticsController staticsController;
     public final static String BACK = "BACK";
+    private Grafica grafica;
     public void setController(StaticsController staticsController) {
         this.staticsController = staticsController;
 
@@ -74,17 +64,13 @@ public class StaticsScene extends Scene {
         center.setLayout(new BoxLayout(center, BoxLayout.X_AXIS));
 
 
-        center.add(estadisticas());
+        //center.add(estadisticas());
 
         center.setOpaque(false);
         return center;
     }
 
-    public JPanel crearGraficaCafe() {
-        return
 
-
-    }
 
     public JPanel addAccesButton(){
         JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));

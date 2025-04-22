@@ -1,11 +1,13 @@
 package Business;
 
 import Business.Entidades.Game;
+import Persistence.sql.SQLGameDAO;
 
 import java.util.ArrayList;
 
 public class ManageGame {
     private Game game;
+    SQLGameDAO sqlGameDAO = new SQLGameDAO();
 
     public ManageGame() {
 
@@ -16,10 +18,16 @@ public class ManageGame {
 
     public void increaseNumCafes() {
 
+
         game.increaseNumCafes();
+        sqlGameDAO.logCafeHistorico(game.getId(), game.getNumCafes());
     }
     public void setGame(Game game) {
         this.game = game;
+        game.setOnCafeChanged(numCafes -> {
+            // Llamar al log cuando cambia el número de cafés
+            sqlGameDAO.logCafeHistorico(game.getId(), game.getNumCafes());
+        });
     }
     public void addCafetera(String cafetera) {
         game.addCafetera(cafetera);
@@ -147,4 +155,5 @@ public class ManageGame {
         game.setNumCafes((int) (cafeActual-costeCafe));
 
     }
+
 }

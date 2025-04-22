@@ -1,17 +1,16 @@
-package Presenstation.View;
+package Presenstation.View.Scenes;
 
-import Presenstation.Controller.LoginController;
 import Presenstation.Controller.SignUpController;
-import Presenstation.JImagePanel;
+import Presenstation.View.Image.JImagePanel;
 import Presenstation.View.WriteText.Text;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
 
-public class LoginScene extends Scene {
-    private LoginController loginController;
-    public final static String GAME_MANAGEMENT = "GAME_MANAGEMENT";
+public class SignUpScene extends Scene{
+    private SignUpController signUpController;
+    public final static String SIGNUP = "SIGNUP";
 
     private Text email;
     private Text password;
@@ -22,7 +21,7 @@ public class LoginScene extends Scene {
         jPanel.setLayout(new BorderLayout(50, 20));
         jPanel.setBackground(new Color(210, 180, 140));
 
-        jPanel.add(addTitle("LOGIN"), BorderLayout.NORTH);
+        jPanel.add(addTitle("SIGNUP"), BorderLayout.NORTH);
 
         jPanel.add(centerPanel(), BorderLayout.CENTER);
         jPanel.add(addVacio(), BorderLayout.EAST);
@@ -32,15 +31,12 @@ public class LoginScene extends Scene {
 
     }
     public void apply(JFrame mainFrame) {
-
         initialitzate();
-
         super.apply(mainFrame);
-
-        mainFrame.setTitle("Login");
+        mainFrame.setTitle("Sign Up");
     }
-    public void setController(LoginController loginController) {
-        this.loginController = loginController;
+    public void setController(SignUpController signUpController) {
+        this.signUpController = signUpController;
         initialitzate();
     }
     public JPanel centerPanel() {
@@ -55,7 +51,7 @@ public class LoginScene extends Scene {
         leftPanel.setPreferredSize(new Dimension(300, 300));
 
 
-        JImagePanel imagePanel = new JImagePanel("data/Cafe.jpg");
+        JImagePanel imagePanel = new JImagePanel("data/imagenCafe2.jpeg");
         imagePanel.setOpaque(false);
         imagePanel.setPreferredSize(new Dimension(300, 300));
 
@@ -71,16 +67,22 @@ public class LoginScene extends Scene {
 
     public JPanel preguntasYRespuestas() {
         JPanel preguntasYRespuestas = new JPanel(new GridLayout(4,1));
+
         if (name == null) {
-            name = new Text("Name or email", "text");
+            name = new Text("Name", "text");
+            email = new Text("Email", "text");
             password = new Text("Password", "password");
+            passwordAgain = new Text("Password Again", "password");
         }
 
         preguntasYRespuestas.add(name.getPanelText());
+        preguntasYRespuestas.add(email.getPanelText());
         preguntasYRespuestas.add(password.getPanelText());
+        preguntasYRespuestas.add(passwordAgain.getPanelText());
         preguntasYRespuestas.setOpaque(false);
         return preguntasYRespuestas;
     }
+
     public JPanel addAccesButton(){
         JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
         buttonPanel.setOpaque(false);
@@ -90,8 +92,8 @@ public class LoginScene extends Scene {
         accesButton.setPreferredSize(new Dimension(150, 50));
         accesButton.setOpaque(false);
 
-        accesButton.setActionCommand(GAME_MANAGEMENT);
-        accesButton.addActionListener(loginController);
+        accesButton.setActionCommand(SIGNUP);
+        accesButton.addActionListener(signUpController);
 
         buttonPanel.add(accesButton);
         return buttonPanel;
@@ -112,17 +114,16 @@ public class LoginScene extends Scene {
         panel.setBorder(new EmptyBorder(20, 0, 0, 0));
         return panel;
     }
-    public String getEmail() {
+    public String getName(){
         return name.getText("text");
+    }
+    public String getEmail() {
+        return email.getText("text");
     }
     public String getPassword() {
         return password.getText("password");
     }
-    public void clearUserData() {
-        this.name.setField("");
-        this.password.setPassword("");
-
+    public String getPasswordAgain() {
+        return passwordAgain.getText("password");
     }
-
-
 }
