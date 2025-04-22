@@ -41,14 +41,12 @@ public class GameManagementController extends Controller {
             mainController.nextScene(Scenes.MENU);
         }else if (e.getActionCommand().equalsIgnoreCase("DELETE")) {
             mainController.resetLogin();
+            loginController.clearUserData();
             deleteUser();
-
-
         }else if (e.getActionCommand().equalsIgnoreCase("CREATE_GAME")) {
             mainController.resetGameCreation();
             mainController.nextScene(Scenes.GAME_CREATION);
         } else if (e.getActionCommand().equalsIgnoreCase("RESUME")) {
-            mainController.resetGame();
             Game selectedGame = getScene().getSelectedGame();
             if (selectedGame != null) {
                 mainController.resumeGame(selectedGame);
@@ -76,17 +74,28 @@ public class GameManagementController extends Controller {
 
         if (confirm == JOptionPane.YES_OPTION) {
 
-            String emailLogin = signUpController.getEmail();
-            if (emailLogin.isEmpty()) {
-                emailLogin = loginController.getEmail();
+            String emailNameLogin = loginController.getEmail();
+            String emailPasswordRegistre = signUpController.getEmail();
+
+
+            if(loginController.getEmail().isEmpty() && loginController.getPassword().isEmpty()) {
+                User existingUserByEmail = sqlUserDAO.findUserByEmail(emailPasswordRegistre);
+                User existingUserByUsername = sqlUserDAO.findUserByUsername(emailPasswordRegistre);
+                if (existingUserByEmail != null) {
+                    sqlUserDAO.deleteUser(existingUserByEmail);
+                }else{
+                    sqlUserDAO.deleteUser(existingUserByUsername);
+                }
+            }else{
+                User existingUserByEmail = sqlUserDAO.findUserByEmail(emailNameLogin);
+                User existingUserByUsername = sqlUserDAO.findUserByUsername(emailNameLogin);
+                if (existingUserByEmail != null) {
+                    sqlUserDAO.deleteUser(existingUserByEmail);
+                }else{
+                    sqlUserDAO.deleteUser(existingUserByUsername);
+                }
 
             }
-            User user = sqlUserDAO.findUserByEmail(emailLogin);
-            if (user == null) {
-                user = sqlUserDAO.findUserByUsername(emailLogin);
-            }
-            sqlUserDAO.deleteUser(user);
-
 
             JOptionPane.showMessageDialog(
                     getScene().addAccesButton(),
@@ -94,22 +103,14 @@ public class GameManagementController extends Controller {
                     "Deletion Successful",
                     JOptionPane.INFORMATION_MESSAGE
             );
-            loginController.clearUserData();
+
             mainController.nextScene(Scenes.MENU);
         }
         mainController.nextScene(Scenes.MENU);
     }
 
-    public User getUser() {
-        String userOrEmail = loginController.getEmail();
-        if (userOrEmail.isEmpty()) {
-            userOrEmail= signUpController.getEmail();
-        }
-
-        SQLUserDAO sqlUserDAO = new SQLUserDAO();
-
-
-        return sqlUserDAO.findUserByEmail(userOrEmail);
+    public LoginController getLoginController() {
+        return loginController;
     }
 
     public void deleteSelectedGame() {
@@ -134,9 +135,6 @@ public class GameManagementController extends Controller {
         }
         mainController.resetGameManagement();
         mainController.nextScene(Scenes.GAME_MANAGEMENT);
-    }
-    public void mostrarGraficaDeCafes(int idPartida) {
-        manageStatics.mostrarGraficaCafes(idPartida);
     }
     public void mostrarGraficaDeCafes(int idPartida) {
         manageStatics.mostrarGraficaCafes(idPartida);
