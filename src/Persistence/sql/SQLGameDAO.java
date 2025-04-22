@@ -1,8 +1,10 @@
 package Persistence.sql;
 
 import Business.Entidades.Game;
+import Business.Entidades.Pair;
 import Persistence.GameDAO;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -150,4 +152,25 @@ public class SQLGameDAO implements GameDAO {
         return list.stream().map(String::valueOf).collect(Collectors.joining(","));
     }
 
+    public void logCafeHistorico(int id, int numCafes) {
+
+    }
+
+    public List<Pair<LocalDateTime, Integer>> getHistoricoCafes(int idPartida) {
+        List<Pair<LocalDateTime, Integer>> historico = new ArrayList<>();
+        String query = "SELECT timestamp, num_cafes FROM HistoricoCafes WHERE id_partida = " + idPartida + " ORDER BY timestamp ASC";
+        var rs = SQLConnector.getInstance().selectQuery(query);
+
+        try {
+            while (rs != null && rs.next()) {
+                historico.add(new Pair<>(
+                        rs.getTimestamp("timestamp").toLocalDateTime(),
+                        rs.getInt("num_cafes")
+                ));
+            }
+        } catch (Exception e) {
+            System.err.println("Error leyendo histórico de cafés: " + e.getMessage());
+        }
+        return historico;
+    }
 }

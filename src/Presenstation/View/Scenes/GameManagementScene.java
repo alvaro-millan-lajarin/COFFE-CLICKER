@@ -152,6 +152,7 @@ public class GameManagementScene extends Scene {
         JPanel preguntasYRespuestas = new JPanel(new GridLayout(4,1));
         JButton but_resume = new JButton("RESUME");
         JButton but_del = new JButton("DELETE");
+        preguntasYRespuestas.add(botonStadisticas());
 
         but_resume.setActionCommand("RESUME");
         but_resume.addActionListener(gameManagementController);
@@ -197,5 +198,11 @@ public class GameManagementScene extends Scene {
 
     public Game getSelectedGame() {
         return selectedGame;
+    }
+    public JButton botonStadisticas() {
+        JButton botonStadisticas = new JButton("Stadisticas");
+        botonStadisticas.addActionListener(gameManagementController);
+        botonStadisticas.setActionCommand("STADISTICAS");
+        return botonStadisticas;
     }
 }
