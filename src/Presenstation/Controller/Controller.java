@@ -1,6 +1,6 @@
 package Presenstation.Controller;
 
-import Presenstation.View.Scene;
+import Presenstation.View.Scenes.Scene;
 
 import java.awt.event.ActionListener;
 

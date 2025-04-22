@@ -1,6 +1,8 @@
-package Presenstation.View;
+package Presenstation.View.Grafica;
 
-import com.mysql.cj.conf.ConnectionUrlParser;
+
+
+import Business.Entidades.Pair;
 
 import javax.swing.*;
 import java.awt.*;
@@ -9,10 +11,10 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 public class Grafica extends JPanel {
-    private final List<ConnectionUrlParser.Pair<LocalDateTime, Integer>> historico;
+    private final List<Pair<LocalDateTime, Integer>> historico;
     private final LocalDateTime startTime;
 
-    public Grafica(List<ConnectionUrlParser.Pair<LocalDateTime, Integer>> historico) {
+    public Grafica(List<Pair<LocalDateTime, Integer>> historico) {
         this.historico = historico;
         this.startTime = historico.get(0).getKey();
         setPreferredSize(new Dimension(600, 400));
@@ -44,8 +46,8 @@ public class Grafica extends JPanel {
         // Dibujar línea
         g2.setColor(Color.BLUE);
         for (int i = 1; i < historico.size(); i++) {
-            ConnectionUrlParser.Pair<LocalDateTime, Integer> prev = historico.get(i - 1);
-            ConnectionUrlParser.Pair<LocalDateTime, Integer> curr = historico.get(i);
+            Pair<LocalDateTime, Integer> prev = historico.get(i - 1);
+            Pair<LocalDateTime, Integer> curr = historico.get(i);
 
             long t1 = Duration.between(startTime, prev.getKey()).getSeconds();
             long t2 = Duration.between(startTime, curr.getKey()).getSeconds();
@@ -59,7 +61,7 @@ public class Grafica extends JPanel {
             g2.drawLine(x1, y1, x2, y2);
         }
 
-        // Etiquetas (opcional)
+        // Etiquetas
         g2.drawString("Tiempo", getWidth() / 2, getHeight() - 10);
         g2.drawString("Cafés", 5, getHeight() / 2);
     }

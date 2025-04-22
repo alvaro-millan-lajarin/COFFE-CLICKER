@@ -1,8 +1,8 @@
-package Presenstation.View;
+package Presenstation.View.Scenes;
 
 import Presenstation.Controller.GameController;
 import Presenstation.Controller.MainController;
-import Presenstation.JImagePanel;
+import Presenstation.View.Image.JImagePanel;
 import Presenstation.View.Table.TableBotigaGenerators;
 import Presenstation.View.Table.TableBotigaMillores;
 import Presenstation.View.Table.TableGeneradorsDisponibles;

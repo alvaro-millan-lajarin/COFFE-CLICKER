@@ -1,4 +1,4 @@
-package Presenstation;
+package Presenstation.View.Image;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;

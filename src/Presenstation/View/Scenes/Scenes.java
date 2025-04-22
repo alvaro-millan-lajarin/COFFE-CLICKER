@@ -1,4 +1,4 @@
-package Presenstation.View;
+package Presenstation.View.Scenes;
 
 public enum Scenes {
     MENU,

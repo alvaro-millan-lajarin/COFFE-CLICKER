@@ -2,7 +2,8 @@ package Presenstation.Controller;
 
 import Business.Entidades.Game;
 import Business.ManageGame;
-import Presenstation.View.*;
+import Business.ManageStatics;
+import Presenstation.View.Scenes.*;
 
 import javax.swing.*;
 
@@ -28,10 +29,12 @@ public class MainController {
     private StaticsController staticsController;
 
     private ManageGame manageGame;
+    private ManageStatics manageStatics;
 
     public MainController() {
 
         manageGame = new ManageGame();
+        manageStatics = new ManageStatics();
 
         menuScene = new MenuScene();
         scene = new Scene();

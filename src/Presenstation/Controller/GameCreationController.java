@@ -3,18 +3,15 @@ package Presenstation.Controller;
 import Business.Entidades.Game;
 import Business.Entidades.User;
 import Business.ManageGame;
-import Persistence.GameDAO;
 import Persistence.sql.SQLGameDAO;
 import Persistence.sql.SQLUserDAO;
-import Presenstation.View.GameCreationScene;
-import Presenstation.View.GameManagementScene;
-import Presenstation.View.Scene;
-import Presenstation.View.Scenes;
+import Presenstation.View.Scenes.GameCreationScene;
+import Presenstation.View.Scenes.Scene;
+import Presenstation.View.Scenes.Scenes;
 import java.time.LocalDateTime;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
-import java.util.ArrayList;
 import java.util.List;
 
 public class GameCreationController extends Controller {

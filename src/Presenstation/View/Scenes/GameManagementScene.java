@@ -1,14 +1,10 @@
-package Presenstation.View;
+package Presenstation.View.Scenes;
 
 import Business.Entidades.Game;
 import Business.Entidades.User;
 import Persistence.sql.SQLGameDAO;
 import Persistence.sql.SQLUserDAO;
 import Presenstation.Controller.GameManagementController;
-import Presenstation.Controller.MenuController;
-import Presenstation.Controller.SignUpController;
-import Presenstation.JImagePanel;
-import Presenstation.View.WriteText.Text;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;

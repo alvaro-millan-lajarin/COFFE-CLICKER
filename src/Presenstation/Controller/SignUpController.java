@@ -2,10 +2,9 @@ package Presenstation.Controller;
 
 import Business.Entidades.User;
 import Persistence.sql.SQLUserDAO;
-import Presenstation.View.LoginScene;
-import Presenstation.View.Scene;
-import Presenstation.View.Scenes;
-import Presenstation.View.SignUpScene;
+import Presenstation.View.Scenes.Scene;
+import Presenstation.View.Scenes.Scenes;
+import Presenstation.View.Scenes.SignUpScene;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;

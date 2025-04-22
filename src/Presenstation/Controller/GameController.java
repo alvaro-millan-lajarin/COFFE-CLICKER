@@ -5,13 +5,12 @@ import Business.Entidades.User;
 import Business.ManageGame;
 import Persistence.sql.SQLGameDAO;
 import Persistence.sql.SQLUserDAO;
-import Presenstation.View.GameScene;
-import Presenstation.View.Scene;
-import Presenstation.View.Scenes;
+import Presenstation.View.Scenes.GameScene;
+import Presenstation.View.Scenes.Scene;
+import Presenstation.View.Scenes.Scenes;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class GameController extends Controller {
