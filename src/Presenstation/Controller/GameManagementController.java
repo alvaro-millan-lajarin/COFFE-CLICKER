@@ -2,13 +2,14 @@ package Presenstation.Controller;
 
 import Business.Entidades.Game;
 import Business.Entidades.User;
+import Business.ManageStatics;
 import Persistence.GameDAO;
 import Persistence.sql.SQLGameDAO;
 import Persistence.sql.SQLUserDAO;
-import Presenstation.View.GameManagementScene;
-import Presenstation.View.LoginScene;
-import Presenstation.View.Scene;
-import Presenstation.View.Scenes;
+import Presenstation.View.Scenes.GameManagementScene;
+import Presenstation.View.Scenes.Scene;
+import Presenstation.View.Scenes.Scenes;
+
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -17,11 +18,13 @@ public class GameManagementController extends Controller {
     private LoginController loginController;
     private SignUpController signUpController;
     private SQLUserDAO sqlUserDAO = new SQLUserDAO();
+    private ManageStatics manageStatics;
 
     public GameManagementController(Scene view, MainController mainController, LoginController loginController, SignUpController signUpController) {
         super(view, mainController);
         this.loginController = loginController;
         this.signUpController = signUpController;
+        this.manageStatics = new ManageStatics();
     }
 
     public GameManagementScene getScene() {
@@ -50,6 +53,9 @@ public class GameManagementController extends Controller {
             } else {
                 JOptionPane.showMessageDialog(null, "Selecciona una partida primero.");
             }
+        }else if (e.getActionCommand().equals("STADISTICAS")) {
+            Game selectedGame = getScene().getSelectedGame();
+            mostrarGraficaDeCafes(selectedGame.getId());
         }
 
         //Implementar els botons DELETEGAME
@@ -126,5 +132,8 @@ public class GameManagementController extends Controller {
         } else {
             JOptionPane.showMessageDialog(getScene().getPanel(), "Please select a game to delete.");
         }
+    }
+    public void mostrarGraficaDeCafes(int idPartida) {
+        manageStatics.mostrarGraficaCafes(idPartida);
     }
 }
