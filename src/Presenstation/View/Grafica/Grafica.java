@@ -29,7 +29,7 @@ public class Grafica extends JPanel {
         g2.setColor(Color.WHITE);
         g2.fillRect(0, 0, getWidth(), getHeight());
 
-        int padding = 40;
+        int padding = 60;
         int width = getWidth() - 2 * padding;
         int height = getHeight() - 2 * padding;
 
@@ -43,7 +43,7 @@ public class Grafica extends JPanel {
         long totalSeconds = Duration.between(startTime, historico.get(historico.size() - 1).getKey()).getSeconds();
         totalSeconds = totalSeconds == 0 ? 1 : totalSeconds;
 
-        // Dibujar línea
+        // Dibujar líneas
         g2.setColor(Color.BLUE);
         for (int i = 1; i < historico.size(); i++) {
             Pair<LocalDateTime, Integer> prev = historico.get(i - 1);
@@ -61,8 +61,38 @@ public class Grafica extends JPanel {
             g2.drawLine(x1, y1, x2, y2);
         }
 
-        // Etiquetas
+        // Etiquetas de eje Y (número de cafés)
+        g2.setColor(Color.DARK_GRAY);
+        int yTicks = 5;
+        for (int i = 0; i <= yTicks; i++) {
+            int value = i * maxCafe / yTicks;
+            int y = getHeight() - padding - (int) ((value / (double) maxCafe) * height);
+            g2.drawLine(padding - 5, y, padding + 5, y); // tick
+            g2.drawString(String.valueOf(value), padding - 40, y + 5); // label
+        }
+
+        // Etiquetas de eje X (tiempo)
+        int xTicks = 6;
+        for (int i = 0; i <= xTicks; i++) {
+            long seconds = i * totalSeconds / xTicks;
+            int x = padding + (int) ((seconds / (double) totalSeconds) * width);
+            g2.drawLine(x, getHeight() - padding - 5, x, getHeight() - padding + 5); // tick
+
+            String label = seconds >= 60 ? (seconds / 60) + "m" : seconds + "s";
+            g2.drawString(label, x - 10, getHeight() - padding + 20); // label
+        }
+
+        // Títulos de ejes
         g2.drawString("Tiempo", getWidth() / 2, getHeight() - 10);
-        g2.drawString("Cafés", 5, getHeight() / 2);
+        g2.drawString("Número de cafés", 10, padding - 10);
+
+        // Información resumen
+        g2.drawString("Máx cafés: " + maxCafe, getWidth() - 120, padding - 10);
+        String tiempoStr = totalSeconds > 60
+                ? String.format("Tiempo aprox: %.1f min", totalSeconds / 60.0)
+                : String.format("Tiempo aprox: %d seg", totalSeconds);
+        g2.drawString(tiempoStr, getWidth() - 160, getHeight() - padding + 40);
     }
+
+
 }
