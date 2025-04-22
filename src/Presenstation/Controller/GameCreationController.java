@@ -68,10 +68,8 @@ public class GameCreationController extends Controller {
 
             if (existingUserByEmail != null && existingUserByEmail.getPassword().equals(password)) {
                 game = new Game(1,existingUserByEmail.getId(),nombreGame,fechaYHoraActual,fechaYHoraActual,0);
+                manageGame.setGame(game);
                 sqlGameDAO.addGame(game);
-
-                setGame(sqlGameDAO, nombreGame, existingUserByEmail);
-
                 mainController.nextScene(Scenes.GAME);
             }
 
@@ -130,19 +128,4 @@ public class GameCreationController extends Controller {
         }
         mainController.nextScene(Scenes.MENU);
     }
-    public void setGame(SQLGameDAO sqlGameDAO, String nombreGame, User user) {
-        List<Game> gamesArray = sqlGameDAO.getAllGames();
-
-
-
-        for (Game game : gamesArray) {
-            if (game.getIdUser() == user.getId() && game.getNombre().equals(nombreGame)) {
-                Game gameCopy = sqlGameDAO.getGame(game.getId());
-                manageGame.setGame(gameCopy);
-            }
-        }
-
-
-    }
-
 }
