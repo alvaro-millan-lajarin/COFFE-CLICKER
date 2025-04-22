@@ -114,6 +114,7 @@ public class GameManagementController extends Controller {
     }
 
     public void deleteSelectedGame() {
+
         Game selectedGame = getScene().getSelectedGame();
         if (selectedGame != null) {
             int confirm = JOptionPane.showConfirmDialog(
@@ -132,6 +133,8 @@ public class GameManagementController extends Controller {
         } else {
             JOptionPane.showMessageDialog(getScene().getPanel(), "Please select a game to delete.");
         }
+        mainController.resetGameManagement();
+        mainController.nextScene(Scenes.GAME_MANAGEMENT);
     }
     public void mostrarGraficaDeCafes(int idPartida) {
         manageStatics.mostrarGraficaCafes(idPartida);

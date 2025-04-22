@@ -43,7 +43,7 @@ public class Game {
     private Integer cafeteriaGodMultiplicador = 1;
     private Integer GodCostMultiplicador = 2000;
 
-
+    private java.util.function.Consumer<Integer> onCafeChanged;
 
 
     public Game(int id, int idUser, String nombre, LocalDateTime fechaCreacion, LocalDateTime fechaModificacion, int numCafes) {
@@ -125,14 +125,19 @@ public class Game {
     }
 
     public void setNumCafes(int numCafes) {
+
         this.numCafes = numCafes;
+        if (onCafeChanged != null) onCafeChanged.accept(this.numCafes);
     }
 
     public void increaseNumCafes(){
+
         this.numCafes++;
+        if (onCafeChanged != null) onCafeChanged.accept(this.numCafes);
     }
     public synchronized void addNumCafes(Integer coffes){
         this.numCafes = this.numCafes + coffes;
+        if (onCafeChanged != null) onCafeChanged.accept(this.numCafes);
     }
     public void addCafetera(String cafetera) {
         if(cafetera.equals("Cafetera") ){
