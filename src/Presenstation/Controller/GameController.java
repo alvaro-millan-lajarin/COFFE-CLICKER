@@ -62,6 +62,7 @@ public class GameController extends Controller {
 
         }else if(e.getActionCommand().equalsIgnoreCase("GAME_MANAGEMENT")){
             mainController.resetGameManagement();
+
             mainController.nextScene(Scenes.GAME_MANAGEMENT);
         }else if (e.getActionCommand().equalsIgnoreCase("CafeteraMejora")) {
             cafeteraMejora();

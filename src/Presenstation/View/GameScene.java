@@ -230,6 +230,7 @@ public class GameScene extends Scene {
                     "Confirmar", JOptionPane.YES_NO_OPTION);
 
             if (confirm == JOptionPane.YES_OPTION) {
+                mainController.resetGameManagement();
                 gameController.deleteCurrentGame();
 
                 gameController.goToGameManagementScene();            }
