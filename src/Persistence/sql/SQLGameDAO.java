@@ -153,7 +153,25 @@ public class SQLGameDAO implements GameDAO {
     }
 
     public void logCafeHistorico(int id, int numCafes) {
+        try {
+            System.out.println("Intentando registrar café para partida ID: " + id);
 
+            // Verificar si existe la partida
+            String checkQuery = "SELECT id_partida FROM Partida WHERE id_partida = " + id;
+            var rs = SQLConnector.getInstance().selectQuery(checkQuery);
+
+            if (rs != null && rs.next()) {
+                System.out.println("Partida encontrada, procediendo a insertar...");
+                String query = "INSERT INTO HistoricoCafes (id_partida, timestamp, num_cafes) VALUES (" +
+                        id + ", CURRENT_TIMESTAMP, " + numCafes + ")";
+                SQLConnector.getInstance().insertQuery(query);
+            } else {
+                System.err.println("ERROR: No existe partida con ID: " + id);
+            }
+        } catch (Exception e) {
+            System.err.println("Error en logCafeHistorico: " + e.getMessage());
+            e.printStackTrace();
+        }
     }
 
     public List<Pair<LocalDateTime, Integer>> getHistoricoCafes(int idPartida) {
