@@ -76,7 +76,7 @@ public class GameManagementController extends Controller {
         if (confirm == JOptionPane.YES_OPTION) {
 
             String emailLogin = signUpController.getEmail();
-            if (emailLogin == null) {
+            if (emailLogin.isEmpty()) {
                 emailLogin = loginController.getEmail();
 
             }
