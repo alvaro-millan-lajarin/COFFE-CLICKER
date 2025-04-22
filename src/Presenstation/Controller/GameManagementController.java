@@ -49,7 +49,7 @@ public class GameManagementController extends Controller {
         } else if (e.getActionCommand().equalsIgnoreCase("RESUME")) {
             Game selectedGame = getScene().getSelectedGame();
             if (selectedGame != null) {
-                mainController.resumeGame(selectedGame); // ← Esto lo implementaremos ahora
+                mainController.resumeGame(selectedGame);
             } else {
                 JOptionPane.showMessageDialog(null, "Selecciona una partida primero.");
             }
