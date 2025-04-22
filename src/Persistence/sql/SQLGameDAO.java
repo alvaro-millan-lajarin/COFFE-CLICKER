@@ -60,39 +60,31 @@ public class SQLGameDAO implements GameDAO {
                         rs.getInt("num_cafes")
                 );
 
-                // Parseo seguro de las columnas que pueden venir como NULL
-                String cantidadStr = rs.getString("cantidad_cafeteras");
-                String multiplicadoresStr = rs.getString("multiplicadores");
-                String preciosStr = rs.getString("precios");
 
-                if (cantidadStr != null && multiplicadoresStr != null && preciosStr != null) {
-                    String[] qs = cantidadStr.split(",");
-                    String[] ms = multiplicadoresStr.split(",");
-                    String[] ps = preciosStr.split(",");
+                String[] qs = rs.getString("cantidad_cafeteras").split(",");
+                String[] ms = rs.getString("multiplicadores").split(",");
+                String[] ps = rs.getString("precios").split(",");
 
-                    ArrayList<Integer> quantitats = new ArrayList<>();
-                    ArrayList<Integer> multiplicadores = new ArrayList<>();
-                    ArrayList<Double> precios = new ArrayList<>();
+                ArrayList<Integer> quantitats = new ArrayList<>();
+                ArrayList<Integer> multiplicadores = new ArrayList<>();
+                ArrayList<Double> precios = new ArrayList<>();
 
-                    for (String q : qs) quantitats.add(Integer.parseInt(q.trim()));
-                    for (String m : ms) multiplicadores.add(Integer.parseInt(m.trim()));
-                    for (String p : ps) precios.add(Double.parseDouble(p.trim()));
+                for (String q : qs) quantitats.add(Integer.parseInt(q));
+                for (String m : ms) multiplicadores.add(Integer.parseInt(m));
+                for (String p : ps) precios.add(Double.parseDouble(p));
 
-                    game.setQuantitats(quantitats);
-                    game.setMultiplicadors(multiplicadores);
-                    game.setPrecios(precios);
-                }
+                game.setQuantitats(quantitats);
+                game.setMultiplicadors(multiplicadores);
+                game.setPrecios(precios);
 
                 return game;
             }
         } catch (Exception e) {
             System.err.println("Error retrieving game: " + e.getMessage());
-            e.printStackTrace(); // opcional para más detalles en consola
         }
 
         return null;
     }
-
 
     @Override
     public List<Game> getAllGames() {
@@ -161,25 +153,7 @@ public class SQLGameDAO implements GameDAO {
     }
 
     public void logCafeHistorico(int id, int numCafes) {
-        try {
-            System.out.println("Intentando registrar café para partida ID: " + id);
 
-            // Verificar si existe la partida
-            String checkQuery = "SELECT id_partida FROM Partida WHERE id_partida = " + id;
-            var rs = SQLConnector.getInstance().selectQuery(checkQuery);
-
-            if (rs != null && rs.next()) {
-                System.out.println("Partida encontrada, procediendo a insertar...");
-                String query = "INSERT INTO HistoricoCafes (id_partida, timestamp, num_cafes) VALUES (" +
-                        id + ", CURRENT_TIMESTAMP, " + numCafes + ")";
-                SQLConnector.getInstance().insertQuery(query);
-            } else {
-                System.err.println("ERROR: No existe partida con ID: " + id);
-            }
-        } catch (Exception e) {
-            System.err.println("Error en logCafeHistorico: " + e.getMessage());
-            e.printStackTrace();
-        }
     }
 
     public List<Pair<LocalDateTime, Integer>> getHistoricoCafes(int idPartida) {

@@ -138,4 +138,7 @@ public class GameManagementController extends Controller {
     public void mostrarGraficaDeCafes(int idPartida) {
         manageStatics.mostrarGraficaCafes(idPartida);
     }
+    public void mostrarGraficaDeCafes(int idPartida) {
+        manageStatics.mostrarGraficaCafes(idPartida);
+    }
 }

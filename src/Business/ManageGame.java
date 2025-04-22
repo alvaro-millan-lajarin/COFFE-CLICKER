@@ -24,10 +24,10 @@ public class ManageGame {
     }
     public void setGame(Game game) {
         this.game = game;
-        game.setOnCafeChanged(numCafes -> {
+       /* game.setOnCafeChanged(numCafes -> {
             // Llamar al log cuando cambia el número de cafés
             sqlGameDAO.logCafeHistorico(game.getId(), game.getNumCafes());
-        });
+        });*/
     }
     public void addCafetera(String cafetera) {
         game.addCafetera(cafetera);

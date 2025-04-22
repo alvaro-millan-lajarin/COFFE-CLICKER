@@ -4,7 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f9bbb50b-3eaf-412a-ab58-ecb07cf93455" name="Changes" comment="correccion graficca" />
+    <list default="true" id="f9bbb50b-3eaf-412a-ab58-ecb07cf93455" name="Changes" comment="nueva sql">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Business/ManageGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Business/ManageGame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Persistence/sql/SQLGameDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Persistence/sql/SQLGameDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Presenstation/Controller/GameManagementController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presenstation/Controller/GameManagementController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Presenstation/View/Scenes/GameManagementScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presenstation/View/Scenes/GameManagementScene.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -20,7 +26,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="S21-ResourceEvolution" />
+        <entry key="$PROJECT_DIR$" value="newDev" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -318,87 +324,7 @@
       <option name="project" value="LOCAL" />
       <updated>1745276801458</updated>
     </task>
-    <task id="LOCAL-00027" summary="estadisticas">
-      <option name="closed" value="true" />
-      <created>1745328119810</created>
-      <option name="number" value="00027" />
-      <option name="presentableId" value="LOCAL-00027" />
-      <option name="project" value="LOCAL" />
-      <updated>1745328119810</updated>
-    </task>
-    <task id="LOCAL-00028" summary="estadisticas">
-      <option name="closed" value="true" />
-      <created>1745329510123</created>
-      <option name="number" value="00028" />
-      <option name="presentableId" value="LOCAL-00028" />
-      <option name="project" value="LOCAL" />
-      <updated>1745329510123</updated>
-    </task>
-    <task id="LOCAL-00029" summary="delete gmaes">
-      <option name="closed" value="true" />
-      <created>1745332952784</created>
-      <option name="number" value="00029" />
-      <option name="presentableId" value="LOCAL-00029" />
-      <option name="project" value="LOCAL" />
-      <updated>1745332952784</updated>
-    </task>
-    <task id="LOCAL-00030" summary="comprobar id">
-      <option name="closed" value="true" />
-      <created>1745334305899</created>
-      <option name="number" value="00030" />
-      <option name="presentableId" value="LOCAL-00030" />
-      <option name="project" value="LOCAL" />
-      <updated>1745334305899</updated>
-    </task>
-    <task id="LOCAL-00031" summary="crear partida con sign up">
-      <option name="closed" value="true" />
-      <created>1745341820447</created>
-      <option name="number" value="00031" />
-      <option name="presentableId" value="LOCAL-00031" />
-      <option name="project" value="LOCAL" />
-      <updated>1745341820447</updated>
-    </task>
-    <task id="LOCAL-00032" summary="resume, signup, delete..">
-      <option name="closed" value="true" />
-      <created>1745346682816</created>
-      <option name="number" value="00032" />
-      <option name="presentableId" value="LOCAL-00032" />
-      <option name="project" value="LOCAL" />
-      <updated>1745346682816</updated>
-    </task>
-    <task id="LOCAL-00033" summary="arreglo deletes">
-      <option name="closed" value="true" />
-      <created>1745347874625</created>
-      <option name="number" value="00033" />
-      <option name="presentableId" value="LOCAL-00033" />
-      <option name="project" value="LOCAL" />
-      <updated>1745347874625</updated>
-    </task>
-    <task id="LOCAL-00034" summary="arreglo deletes">
-      <option name="closed" value="true" />
-      <created>1745350011935</created>
-      <option name="number" value="00034" />
-      <option name="presentableId" value="LOCAL-00034" />
-      <option name="project" value="LOCAL" />
-      <updated>1745350011935</updated>
-    </task>
-    <task id="LOCAL-00035" summary="correccion graficca">
-      <option name="closed" value="true" />
-      <created>1745408880689</created>
-      <option name="number" value="00035" />
-      <option name="presentableId" value="LOCAL-00035" />
-      <option name="project" value="LOCAL" />
-      <updated>1745408880689</updated>
-    </task>
-    <task id="LOCAL-00036" summary="correccion graficca">
-      <option name="closed" value="true" />
-      <created>1746175409973</created>
-      <option name="number" value="00036" />
-      <option name="presentableId" value="LOCAL-00036" />
-      <option name="project" value="LOCAL" />
-      <updated>1746175409973</updated>
-    </task>
-    <option name="localTasksCounter" value="37" />
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -428,6 +354,9 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <MESSAGE value="g" />
+    <MESSAGE value="arreglo imagenes" />
+    <MESSAGE value="s" />
     <MESSAGE value="login" />
     <MESSAGE value="singUp" />
     <MESSAGE value="arreglo fallos de registro" />
@@ -446,44 +375,6 @@
     <MESSAGE value="icrementar costes formula" />
     <MESSAGE value="Implementacio del boto resum, amb guarda de memoria stadistiques y Canvi en base de dades" />
     <MESSAGE value="nueva sql" />
-    <MESSAGE value="estadisticas" />
-    <MESSAGE value="delete gmaes" />
-    <MESSAGE value="comprobar id" />
-    <MESSAGE value="crear partida con sign up" />
-    <MESSAGE value="resume, signup, delete.." />
-    <MESSAGE value="arreglo deletes" />
-    <MESSAGE value="correccion graficca" />
-    <option name="LAST_COMMIT_MESSAGE" value="correccion graficca" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Business/ManageGame.java</url>
-          <line>22</line>
-          <option name="timeStamp" value="48" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Business/ManageGame.java</url>
-          <line>23</line>
-          <option name="timeStamp" value="49" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Presenstation/Controller/GameCreationController.java</url>
-          <line>141</line>
-          <option name="timeStamp" value="51" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Presenstation/Controller/GameManagementController.java</url>
-          <line>86</line>
-          <option name="timeStamp" value="56" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Presenstation/Controller/GameManagementController.java</url>
-          <line>87</line>
-          <option name="timeStamp" value="57" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <option name="LAST_COMMIT_MESSAGE" value="nueva sql" />
   </component>
 </project>
