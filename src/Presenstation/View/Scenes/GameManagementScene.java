@@ -68,17 +68,14 @@ public class GameManagementScene extends Scene {
     public JPanel centerPanel() {
         SQLGameDAO sqlGameDAO = new SQLGameDAO();
         List<Game> games = sqlGameDAO.getAllGames();
-
-        String userOrEmail = gameManagementController.getLoginController().getEmail();
-        String password = gameManagementController.getLoginController().getPassword();
-
-        SQLUserDAO sqlUserDAO = new SQLUserDAO();
-        User existingUserByEmail = sqlUserDAO.findUserByEmail(userOrEmail);
+        User user = new User();
+        user = gameManagementController.getUser();
 
         ArrayList<Game> gamesUser = new ArrayList<>();
-        if (existingUserByEmail != null && existingUserByEmail.getPassword().equals(password)) {
+
+        if (user != null) {
             for (Game game : games) {
-                if (game.getIdUser() == existingUserByEmail.getId()) {
+                if (game.getIdUser() == user.getId()) {
                     gamesUser.add(game);
                 }
             }

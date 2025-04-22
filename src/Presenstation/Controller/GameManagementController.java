@@ -109,8 +109,16 @@ public class GameManagementController extends Controller {
         mainController.nextScene(Scenes.MENU);
     }
 
-    public LoginController getLoginController() {
-        return loginController;
+    public User getUser() {
+        String userOrEmail = loginController.getEmail();
+        if (userOrEmail.isEmpty()) {
+            userOrEmail= signUpController.getEmail();
+        }
+
+        SQLUserDAO sqlUserDAO = new SQLUserDAO();
+
+
+        return sqlUserDAO.findUserByEmail(userOrEmail);
     }
 
     public void deleteSelectedGame() {
