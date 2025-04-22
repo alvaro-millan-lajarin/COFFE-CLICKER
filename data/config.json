@@ -2,7 +2,7 @@
   {
     "portConexionBD": "localhost",
     "ipBD": 3306,
-    "nomBD": "dopo",
+    "nomBD": "dpoo",
     "accesUserBD": "root",
     "passwordBD": ""
   }
