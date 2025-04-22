@@ -12,7 +12,6 @@ import java.time.LocalDateTime;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
-import java.util.ArrayList;
 import java.util.List;
 
 public class GameCreationController extends Controller {
