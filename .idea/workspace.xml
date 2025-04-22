@@ -4,16 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f9bbb50b-3eaf-412a-ab58-ecb07cf93455" name="Changes" comment="icrementar costes formula">
+    <list default="true" id="f9bbb50b-3eaf-412a-ab58-ecb07cf93455" name="Changes" comment="Implementacio del boto resum, amb guarda de memoria stadistiques y Canvi en base de dades">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Business/Entidades/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Business/Entidades/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Business/Entidades/Generator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Business/Entidades/Generator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Persistence/sql/SQLGameDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Persistence/sql/SQLGameDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Presenstation/Controller/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presenstation/Controller/GameController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Presenstation/Controller/GameManagementController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presenstation/Controller/GameManagementController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Presenstation/Controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presenstation/Controller/MainController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Presenstation/View/GameManagementScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presenstation/View/GameManagementScene.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Presenstation/View/GameScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presenstation/View/GameScene.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -320,7 +313,15 @@
       <option name="project" value="LOCAL" />
       <updated>1744699241577</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="Implementacio del boto resum, amb guarda de memoria stadistiques y Canvi en base de dades">
+      <option name="closed" value="true" />
+      <created>1745276801458</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1745276801458</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -369,7 +370,8 @@
     <MESSAGE value="game creation modificacion" />
     <MESSAGE value="borrar clases inecesarias" />
     <MESSAGE value="icrementar costes formula" />
-    <option name="LAST_COMMIT_MESSAGE" value="icrementar costes formula" />
+    <MESSAGE value="Implementacio del boto resum, amb guarda de memoria stadistiques y Canvi en base de dades" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implementacio del boto resum, amb guarda de memoria stadistiques y Canvi en base de dades" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -378,20 +380,6 @@
           <url>file://$PROJECT_DIR$/src/Presenstation/Controller/GameManagementController.java</url>
           <line>74</line>
           <option name="timeStamp" value="32" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Business/ManageGame.java</url>
-          <line>97</line>
-          <option name="timeStamp" value="38" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/Business/ManageGame.java</url>
-          <line>96</line>
-          <properties class="Business.ManageGame" method="mejorarCafetera">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="40" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
