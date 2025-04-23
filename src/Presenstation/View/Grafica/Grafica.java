@@ -33,17 +33,17 @@ public class Grafica extends JPanel {
         int width = getWidth() - 2 * padding;
         int height = getHeight() - 2 * padding;
 
-        // Ejes
+
         g2.setColor(Color.BLACK);
         g2.drawLine(padding, getHeight() - padding, getWidth() - padding, getHeight() - padding); // eje X
         g2.drawLine(padding, padding, padding, getHeight() - padding); // eje Y
 
-        // Escalas
+
         int maxCafe = historico.stream().mapToInt(Pair::getValue).max().orElse(1);
         long totalSeconds = Duration.between(startTime, historico.get(historico.size() - 1).getKey()).getSeconds();
         totalSeconds = totalSeconds == 0 ? 1 : totalSeconds;
 
-        // Dibujar líneas
+
         g2.setColor(Color.BLUE);
         for (int i = 1; i < historico.size(); i++) {
             Pair<LocalDateTime, Integer> prev = historico.get(i - 1);
@@ -61,7 +61,7 @@ public class Grafica extends JPanel {
             g2.drawLine(x1, y1, x2, y2);
         }
 
-        // Etiquetas de eje Y (número de cafés)
+
         g2.setColor(Color.DARK_GRAY);
         int yTicks = 5;
         for (int i = 0; i <= yTicks; i++) {
@@ -71,7 +71,7 @@ public class Grafica extends JPanel {
             g2.drawString(String.valueOf(value), padding - 40, y + 5); // label
         }
 
-        // Etiquetas de eje X (tiempo)
+
         int xTicks = 6;
         for (int i = 0; i <= xTicks; i++) {
             long seconds = i * totalSeconds / xTicks;
@@ -82,11 +82,11 @@ public class Grafica extends JPanel {
             g2.drawString(label, x - 10, getHeight() - padding + 20); // label
         }
 
-        // Títulos de ejes
+
         g2.drawString("Tiempo", getWidth() / 2, getHeight() - 10);
         g2.drawString("Número de cafés", 10, padding - 10);
 
-        // Información resumen
+
         g2.drawString("Máx cafés: " + maxCafe, getWidth() - 120, padding - 10);
         String tiempoStr = totalSeconds > 60
                 ? String.format("Tiempo aprox: %.1f min", totalSeconds / 60.0)
