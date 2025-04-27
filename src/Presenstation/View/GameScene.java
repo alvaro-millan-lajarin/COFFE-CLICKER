@@ -188,6 +188,11 @@ public class GameScene extends Scene {
         buttonPanel.add(exitButton);
         return buttonPanel;
     }
+
+    public void setMainController(MainController mainController) {
+        this.mainController = mainController;
+    }
+
     public JPanel addVacio() {
         JPanel panel = new JPanel(new FlowLayout());
 
