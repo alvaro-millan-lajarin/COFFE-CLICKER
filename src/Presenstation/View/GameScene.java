@@ -199,6 +199,10 @@ public class GameScene extends Scene {
         panel.setBorder(new EmptyBorder(20, 0, 0, 0));
         return panel;
     }
+    public void setMainController(MainController mainController) {
+        this.mainController = mainController;
+    }
+
     public void addCoffe(int numCafes){
 
         numCafesLabel.setText(String.valueOf(numCafes));
