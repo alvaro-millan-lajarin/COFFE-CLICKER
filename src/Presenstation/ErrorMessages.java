@@ -85,4 +85,36 @@ public class ErrorMessages {
                 JOptionPane.WARNING_MESSAGE
         );
     }
+    public int confirmDelete(){
+        return JOptionPane.showConfirmDialog(
+                null,
+                "Are you sure you want to delete your account?",
+                "Confirm Deletion",
+                JOptionPane.YES_NO_OPTION,
+                JOptionPane.WARNING_MESSAGE
+        );
+    }
+    public void deleteUser(){
+        JOptionPane.showMessageDialog(
+                null,
+                "Account successfully deleted.",
+                "Deletion Successful",
+                JOptionPane.INFORMATION_MESSAGE
+        );
+    }
+    public void seleccionaPartida(){
+        JOptionPane.showMessageDialog(null, "Selecciona una partida primero.");
+    }
+    public int deleteGame(){
+        return JOptionPane.showConfirmDialog(
+                null,
+                "Are you sure you want to delete the selected game?",
+                "Confirm Deletion",
+                JOptionPane.YES_NO_OPTION,
+                JOptionPane.WARNING_MESSAGE
+        );
+    }
+    public void deleteGameSucces(){
+        JOptionPane.showMessageDialog(null, "Game deleted successfully.");
+    }
 }

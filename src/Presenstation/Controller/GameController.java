@@ -3,6 +3,7 @@ package Presenstation.Controller;
 import Business.Entidades.Game;
 import Business.Entidades.User;
 import Business.ManageGame;
+import Business.ManageUser;
 import Persistence.sql.SQLGameDAO;
 import Persistence.sql.SQLUserDAO;
 import Presenstation.View.Scenes.GameScene;
@@ -23,7 +24,7 @@ public class GameController extends Controller {
 
 
     //private TablaGeneradorsDisponibles tablaGeneradorsDisponibles = new TablaGeneradorsDisponibles();
-    public GameController(Scene view, MainController mainController, LoginController loginController, SignUpController signUpController, ManageGame manageGame) {
+    public GameController(Scene view, MainController mainController, LoginController loginController, SignUpController signUpController, ManageGame manageGame, ManageUser manageUser) {
         super(view, mainController);
         this.loginController = loginController;
         this.signUpController = signUpController;

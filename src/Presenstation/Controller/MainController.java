@@ -52,10 +52,10 @@ public class MainController {
         loginController = new LoginController(loginScene, this, manageUser);
         signUpController = new SignUpController(signUpScene, this, manageUser);
         menuController = new MenuController(menuScene, this);
-        gameManagementController = new GameManagementController(gameManagementScene, this, loginController, signUpController);
-        gameCreationController = new GameCreationController(gameCreationScene, this, loginController, signUpController, manageGame);
-        gameController = new GameController(gameScene, this, loginController, signUpController,manageGame);
-        staticsController = new StaticsController(staticsScene, this);
+        gameManagementController = new GameManagementController(gameManagementScene, this, loginController, signUpController, manageUser);
+        gameCreationController = new GameCreationController(gameCreationScene, this, loginController, signUpController, manageGame, manageUser);
+        gameController = new GameController(gameScene, this, loginController, signUpController,manageGame, manageUser);
+        staticsController = new StaticsController(staticsScene, this, manageUser);
 
         menuScene.setController(menuController);
         signUpScene.setController(signUpController);
@@ -106,7 +106,7 @@ public class MainController {
         manageGame.setGame(game);
         game.inicialitzarGeneradors();
         gameScene = new GameScene();
-        gameController = new GameController(gameScene, this, loginController, signUpController, manageGame);
+        gameController = new GameController(gameScene, this, loginController, signUpController, manageGame, manageUser);
 
         gameScene.setController(gameController);
         gameScene.apply(getMainFrame());
@@ -146,7 +146,7 @@ public class MainController {
         gameCreationController = null;
 
         gameCreationScene= new GameCreationScene();
-        gameCreationController= new GameCreationController(gameCreationScene,this,loginController,signUpController,manageGame);
+        gameCreationController= new GameCreationController(gameCreationScene,this,loginController,signUpController,manageGame, manageUser);
         gameCreationScene.setController(gameCreationController);
     }
     public void resetGameManagement() {
@@ -154,7 +154,7 @@ public class MainController {
         gameManagementController = null;
 
         gameManagementScene= new GameManagementScene();
-        gameManagementController= new GameManagementController(gameManagementScene,this,loginController,signUpController);
+        gameManagementController= new GameManagementController(gameManagementScene,this,loginController,signUpController, manageUser);
         gameManagementScene.setController(gameManagementController);
     }
     public void resetGame(){
@@ -162,7 +162,7 @@ public class MainController {
         gameController = null;
 
         gameScene= new GameScene();
-        gameController= new GameController(gameScene,this,loginController,signUpController, manageGame);
+        gameController= new GameController(gameScene,this,loginController,signUpController, manageGame, manageUser);
         gameScene.setController(gameController);
 
     }

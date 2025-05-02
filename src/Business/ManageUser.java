@@ -18,7 +18,7 @@ public class ManageUser {
     public boolean userLoginCorrect(String userOrEmail, String password) {
         boolean flag = false;
 
-        User currentUser = sqlUserDAO.findUserByEmail(userOrEmail);
+        currentUser = sqlUserDAO.findUserByEmail(userOrEmail);
         if (currentUser == null) {
             currentUser = sqlUserDAO.findUserByUsername(userOrEmail);
         }
@@ -98,6 +98,9 @@ public class ManageUser {
            errorMessages.dontMatch();
             return true;
         }
+    }
+    public void deleteUser() {
+        sqlUserDAO.deleteUser(currentUser);
     }
     public User getCurrentUser() {
         return currentUser;
