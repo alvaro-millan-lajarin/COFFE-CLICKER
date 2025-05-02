@@ -2,6 +2,7 @@ package Presenstation.Controller;
 
 import Business.Entidades.Game;
 import Business.Entidades.User;
+import Business.ManageGame;
 import Business.ManageStatics;
 import Business.ManageUser;
 import Persistence.GameDAO;
@@ -19,18 +20,19 @@ import java.awt.event.ActionEvent;
 public class GameManagementController extends Controller {
     private LoginController loginController;
     private SignUpController signUpController;
-    private SQLUserDAO sqlUserDAO = new SQLUserDAO();
     private ManageStatics manageStatics;
     private ManageUser manageUser;
     private Messages messages;
+    private ManageGame manageGame;
 
-    public GameManagementController(Scene view, MainController mainController, LoginController loginController, SignUpController signUpController, ManageUser manageUser) {
+    public GameManagementController(Scene view, MainController mainController, LoginController loginController, SignUpController signUpController, ManageUser manageUser, ManageGame manageGame) {
         super(view, mainController);
         this.loginController = loginController;
         this.signUpController = signUpController;
         this.manageStatics = new ManageStatics();
         this.manageUser = manageUser;
         messages = new Messages();
+        this.manageGame = manageGame;
     }
 
     public GameManagementScene getScene() {
@@ -93,8 +95,8 @@ public class GameManagementController extends Controller {
 
 
             if (confirm == JOptionPane.YES_OPTION) {
-                GameDAO sqlGameDAO = new SQLGameDAO();
-                sqlGameDAO.deleteGame(selectedGame);
+                manageGame.deleteGame(selectedGame);
+
                 messages.deleteGameSucces();
             }
         } else {

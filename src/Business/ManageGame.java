@@ -2,6 +2,7 @@ package Business;
 
 import Business.Entidades.Game;
 import Business.Entidades.User;
+import Persistence.GameDAO;
 import Persistence.sql.SQLGameDAO;
 import Persistence.sql.SQLUserDAO;
 import Presenstation.View.Scenes.Scenes;
@@ -160,7 +161,10 @@ public class ManageGame {
         game.setNumCafes((int) (cafeActual-costeCafe));
 
     }
+    public void deleteGame(Game game) {
 
+        sqlGameDAO.deleteGame(game);
+    }
 
 
 }
