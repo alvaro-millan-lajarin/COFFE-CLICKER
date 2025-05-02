@@ -1,6 +1,7 @@
 package Presenstation.Controller;
 
 import Business.Entidades.User;
+import Business.ManageUser;
 import Persistence.sql.SQLUserDAO;
 import Presenstation.View.Scenes.Scene;
 import Presenstation.View.Scenes.Scenes;
@@ -12,7 +13,7 @@ import java.awt.event.ActionEvent;
 public class SignUpController extends Controller {
     private Integer errorOcurred = 0;
 
-    public SignUpController(Scene view, MainController mainController) {
+    public SignUpController(Scene view, MainController mainController, ManageUser manageUser) {
         super(view, mainController);
 
     }

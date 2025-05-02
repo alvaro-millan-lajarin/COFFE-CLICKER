@@ -3,6 +3,7 @@ package Presenstation.Controller;
 import Business.Entidades.Game;
 import Business.ManageGame;
 import Business.ManageStatics;
+import Business.ManageUser;
 import Presenstation.View.Scenes.*;
 
 import javax.swing.*;
@@ -30,11 +31,13 @@ public class MainController {
 
     private ManageGame manageGame;
     private ManageStatics manageStatics;
+    private ManageUser manageUser;
 
     public MainController() {
 
         manageGame = new ManageGame();
         manageStatics = new ManageStatics();
+        manageUser = new ManageUser();
 
         menuScene = new MenuScene();
         scene = new Scene();
@@ -46,8 +49,8 @@ public class MainController {
         staticsScene = new StaticsScene();
 
 
-        loginController = new LoginController(loginScene, this);
-        signUpController = new SignUpController(signUpScene, this);
+        loginController = new LoginController(loginScene, this, manageUser);
+        signUpController = new SignUpController(signUpScene, this, manageUser);
         menuController = new MenuController(menuScene, this);
         gameManagementController = new GameManagementController(gameManagementScene, this, loginController, signUpController);
         gameCreationController = new GameCreationController(gameCreationScene, this, loginController, signUpController, manageGame);
@@ -131,11 +134,11 @@ public class MainController {
 
 
         loginScene = new LoginScene();
-        loginController = new LoginController(loginScene, this);
+        loginController = new LoginController(loginScene, this, manageUser);
         loginScene.setController(loginController);
 
         signUpScene = new SignUpScene();
-        signUpController = new SignUpController(signUpScene, this);
+        signUpController = new SignUpController(signUpScene, this, manageUser);
         signUpScene.setController(signUpController);
     }
     public void resetGameCreation() {

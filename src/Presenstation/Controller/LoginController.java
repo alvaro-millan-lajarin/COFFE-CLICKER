@@ -1,6 +1,8 @@
 package Presenstation.Controller;
 
 import Business.Entidades.User;
+import Business.ManageGame;
+import Business.ManageUser;
 import Persistence.sql.SQLUserDAO;
 import Presenstation.View.Scenes.LoginScene;
 import Presenstation.View.Scenes.Scene;
@@ -11,9 +13,11 @@ import java.awt.event.ActionEvent;
 
 public class LoginController extends Controller {
     private static final String GAME_MANAGEMENT = "GAME_MANAGEMENT";
+    private ManageUser manageUser;
 
-    public LoginController(Scene view, MainController mainController) {
+    public LoginController(Scene view, MainController mainController, ManageUser manageUser) {
         super(view, mainController);
+        this.manageUser = manageUser;
     }
 
     public LoginScene getScene() {
@@ -29,23 +33,13 @@ public class LoginController extends Controller {
             String userOrEmail = getScene().getEmail();
             String password = getScene().getPassword();
 
-            userLoginCorrect();
+            manageUser.userLoginCorrect(userOrEmail, password);
 
-            SQLUserDAO sqlUserDAO = new SQLUserDAO();
-
-            User existingUserByEmail = sqlUserDAO.findUserByEmail(userOrEmail);
-            User existingUserByUsername = sqlUserDAO.findUserByUsername(userOrEmail);
-
-
-            if (existingUserByEmail != null && existingUserByEmail.getPassword().equals(password)) {
+            if (manageUser.userLoginCorrect(userOrEmail, password)) {
                 mainController.nextScene(Scenes.GAME_MANAGEMENT);
                 return;
             }
 
-            if (existingUserByUsername != null && existingUserByUsername.getPassword().equals(password)) {
-                mainController.nextScene(Scenes.GAME_MANAGEMENT);
-                return;
-            }
                 JOptionPane.showMessageDialog(
                         getScene().addAccesButton(),
                         "Incorrect email, username or password",

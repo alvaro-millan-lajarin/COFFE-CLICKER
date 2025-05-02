@@ -3,12 +3,15 @@ package Business;
 import Business.Entidades.Game;
 import Business.Entidades.User;
 import Persistence.sql.SQLGameDAO;
+import Persistence.sql.SQLUserDAO;
+import Presenstation.View.Scenes.Scenes;
 
 import java.util.ArrayList;
 
 public class ManageGame {
     private Game game;
-    SQLGameDAO sqlGameDAO = new SQLGameDAO();
+    private SQLGameDAO sqlGameDAO = new SQLGameDAO();
+
 
 
     public ManageGame() {
