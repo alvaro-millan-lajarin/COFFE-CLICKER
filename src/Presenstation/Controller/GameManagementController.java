@@ -48,6 +48,7 @@ public class GameManagementController extends Controller {
             mainController.resetGameCreation();
             mainController.nextScene(Scenes.GAME_CREATION);
         } else if (e.getActionCommand().equalsIgnoreCase("RESUME")) {
+            mainController.resetGame();
             Game selectedGame = getScene().getSelectedGame();
             if (selectedGame != null) {
                 mainController.resumeGame(selectedGame);

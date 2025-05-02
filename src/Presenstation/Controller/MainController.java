@@ -98,7 +98,7 @@ public class MainController {
         }
     }
 
-    public void     resumeGame(Game game) {
+    public void resumeGame(Game game) {
 
         manageGame.setGame(game);
         game.inicialitzarGeneradors();
@@ -153,5 +153,14 @@ public class MainController {
         gameManagementScene= new GameManagementScene();
         gameManagementController= new GameManagementController(gameManagementScene,this,loginController,signUpController);
         gameManagementScene.setController(gameManagementController);
+    }
+    public void resetGame(){
+        gameScene = null;
+        gameController = null;
+
+        gameScene= new GameScene();
+        gameController= new GameController(gameScene,this,loginController,signUpController, manageGame);
+        gameScene.setController(gameController);
+
     }
 }
