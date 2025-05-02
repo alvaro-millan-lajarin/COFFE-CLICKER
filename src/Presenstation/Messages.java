@@ -125,4 +125,12 @@ public class Messages {
                 JOptionPane.WARNING_MESSAGE
         );
     }
+    public void needCoffe(){
+        JOptionPane.showMessageDialog(
+                null,
+                "Need to generate more coffe",
+                "Need more coffes",
+                JOptionPane.INFORMATION_MESSAGE
+        );
+    }
 }

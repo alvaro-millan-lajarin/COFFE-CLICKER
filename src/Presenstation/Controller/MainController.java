@@ -104,12 +104,15 @@ public class MainController {
     public void resumeGame(Game game) {
 
         manageGame.setGame(game);
-        game.inicialitzarGeneradors();
+
         gameScene = new GameScene();
         gameController = new GameController(gameScene, this, loginController, signUpController, manageGame, manageUser);
 
         gameScene.setController(gameController);
+
         gameScene.apply(getMainFrame());
+        gameController.updateTablas();
+        manageGame.inicializarGeneradores();
     }
 
 

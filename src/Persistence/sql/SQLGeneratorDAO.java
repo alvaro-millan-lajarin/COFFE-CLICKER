@@ -12,10 +12,13 @@ public class SQLGeneratorDAO implements GeneratorDAO {
 
     @Override
     public void addGenerator(Generator generator) {
-        String query = "INSERT INTO Generador(nombre, precio, cafes_seg) VALUES ('" +
+        String query = "INSERT INTO Generador(id_partida, nombre, precio, cafes_seg, multiplicador, tiempo_generacion) VALUES ('" +
+                generator.getIdGame() + "', '" +
                 generator.getNombre() + "', '" +
                 generator.getPrecio() + "', '" +
-                generator.getCafeSeg() + "')";
+                generator.getCafeSeg() + "', '" +
+                generator.getMultiplicador() + "', '" +
+                generator.getTiempoGeneracion() + "')";
 
         SQLConnector.getInstance().insertQuery(query);
     }
@@ -102,4 +105,5 @@ public class SQLGeneratorDAO implements GeneratorDAO {
 
         return generators;
     }*/
+
 }

@@ -58,6 +58,7 @@ public class SQLGameDAO implements GameDAO {
                         rs.getTimestamp("fecha_creacion").toLocalDateTime(),
                         rs.getTimestamp("fecha_ultimo_save").toLocalDateTime(),
                         rs.getInt("num_cafes")
+
                 );
 
                 // Parseo seguro de las columnas que pueden venir como NULL

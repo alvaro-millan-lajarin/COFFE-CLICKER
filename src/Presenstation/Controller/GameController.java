@@ -20,7 +20,7 @@ public class GameController extends Controller {
     private SignUpController signUpController;
     private ManageGame manageGame;
 
-    private Game game;
+
     private Messages messages = new Messages();
     private ManageUser manageUser;
 
@@ -30,7 +30,7 @@ public class GameController extends Controller {
         this.loginController = loginController;
         this.signUpController = signUpController;
         this.manageGame = manageGame;
-        this.game = manageGame.getGame();
+
         this.manageUser = manageUser;
     }
 
@@ -97,12 +97,7 @@ public class GameController extends Controller {
 
     }
     public void notEnoughtCoffe() {
-        JOptionPane.showMessageDialog(
-                getScene().addAccesButton(),
-                "Need to generate more coffe",
-                "Need more coffes",
-                JOptionPane.INFORMATION_MESSAGE
-        );
+        messages.needCoffe();
     }
     public void compraCafetera() {
         if(manageGame.enughtCoffeCafeteria()){
@@ -144,12 +139,13 @@ public class GameController extends Controller {
     }
     public void updateTablas(){
         ArrayList<Integer> quantitats= manageGame.getQuantitas();
-        ArrayList<String> proudccioUnitat = manageGame.getProduccionsUnitat();
+        ArrayList<String> proudccioUnitat = manageGame.getProduccionsUnitat();//falla
         ArrayList<Integer> precioBase = manageGame.getPreciosBase();
 
         //tabla millores
-        ArrayList<Integer> costMultiplicadores = manageGame.getCostMultplicadors();
+        ArrayList<Integer> costMultiplicadores = manageGame.getCostMultplicadors();//falla
         ArrayList<Integer> multiplicadores = manageGame.getMultplicadors();
+
         getScene().updateTablas(quantitats, proudccioUnitat,precioBase, costMultiplicadores, multiplicadores);
     }
     public void cafeteraMejora() {

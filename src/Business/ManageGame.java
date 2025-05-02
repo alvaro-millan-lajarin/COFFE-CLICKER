@@ -1,9 +1,11 @@
 package Business;
 
 import Business.Entidades.Game;
+import Business.Entidades.Generator;
 import Business.Entidades.User;
 import Persistence.GameDAO;
 import Persistence.sql.SQLGameDAO;
+import Persistence.sql.SQLGeneratorDAO;
 import Persistence.sql.SQLUserDAO;
 import Presenstation.View.Scenes.Scenes;
 
@@ -13,6 +15,7 @@ import java.util.List;
 public class ManageGame {
     private Game game;
     private SQLGameDAO sqlGameDAO = new SQLGameDAO();
+    private SQLGeneratorDAO sqlGeneratorDAO = new SQLGeneratorDAO();
 
 
 
@@ -34,7 +37,9 @@ public class ManageGame {
 
     }
     public void addCafetera(String cafetera) {
+        Generator cafeteria = new Generator(1,"cafetera", game.getCafeteriaPrecio(), game.getCafeteriaCafeSeg(), game.getCafeteriaTiempoGeneracion(), 1.07, game.getCafeteriaCostMultiplicador(), game.getCafeteriaMultiplicador(),game.getId());
         game.addCafetera(cafetera);
+        sqlGeneratorDAO.addGenerator(cafeteria);
     }
     public ArrayList<Integer> getQuantitas() {
 
@@ -183,7 +188,10 @@ public class ManageGame {
         return null;
     }
     public void updateGame() {
+
         sqlGameDAO.updateGame(getGame());
     }
-
+    public void inicializarGeneradores(){
+        getGame().inicialitzarGeneradors();
+    }
 }
