@@ -29,6 +29,8 @@ public class LoginController extends Controller {
             String userOrEmail = getScene().getEmail();
             String password = getScene().getPassword();
 
+            userLoginCorrect();
+
             SQLUserDAO sqlUserDAO = new SQLUserDAO();
 
             User existingUserByEmail = sqlUserDAO.findUserByEmail(userOrEmail);

@@ -1,6 +1,7 @@
 package Business;
 
 import Business.Entidades.Game;
+import Business.Entidades.User;
 import Persistence.sql.SQLGameDAO;
 
 import java.util.ArrayList;
@@ -8,6 +9,7 @@ import java.util.ArrayList;
 public class ManageGame {
     private Game game;
     SQLGameDAO sqlGameDAO = new SQLGameDAO();
+
 
     public ManageGame() {
 
@@ -155,5 +157,7 @@ public class ManageGame {
         game.setNumCafes((int) (cafeActual-costeCafe));
 
     }
+
+
 
 }

@@ -108,8 +108,12 @@ public class GameManagementController extends Controller {
 
         SQLUserDAO sqlUserDAO = new SQLUserDAO();
 
+        User user = sqlUserDAO.findUserByEmail(userOrEmail);
+        if (user == null) {
+            user = sqlUserDAO.findUserByUsername(userOrEmail);
+        }
 
-        return sqlUserDAO.findUserByEmail(userOrEmail);
+        return user;
     }
 
     public void deleteSelectedGame() {

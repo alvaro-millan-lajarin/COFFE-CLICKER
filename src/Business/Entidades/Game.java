@@ -12,6 +12,7 @@ public class Game {
     private LocalDateTime fechaCreacion;
     private LocalDateTime fechaModificacion;
     private int numCafes;
+    private User userGame;
 
     private List<Generator> generadoresCafetera = new ArrayList<>();
     private List<Generator> generadoresChetas = new ArrayList<>();
@@ -284,6 +285,11 @@ public class Game {
         for (int i = 0; i < quantitats.get(2); i++) startGeneratorCafeteraGod();
     }
 
+    public User getUserGame() {
+        return userGame;
+    }
 
-
+    public void setUserGame(User userGame) {
+        this.userGame = userGame;
+    }
 }

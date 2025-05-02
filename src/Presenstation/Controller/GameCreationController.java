@@ -64,7 +64,9 @@ public class GameCreationController extends Controller {
             SQLUserDAO sqlUserDAO = new SQLUserDAO();
 
             User existingUserByEmail = sqlUserDAO.findUserByEmail(userOrEmail);
-
+            if (existingUserByEmail == null) {
+                existingUserByEmail = sqlUserDAO.findUserByUsername(userOrEmail);
+            }
             LocalDateTime fechaYHoraActual = LocalDateTime.now();
 
             if (existingUserByEmail != null && existingUserByEmail.getPassword().equals(password)) {
