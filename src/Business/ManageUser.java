@@ -2,17 +2,13 @@ package Business;
 
 import Business.Entidades.User;
 import Persistence.sql.SQLUserDAO;
-import Presenstation.Controller.SignUpController;
-import Presenstation.ErrorMessages;
+import Presenstation.Messages;
 import Presenstation.View.Scenes.Scene;
-import Presenstation.View.Scenes.Scenes;
-
-import javax.swing.*;
 
 public class ManageUser {
     private SQLUserDAO sqlUserDAO = new SQLUserDAO();
     private User currentUser;
-    private ErrorMessages errorMessages = new ErrorMessages();
+    private Messages messages = new Messages();
 
 
     public boolean userLoginCorrect(String userOrEmail, String password) {
@@ -42,9 +38,9 @@ public class ManageUser {
                 flag = true;
             }else{
                 if(sqlUserDAO.findUserByEmail(email) != null){
-                    errorMessages.emailAlreadyExists();
+                    messages.emailAlreadyExists();
                 }else{
-                    errorMessages.usernameAlreadyExists();
+                    messages.usernameAlreadyExists();
                 }
 
             }
@@ -54,18 +50,18 @@ public class ManageUser {
     }
     public boolean ErroreOcurred(String name, String email, String password, Scene scene, String password2) {
         if (email == null || email.isEmpty()) {
-            errorMessages.emptyEmail();
+            messages.emptyEmail();
             return true;
         }
 
         if (!email.contains("@")) {
-            errorMessages.notValidEmail();
+            messages.notValidEmail();
             return true;
         }
 
 
         if (password.isEmpty()) {
-            errorMessages.emptyPassword();
+            messages.emptyPassword();
             return true;
         }
         if(password.equals(password2)){
@@ -76,26 +72,26 @@ public class ManageUser {
             boolean hasDigit = password.matches(".*\\d.*");
 
             if (!hasMinLength) {
-                errorMessages.missingCharacters();
+                messages.missingCharacters();
                 return true;
             }
             if (!hasUpperCase) {
-                errorMessages.missingCapitalLetters();
+                messages.missingCapitalLetters();
                 return true;
             }
             if (!hasLowerCase) {
 
-                errorMessages.missingLowercaseLetters();
+                messages.missingLowercaseLetters();
                 return true;
             }
             if (!hasDigit) {
-                errorMessages.missingNumber();
+                messages.missingNumber();
                 return true;
             }
             return false;
 
         }else{
-           errorMessages.dontMatch();
+           messages.dontMatch();
             return true;
         }
     }

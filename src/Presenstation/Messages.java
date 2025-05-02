@@ -2,7 +2,7 @@ package Presenstation;
 
 import javax.swing.*;
 
-public class ErrorMessages {
+public class Messages {
 
     public void emptyEmail(){
         JOptionPane.showMessageDialog(

@@ -7,7 +7,7 @@ import Business.ManageUser;
 import Persistence.GameDAO;
 import Persistence.sql.SQLGameDAO;
 import Persistence.sql.SQLUserDAO;
-import Presenstation.ErrorMessages;
+import Presenstation.Messages;
 import Presenstation.View.Scenes.GameManagementScene;
 import Presenstation.View.Scenes.Scene;
 import Presenstation.View.Scenes.Scenes;
@@ -22,7 +22,7 @@ public class GameManagementController extends Controller {
     private SQLUserDAO sqlUserDAO = new SQLUserDAO();
     private ManageStatics manageStatics;
     private ManageUser manageUser;
-    private ErrorMessages errorMessages;
+    private Messages messages;
 
     public GameManagementController(Scene view, MainController mainController, LoginController loginController, SignUpController signUpController, ManageUser manageUser) {
         super(view, mainController);
@@ -30,7 +30,7 @@ public class GameManagementController extends Controller {
         this.signUpController = signUpController;
         this.manageStatics = new ManageStatics();
         this.manageUser = manageUser;
-        errorMessages = new ErrorMessages();
+        messages = new Messages();
     }
 
     public GameManagementScene getScene() {
@@ -59,7 +59,7 @@ public class GameManagementController extends Controller {
             if (selectedGame != null) {
                 mainController.resumeGame(selectedGame);
             } else {
-                errorMessages.seleccionaPartida();
+                messages.seleccionaPartida();
             }
         }else if (e.getActionCommand().equals("STADISTICAS")) {
             Game selectedGame = getScene().getSelectedGame();
@@ -68,12 +68,12 @@ public class GameManagementController extends Controller {
 
     }
     public void deleteUser() {
-        int confirm = errorMessages.confirmDelete();
+        int confirm = messages.confirmDelete();
 
         if (confirm == JOptionPane.YES_OPTION) {
 
             manageUser.deleteUser();
-            errorMessages.deleteUser();
+            messages.deleteUser();
             loginController.clearUserData();
             mainController.nextScene(Scenes.MENU);
         }
@@ -89,16 +89,16 @@ public class GameManagementController extends Controller {
 
         Game selectedGame = getScene().getSelectedGame();
         if (selectedGame != null) {
-            int confirm = errorMessages.deleteGame();
+            int confirm = messages.deleteGame();
 
 
             if (confirm == JOptionPane.YES_OPTION) {
                 GameDAO sqlGameDAO = new SQLGameDAO();
                 sqlGameDAO.deleteGame(selectedGame);
-                errorMessages.deleteGameSucces();
+                messages.deleteGameSucces();
             }
         } else {
-            errorMessages.seleccionaPartida();
+            messages.seleccionaPartida();
 
         }
         mainController.resetGameManagement();
