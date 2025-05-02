@@ -117,4 +117,12 @@ public class Messages {
     public void deleteGameSucces(){
         JOptionPane.showMessageDialog(null, "Game deleted successfully.");
     }
+    public void gameNameUsed(){
+        JOptionPane.showMessageDialog(
+                null,
+                "You need to put another game name",
+                "Error game name used",
+                JOptionPane.WARNING_MESSAGE
+        );
+    }
 }
