@@ -23,17 +23,13 @@ public class SQLGeneratorDAO implements GeneratorDAO {
         SQLConnector.getInstance().insertQuery(query);
     }
 
-
-    @Override
-    public void updateGenerator(Generator generator) {
-        String query = "UPDATE Generador SET " +
-                "nombre = '" + generator.getNombre() + "', " +
-                "precio = '" + generator.getPrecio() + "', " +
-                "cafe_seg = '" + generator.getCafeSeg() + "' " +
-                "WHERE id_generador = '" + generator.getId() + "'";
-
-        SQLConnector.getInstance().updateQuery(query);
+    public void updateGeneratorPrice(String nombre, double precio) {
+        String query = "UPDATE Generador SET precio = '" + precio + "' WHERE nombre = '" + nombre + "'";
+        SQLConnector.getInstance().insertQuery(query);
     }
+
+
+
 
     @Override
     public void deleteGenerator(Generator generator) {

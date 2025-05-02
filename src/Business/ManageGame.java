@@ -37,7 +37,7 @@ public class ManageGame {
 
     }
     public void addCafetera(String cafetera) {
-        Generator cafeteria = new Generator(1,"cafetera", game.getCafeteriaPrecio(), game.getCafeteriaCafeSeg(), game.getCafeteriaTiempoGeneracion(), 1.07, game.getCafeteriaCostMultiplicador(), game.getCafeteriaMultiplicador(),game.getId());
+        Generator cafeteria = new Generator(1,cafetera, game.getCafeteriaPrecio(), game.getCafeteriaCafeSeg(), game.getCafeteriaTiempoGeneracion(), 1.07, game.getCafeteriaCostMultiplicador(), game.getCafeteriaMultiplicador(),game.getId());
         game.addCafetera(cafetera);
         sqlGeneratorDAO.addGenerator(cafeteria);
     }
@@ -95,6 +95,7 @@ public class ManageGame {
 
     }
     public void updatePriceCoffe(String cafetera) {
+
         switch (cafetera) {
             case "cafetera":
                 game.setCafeteriaPrecio();
@@ -193,5 +194,10 @@ public class ManageGame {
     }
     public void inicializarGeneradores(){
         getGame().inicialitzarGeneradors();
+    }
+    public void updatePriceCoffeCafeteriaBaseDatos(String cafetera) {
+
+        sqlGeneratorDAO.updateGeneratorPrice(cafetera, game.getCafeteriaPrecio());
+
     }
 }

@@ -104,9 +104,10 @@ public class GameController extends Controller {
 
             manageGame.restarCafe("cafetera");//restar cafe
             manageGame.startGeneratorCafetera();
+
             manageGame.addCafetera("Cafetera");//añades la cantidad de cafetera
             manageGame.updatePriceCoffe("cafetera");
-
+            manageGame.updatePriceCoffeCafeteriaBaseDatos("cafetera");
             manageGame.updateGame();
             updateTablas();
 

@@ -4,16 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f9bbb50b-3eaf-412a-ab58-ecb07cf93455" name="Changes" comment="todo con la estructura por capas">
+    <list default="true" id="f9bbb50b-3eaf-412a-ab58-ecb07cf93455" name="Changes" comment="arreglando game, para que tenga los generdores en la base de datos">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Business/Entidades/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Business/Entidades/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Business/Entidades/Generator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Business/Entidades/Generator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Business/ManageGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Business/ManageGame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Persistence/sql/SQLGameDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Persistence/sql/SQLGameDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Persistence/sql/SQLGeneratorDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Persistence/sql/SQLGeneratorDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Presenstation/Controller/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presenstation/Controller/GameController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Presenstation/Controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presenstation/Controller/MainController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Presenstation/Messages.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presenstation/Messages.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -480,7 +475,15 @@
       <option name="project" value="LOCAL" />
       <updated>1746198806960</updated>
     </task>
-    <option name="localTasksCounter" value="46" />
+    <task id="LOCAL-00046" summary="arreglando game, para que tenga los generdores en la base de datos">
+      <option name="closed" value="true" />
+      <created>1746205125624</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1746205125624</updated>
+    </task>
+    <option name="localTasksCounter" value="47" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -510,7 +513,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="game" />
     <MESSAGE value="increase coffe, threads" />
     <MESSAGE value="modificando tablas" />
     <MESSAGE value="cantidad cafeteras" />
@@ -535,7 +537,8 @@
     <MESSAGE value="seguir la estructuar correcta, mas mensajes y delete game" />
     <MESSAGE value="game creation estructura" />
     <MESSAGE value="todo con la estructura por capas" />
-    <option name="LAST_COMMIT_MESSAGE" value="todo con la estructura por capas" />
+    <MESSAGE value="arreglando game, para que tenga los generdores en la base de datos" />
+    <option name="LAST_COMMIT_MESSAGE" value="arreglando game, para que tenga los generdores en la base de datos" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
