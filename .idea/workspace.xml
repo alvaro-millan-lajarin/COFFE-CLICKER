@@ -4,10 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f9bbb50b-3eaf-412a-ab58-ecb07cf93455" name="Changes" comment="seguir la estructuar correcta y mas mensajes">
+    <list default="true" id="f9bbb50b-3eaf-412a-ab58-ecb07cf93455" name="Changes" comment="game creation estructura">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Business/ManageGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Business/ManageGame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Presenstation/Controller/GameManagementController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presenstation/Controller/GameManagementController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Presenstation/Controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presenstation/Controller/MainController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Presenstation/Controller/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presenstation/Controller/GameController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Presenstation/Controller/GameCreationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presenstation/Controller/GameCreationController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -450,7 +451,23 @@
       <option name="project" value="LOCAL" />
       <updated>1746184102234</updated>
     </task>
-    <option name="localTasksCounter" value="43" />
+    <task id="LOCAL-00043" summary="seguir la estructuar correcta, mas mensajes y delete game">
+      <option name="closed" value="true" />
+      <created>1746184446458</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1746184446458</updated>
+    </task>
+    <task id="LOCAL-00044" summary="game creation estructura">
+      <option name="closed" value="true" />
+      <created>1746184795398</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1746184795398</updated>
+    </task>
+    <option name="localTasksCounter" value="45" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -480,8 +497,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="logout" />
-    <MESSAGE value="libreria" />
     <MESSAGE value="arreglos newDev" />
     <MESSAGE value="game" />
     <MESSAGE value="increase coffe, threads" />
@@ -505,22 +520,8 @@
     <MESSAGE value="correccion estructura user" />
     <MESSAGE value="nueva clase para errores" />
     <MESSAGE value="seguir la estructuar correcta y mas mensajes" />
-    <option name="LAST_COMMIT_MESSAGE" value="seguir la estructuar correcta y mas mensajes" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Presenstation/Controller/GameCreationController.java</url>
-          <line>144</line>
-          <option name="timeStamp" value="51" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Presenstation/Controller/GameCreationController.java</url>
-          <line>42</line>
-          <option name="timeStamp" value="63" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="seguir la estructuar correcta, mas mensajes y delete game" />
+    <MESSAGE value="game creation estructura" />
+    <option name="LAST_COMMIT_MESSAGE" value="game creation estructura" />
   </component>
 </project>

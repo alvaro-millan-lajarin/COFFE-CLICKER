@@ -6,6 +6,7 @@ import Business.ManageGame;
 import Business.ManageUser;
 import Persistence.sql.SQLGameDAO;
 import Persistence.sql.SQLUserDAO;
+import Presenstation.Messages;
 import Presenstation.View.Scenes.GameScene;
 import Presenstation.View.Scenes.Scene;
 import Presenstation.View.Scenes.Scenes;
@@ -17,19 +18,20 @@ import java.util.ArrayList;
 public class GameController extends Controller {
     private LoginController loginController;
     private SignUpController signUpController;
-    private SQLUserDAO sqlUserDAO = new SQLUserDAO();
     private ManageGame manageGame;
-    private SQLGameDAO sqlGameDAO = new SQLGameDAO();
+
     private Game game;
+    private Messages messages = new Messages();
+    private ManageUser manageUser;
 
 
-    //private TablaGeneradorsDisponibles tablaGeneradorsDisponibles = new TablaGeneradorsDisponibles();
     public GameController(Scene view, MainController mainController, LoginController loginController, SignUpController signUpController, ManageGame manageGame, ManageUser manageUser) {
         super(view, mainController);
         this.loginController = loginController;
         this.signUpController = signUpController;
         this.manageGame = manageGame;
         this.game = manageGame.getGame();
+        this.manageUser = manageUser;
     }
 
     public GameScene getScene() {
@@ -41,7 +43,7 @@ public class GameController extends Controller {
     public void actionPerformed(ActionEvent e) {
         if (e.getActionCommand().equalsIgnoreCase("MORE_COFFE")) {
             manageGame.increaseNumCafes();
-            sqlGameDAO.updateGame(manageGame.getGame());
+            manageGame.updateGame();
             getScene().addCoffe(manageGame.getGame().getNumCafes());
         }else if (e.getActionCommand().equalsIgnoreCase("LOGOUT")) {
             mainController.resetLogin();
@@ -81,49 +83,14 @@ public class GameController extends Controller {
     }
 
     public void deleteUser() {
-        int confirm = JOptionPane.showConfirmDialog(
-                getScene().addAccesButton(),
-                "Are you sure you want to delete your account?",
-                "Confirm Deletion",
-                JOptionPane.YES_NO_OPTION,
-                JOptionPane.WARNING_MESSAGE
-        );
+        int confirm = messages.confirmDelete();
 
         if (confirm == JOptionPane.YES_OPTION) {
-
-            String emailNameLogin = loginController.getEmail();
-            String emailPasswordRegistre = signUpController.getEmail();
-
-
-            if(loginController.getEmail().isEmpty() && loginController.getPassword().isEmpty()) {
-                User existingUserByEmail = sqlUserDAO.findUserByEmail(emailPasswordRegistre);
-                User existingUserByUsername = sqlUserDAO.findUserByUsername(emailPasswordRegistre);
-                if (existingUserByEmail != null) {
-                    sqlUserDAO.deleteUser(existingUserByEmail);
-                }else{
-                    sqlUserDAO.deleteUser(existingUserByUsername);
-                }
-            }else{
-                User existingUserByEmail = sqlUserDAO.findUserByEmail(emailNameLogin);
-                User existingUserByUsername = sqlUserDAO.findUserByUsername(emailNameLogin);
-                if (existingUserByEmail != null) {
-                    sqlUserDAO.deleteUser(existingUserByEmail);
-                }else{
-                    sqlUserDAO.deleteUser(existingUserByUsername);
-                }
-
-            }
-
-            JOptionPane.showMessageDialog(
-                    getScene().addAccesButton(),
-                    "Account successfully deleted.",
-                    "Deletion Successful",
-                    JOptionPane.INFORMATION_MESSAGE
-            );
-
+            manageUser.deleteUser();
+            messages.deleteUser();
+            loginController.clearUserData();
             mainController.nextScene(Scenes.MENU);
         }
-        mainController.nextScene(Scenes.MENU);
     }
     public ManageGame getManageGame() {
         return manageGame;
@@ -145,7 +112,7 @@ public class GameController extends Controller {
             manageGame.addCafetera("Cafetera");//añades la cantidad de cafetera
             manageGame.updatePriceCoffe("cafetera");
 
-            sqlGameDAO.updateGame(manageGame.getGame());
+            manageGame.updateGame();
             updateTablas();
 
 
@@ -158,7 +125,7 @@ public class GameController extends Controller {
             manageGame.startGeneratorCafeteraCheta();
             manageGame.restarCafe("CafeCheta");
             manageGame.addCafetera("CafeCheta");
-            sqlGameDAO.updateGame(manageGame.getGame());
+            manageGame.updateGame();
             updateTablas();
         }else{
             notEnoughtCoffe();
@@ -169,7 +136,7 @@ public class GameController extends Controller {
             manageGame.startGeneratorCafeteraGod();
             manageGame.restarCafe("CafeGod");
             manageGame.addCafetera("CafeGod");
-            sqlGameDAO.updateGame(manageGame.getGame());
+            manageGame.updateGame();
             updateTablas();
         }else{
             notEnoughtCoffe();
@@ -180,11 +147,6 @@ public class GameController extends Controller {
         ArrayList<String> proudccioUnitat = manageGame.getProduccionsUnitat();
         ArrayList<Integer> precioBase = manageGame.getPreciosBase();
 
-        //tabla generators
-        //proudccioUnitat = manageGame.getProduccionsUnitat();
-        //quantitats = manageGame.getQuantitas();
-       // precioBase = manageGame.getPreciosBase();
-
         //tabla millores
         ArrayList<Integer> costMultiplicadores = manageGame.getCostMultplicadors();
         ArrayList<Integer> multiplicadores = manageGame.getMultplicadors();
@@ -194,7 +156,8 @@ public class GameController extends Controller {
         if(manageGame.enoughtCoffeMejoraCafetera()){
             manageGame.restarCafeMejora("cafetera");
             manageGame.mejorarCafetera();
-            sqlGameDAO.updateGame(manageGame.getGame());
+            manageGame.updateGame();
+
             updateTablas();
         }else{
             notEnoughtCoffe();
@@ -205,7 +168,7 @@ public class GameController extends Controller {
         if(manageGame.enoughtCoffeMejoraCheta()){
             manageGame.restarCafeMejora("CafeCheta");
             manageGame.mejorarCheta();
-            sqlGameDAO.updateGame(manageGame.getGame());
+            manageGame.updateGame();
             updateTablas();
         }else{
             notEnoughtCoffe();
@@ -215,7 +178,7 @@ public class GameController extends Controller {
         if(manageGame.enoughtCoffeMejoraGod()){
             manageGame.restarCafeMejora("cafeGod");
             manageGame.mejorarGod();
-            sqlGameDAO.updateGame(manageGame.getGame());
+            manageGame.updateGame();
             updateTablas();
 
         }else{
@@ -225,14 +188,8 @@ public class GameController extends Controller {
     }
 
     public void deleteCurrentGame() {
-        Game currentGame = manageGame.getGame();
-        if (currentGame != null) {
-
-            sqlGameDAO.deleteGame(currentGame);
-            manageGame.setGame(null);
-        }
-
-
+        manageGame.deleteGame();
+        manageGame.setGame(null);
     }
 
     public void goToGameManagementScene() {

@@ -8,6 +8,7 @@ import Persistence.sql.SQLUserDAO;
 import Presenstation.View.Scenes.Scenes;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class ManageGame {
     private Game game;
@@ -29,11 +30,8 @@ public class ManageGame {
         sqlGameDAO.logCafeHistorico(game.getId(), game.getNumCafes());
     }
     public void setGame(Game game) {
-        this.game = game;
-       /* game.setOnCafeChanged(numCafes -> {
-            // Llamar al log cuando cambia el número de cafés
-            sqlGameDAO.logCafeHistorico(game.getId(), game.getNumCafes());
-        });*/
+        this.game = getGameBaseDeDatos(game);
+
     }
     public void addCafetera(String cafetera) {
         game.addCafetera(cafetera);
@@ -161,10 +159,31 @@ public class ManageGame {
         game.setNumCafes((int) (cafeActual-costeCafe));
 
     }
-    public void deleteGame(Game game) {
+    public void deleteGame() {
+
+        sqlGameDAO.deleteGame(this.game);
+    }
+    public void deleteGameSelected(Game game) {
 
         sqlGameDAO.deleteGame(game);
     }
+    public List<Game> getAllGames() {
+        return sqlGameDAO.getAllGames();
+    }
+    public void addGame(Game game) {
+        sqlGameDAO.addGame(game);
+    }
+    public Game getGameBaseDeDatos(Game newGame) {
 
+        for (Game game : getAllGames()) {
+            if(game.getNombre().equals(newGame.getNombre()) && game.getIdUser() == newGame.getIdUser()) {
+                return game;
+            }
+        }
+        return null;
+    }
+    public void updateGame() {
+        sqlGameDAO.updateGame(getGame());
+    }
 
 }

@@ -95,8 +95,7 @@ public class GameManagementController extends Controller {
 
 
             if (confirm == JOptionPane.YES_OPTION) {
-                manageGame.deleteGame(selectedGame);
-
+                manageGame.deleteGameSelected(selectedGame);
                 messages.deleteGameSucces();
             }
         } else {
