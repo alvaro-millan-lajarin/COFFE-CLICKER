@@ -4,13 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f9bbb50b-3eaf-412a-ab58-ecb07cf93455" name="Changes" comment="correccion estructura">
-      <change afterPath="$PROJECT_DIR$/src/Business/ManageUser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Business/ManageGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Business/ManageGame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Presenstation/Controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presenstation/Controller/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Presenstation/Controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presenstation/Controller/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Presenstation/Controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presenstation/Controller/MainController.java" afterDir="false" />
+    <list default="true" id="f9bbb50b-3eaf-412a-ab58-ecb07cf93455" name="Changes" comment="correccion estructura user">
+      <change afterPath="$PROJECT_DIR$/src/Presenstation/ErrorMessages.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Business/ManageUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Business/ManageUser.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Presenstation/Controller/SignUpController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presenstation/Controller/SignUpController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -422,7 +418,15 @@
       <option name="project" value="LOCAL" />
       <updated>1746178888926</updated>
     </task>
-    <option name="localTasksCounter" value="39" />
+    <task id="LOCAL-00039" summary="correccion estructura user">
+      <option name="closed" value="true" />
+      <created>1746180162083</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1746180162083</updated>
+    </task>
+    <option name="localTasksCounter" value="40" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -452,7 +456,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="singUp" />
     <MESSAGE value="arreglo fallos de registro" />
     <MESSAGE value="dlete para game management listo" />
     <MESSAGE value="logout" />
@@ -477,7 +480,8 @@
     <MESSAGE value="arreglo deletes" />
     <MESSAGE value="correccion graficca" />
     <MESSAGE value="correccion estructura" />
-    <option name="LAST_COMMIT_MESSAGE" value="correccion estructura" />
+    <MESSAGE value="correccion estructura user" />
+    <option name="LAST_COMMIT_MESSAGE" value="correccion estructura user" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
