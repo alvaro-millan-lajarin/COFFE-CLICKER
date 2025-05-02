@@ -200,4 +200,36 @@ public class ManageGame {
         sqlGeneratorDAO.updateGeneratorPrice(cafetera, game.getCafeteriaPrecio());
 
     }
+    public void updatePriceCoffeChetaBaseDatos(String cafetera) {
+        sqlGeneratorDAO.updateGeneratorPrice(cafetera, game.getCafeteriaChetaPrecio());
+    }
+    public void updatePriceCoffeGodBaseDatos(String cafetera) {
+        sqlGeneratorDAO.updateGeneratorPrice(cafetera, game.getCafeteriaGodPrecio());
+    }
+    public ArrayList<String> getProduccionsUnitatBaseDatos(){
+        ArrayList<String> proudccioUnitat = new ArrayList<>();
+        boolean cafeteraOK = true;
+        boolean chetaOK = true;
+        boolean godOK = true;
+
+        List<Generator> generators = sqlGeneratorDAO.getAllGenerators();
+        for (Generator generator : generators) {
+            double num_cafes = generator.getCafeSeg();
+            double tiempoGeneracion = generator.getTiempoGeneracion();
+            if (generator.getNombre().equals("Cafetera") && cafeteraOK) {
+
+                proudccioUnitat.add(String.format("%.2f cafès / %.2f s", num_cafes, tiempoGeneracion));
+                cafeteraOK = false;
+
+            } else if (generator.getNombre().equals("Cheta") && chetaOK) {
+                proudccioUnitat.add(String.format("%.2f cafès / %.2f s", num_cafes, tiempoGeneracion));
+                chetaOK = false;
+            } else if (generator.getNombre().equalsIgnoreCase("God") && godOK) {
+                proudccioUnitat.add(String.format("%.2f cafès / %.2f s", num_cafes, tiempoGeneracion));
+                godOK = false;
+            }
+
+        }
+        return proudccioUnitat;
+    }
 }

@@ -111,7 +111,7 @@ public class MainController {
         gameScene.setController(gameController);
 
         gameScene.apply(getMainFrame());
-        gameController.updateTablas();
+        gameController.updateTablasInicio();
         manageGame.inicializarGeneradores();
     }
 

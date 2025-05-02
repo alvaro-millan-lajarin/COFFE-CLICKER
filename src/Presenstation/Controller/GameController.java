@@ -120,7 +120,10 @@ public class GameController extends Controller {
         if(manageGame.enughtCoffeCheta()){
             manageGame.startGeneratorCafeteraCheta();
             manageGame.restarCafe("CafeCheta");
+
             manageGame.addCafetera("CafeCheta");
+            manageGame.updatePriceCoffe("CafeCheta");
+            manageGame.updatePriceCoffeChetaBaseDatos("CafeCheta");
             manageGame.updateGame();
             updateTablas();
         }else{
@@ -131,7 +134,10 @@ public class GameController extends Controller {
         if(manageGame.enughtCoffeGod()){
             manageGame.startGeneratorCafeteraGod();
             manageGame.restarCafe("CafeGod");
+
             manageGame.addCafetera("CafeGod");
+            manageGame.updatePriceCoffe("CafeGod");
+            manageGame.updatePriceCoffeGodBaseDatos("CafeGod");
             manageGame.updateGame();
             updateTablas();
         }else{
@@ -149,6 +155,19 @@ public class GameController extends Controller {
 
         getScene().updateTablas(quantitats, proudccioUnitat,precioBase, costMultiplicadores, multiplicadores);
     }
+    public void updateTablasInicio(){
+
+        ArrayList<Integer> quantitats= manageGame.getQuantitas();
+        ArrayList<String> proudccioUnitat = manageGame.getProduccionsUnitatBaseDatos();//falla
+        ArrayList<Integer> precioBase = manageGame.getPreciosBase();//esto tambien
+
+        //tabla millores
+        ArrayList<Integer> costMultiplicadores = manageGame.getCostMultplicadors();//falla
+        ArrayList<Integer> multiplicadores = manageGame.getMultplicadors();//corregir
+
+        getScene().updateTablas(quantitats, proudccioUnitat,precioBase, costMultiplicadores, multiplicadores);
+    }
+
     public void cafeteraMejora() {
         if(manageGame.enoughtCoffeMejoraCafetera()){
             manageGame.restarCafeMejora("cafetera");

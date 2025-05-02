@@ -5,6 +5,9 @@ import Persistence.GeneratorDAO;
 import Business.Entidades.Generator;
 import Presenstation.Controller.GameManagementController;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class SQLGeneratorDAO implements GeneratorDAO {
@@ -12,16 +15,19 @@ public class SQLGeneratorDAO implements GeneratorDAO {
 
     @Override
     public void addGenerator(Generator generator) {
-        String query = "INSERT INTO Generador(id_partida, nombre, precio, cafes_seg, multiplicador, tiempo_generacion) VALUES ('" +
+        String query = "INSERT INTO Generador(id_partida, nombre, precio, cafes_seg, multiplicador, tiempo_generacion, cost_multiplicador, increment_cost) VALUES ('" +
                 generator.getIdGame() + "', '" +
                 generator.getNombre() + "', '" +
                 generator.getPrecio() + "', '" +
                 generator.getCafeSeg() + "', '" +
                 generator.getMultiplicador() + "', '" +
-                generator.getTiempoGeneracion() + "')";
+                generator.getTiempoGeneracion() + "', '" +
+                generator.getCostMultiplicador() + "', '" +
+                generator.getIncrementCost() + "')";
 
         SQLConnector.getInstance().insertQuery(query);
     }
+
 
     public void updateGeneratorPrice(String nombre, double precio) {
         String query = "UPDATE Generador SET precio = '" + precio + "' WHERE nombre = '" + nombre + "'";
@@ -72,9 +78,37 @@ public class SQLGeneratorDAO implements GeneratorDAO {
     }*/
 
     @Override
+
     public List<Generator> getAllGenerators() {
-        return List.of();
+        List<Generator> generators = new ArrayList<>();
+
+        String query = "SELECT * FROM Generador";
+        ResultSet resultSet = SQLConnector.getInstance().selectQuery(query);
+
+        try {
+            while (resultSet.next()) {
+                int id = resultSet.getInt("id"); // Asegúrate de que tienes esta columna si la usas
+                String nombre = resultSet.getString("nombre");
+                double precio = resultSet.getDouble("precio");
+                double cafeSeg = resultSet.getDouble("cafes_seg");
+                double tiempoGeneracion = resultSet.getDouble("tiempo_generacion");
+                double incrementCost = resultSet.getDouble("increment_cost");
+                int costMultiplicador = resultSet.getInt("cost_multiplicador");
+                int multiplicador = resultSet.getInt("multiplicador");
+                int idPartida = resultSet.getInt("id_partida");
+
+                Generator generator = new Generator(id, nombre, precio, cafeSeg, tiempoGeneracion, incrementCost, costMultiplicador, multiplicador, idPartida);
+                generators.add(generator);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return generators;
+
     }
+
+
 
 
     //Stoy - 10
