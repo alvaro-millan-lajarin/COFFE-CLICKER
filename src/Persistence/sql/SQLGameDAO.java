@@ -42,34 +42,7 @@ public class SQLGameDAO implements GameDAO {
         String query = "DELETE FROM Partida WHERE nombre_partida = '" + game.getNombre() + "'";
         SQLConnector.getInstance().deleteQuery(query);
     }
-    @Override
-    public Game getGame(int id) {
-        String query = "SELECT * FROM Partida WHERE id_partida = '" + id + "'";
-        var rs = SQLConnector.getInstance().selectQuery(query);
 
-        try {
-            if (rs != null && rs.next()) {
-                Game game = new Game(
-                        rs.getInt("id_partida"),
-                        rs.getInt("id_usuario"),
-                        rs.getString("nombre_partida"),
-                        rs.getTimestamp("fecha_creacion").toLocalDateTime(),
-                        rs.getTimestamp("fecha_ultimo_save").toLocalDateTime(),
-                        rs.getInt("num_cafes")
-
-                );
-
-
-
-                return game;
-            }
-        } catch (Exception e) {
-            System.err.println("Error retrieving game: " + e.getMessage());
-            e.printStackTrace(); // opcional para más detalles en consola
-        }
-
-        return null;
-    }
 
 
     @Override

@@ -243,10 +243,7 @@ public class ManageGame {
         game.setNumCafes((int) (cafeActual-costeCafe));
 
     }
-    public void deleteGame() {
 
-        sqlGameDAO.deleteGame(this.game);
-    }
     public void deleteGameSelected(Game game) {
         sqlStatisticDAO.deleteEstadisticasByPartidaId(game.getId());
         sqlGameDAO.deleteGame(game);
