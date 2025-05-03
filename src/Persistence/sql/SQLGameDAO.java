@@ -30,10 +30,8 @@ public class SQLGameDAO implements GameDAO {
                 "nombre_partida = '" + game.getNombre() + "', " +
                 "fecha_creacion = '" + game.getFechaCreacion() + "', " +
                 "fecha_ultimo_save = '" + game.getFechaModificacion() + "', " +
-                "num_cafes = '" + game.getNumCafes() + "', " +
+                "num_cafes = '" + game.getNumCafes() + "' " +
 
-                "multiplicadores = '" + listToString(game.getMultplicadors()) + "', " +
-                "precios = '" + listToStringDoubles(game.getPreciosBase()) + "' " +
                 "WHERE id_partida = '" + game.getId() + "'";
 
         SQLConnector.getInstance().updateQuery(query);
@@ -61,28 +59,7 @@ public class SQLGameDAO implements GameDAO {
 
                 );
 
-                // Parseo seguro de las columnas que pueden venir como NULL
-                String cantidadStr = rs.getString("cantidad_cafeteras");
-                String multiplicadoresStr = rs.getString("multiplicadores");
-                String preciosStr = rs.getString("precios");
 
-                if (cantidadStr != null && multiplicadoresStr != null && preciosStr != null) {
-                    String[] qs = cantidadStr.split(",");
-                    String[] ms = multiplicadoresStr.split(",");
-                    String[] ps = preciosStr.split(",");
-
-                    ArrayList<Integer> quantitats = new ArrayList<>();
-                    ArrayList<Integer> multiplicadores = new ArrayList<>();
-                    ArrayList<Double> precios = new ArrayList<>();
-
-                    for (String q : qs) quantitats.add(Integer.parseInt(q.trim()));
-                    for (String m : ms) multiplicadores.add(Integer.parseInt(m.trim()));
-                    for (String p : ps) precios.add(Double.parseDouble(p.trim()));
-
-
-                    game.setMultiplicadors(multiplicadores);
-                    game.setPrecios(precios);
-                }
 
                 return game;
             }
@@ -111,39 +88,6 @@ public class SQLGameDAO implements GameDAO {
                         rs.getTimestamp("fecha_ultimo_save").toLocalDateTime(),
                         rs.getInt("num_cafes")
                 );
-
-                // Leer valores de las columnas nuevas
-                String cantidadStr = rs.getString("cantidad_cafeteras");
-                String multiStr = rs.getString("multiplicadores");
-                String precioStr = rs.getString("precios");
-
-                ArrayList<Integer> quantitats = new ArrayList<>();
-                ArrayList<Integer> multiplicadores = new ArrayList<>();
-                ArrayList<Double> precios = new ArrayList<>();
-
-
-                if (cantidadStr != null) {
-                    for (String q : cantidadStr.split(",")) quantitats.add(Integer.parseInt(q));
-                } else {
-                    quantitats.add(0); quantitats.add(0); quantitats.add(0);
-                }
-
-                if (multiStr != null) {
-                    for (String m : multiStr.split(",")) multiplicadores.add(Integer.parseInt(m));
-                } else {
-                    multiplicadores.add(1); multiplicadores.add(1); multiplicadores.add(1);
-                }
-
-                if (precioStr != null) {
-                    for (String p : precioStr.split(",")) precios.add(Double.parseDouble(p));
-                } else {
-                    precios.add(10.0); precios.add(150.0); precios.add(2000.0);
-                }
-
-
-                game.setMultiplicadors(multiplicadores);
-                game.setPrecios(precios);
-
                 games.add(game);
             }
         } catch (Exception e) {

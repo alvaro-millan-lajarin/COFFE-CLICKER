@@ -4,13 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f9bbb50b-3eaf-412a-ab58-ecb07cf93455" name="Changes" comment="arrreglo estadisticas">
+    <list default="true" id="f9bbb50b-3eaf-412a-ab58-ecb07cf93455" name="Changes" comment="correccion funciones sin usar">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Business/Entidades/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Business/Entidades/Game.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Persistence/sql/SQLGameDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Persistence/sql/SQLGameDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Presenstation/Controller/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presenstation/Controller/GameController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Presenstation/Controller/GameManagementController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presenstation/Controller/GameManagementController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Presenstation/View/Scenes/GameScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presenstation/View/Scenes/GameScene.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -116,22 +113,6 @@
       <workItem from="1743689183082" duration="265000" />
       <workItem from="1743689452923" duration="5970000" />
       <workItem from="1743758267674" duration="4963000" />
-    </task>
-    <task id="LOCAL-00008" summary="dlete para game management listo">
-      <option name="closed" value="true" />
-      <created>1743779629650</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1743779629650</updated>
-    </task>
-    <task id="LOCAL-00009" summary="logout">
-      <option name="closed" value="true" />
-      <created>1743785550210</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1743785550210</updated>
     </task>
     <task id="LOCAL-00010" summary="game">
       <option name="closed" value="true" />
@@ -509,7 +490,23 @@
       <option name="project" value="LOCAL" />
       <updated>1746293138017</updated>
     </task>
-    <option name="localTasksCounter" value="57" />
+    <task id="LOCAL-00057" summary="correccion multiplicadores">
+      <option name="closed" value="true" />
+      <created>1746294944708</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1746294944708</updated>
+    </task>
+    <task id="LOCAL-00058" summary="correccion funciones sin usar">
+      <option name="closed" value="true" />
+      <created>1746295271882</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1746295271882</updated>
+    </task>
+    <option name="localTasksCounter" value="59" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -539,8 +536,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="estadisticas" />
-    <MESSAGE value="delete gmaes" />
     <MESSAGE value="comprobar id" />
     <MESSAGE value="crear partida con sign up" />
     <MESSAGE value="resume, signup, delete.." />
@@ -564,7 +559,9 @@
     <MESSAGE value="fallo nuevo signUp" />
     <MESSAGE value="repasar estadisticas" />
     <MESSAGE value="arrreglo estadisticas" />
-    <option name="LAST_COMMIT_MESSAGE" value="arrreglo estadisticas" />
+    <MESSAGE value="correccion multiplicadores" />
+    <MESSAGE value="correccion funciones sin usar" />
+    <option name="LAST_COMMIT_MESSAGE" value="correccion funciones sin usar" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

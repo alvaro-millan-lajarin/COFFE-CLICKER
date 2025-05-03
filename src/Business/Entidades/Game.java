@@ -218,20 +218,6 @@ public class Game {
         }
     }
 
-
-
-    public void setMultiplicadors(ArrayList<Integer> multipliers) {
-        this.cafeteriaMultiplicador = multipliers.get(0);
-        this.cafeteriaChetaMultiplicador = multipliers.get(1);
-        this.cafeteriaGodMultiplicador = multipliers.get(2);
-    }
-
-    public void setPrecios(ArrayList<Double> precios) {
-        this.cafeteriaPrecio = precios.get(0);
-        this.cafeteriaChetaPrecio = precios.get(1);
-        this.cafeteriaGodPrecio = precios.get(2);
-    }
-
     public void mejorarGod(){
 
         for(Generator generator: generadoresGod){
