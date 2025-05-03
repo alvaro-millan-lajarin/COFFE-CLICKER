@@ -19,6 +19,7 @@ public class ManageGame {
 
 
 
+
     public ManageGame() {
 
     }
@@ -34,16 +35,21 @@ public class ManageGame {
     }
     public void setGame(Game game) {
         this.game = getGameBaseDeDatos(game);
+        sqlGeneratorDAO.addBasicGenerators(this.game.getId());
 
     }
     public void addCafetera(String cafetera) {
         Generator cafeteria = new Generator(1,cafetera, game.getCafeteriaPrecio(), game.getCafeteriaCafeSeg(), game.getCafeteriaTiempoGeneracion(), 1.07, game.getCafeteriaCostMultiplicador(), game.getCafeteriaMultiplicador(),game.getId());
         game.addCafetera(cafetera);
-        sqlGeneratorDAO.addGenerator(cafeteria);
+        //sqlGeneratorDAO.incrementarNumeroCafeterasPorNombre(cafetera);
     }
     public ArrayList<Integer> getQuantitas() {
+        ArrayList<Integer> quantitats = new ArrayList<>();
+        quantitats.add(game.getGeneradoresCafetera().size());
+        quantitats.add(game.getGeneradoresChetas().size());
+        quantitats.add(game.getGeneradoresGod().size());
 
-        return game.getQuantitats();
+        return quantitats;
     }
     public ArrayList<String> getProduccionsUnitat() {
        return game.getProduccionsUnitat();
@@ -57,23 +63,54 @@ public class ManageGame {
     public void startGeneratorCafeteraGod(){
         game.startGeneratorCafeteraGod();
     }
+
     public boolean enughtCoffeCafeteria(){
-        if(game.getNumCafes()>= game.getCafeteriaPrecio()){
-            return true;
+        if(game.getGeneradoresCafetera().isEmpty()){
+            if(game.getNumCafes()>= 10){
+                return true;
+            }else{
+                return false;
+            }
+        }else{
+            if(game.getNumCafes()>= game.getGeneradoresCafetera().getFirst().getPrecio()){
+                return true;
+            }else{
+                return false;
+            }
+
         }
-        return false;
     }
     public boolean enughtCoffeCheta(){
-        if(game.getNumCafes()>= game.getCafeteriaChetaPrecio()){
-            return true;
+        if(game.getGeneradoresChetas().isEmpty()){
+            if(game.getNumCafes()>= 150){
+                return true;
+            }else{
+                return false;
+            }
+        }else{
+            if(game.getNumCafes()>= game.getGeneradoresChetas().getFirst().getPrecio()){
+                return true;
+            }else{
+                return false;
+            }
+
         }
-        return false;
     }
     public boolean enughtCoffeGod(){
-        if(game.getNumCafes()>= game.getCafeteriaGodPrecio()){
-            return true;
+        if(game.getGeneradoresGod().isEmpty()){
+            if(game.getNumCafes()>= 2000){
+                return true;
+            }else{
+                return false;
+            }
+        }else{
+            if(game.getNumCafes()>= game.getGeneradoresGod().getFirst().getPrecio()){
+                return true;
+            }else{
+                return false;
+            }
+
         }
-        return false;
     }
     public void restarCafe(String cafetera) {
 
@@ -98,18 +135,58 @@ public class ManageGame {
 
         switch (cafetera) {
             case "cafetera":
-                game.setCafeteriaPrecio();
+                updatePriceCafetera();
+
                 break;
             case "CafeCheta":
-                game.setCafeteriaChetaPrecio();
+                updatePriceCafeteraCheta();
+
                 break;
             case "CafeGod":
-                game.setCafeteriaGodPrecio();
+                updatePriceCafeteraGod();
+
                 break;
         }
     }
+    public void updatePriceCafeteraGod(){
+        double cafeteraPrecio = 0;
+        cafeteraPrecio = 2000 * Math.pow(1.12, game.getGeneradoresGod().size());
+        for(Generator generator : game.getGeneradoresGod()){
+            generator.setPrecio(cafeteraPrecio);
+        }
+    }
+    public void updatePriceCafeteraCheta(){
+        double cafeteraPrecio = 0;
+        cafeteraPrecio = 150 * Math.pow(1.15, game.getGeneradoresChetas().size());
+        for(Generator generator : game.getGeneradoresChetas()){
+            generator.setPrecio(cafeteraPrecio);
+        }
+    }
+    public void updatePriceCafetera(){
+        double cafeteraPrecio = 0;
+        cafeteraPrecio = 10 * Math.pow(1.07, game.getGeneradoresCafetera().size());
+        for(Generator generator : game.getGeneradoresCafetera()){
+            generator.setPrecio(cafeteraPrecio);
+        }
+    }
     public ArrayList<Integer> getPreciosBase() {
-        return game.getPreciosBase();
+        ArrayList<Integer> preciosBase = new ArrayList<>();
+        int precioCafetera = 10;
+        int precioCheta = 150;
+        int precioGod = 2000;
+        if(!game.getGeneradoresCafetera().isEmpty()){
+            precioCafetera = game.getGeneradoresCafetera().get(0).getPrecio().intValue();
+        }
+        if(!game.getGeneradoresChetas().isEmpty()){
+            precioCheta = game.getGeneradoresChetas().get(0).getPrecio().intValue();
+        }
+        if(!game.getGeneradoresGod().isEmpty()){
+            precioGod = game.getGeneradoresGod().get(0).getPrecio().intValue();
+        }
+        preciosBase.add(precioCafetera);
+        preciosBase.add(precioCheta);
+        preciosBase.add(precioGod);
+        return preciosBase;
     }
 
     public void mejorarCafetera(){
@@ -231,5 +308,49 @@ public class ManageGame {
 
         }
         return proudccioUnitat;
+    }
+    public void updateGenerators( ){
+
+        if(!game.getGeneradoresCafetera().isEmpty()){
+            double priceCafetera = game.getGeneradoresCafetera().get(0).getPrecio();
+            double cafesSegCafetera = game.getGeneradoresCafetera().get(0).getCafeSeg();
+            Integer multiplicador = game.getGeneradoresCafetera().get(0).getMultiplicador();
+            double tiempoGeneracion = game.getGeneradoresCafetera().get(0).getTiempoGeneracion();
+            Integer costMultiplicador = game.getGeneradoresCafetera().get(0).getCostMultiplicador();
+            double incrementCost = game.getGeneradoresCafetera().get(0).getIncrementCost();
+            Integer numeroCafeteras = game.getGeneradoresCafetera().size();
+
+            sqlGeneratorDAO.updateGenerator("Cafetera",priceCafetera, cafesSegCafetera, multiplicador, tiempoGeneracion, costMultiplicador, incrementCost, numeroCafeteras, game.getId());
+        }
+
+        if(!game.getGeneradoresChetas().isEmpty()){
+            double priceCafeteraCheta = game.getGeneradoresChetas().get(0).getPrecio();
+            double cafesSegCafeteraCheta = game.getGeneradoresChetas().get(0).getCafeSeg();
+            Integer multiplicadorCheta = game.getGeneradoresChetas().get(0).getMultiplicador();
+            double tiempoGeneracionCheta = game.getGeneradoresChetas().get(0).getTiempoGeneracion();
+            Integer costMultiplicadorCheta = game.getGeneradoresChetas().get(0).getCostMultiplicador();
+            double incrementCostCheta = game.getGeneradoresChetas().get(0).getIncrementCost();
+            Integer numeroCafeterasCheta = game.getGeneradoresChetas().size();
+
+            sqlGeneratorDAO.updateGenerator("CafeCheta",priceCafeteraCheta, cafesSegCafeteraCheta, multiplicadorCheta, tiempoGeneracionCheta, costMultiplicadorCheta, incrementCostCheta, numeroCafeterasCheta, game.getId());
+        }
+        if(!game.getGeneradoresGod().isEmpty()){
+            double priceGod = game.getGeneradoresGod().get(0).getPrecio();
+            double cafesSegGod = game.getGeneradoresGod().get(0).getCafeSeg();
+            Integer multiplicadorGod = game.getGeneradoresGod().get(0).getMultiplicador();
+            double tiempoGeneracionGod = game.getGeneradoresGod().get(0).getTiempoGeneracion();
+            Integer costMultiplicadorGod = game.getGeneradoresGod().get(0).getCostMultiplicador();
+            double incrementCostGod = game.getGeneradoresGod().get(0).getIncrementCost();
+            Integer numeroCafeterasGod = game.getGeneradoresGod().size();
+
+            sqlGeneratorDAO.updateGenerator("CafeGod",priceGod, cafesSegGod, multiplicadorGod, tiempoGeneracionGod, costMultiplicadorGod, incrementCostGod, numeroCafeterasGod, game.getId());
+        }
+
+
+
+
+
+
+
     }
 }

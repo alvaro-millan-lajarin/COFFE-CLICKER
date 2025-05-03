@@ -37,7 +37,7 @@ public class Generator extends Thread {
         double acumulador = 0.0;
 
         while (!Thread.currentThread().isInterrupted()) {
-            acumulador += cafeSeg * tiempoGeneracion;
+            acumulador = acumulador + (cafeSeg * tiempoGeneracion);
 
             int cafesEnteros = (int) acumulador;
 

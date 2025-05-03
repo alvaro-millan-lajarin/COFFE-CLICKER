@@ -27,15 +27,56 @@ public class SQLGeneratorDAO implements GeneratorDAO {
 
         SQLConnector.getInstance().insertQuery(query);
     }
+    public void incrementarNumeroCafeterasPorNombre(String nombre) {
+        String query = "UPDATE Generador " +
+                "SET numero_cafeteras = numero_cafeteras + 1 " +
+                "WHERE nombre = '" + nombre + "'";
 
+        SQLConnector.getInstance().insertQuery(query);
+    }
+
+    public void addBasicGenerators(int idPartida) {
+        SQLConnector connector = SQLConnector.getInstance();
+
+        String query1 = "INSERT INTO Generador(id_partida, nombre, precio, cafes_seg, multiplicador, tiempo_generacion, cost_multiplicador, increment_cost, numero_cafeteras) " +
+                "VALUES (" + idPartida + ", 'Cafetera', 10, 0.2, 1, 1, 10, 1.07, 0)";
+
+        String query2 = "INSERT INTO Generador(id_partida, nombre, precio, cafes_seg, multiplicador, tiempo_generacion, cost_multiplicador, increment_cost, numero_cafeteras) " +
+                "VALUES (" + idPartida + ", 'CafeCheta', 150, 0.5, 1, 0.7, 150, 1.15, 0)";
+
+        String query3 = "INSERT INTO Generador(id_partida, nombre, precio, cafes_seg, multiplicador, tiempo_generacion, cost_multiplicador, increment_cost, numero_cafeteras) " +
+                "VALUES (" + idPartida + ", 'CafeGod', 2000, 30, 1, 1.3, 2000, 1.12, 0)";
+
+        connector.insertQuery(query1);
+        connector.insertQuery(query2);
+        connector.insertQuery(query3);
+    }
 
     public void updateGeneratorPrice(String nombre, double precio) {
         String query = "UPDATE Generador SET precio = '" + precio + "' WHERE nombre = '" + nombre + "'";
         SQLConnector.getInstance().insertQuery(query);
     }
 
+    public void updateGenerator(String nombre, double precio, double cafesSeg, int multiplicador,
+                                double tiempoGeneracion, int costMultiplicador, double incrementCost,
+                                int numeroCafeteras, int idPartida) {
 
+        String query = "UPDATE Generador SET " +
+                "precio = '" + precio + "', " +
+                "cafes_seg = '" + cafesSeg + "', " +
+                "multiplicador = '" + multiplicador + "', " +
+                "tiempo_generacion = '" + tiempoGeneracion + "', " +
+                "cost_multiplicador = '" + costMultiplicador + "', " +
+                "increment_cost = '" + incrementCost + "', " +
+                "numero_cafeteras = '" + numeroCafeteras + "' " +
+                "WHERE nombre = '" + nombre + "' AND id_partida = '" + idPartida + "'";
 
+        SQLConnector.getInstance().insertQuery(query);
+    }
+
+    public void addBasicGenerators(){
+
+    }
 
     @Override
     public void deleteGenerator(Generator generator) {
