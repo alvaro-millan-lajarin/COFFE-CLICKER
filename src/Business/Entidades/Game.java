@@ -19,12 +19,6 @@ public class Game {
     private List<Generator> generadoresChetas = new ArrayList<>();
     private List<Generator> generadoresGod = new ArrayList<>();
 
-    private ArrayList<Integer> quantitatsGeneredors;//0->cafeteria, 1->cafeteraCheta, 2->cafeteraGod, esto se pasa a la base de datos
-
-    private ArrayList<String> produccionsUnitat;
-
-
-
     //VARIABLE GENERADORES AL PRINCIPIO
     private double cafeteriaCafeSeg = 0.2;
     private double cafeteriaTiempoGeneracion = 1;
@@ -58,15 +52,15 @@ public class Game {
         this.numCafes = numCafes;
 
 
-        quantitatsGeneredors = new ArrayList<>();
-        quantitatsGeneredors.add(0);
-        quantitatsGeneredors.add(0);
-        quantitatsGeneredors.add(0);
-
-        produccionsUnitat = new ArrayList<>();
-
     }
     public void startGeneratorCafetera() {
+        if(!generadoresCafetera.isEmpty()){
+            cafeteriaPrecio = generadoresCafetera.getFirst().getPrecio();
+            cafeteriaCafeSeg = generadoresCafetera.getFirst().getCafeSeg();
+            cafeteriaTiempoGeneracion = generadoresCafetera.getFirst().getTiempoGeneracion();
+            cafeteriaCostMultiplicador = generadoresCafetera.getFirst().getCostMultiplicador();
+            cafeteriaMultiplicador = generadoresCafetera.getFirst().getMultiplicador();
+        }
 
         Generator cafeteria = new Generator(1, "cafeteria",cafeteriaPrecio,cafeteriaCafeSeg , cafeteriaTiempoGeneracion,1.07,cafeteriaCostMultiplicador, cafeteriaMultiplicador,this.getId());
         cafeteria.setGame(this);
@@ -74,12 +68,26 @@ public class Game {
         cafeteria.start();
     }
     public void startGeneratorCafeteraCheta() {
+        if(!generadoresChetas.isEmpty()){
+            cafeteriaChetaPrecio = generadoresChetas.getFirst().getPrecio();
+            cafeteriaChetaCafeSeg = generadoresChetas.getFirst().getCafeSeg();
+            cafeteriaChetaTiempoGeneracion = generadoresChetas.getFirst().getTiempoGeneracion();
+            chetaCostMultiplicador = generadoresChetas.getFirst().getCostMultiplicador();
+            cafeteriaChetaMultiplicador = generadoresChetas.getFirst().getMultiplicador();
+        }
         Generator cafeteriaCheta = new Generator(2, "cafeteriaCheta",cafeteriaChetaPrecio, cafeteriaChetaCafeSeg, cafeteriaChetaTiempoGeneracion,1.15,chetaCostMultiplicador, cafeteriaChetaMultiplicador,this.getId());
         cafeteriaCheta.setGame(this);
         generadoresChetas.add(cafeteriaCheta);
         cafeteriaCheta.start();
     }
     public void startGeneratorCafeteraGod() {
+        if(!generadoresGod.isEmpty()){
+            cafeteriaGodPrecio = generadoresGod.getFirst().getPrecio();
+            cafeteriaGodCafeSeg = generadoresGod.getFirst().getCafeSeg();
+            cafeteriaGodTiempoGeneracion = generadoresGod.getFirst().getTiempoGeneracion();
+            GodCostMultiplicador = generadoresGod.getFirst().getCostMultiplicador();
+            cafeteriaGodMultiplicador = generadoresGod.getFirst().getMultiplicador();
+        }
         Generator cafeteriaGod = new Generator(3, "cafeteriaGod",cafeteriaGodPrecio, cafeteriaGodCafeSeg, cafeteriaGodTiempoGeneracion,1.12,GodCostMultiplicador, cafeteriaGodMultiplicador,this.getId());
         cafeteriaGod.setGame(this);
         generadoresGod.add(cafeteriaGod);
@@ -127,9 +135,7 @@ public class Game {
     }
 
 
-    public ArrayList<Integer> getQuantitats(){
-        return quantitatsGeneredors;
-    }
+
     public ArrayList<String> getProduccionsUnitat() {
         ArrayList<String> produccions = new ArrayList<>();
 
@@ -212,9 +218,7 @@ public class Game {
         }
     }
 
-    public void setQuantitats(ArrayList<Integer> quantitats) {
-        this.quantitatsGeneredors = quantitats;
-    }
+
 
     public void setMultiplicadors(ArrayList<Integer> multipliers) {
         this.cafeteriaMultiplicador = multipliers.get(0);
@@ -300,13 +304,7 @@ public class Game {
     }
 
 
-    public double getCafeteriaCafeSeg() {
-        return cafeteriaCafeSeg;
-    }
 
-    public double getCafeteriaTiempoGeneracion() {
-        return cafeteriaTiempoGeneracion;
-    }
 
 
 

@@ -114,9 +114,7 @@ public class GameController extends Controller {
             manageGame.restarCafe("cafetera");//restar cafe
             manageGame.startGeneratorCafetera();//encender generador
 
-            //manageGame.addCafetera("Cafetera");//esto no deberia hacer falta
             manageGame.updatePriceCoffe("cafetera");
-            //manageGame.updatePriceCoffeCafeteriaBaseDatos("cafetera");
 
             manageGame.updateGame();
             manageGame.updateGenerators();
@@ -215,8 +213,9 @@ public class GameController extends Controller {
     }
 
     public void deleteCurrentGame() {
-        manageGame.deleteGame();
-        manageGame.setGame(null);
+        manageGame.deleteGameSelected(manageGame.getGame());
+        mainController.resetGameManagement();
+        mainController.nextScene(Scenes.GAME_MANAGEMENT);
     }
 
     public void goToGameManagementScene() {

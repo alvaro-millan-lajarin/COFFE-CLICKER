@@ -31,7 +31,7 @@ public class SQLGameDAO implements GameDAO {
                 "fecha_creacion = '" + game.getFechaCreacion() + "', " +
                 "fecha_ultimo_save = '" + game.getFechaModificacion() + "', " +
                 "num_cafes = '" + game.getNumCafes() + "', " +
-                "cantidad_cafeteras = '" + listToString(game.getQuantitats()) + "', " +
+
                 "multiplicadores = '" + listToString(game.getMultplicadors()) + "', " +
                 "precios = '" + listToStringDoubles(game.getPreciosBase()) + "' " +
                 "WHERE id_partida = '" + game.getId() + "'";
@@ -79,7 +79,7 @@ public class SQLGameDAO implements GameDAO {
                     for (String m : ms) multiplicadores.add(Integer.parseInt(m.trim()));
                     for (String p : ps) precios.add(Double.parseDouble(p.trim()));
 
-                    game.setQuantitats(quantitats);
+
                     game.setMultiplicadors(multiplicadores);
                     game.setPrecios(precios);
                 }
@@ -140,7 +140,7 @@ public class SQLGameDAO implements GameDAO {
                     precios.add(10.0); precios.add(150.0); precios.add(2000.0);
                 }
 
-                game.setQuantitats(quantitats);
+
                 game.setMultiplicadors(multiplicadores);
                 game.setPrecios(precios);
 

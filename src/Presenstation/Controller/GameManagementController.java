@@ -101,6 +101,7 @@ public class GameManagementController extends Controller {
     public void deleteSelectedGame() {
 
         Game selectedGame = getScene().getSelectedGame();
+
         if (selectedGame != null) {
             int confirm = messages.deleteGame();
 
