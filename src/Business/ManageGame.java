@@ -359,5 +359,8 @@ public class ManageGame {
         game.setGeneradoresChetas(generatorsChetas);
         game.setGeneradoresGod(generatorsGod);
     }
+    public void logCafeHistorico(int cafesActuales, int chetasActuales){
+        sqlGameDAO.logCafeHistorico(game.getId(), game.getNumCafes());
+    }
 }
 

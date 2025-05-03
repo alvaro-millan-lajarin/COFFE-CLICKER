@@ -12,7 +12,7 @@ import java.util.List;
 
 public class Grafica extends JPanel {
     private final List<Pair<LocalDateTime, Integer>> historico;
-    private final LocalDateTime startTime;
+    private LocalDateTime startTime;
 
     public Grafica(List<Pair<LocalDateTime, Integer>> historico) {
         this.historico = historico;
@@ -41,8 +41,8 @@ public class Grafica extends JPanel {
 
 
         int maxCafe = historico.stream().mapToInt(Pair::getValue).max().orElse(1);
-        long totalSeconds = Duration.between(startTime, historico.get(historico.size() - 1).getKey()).getSeconds();
-        totalSeconds = totalSeconds == 0 ? 1 : totalSeconds;
+        long totalSeconds = 20 * 60; // 20 minutos fijos
+
 
 
         g2.setColor(Color.BLUE);
@@ -50,8 +50,9 @@ public class Grafica extends JPanel {
             Pair<LocalDateTime, Integer> prev = historico.get(i - 1);
             Pair<LocalDateTime, Integer> curr = historico.get(i);
 
-            long t1 = Duration.between(startTime, prev.getKey()).toMinutes();
-            long t2 = Duration.between(startTime, curr.getKey()).toMinutes();
+            long t1 = Duration.between(startTime, prev.getKey()).getSeconds();
+            long t2 = Duration.between(startTime, curr.getKey()).getSeconds();
+
 
             int x1 = padding + (int) ((t1 / (double) totalSeconds) * width);
             int y1 = getHeight() - padding - (int) ((prev.getValue() / (double) maxCafe) * height);
@@ -73,15 +74,15 @@ public class Grafica extends JPanel {
         }
 
 
-        int xTicks = 6;
-        for (int i = 0; i <= xTicks; i++) {
-            long seconds = i * totalSeconds / xTicks;
+        // Mostrar ticks cada 1 minuto (hasta 20)
+        int maxMinutes = 20;
+        for (int i = 1; i <= maxMinutes; i++) {
+            int seconds = i * 60;
             int x = padding + (int) ((seconds / (double) totalSeconds) * width);
-            g2.drawLine(x, getHeight() - padding - 5, x, getHeight() - padding + 5); // tick
-
-            String label = seconds >= 60 ? (seconds / 60) + "m" : seconds + "s";
-            g2.drawString(label, x - 10, getHeight() - padding + 20); // label
+            g2.drawLine(x, getHeight() - padding - 5, x, getHeight() - padding + 5);
+            g2.drawString(i + "m", x - 10, getHeight() - padding + 20);
         }
+
 
 
         g2.drawString("Tiempo", getWidth() / 2, getHeight() - 10);
@@ -97,6 +98,10 @@ public class Grafica extends JPanel {
     public List<Pair<LocalDateTime, Integer>> getHistorico() {
         return historico;
     }
+    public void setStartTime(LocalDateTime startTime) {
+        this.startTime = startTime;
+    }
+
 
 
 }

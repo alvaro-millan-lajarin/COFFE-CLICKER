@@ -4,15 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f9bbb50b-3eaf-412a-ab58-ecb07cf93455" name="Changes" comment="fallo nuevo signUp">
+    <list default="true" id="f9bbb50b-3eaf-412a-ab58-ecb07cf93455" name="Changes" comment="repasar estadisticas">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Business/ManageGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Business/ManageGame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Presenstation/Controller/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presenstation/Controller/GameController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Presenstation/Controller/GameCreationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presenstation/Controller/GameCreationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Presenstation/Controller/GameManagementController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presenstation/Controller/GameManagementController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Presenstation/Controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presenstation/Controller/MainController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Presenstation/View/Grafica/Grafica.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presenstation/View/Grafica/Grafica.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Presenstation/View/Scenes/GameScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presenstation/View/Scenes/GameScene.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -118,14 +114,6 @@
       <workItem from="1743689183082" duration="265000" />
       <workItem from="1743689452923" duration="5970000" />
       <workItem from="1743758267674" duration="4963000" />
-    </task>
-    <task id="LOCAL-00006" summary="singUp">
-      <option name="closed" value="true" />
-      <created>1743771853774</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1743771853774</updated>
     </task>
     <task id="LOCAL-00007" summary="arreglo fallos de registro">
       <option name="closed" value="true" />
@@ -511,7 +499,15 @@
       <option name="project" value="LOCAL" />
       <updated>1746283369336</updated>
     </task>
-    <option name="localTasksCounter" value="55" />
+    <task id="LOCAL-00055" summary="repasar estadisticas">
+      <option name="closed" value="true" />
+      <created>1746285562052</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1746285562052</updated>
+    </task>
+    <option name="localTasksCounter" value="56" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -541,7 +537,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Implementacio del boto resum, amb guarda de memoria stadistiques y Canvi en base de dades" />
     <MESSAGE value="nueva sql" />
     <MESSAGE value="estadisticas" />
     <MESSAGE value="delete gmaes" />
@@ -566,7 +561,8 @@
     <MESSAGE value="limpiar funciones no utilizadas" />
     <MESSAGE value="revisar estadisticas" />
     <MESSAGE value="fallo nuevo signUp" />
-    <option name="LAST_COMMIT_MESSAGE" value="fallo nuevo signUp" />
+    <MESSAGE value="repasar estadisticas" />
+    <option name="LAST_COMMIT_MESSAGE" value="repasar estadisticas" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

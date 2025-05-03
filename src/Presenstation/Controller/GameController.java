@@ -28,6 +28,7 @@ public class GameController extends Controller {
     private ManageUser manageUser;
 
     private Timer historicoTimer;
+    private LocalDateTime sessionStartTime;
 
 
     public GameController(Scene view, MainController mainController, LoginController loginController, SignUpController signUpController, ManageGame manageGame, ManageUser manageUser) {
@@ -68,11 +69,11 @@ public class GameController extends Controller {
             compraCafeGod();
 
         }else if(e.getActionCommand().equalsIgnoreCase("GAME_MANAGEMENT")){
-            detenerRegistroCafes();
+
             manageGame.updateGame();
             manageGame.updateGenerators();
             mainController.resetGameManagement();
-
+            detenerRegistroCafes();
             mainController.nextScene(Scenes.GAME_MANAGEMENT);
         }else if (e.getActionCommand().equalsIgnoreCase("CafeteraMejora")) {
             cafeteraMejora();
@@ -223,19 +224,29 @@ public class GameController extends Controller {
     }
     public void detenerRegistroCafes() {
         if (historicoTimer != null && historicoTimer.isRunning()) {
+            System.out.println("Deteniendo el timer...");
             historicoTimer.stop();
+        }else {
+            System.out.println("Timer ya detenido o nulo");
         }
     }
     public void iniciarRegistroCafes(Game partidaActual, Grafica grafica) {
+        detenerRegistroCafes();
+        sessionStartTime = LocalDateTime.now();
+
         historicoTimer = new Timer(60_000, e -> {
-            int cafesActuales = partidaActual.getNumCafes(); // Asegúrate de tener este método
+            int cafesActuales = partidaActual.getNumCafes();
             LocalDateTime ahora = LocalDateTime.now();
 
+
+            manageGame.logCafeHistorico(partidaActual.getId(), cafesActuales);
+
+
             grafica.getHistorico().add(new Pair<>(ahora, cafesActuales));
-            grafica.repaint(); // Redibuja la gráfica con el nuevo dato
+            grafica.repaint();
         });
+
+        grafica.setStartTime(sessionStartTime);
         historicoTimer.start();
     }
-
-
 }
