@@ -33,8 +33,8 @@ public class ManageUser {
                 user.setEmail(email);
                 user.setPassword(password);
                 user.setUsername(name);
-                currentUser = user;
                 sqlUserDAO.insertUser(user);
+                currentUser = sqlUserDAO.findUserByEmail(email);
                 flag = true;
             }else{
                 if(sqlUserDAO.findUserByEmail(email) != null){

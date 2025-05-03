@@ -4,13 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f9bbb50b-3eaf-412a-ab58-ecb07cf93455" name="Changes" comment="limpiar funciones no utilizadas">
+    <list default="true" id="f9bbb50b-3eaf-412a-ab58-ecb07cf93455" name="Changes" comment="revisar estadisticas">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Business/Entidades/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Business/Entidades/Game.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Business/ManageGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Business/ManageGame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Persistence/sql/SQLStatisticDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Persistence/sql/SQLStatisticDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Presenstation/Controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presenstation/Controller/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Presenstation/Messages.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presenstation/Messages.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Business/ManageUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Business/ManageUser.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -116,14 +113,6 @@
       <workItem from="1743689183082" duration="265000" />
       <workItem from="1743689452923" duration="5970000" />
       <workItem from="1743758267674" duration="4963000" />
-    </task>
-    <task id="LOCAL-00004" summary="login">
-      <option name="closed" value="true" />
-      <created>1743761060211</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1743761060211</updated>
     </task>
     <task id="LOCAL-00005" summary="singUp">
       <option name="closed" value="true" />
@@ -509,7 +498,15 @@
       <option name="project" value="LOCAL" />
       <updated>1746274448391</updated>
     </task>
-    <option name="localTasksCounter" value="53" />
+    <task id="LOCAL-00053" summary="revisar estadisticas">
+      <option name="closed" value="true" />
+      <created>1746281990389</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1746281990389</updated>
+    </task>
+    <option name="localTasksCounter" value="54" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -539,7 +536,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="borrar clases inecesarias" />
     <MESSAGE value="icrementar costes formula" />
     <MESSAGE value="Implementacio del boto resum, amb guarda de memoria stadistiques y Canvi en base de dades" />
     <MESSAGE value="nueva sql" />
@@ -564,43 +560,35 @@
     <MESSAGE value="en local sin base de datos game funciona" />
     <MESSAGE value="ya funciona la base de datos con game" />
     <MESSAGE value="limpiar funciones no utilizadas" />
-    <option name="LAST_COMMIT_MESSAGE" value="limpiar funciones no utilizadas" />
+    <MESSAGE value="revisar estadisticas" />
+    <option name="LAST_COMMIT_MESSAGE" value="revisar estadisticas" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Business/ManageGame.java</url>
-          <line>323</line>
-          <option name="timeStamp" value="80" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Business/ManageGame.java</url>
-          <line>306</line>
-          <option name="timeStamp" value="81" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Business/ManageGame.java</url>
-          <line>273</line>
-          <option name="timeStamp" value="98" />
-        </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/Business/ManageGame.java</url>
-          <line>299</line>
-          <properties class="Business.ManageGame" method="getProduccionsUnitatBaseDatos">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="79" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/Business/ManageGame.java</url>
-          <line>362</line>
+          <line>310</line>
           <properties class="Business.ManageGame" method="setGeneradores">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
           </properties>
           <option name="timeStamp" value="94" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Presenstation/Controller/GameCreationController.java</url>
+          <line>59</line>
+          <option name="timeStamp" value="99" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Presenstation/Controller/GameCreationController.java</url>
+          <line>57</line>
+          <option name="timeStamp" value="100" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Presenstation/Controller/GameCreationController.java</url>
+          <line>58</line>
+          <option name="timeStamp" value="101" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
