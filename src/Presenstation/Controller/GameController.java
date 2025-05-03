@@ -63,6 +63,8 @@ public class GameController extends Controller {
             compraCafeGod();
 
         }else if(e.getActionCommand().equalsIgnoreCase("GAME_MANAGEMENT")){
+            manageGame.updateGame();
+            manageGame.updateGenerators();
             mainController.resetGameManagement();
 
             mainController.nextScene(Scenes.GAME_MANAGEMENT);
@@ -166,25 +168,14 @@ public class GameController extends Controller {
 
         getScene().updateTablas(quantitats, proudccioUnitat,precioBase, costMultiplicadores, multiplicadores);
     }
-    public void updateTablasInicio(){
 
-        ArrayList<Integer> quantitats= manageGame.getQuantitas();
-        ArrayList<String> proudccioUnitat = manageGame.getProduccionsUnitatBaseDatos();//falla
-        ArrayList<Integer> precioBase = manageGame.getPreciosBase();//esto tambien
-
-        //tabla millores
-        ArrayList<Integer> costMultiplicadores = manageGame.getCostMultplicadors();//falla
-        ArrayList<Integer> multiplicadores = manageGame.getMultplicadors();//corregir
-
-        getScene().updateTablas(quantitats, proudccioUnitat,precioBase, costMultiplicadores, multiplicadores);
-    }
 
     public void cafeteraMejora() {
         if(manageGame.enoughtCoffeMejoraCafetera()){
             manageGame.restarCafeMejora("cafetera");
             manageGame.mejorarCafetera();
             manageGame.updateGame();
-
+            manageGame.updateGenerators();
             updateTablas();
         }else{
             notEnoughtCoffe();
@@ -197,6 +188,7 @@ public class GameController extends Controller {
             manageGame.mejorarCheta();
             manageGame.updateGame();
             updateTablas();
+            manageGame.updateGenerators();
         }else{
             notEnoughtCoffe();
         }
@@ -206,6 +198,7 @@ public class GameController extends Controller {
             manageGame.restarCafeMejora("cafeGod");
             manageGame.mejorarGod();
             manageGame.updateGame();
+            manageGame.updateGenerators();
             updateTablas();
 
         }else{

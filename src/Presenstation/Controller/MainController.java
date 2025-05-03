@@ -104,6 +104,7 @@ public class MainController {
     public void resumeGame(Game game) {
 
         manageGame.setGame(game);
+        manageGame.setGeneradores();
 
         gameScene = new GameScene();
         gameController = new GameController(gameScene, this, loginController, signUpController, manageGame, manageUser);
@@ -111,8 +112,8 @@ public class MainController {
         gameScene.setController(gameController);
 
         gameScene.apply(getMainFrame());
-        gameController.updateTablasInicio();
-        manageGame.inicializarGeneradores();
+        gameController.updateTablas();
+
     }
 
 

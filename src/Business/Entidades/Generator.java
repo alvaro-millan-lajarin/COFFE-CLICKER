@@ -1,10 +1,5 @@
 package Business.Entidades;
 
-import Presenstation.Controller.GameController;
-
-import java.time.Instant;
-import java.util.HashMap;
-
 public class Generator extends Thread {
     private int id =0;
     private int idGame;

@@ -66,8 +66,7 @@ public class GameManagementScene extends Scene {
     }
 
     public JPanel centerPanel() {
-        SQLGameDAO sqlGameDAO = new SQLGameDAO();
-        List<Game> games = sqlGameDAO.getAllGames();
+        List<Game> games = gameManagementController.getAllGames();
         User user = new User();
         user = gameManagementController.getUser();
 

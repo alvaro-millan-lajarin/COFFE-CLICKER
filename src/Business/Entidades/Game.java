@@ -40,7 +40,7 @@ public class Game {
 
     private double cafeteriaChetaPrecio = 150; // Precio de la cafetería cheta
     private Integer cafeteriaChetaMultiplicador = 1; // Multiplicador de la cafetería cheta
-    private Integer chetaCostMultiplicador = 100;
+    private Integer chetaCostMultiplicador = 150;
 
     private double cafeteriaGodPrecio = 2000; // Precio de la cafetería God
     private Integer cafeteriaGodMultiplicador = 1;
@@ -391,5 +391,17 @@ public class Game {
 
     public Consumer<Integer> getOnCafeChanged() {
         return onCafeChanged;
+    }
+
+    public void setGeneradoresCafetera(List<Generator> generadoresCafetera) {
+        this.generadoresCafetera = generadoresCafetera;
+    }
+
+    public void setGeneradoresChetas(List<Generator> generadoresChetas) {
+        this.generadoresChetas = generadoresChetas;
+    }
+
+    public void setGeneradoresGod(List<Generator> generadoresGod) {
+        this.generadoresGod = generadoresGod;
     }
 }

@@ -117,6 +117,22 @@ public class SQLGeneratorDAO implements GeneratorDAO {
 
         return null;
     }*/
+   public int numeroGenerador(Generator generator) {
+       String query = "SELECT numero_cafeteras FROM Generador WHERE nombre = '" + generator.getNombre() +
+               "' AND id_partida = '" + generator.getIdGame() + "'";
+
+       var rs = SQLConnector.getInstance().selectQuery(query);
+
+       try {
+           if (rs != null && rs.next()) {
+               return rs.getInt("numero_cafeteras");
+           }
+       } catch (Exception e) {
+           System.err.println("Error al obtener el número de cafeteras: " + e.getMessage());
+       }
+
+       return 0; // o -1 si quieres indicar que no se encontró
+   }
 
     @Override
 
@@ -128,7 +144,7 @@ public class SQLGeneratorDAO implements GeneratorDAO {
 
         try {
             while (resultSet.next()) {
-                int id = resultSet.getInt("id"); // Asegúrate de que tienes esta columna si la usas
+                int id = resultSet.getInt("id_generador"); // Asegúrate de que tienes esta columna si la usas
                 String nombre = resultSet.getString("nombre");
                 double precio = resultSet.getDouble("precio");
                 double cafeSeg = resultSet.getDouble("cafes_seg");

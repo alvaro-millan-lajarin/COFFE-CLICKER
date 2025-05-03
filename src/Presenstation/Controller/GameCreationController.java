@@ -58,6 +58,7 @@ public class GameCreationController extends Controller {
             game = new Game(1,manageUser.getCurrentUser().getId(),nombreGame,fechaYHoraActual,fechaYHoraActual,0);
             manageGame.addGame(game);
             manageGame.setGame(game);
+            manageGame.addBasicGenerator();
 
             mainController.nextScene(Scenes.GAME);
 

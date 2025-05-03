@@ -16,6 +16,7 @@ import Presenstation.View.Scenes.Scenes;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
+import java.util.List;
 
 public class GameManagementController extends Controller {
     private LoginController loginController;
@@ -107,5 +108,8 @@ public class GameManagementController extends Controller {
     }
     public void mostrarGraficaDeCafes(int idPartida) {
         manageStatics.mostrarGraficaCafes(idPartida);
+    }
+    public List<Game> getAllGames() {
+       return manageGame.getAllGames();
     }
 }

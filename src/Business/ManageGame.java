@@ -35,8 +35,11 @@ public class ManageGame {
     }
     public void setGame(Game game) {
         this.game = getGameBaseDeDatos(game);
-        sqlGeneratorDAO.addBasicGenerators(this.game.getId());
 
+
+    }
+    public void addBasicGenerator() {
+        sqlGeneratorDAO.addBasicGenerators(this.game.getId());
     }
     public void addCafetera(String cafetera) {
         Generator cafeteria = new Generator(1,cafetera, game.getCafeteriaPrecio(), game.getCafeteriaCafeSeg(), game.getCafeteriaTiempoGeneracion(), 1.07, game.getCafeteriaCostMultiplicador(), game.getCafeteriaMultiplicador(),game.getId());
@@ -271,7 +274,20 @@ public class ManageGame {
         sqlGameDAO.updateGame(getGame());
     }
     public void inicializarGeneradores(){
-        getGame().inicialitzarGeneradors();
+        for (Generator generator : game.getGeneradoresCafetera()) {
+            generator.setGame(game);
+            generator.start();
+        }
+
+        for (Generator generator : game.getGeneradoresChetas()) {
+            generator.setGame(game);
+            generator.start();
+        }
+
+        for (Generator generator : game.getGeneradoresGod()) {
+            generator.setGame(game);
+            generator.start();
+        }
     }
     public void updatePriceCoffeCafeteriaBaseDatos(String cafetera) {
 
@@ -346,12 +362,56 @@ public class ManageGame {
 
             sqlGeneratorDAO.updateGenerator("CafeGod",priceGod, cafesSegGod, multiplicadorGod, tiempoGeneracionGod, costMultiplicadorGod, incrementCostGod, numeroCafeterasGod, game.getId());
         }
+    }
+    public void setGeneradores(){
+        List<Generator> generatorsCafetera = new ArrayList<>();
+        List<Generator> generatorsChetas = new ArrayList<>();
+        List<Generator> generatorsGod = new ArrayList<>();
+        boolean cafeteraAdded = false;
+        boolean chetasAdded = false;
+        boolean godadded = false;
 
+        for(Generator generator : sqlGeneratorDAO.getAllGenerators()){
+            if(generator.getIdGame() == game.getId()){
+                if(generator.getNombre().equals("Cafetera") && !cafeteraAdded){
+                    int cantidadGenerador = sqlGeneratorDAO.numeroGenerador(generator);
 
+                    for(int i = 0; i< cantidadGenerador; i++){
+                        Generator nuevo = new Generator((int) generator.getId(), generator.getNombre(), generator.getPrecio(), generator.getCafeSeg(), generator.getTiempoGeneracion(), generator.getIncrementCost(), generator.getCostMultiplicador(), generator.getMultiplicador(), game.getId());
+                        nuevo.setGame(game);
+                        nuevo.start();
+                        generatorsCafetera.add(nuevo);
+                    }
+                    cafeteraAdded = true;
+                }
+                if(generator.getNombre().equals("CafeCheta") && !chetasAdded){
+                    int cantidadGenerador = sqlGeneratorDAO.numeroGenerador(generator);
 
+                    for(int i = 0; i< cantidadGenerador; i++){
+                        Generator nuevo = new Generator((int) generator.getId(), generator.getNombre(), generator.getPrecio(), generator.getCafeSeg(), generator.getTiempoGeneracion(), generator.getIncrementCost(), generator.getCostMultiplicador(), generator.getMultiplicador(), game.getId());
+                        nuevo.setGame(game);
+                        nuevo.start();
+                        generatorsChetas.add(nuevo);
+                    }
+                    chetasAdded = true;
+                }
+                if(generator.getNombre().equals("CafeGod") && !godadded){
+                    int cantidadGenerador = sqlGeneratorDAO.numeroGenerador(generator);
 
+                    for(int i = 0; i< cantidadGenerador; i++){
+                        Generator nuevo = new Generator((int) generator.getId(), generator.getNombre(), generator.getPrecio(), generator.getCafeSeg(), generator.getTiempoGeneracion(), generator.getIncrementCost(), generator.getCostMultiplicador(), generator.getMultiplicador(), game.getId());
+                        nuevo.setGame(game);
+                        nuevo.start();
+                        generatorsGod.add(nuevo);
+                    }
+                    godadded = true;
+                }
+            }
 
-
-
+        }
+        game.setGeneradoresCafetera(generatorsCafetera);
+        game.setGeneradoresChetas(generatorsChetas);
+        game.setGeneradoresGod(generatorsGod);
     }
 }
+
