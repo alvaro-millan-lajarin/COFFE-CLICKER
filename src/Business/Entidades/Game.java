@@ -162,15 +162,30 @@ public class Game {
 
 
     public double getCafeteriaPrecio() {
-        return cafeteriaPrecio;
+        int precio = 10;
+        if(!generadoresCafetera.isEmpty()){
+            return generadoresCafetera.getFirst().getPrecio();
+        }
+        return precio;
+
     }
 
     public double getCafeteriaChetaPrecio() {
-        return cafeteriaChetaPrecio;
+        int precio = 150;
+
+        if(!generadoresChetas.isEmpty()){
+            return generadoresChetas.getFirst().getPrecio();
+        }
+        return precio;
     }
 
     public double getCafeteriaGodPrecio() {
-        return cafeteriaGodPrecio;
+        int precio = 2000;
+
+        if(!generadoresGod.isEmpty()){
+            return generadoresGod.getFirst().getPrecio();
+        }
+        return precio;
     }
 
     public ArrayList<Integer> getPreciosBase() {

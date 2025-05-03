@@ -4,6 +4,7 @@ import Business.Entidades.User;
 import Business.ManageGame;
 import Business.ManageUser;
 import Persistence.sql.SQLUserDAO;
+import Presenstation.Messages;
 import Presenstation.View.Scenes.LoginScene;
 import Presenstation.View.Scenes.Scene;
 import Presenstation.View.Scenes.Scenes;
@@ -14,6 +15,7 @@ import java.awt.event.ActionEvent;
 public class LoginController extends Controller {
     private static final String GAME_MANAGEMENT = "GAME_MANAGEMENT";
     private ManageUser manageUser;
+    private Messages messages = new Messages();
 
     public LoginController(Scene view, MainController mainController, ManageUser manageUser) {
         super(view, mainController);
@@ -39,23 +41,11 @@ public class LoginController extends Controller {
                 mainController.nextScene(Scenes.GAME_MANAGEMENT);
                 return;
             }
-
-                JOptionPane.showMessageDialog(
-                        getScene().addAccesButton(),
-                        "Incorrect email, username or password",
-                        "Error login",
-                        JOptionPane.WARNING_MESSAGE
-                );
-
+            messages.incorrectLogin();
 
         }
     }
-    public String getPassword() {
-        return getScene().getPassword();
-    }
-    public String getEmail() {
-        return getScene().getEmail();
-    }
+
     public void clearUserData() {
         getScene().clearUserData();
     }

@@ -133,4 +133,12 @@ public class Messages {
                 JOptionPane.INFORMATION_MESSAGE
         );
     }
+    public void incorrectLogin(){
+        JOptionPane.showMessageDialog(
+                null,
+                "Incorrect email, username or password",
+                "Error login",
+                JOptionPane.WARNING_MESSAGE
+        );
+    }
 }

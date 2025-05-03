@@ -6,6 +6,7 @@ import Business.Entidades.User;
 import Persistence.GameDAO;
 import Persistence.sql.SQLGameDAO;
 import Persistence.sql.SQLGeneratorDAO;
+import Persistence.sql.SQLStatisticDAO;
 import Persistence.sql.SQLUserDAO;
 import Presenstation.View.Scenes.Scenes;
 
@@ -16,6 +17,7 @@ public class ManageGame {
     private Game game;
     private SQLGameDAO sqlGameDAO = new SQLGameDAO();
     private SQLGeneratorDAO sqlGeneratorDAO = new SQLGeneratorDAO();
+    private SQLStatisticDAO sqlStatisticDAO = new SQLStatisticDAO();
 
 
 
@@ -246,7 +248,7 @@ public class ManageGame {
         sqlGameDAO.deleteGame(this.game);
     }
     public void deleteGameSelected(Game game) {
-
+        sqlStatisticDAO.deleteEstadisticasByPartidaId(game.getId());
         sqlGameDAO.deleteGame(game);
     }
     public List<Game> getAllGames() {

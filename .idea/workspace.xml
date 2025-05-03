@@ -4,17 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f9bbb50b-3eaf-412a-ab58-ecb07cf93455" name="Changes" comment="en local sin base de datos game funciona">
+    <list default="true" id="f9bbb50b-3eaf-412a-ab58-ecb07cf93455" name="Changes" comment="limpiar funciones no utilizadas">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Business/Entidades/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Business/Entidades/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Business/Entidades/Generator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Business/Entidades/Generator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Business/ManageGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Business/ManageGame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Persistence/sql/SQLGeneratorDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Persistence/sql/SQLGeneratorDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Presenstation/Controller/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presenstation/Controller/GameController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Presenstation/Controller/GameCreationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presenstation/Controller/GameCreationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Presenstation/Controller/GameManagementController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presenstation/Controller/GameManagementController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Presenstation/Controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presenstation/Controller/MainController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Presenstation/View/Scenes/GameManagementScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presenstation/View/Scenes/GameManagementScene.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Persistence/sql/SQLStatisticDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Persistence/sql/SQLStatisticDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Presenstation/Controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presenstation/Controller/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Presenstation/Messages.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presenstation/Messages.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -120,22 +116,6 @@
       <workItem from="1743689183082" duration="265000" />
       <workItem from="1743689452923" duration="5970000" />
       <workItem from="1743758267674" duration="4963000" />
-    </task>
-    <task id="LOCAL-00002" summary="arreglo bbdd">
-      <option name="closed" value="true" />
-      <created>1743691344484</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1743691344484</updated>
-    </task>
-    <task id="LOCAL-00003" summary="arreglo bbdd">
-      <option name="closed" value="true" />
-      <created>1743696767405</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1743696767405</updated>
     </task>
     <task id="LOCAL-00004" summary="login">
       <option name="closed" value="true" />
@@ -513,7 +493,23 @@
       <option name="project" value="LOCAL" />
       <updated>1746269193405</updated>
     </task>
-    <option name="localTasksCounter" value="51" />
+    <task id="LOCAL-00051" summary="ya funciona la base de datos con game">
+      <option name="closed" value="true" />
+      <created>1746274002668</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1746274002668</updated>
+    </task>
+    <task id="LOCAL-00052" summary="limpiar funciones no utilizadas">
+      <option name="closed" value="true" />
+      <created>1746274448391</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1746274448391</updated>
+    </task>
+    <option name="localTasksCounter" value="53" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -543,8 +539,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="actulizar tabla disponibles" />
-    <MESSAGE value="game creation modificacion" />
     <MESSAGE value="borrar clases inecesarias" />
     <MESSAGE value="icrementar costes formula" />
     <MESSAGE value="Implementacio del boto resum, amb guarda de memoria stadistiques y Canvi en base de dades" />
@@ -568,29 +562,31 @@
     <MESSAGE value="revisar base de datos generadores" />
     <MESSAGE value="game desde 0" />
     <MESSAGE value="en local sin base de datos game funciona" />
-    <option name="LAST_COMMIT_MESSAGE" value="en local sin base de datos game funciona" />
+    <MESSAGE value="ya funciona la base de datos con game" />
+    <MESSAGE value="limpiar funciones no utilizadas" />
+    <option name="LAST_COMMIT_MESSAGE" value="limpiar funciones no utilizadas" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Business/ManageGame.java</url>
-          <line>326</line>
+          <line>323</line>
           <option name="timeStamp" value="80" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Business/ManageGame.java</url>
-          <line>309</line>
+          <line>306</line>
           <option name="timeStamp" value="81" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Business/ManageGame.java</url>
-          <line>276</line>
+          <line>273</line>
           <option name="timeStamp" value="98" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/Business/ManageGame.java</url>
-          <line>302</line>
+          <line>299</line>
           <properties class="Business.ManageGame" method="getProduccionsUnitatBaseDatos">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
@@ -599,7 +595,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/Business/ManageGame.java</url>
-          <line>365</line>
+          <line>362</line>
           <properties class="Business.ManageGame" method="setGeneradores">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />

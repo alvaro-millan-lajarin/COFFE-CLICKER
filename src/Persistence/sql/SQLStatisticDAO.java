@@ -32,9 +32,14 @@ public class SQLStatisticDAO implements StatisticDAO {
         SQLConnector.getInstance().updateQuery(query);
     }
 
+
     @Override
     public void deleteEstadistica(Statistic estadistica) {
-        String query = "DELETE FROM Estadisticas WHERE id_estadisticas = '" + estadistica.getId_Estadisticas() + "'";
+        String query = "DELETE FROM HistoricoCafes WHERE id_estadisticas = '" + estadistica.getId_Estadisticas() + "'";
+        SQLConnector.getInstance().deleteQuery(query);
+    }
+    public void deleteEstadisticasByPartidaId(int idPartida) {
+        String query = "DELETE FROM HistoricoCafes WHERE id_partida = '" + idPartida + "'";
         SQLConnector.getInstance().deleteQuery(query);
     }
 
