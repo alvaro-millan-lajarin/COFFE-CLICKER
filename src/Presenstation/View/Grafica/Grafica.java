@@ -16,9 +16,10 @@ public class Grafica extends JPanel {
 
     public Grafica(List<Pair<LocalDateTime, Integer>> historico) {
         this.historico = historico;
-        this.startTime = historico.get(0).getKey();
+        this.startTime = historico.isEmpty() ? LocalDateTime.now() : historico.get(0).getKey();
         setPreferredSize(new Dimension(600, 400));
     }
+
 
     @Override
     protected void paintComponent(Graphics g) {
@@ -49,8 +50,8 @@ public class Grafica extends JPanel {
             Pair<LocalDateTime, Integer> prev = historico.get(i - 1);
             Pair<LocalDateTime, Integer> curr = historico.get(i);
 
-            long t1 = Duration.between(startTime, prev.getKey()).getSeconds();
-            long t2 = Duration.between(startTime, curr.getKey()).getSeconds();
+            long t1 = Duration.between(startTime, prev.getKey()).toMinutes();
+            long t2 = Duration.between(startTime, curr.getKey()).toMinutes();
 
             int x1 = padding + (int) ((t1 / (double) totalSeconds) * width);
             int y1 = getHeight() - padding - (int) ((prev.getValue() / (double) maxCafe) * height);
@@ -92,6 +93,9 @@ public class Grafica extends JPanel {
                 ? String.format("Tiempo aprox: %.1f min", totalSeconds / 60.0)
                 : String.format("Tiempo aprox: %d seg", totalSeconds);
         g2.drawString(tiempoStr, getWidth() - 160, getHeight() - padding + 40);
+    }
+    public List<Pair<LocalDateTime, Integer>> getHistorico() {
+        return historico;
     }
 
 

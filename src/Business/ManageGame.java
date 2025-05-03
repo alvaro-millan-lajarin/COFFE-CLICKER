@@ -266,6 +266,7 @@ public class ManageGame {
         }
         return null;
     }
+
     public void updateGame() {
 
         sqlGameDAO.updateGame(getGame());

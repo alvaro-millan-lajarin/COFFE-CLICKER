@@ -7,6 +7,7 @@ import Business.ManageUser;
 import Persistence.sql.SQLGameDAO;
 import Persistence.sql.SQLUserDAO;
 import Presenstation.Messages;
+import Presenstation.View.Grafica.Grafica;
 import Presenstation.View.Scenes.GameCreationScene;
 import Presenstation.View.Scenes.Scene;
 import Presenstation.View.Scenes.Scenes;
@@ -24,14 +25,17 @@ public class GameCreationController extends Controller {
     private ManageGame manageGame;
     private Messages messages = new Messages();
     private ManageUser manageUser;
+    private Grafica grafica;
+    private GameController gameController;
 
-    public GameCreationController(Scene view, MainController mainController, LoginController loginController, SignUpController signUpController, ManageGame manageGame, ManageUser manageUser) {
+    public GameCreationController(Scene view, MainController mainController, LoginController loginController, SignUpController signUpController, ManageGame manageGame, ManageUser manageUser, GameController gameController) {
 
         super(view, mainController);
         this.loginController = loginController;
         this.signUpController = signUpController;
         this.manageGame = manageGame;
         this.manageUser = manageUser;
+        this.gameController = gameController;
 
     }
     public GameCreationScene getScene() {
@@ -59,6 +63,9 @@ public class GameCreationController extends Controller {
             manageGame.addGame(game);
             manageGame.setGame(game);
             manageGame.addBasicGenerator();
+
+            grafica = new Grafica(new ArrayList<>());
+            gameController.iniciarRegistroCafes(game, grafica);
 
             mainController.nextScene(Scenes.GAME);
 

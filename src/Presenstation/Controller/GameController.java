@@ -1,18 +1,21 @@
 package Presenstation.Controller;
 
 import Business.Entidades.Game;
+import Business.Entidades.Pair;
 import Business.Entidades.User;
 import Business.ManageGame;
 import Business.ManageUser;
 import Persistence.sql.SQLGameDAO;
 import Persistence.sql.SQLUserDAO;
 import Presenstation.Messages;
+import Presenstation.View.Grafica.Grafica;
 import Presenstation.View.Scenes.GameScene;
 import Presenstation.View.Scenes.Scene;
 import Presenstation.View.Scenes.Scenes;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 public class GameController extends Controller {
@@ -23,6 +26,8 @@ public class GameController extends Controller {
 
     private Messages messages = new Messages();
     private ManageUser manageUser;
+
+    private Timer historicoTimer;
 
 
     public GameController(Scene view, MainController mainController, LoginController loginController, SignUpController signUpController, ManageGame manageGame, ManageUser manageUser) {
@@ -63,6 +68,7 @@ public class GameController extends Controller {
             compraCafeGod();
 
         }else if(e.getActionCommand().equalsIgnoreCase("GAME_MANAGEMENT")){
+            detenerRegistroCafes();
             manageGame.updateGame();
             manageGame.updateGenerators();
             mainController.resetGameManagement();
@@ -215,5 +221,21 @@ public class GameController extends Controller {
     public void goToGameManagementScene() {
         mainController.nextScene(Scenes.GAME_MANAGEMENT);
     }
+    public void detenerRegistroCafes() {
+        if (historicoTimer != null && historicoTimer.isRunning()) {
+            historicoTimer.stop();
+        }
+    }
+    public void iniciarRegistroCafes(Game partidaActual, Grafica grafica) {
+        historicoTimer = new Timer(60_000, e -> {
+            int cafesActuales = partidaActual.getNumCafes(); // Asegúrate de tener este método
+            LocalDateTime ahora = LocalDateTime.now();
+
+            grafica.getHistorico().add(new Pair<>(ahora, cafesActuales));
+            grafica.repaint(); // Redibuja la gráfica con el nuevo dato
+        });
+        historicoTimer.start();
+    }
+
 
 }

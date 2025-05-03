@@ -1,7 +1,10 @@
 package Presenstation.View.Scenes;
 
+import Business.Entidades.Game;
+import Business.Entidades.Pair;
 import Presenstation.Controller.GameController;
 import Presenstation.Controller.MainController;
+import Presenstation.View.Grafica.Grafica;
 import Presenstation.View.Image.JImagePanel;
 import Presenstation.View.Table.TableBotigaGenerators;
 import Presenstation.View.Table.TableBotigaMillores;
@@ -11,6 +14,7 @@ import Presenstation.View.WriteText.Text;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import javax.swing.Timer;
 
@@ -30,6 +34,7 @@ public class GameScene extends Scene {
     private TableGeneradorsDisponibles tableGeneradorsDisponibles;
 
     private Timer updateTimer;
+
 
     public void initialitzate() {
 
