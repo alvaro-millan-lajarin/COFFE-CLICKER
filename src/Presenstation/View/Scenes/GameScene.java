@@ -1,8 +1,11 @@
-package Presenstation.View;
+package Presenstation.View.Scenes;
 
+import Business.Entidades.Game;
+import Business.Entidades.Pair;
 import Presenstation.Controller.GameController;
 import Presenstation.Controller.MainController;
-import Presenstation.JImagePanel;
+import Presenstation.View.Grafica.Grafica;
+import Presenstation.View.Image.JImagePanel;
 import Presenstation.View.Table.TableBotigaGenerators;
 import Presenstation.View.Table.TableBotigaMillores;
 import Presenstation.View.Table.TableGeneradorsDisponibles;
@@ -11,6 +14,7 @@ import Presenstation.View.WriteText.Text;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import javax.swing.Timer;
 
@@ -30,6 +34,7 @@ public class GameScene extends Scene {
     private TableGeneradorsDisponibles tableGeneradorsDisponibles;
 
     private Timer updateTimer;
+
 
     public void initialitzate() {
 
@@ -142,15 +147,20 @@ public class GameScene extends Scene {
         cafesDisponibles.add(nameLabel);
         cafesDisponibles.add(numCafesLabel);
         cafesDisponibles.add(addVacio());
-        cafesDisponibles.add(addVacio());
+        cafesDisponibles.add(addVacio());//prueba
         cafesDisponibles.add(addVacio());
         cafesDisponibles.add(addVacio());
 
         panelIzquierdo.add(cafesDisponibles);
+
         panelIzquierdo.add(panelParaImagen());
+
+
 
         return panelIzquierdo;
     }
+
+
 
     public JPanel panelParaImagen(){
         JPanel panel = new JPanel(new GridLayout(1, 3));
@@ -235,10 +245,10 @@ public class GameScene extends Scene {
                     "Confirmar", JOptionPane.YES_NO_OPTION);
 
             if (confirm == JOptionPane.YES_OPTION) {
-                mainController.resetGameManagement();
+
                 gameController.deleteCurrentGame();
 
-                gameController.goToGameManagementScene();            }
+            }
         });
         return finishGameButton;
     }

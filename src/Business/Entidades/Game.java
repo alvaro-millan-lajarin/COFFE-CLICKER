@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.function.Consumer;
 
 public class Game {
     private int id;
@@ -13,14 +14,10 @@ public class Game {
     private LocalDateTime fechaModificacion;
     private int numCafes;
 
+
     private List<Generator> generadoresCafetera = new ArrayList<>();
     private List<Generator> generadoresChetas = new ArrayList<>();
     private List<Generator> generadoresGod = new ArrayList<>();
-
-    private ArrayList<Integer> quantitats;//0->cafeteria, 1->cafeteraCheta, 2->cafeteraGod
-    private ArrayList<String> produccionsUnitat;
-
-
 
     //VARIABLE GENERADORES AL PRINCIPIO
     private double cafeteriaCafeSeg = 0.2;
@@ -37,13 +34,13 @@ public class Game {
 
     private double cafeteriaChetaPrecio = 150; // Precio de la cafetería cheta
     private Integer cafeteriaChetaMultiplicador = 1; // Multiplicador de la cafetería cheta
-    private Integer chetaCostMultiplicador = 100;
+    private Integer chetaCostMultiplicador = 150;
 
     private double cafeteriaGodPrecio = 2000; // Precio de la cafetería God
     private Integer cafeteriaGodMultiplicador = 1;
     private Integer GodCostMultiplicador = 2000;
 
-
+    private java.util.function.Consumer<Integer> onCafeChanged;
 
 
     public Game(int id, int idUser, String nombre, LocalDateTime fechaCreacion, LocalDateTime fechaModificacion, int numCafes) {
@@ -55,27 +52,44 @@ public class Game {
         this.numCafes = numCafes;
 
 
-        quantitats = new ArrayList<>();
-        quantitats.add(0);
-        quantitats.add(0);
-        quantitats.add(0);
-
-        produccionsUnitat = new ArrayList<>();
-
     }
     public void startGeneratorCafetera() {
+        if(!generadoresCafetera.isEmpty()){
+            cafeteriaPrecio = generadoresCafetera.getFirst().getPrecio();
+            cafeteriaCafeSeg = generadoresCafetera.getFirst().getCafeSeg();
+            cafeteriaTiempoGeneracion = generadoresCafetera.getFirst().getTiempoGeneracion();
+            cafeteriaCostMultiplicador = generadoresCafetera.getFirst().getCostMultiplicador();
+            cafeteriaMultiplicador = generadoresCafetera.getFirst().getMultiplicador();
+        }
 
-        Generator cafeteria = new Generator(1, "cafeteria",cafeteriaPrecio,cafeteriaCafeSeg , cafeteriaTiempoGeneracion,1.07,cafeteriaCostMultiplicador, cafeteriaMultiplicador,this);
+        Generator cafeteria = new Generator(1, "cafeteria",cafeteriaPrecio,cafeteriaCafeSeg , cafeteriaTiempoGeneracion,1.07,cafeteriaCostMultiplicador, cafeteriaMultiplicador,this.getId());
+        cafeteria.setGame(this);
         generadoresCafetera.add(cafeteria);
         cafeteria.start();
     }
     public void startGeneratorCafeteraCheta() {
-        Generator cafeteriaCheta = new Generator(2, "cafeteriaCheta",cafeteriaChetaPrecio, cafeteriaChetaCafeSeg, cafeteriaChetaTiempoGeneracion,1.15,chetaCostMultiplicador, cafeteriaChetaMultiplicador,this);
+        if(!generadoresChetas.isEmpty()){
+            cafeteriaChetaPrecio = generadoresChetas.getFirst().getPrecio();
+            cafeteriaChetaCafeSeg = generadoresChetas.getFirst().getCafeSeg();
+            cafeteriaChetaTiempoGeneracion = generadoresChetas.getFirst().getTiempoGeneracion();
+            chetaCostMultiplicador = generadoresChetas.getFirst().getCostMultiplicador();
+            cafeteriaChetaMultiplicador = generadoresChetas.getFirst().getMultiplicador();
+        }
+        Generator cafeteriaCheta = new Generator(2, "cafeteriaCheta",cafeteriaChetaPrecio, cafeteriaChetaCafeSeg, cafeteriaChetaTiempoGeneracion,1.15,chetaCostMultiplicador, cafeteriaChetaMultiplicador,this.getId());
+        cafeteriaCheta.setGame(this);
         generadoresChetas.add(cafeteriaCheta);
         cafeteriaCheta.start();
     }
     public void startGeneratorCafeteraGod() {
-        Generator cafeteriaGod = new Generator(3, "cafeteriaGod",cafeteriaGodPrecio, cafeteriaGodCafeSeg, cafeteriaGodTiempoGeneracion,1.12,GodCostMultiplicador, cafeteriaGodMultiplicador,this);
+        if(!generadoresGod.isEmpty()){
+            cafeteriaGodPrecio = generadoresGod.getFirst().getPrecio();
+            cafeteriaGodCafeSeg = generadoresGod.getFirst().getCafeSeg();
+            cafeteriaGodTiempoGeneracion = generadoresGod.getFirst().getTiempoGeneracion();
+            GodCostMultiplicador = generadoresGod.getFirst().getCostMultiplicador();
+            cafeteriaGodMultiplicador = generadoresGod.getFirst().getMultiplicador();
+        }
+        Generator cafeteriaGod = new Generator(3, "cafeteriaGod",cafeteriaGodPrecio, cafeteriaGodCafeSeg, cafeteriaGodTiempoGeneracion,1.12,GodCostMultiplicador, cafeteriaGodMultiplicador,this.getId());
+        cafeteriaGod.setGame(this);
         generadoresGod.add(cafeteriaGod);
         cafeteriaGod.start();
     }
@@ -84,40 +98,20 @@ public class Game {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
     public int getIdUser() {
         return idUser;
-    }
-
-    public void setIdUser(int idUser) {
-        this.idUser = idUser;
     }
 
     public String getNombre() {
         return nombre;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
     public LocalDateTime getFechaCreacion() {
         return fechaCreacion;
     }
 
-    public void setFechaCreacion(LocalDateTime fechaCreacion) {
-        this.fechaCreacion = fechaCreacion;
-    }
-
     public LocalDateTime getFechaModificacion() {
         return fechaModificacion;
-    }
-
-    public void setFechaModificacion(LocalDateTime fechaModificacion) {
-        this.fechaModificacion = fechaModificacion;
     }
 
     public int getNumCafes() {
@@ -125,29 +119,23 @@ public class Game {
     }
 
     public void setNumCafes(int numCafes) {
+
         this.numCafes = numCafes;
+        if (onCafeChanged != null) onCafeChanged.accept(this.numCafes);
     }
 
     public void increaseNumCafes(){
+
         this.numCafes++;
+        if (onCafeChanged != null) onCafeChanged.accept(this.numCafes);
     }
     public synchronized void addNumCafes(Integer coffes){
         this.numCafes = this.numCafes + coffes;
-    }
-    public void addCafetera(String cafetera) {
-        if(cafetera.equals("Cafetera") ){
-            quantitats.set(0, quantitats.get(0) + 1);
-        } else if (cafetera.equals("CafeCheta") ) {
-            quantitats.set(1, quantitats.get(1) + 1);
-        } else if (cafetera.equals("CafeGod")) {
-            quantitats.set(2, quantitats.get(2) + 1);
-        }
-
+        if (onCafeChanged != null) onCafeChanged.accept(this.numCafes);
     }
 
-    public ArrayList<Integer> getQuantitats(){
-        return quantitats;
-    }
+
+
     public ArrayList<String> getProduccionsUnitat() {
         ArrayList<String> produccions = new ArrayList<>();
 
@@ -156,7 +144,7 @@ public class Game {
             Generator g = generadoresCafetera.get(0);
             produccions.add(String.format("%.2f cafès / %.2f s", g.getCafeSeg(), g.getTiempoGeneracion()));
         } else {
-            produccions.add("0 cafès / 0 s");
+            produccions.add("0,20 cafès / 1,00 s");
         }
 
         // Cafeteras chetas
@@ -164,7 +152,7 @@ public class Game {
             Generator g = generadoresChetas.get(0);
             produccions.add(String.format("%.2f cafès / %.2f s", g.getCafeSeg(), g.getTiempoGeneracion()));
         } else {
-            produccions.add("0 cafès / 0 s");
+            produccions.add("0,50 cafès / 0,70 s");
         }
 
         // Cafeteras god
@@ -172,7 +160,7 @@ public class Game {
             Generator g = generadoresGod.get(0);
             produccions.add(String.format("%.2f cafès / %.2f s", g.getCafeSeg(), g.getTiempoGeneracion()));
         } else {
-            produccions.add("0 cafès / 0 s");
+            produccions.add("30 cafès / 1,3 s");
         }
 
         return produccions;
@@ -180,28 +168,32 @@ public class Game {
 
 
     public double getCafeteriaPrecio() {
-        return cafeteriaPrecio;
+        int precio = 10;
+        if(!generadoresCafetera.isEmpty()){
+            return generadoresCafetera.getFirst().getPrecio();
+        }
+        return precio;
+
     }
 
     public double getCafeteriaChetaPrecio() {
-        return cafeteriaChetaPrecio;
+        int precio = 150;
+
+        if(!generadoresChetas.isEmpty()){
+            return generadoresChetas.getFirst().getPrecio();
+        }
+        return precio;
     }
 
     public double getCafeteriaGodPrecio() {
-        return cafeteriaGodPrecio;
+        int precio = 2000;
+
+        if(!generadoresGod.isEmpty()){
+            return generadoresGod.getFirst().getPrecio();
+        }
+        return precio;
     }
 
-    public void setCafeteriaChetaPrecio() {
-        this.cafeteriaChetaPrecio = 150 * Math.pow(1.15, quantitats.get(1));
-    }
-
-    public void setCafeteriaPrecio() {
-        this.cafeteriaPrecio = 10 * Math.pow(1.07, quantitats.get(0));
-    }
-
-    public void setCafeteriaGodPrecio() {
-        this.cafeteriaGodPrecio = 2000 * Math.pow(1.12, quantitats.get(2));
-    }
     public ArrayList<Integer> getPreciosBase() {
         ArrayList<Integer> preciosBase = new ArrayList<>();
         preciosBase.add((int) (cafeteriaPrecio));
@@ -211,74 +203,100 @@ public class Game {
     }
     public void mejorarCafetera(){
         for(Generator generator : generadoresCafetera){
-            cafeteriaCostMultiplicador = generator.getCostMultiplicador()*2;
-            cafeteriaMultiplicador = generator.getMultiplicador()+1;
-            generator.setCafeSeg(generator.getCafeSeg()*cafeteriaMultiplicador);
-
-
             generator.setMultiplicador(generator.getMultiplicador()+1);
             generator.setCostMultiplicador(generator.getCostMultiplicador()*2);
+
+            generator.setCafeSeg(generator.getCafeSeg()*generator.getMultiplicador());
         }
     }
     public void mejorarCheta(){
         for (Generator generator: generadoresChetas){
-            chetaCostMultiplicador = generator.getCostMultiplicador()*2;
-            cafeteriaChetaMultiplicador = generator.getMultiplicador()+1;
-            generator.setCafeSeg(generator.getCafeSeg()*cafeteriaChetaMultiplicador);
-
             generator.setMultiplicador(generator.getMultiplicador()+1);
             generator.setCostMultiplicador(generator.getCostMultiplicador()*2);
+
+            generator.setCafeSeg(generator.getCafeSeg()*generator.getMultiplicador());
         }
-    }
-
-    public void setQuantitats(ArrayList<Integer> quantitats) {
-        this.quantitats = quantitats;
-    }
-
-    public void setMultiplicadors(ArrayList<Integer> multipliers) {
-        this.cafeteriaMultiplicador = multipliers.get(0);
-        this.cafeteriaChetaMultiplicador = multipliers.get(1);
-        this.cafeteriaGodMultiplicador = multipliers.get(2);
-    }
-
-    public void setPrecios(ArrayList<Double> precios) {
-        this.cafeteriaPrecio = precios.get(0);
-        this.cafeteriaChetaPrecio = precios.get(1);
-        this.cafeteriaGodPrecio = precios.get(2);
     }
 
     public void mejorarGod(){
 
         for(Generator generator: generadoresGod){
-            GodCostMultiplicador = generator.getCostMultiplicador()*2;
-            cafeteriaGodMultiplicador = generator.getMultiplicador()+1;
-            generator.setCafeSeg(generator.getCafeSeg()*cafeteriaGodMultiplicador);
-
             generator.setMultiplicador(generator.getMultiplicador()+1);
             generator.setCostMultiplicador(generator.getCostMultiplicador()*2);
+
+            generator.setCafeSeg(generator.getCafeSeg()*generator.getMultiplicador());
+
         }
     }
     public ArrayList<Integer> getCostMultplicadors() {
         ArrayList<Integer> costMultplicadors = new ArrayList<>();
-        costMultplicadors.add(cafeteriaCostMultiplicador);
-        costMultplicadors.add(chetaCostMultiplicador);
-        costMultplicadors.add(GodCostMultiplicador);
+        int costMultplicadorCafetera = 10;
+        int costMultplicadorCheta = 150;
+        int costMultplicadrGod = 2000;
+
+        if(!getGeneradoresCafetera().isEmpty()){
+            costMultplicadorCafetera = getGeneradoresCafetera().getFirst().getCostMultiplicador();
+        }
+        if(!getGeneradoresChetas().isEmpty()){
+            costMultplicadorCheta = getGeneradoresChetas().getFirst().getCostMultiplicador();
+        }
+
+        if(!getGeneradoresGod().isEmpty()){
+            costMultplicadrGod = getGeneradoresGod().getFirst().getCostMultiplicador();
+        }
+        costMultplicadors.add(costMultplicadorCafetera);
+        costMultplicadors.add(costMultplicadorCheta);
+        costMultplicadors.add(costMultplicadrGod);
+
         return costMultplicadors;
     }
     public ArrayList<Integer> getMultplicadors() {
-        ArrayList<Integer> Multplicadors = new ArrayList<>();
-        Multplicadors.add(cafeteriaMultiplicador);
-        Multplicadors.add(cafeteriaChetaMultiplicador);
-        Multplicadors.add(cafeteriaGodMultiplicador);
-        return Multplicadors;
+        ArrayList<Integer> multplicadors = new ArrayList<>();
+        int multplicadorCafetera = 1;
+        int multplicadorCheta = 1;
+        int multiplicadorGod = 1;
+
+        if(!getGeneradoresCafetera().isEmpty()){
+            multplicadorCafetera = getGeneradoresCafetera().getFirst().getMultiplicador();
+        }
+        if(!getGeneradoresChetas().isEmpty()){
+            multplicadorCheta = getGeneradoresChetas().getFirst().getMultiplicador();
+        }
+
+        if(!getGeneradoresGod().isEmpty()){
+            multiplicadorGod = getGeneradoresGod().getFirst().getMultiplicador();
+        }
+        multplicadors.add(multplicadorCafetera);
+        multplicadors.add(multplicadorCheta);
+        multplicadors.add(multiplicadorGod);
+        return multplicadors;
     }
 
-    public void inicialitzarGeneradors() {
-        for (int i = 0; i < quantitats.get(0); i++) startGeneratorCafetera();
-        for (int i = 0; i < quantitats.get(1); i++) startGeneratorCafeteraCheta();
-        for (int i = 0; i < quantitats.get(2); i++) startGeneratorCafeteraGod();
+
+
+    public List<Generator> getGeneradoresCafetera() {
+        return generadoresCafetera;
+    }
+
+    public List<Generator> getGeneradoresChetas() {
+        return generadoresChetas;
+    }
+
+    public List<Generator> getGeneradoresGod() {
+        return generadoresGod;
     }
 
 
 
+    public void setGeneradoresCafetera(List<Generator> generadoresCafetera) {
+        this.generadoresCafetera = generadoresCafetera;
+    }
+
+    public void setGeneradoresChetas(List<Generator> generadoresChetas) {
+        this.generadoresChetas = generadoresChetas;
+    }
+
+    public void setGeneradoresGod(List<Generator> generadoresGod) {
+        this.generadoresGod = generadoresGod;
+    }
 }

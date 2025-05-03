@@ -3,13 +3,14 @@ package Presenstation.Controller;
 import Business.Entidades.Game;
 import Business.Entidades.User;
 import Business.ManageGame;
-import Persistence.GameDAO;
+import Business.ManageUser;
 import Persistence.sql.SQLGameDAO;
 import Persistence.sql.SQLUserDAO;
-import Presenstation.View.GameCreationScene;
-import Presenstation.View.GameManagementScene;
-import Presenstation.View.Scene;
-import Presenstation.View.Scenes;
+import Presenstation.Messages;
+import Presenstation.View.Grafica.Grafica;
+import Presenstation.View.Scenes.GameCreationScene;
+import Presenstation.View.Scenes.Scene;
+import Presenstation.View.Scenes.Scenes;
 import java.time.LocalDateTime;
 
 import javax.swing.*;
@@ -20,16 +21,21 @@ import java.util.List;
 public class GameCreationController extends Controller {
     private LoginController loginController;
     private SignUpController signUpController;
-    private SQLUserDAO sqlUserDAO = new SQLUserDAO();
     private Game game;
     private ManageGame manageGame;
+    private Messages messages = new Messages();
+    private ManageUser manageUser;
+    private Grafica grafica;
+    private GameController gameController;
 
-    public GameCreationController(Scene view, MainController mainController, LoginController loginController, SignUpController signUpController, ManageGame manageGame) {
+    public GameCreationController(Scene view, MainController mainController, LoginController loginController, SignUpController signUpController, ManageGame manageGame, ManageUser manageUser, GameController gameController) {
 
         super(view, mainController);
         this.loginController = loginController;
         this.signUpController = signUpController;
         this.manageGame = manageGame;
+        this.manageUser = manageUser;
+        this.gameController = gameController;
 
     }
     public GameCreationScene getScene() {
@@ -40,38 +46,28 @@ public class GameCreationController extends Controller {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getActionCommand().equalsIgnoreCase("PLAY")) {
+
+
             String nombreGame = getScene().getName();
-            SQLGameDAO sqlGameDAO = new SQLGameDAO();
-            List<Game> games = sqlGameDAO.getAllGames();
+
+            List<Game> games = manageGame.getAllGames();
             for (Game game : games) {
-                if (game.getNombre().equals(nombreGame)) {
-                    JOptionPane.showMessageDialog(
-                            getScene().addAccesButton(),
-                            "You need to put another game name",
-                            "Error game name used",
-                            JOptionPane.WARNING_MESSAGE
-                    );
+                if (game.getNombre().equals(nombreGame) && game.getIdUser() == manageUser.getCurrentUser().getId()) {
+                    messages.gameNameUsed();
                     return;
 
                 }
             }
-
-            String userOrEmail = loginController.getEmail();
-            String password = loginController.getPassword();
-
-            SQLUserDAO sqlUserDAO = new SQLUserDAO();
-
-            User existingUserByEmail = sqlUserDAO.findUserByEmail(userOrEmail);
-
             LocalDateTime fechaYHoraActual = LocalDateTime.now();
+            game = new Game(1,manageUser.getCurrentUser().getId(),nombreGame,fechaYHoraActual,fechaYHoraActual,0);
+            manageGame.addGame(game);
+            manageGame.setGame(game);
+            manageGame.addBasicGenerator();
 
-            if (existingUserByEmail != null && existingUserByEmail.getPassword().equals(password)) {
-                game = new Game(1,existingUserByEmail.getId(),nombreGame,fechaYHoraActual,fechaYHoraActual,0);
-                manageGame.setGame(game);
-                sqlGameDAO.addGame(game);
-                mainController.nextScene(Scenes.GAME);
+            grafica = new Grafica(new ArrayList<>());
+            gameController.iniciarRegistroCafes(game, grafica);
 
-            }
+            mainController.nextScene(Scenes.GAME);
 
         }else if (e.getActionCommand().equalsIgnoreCase("LOGOUT")) {
             mainController.resetLogin();
@@ -84,48 +80,16 @@ public class GameCreationController extends Controller {
         }
     }
     public void deleteUser() {
-        int confirm = JOptionPane.showConfirmDialog(
-                getScene().addAccesButton(),
-                "Are you sure you want to delete your account?",
-                "Confirm Deletion",
-                JOptionPane.YES_NO_OPTION,
-                JOptionPane.WARNING_MESSAGE
-        );
+        int confirm = messages.confirmDelete();
 
         if (confirm == JOptionPane.YES_OPTION) {
-
-            String emailNameLogin = loginController.getEmail();
-            String emailPasswordRegistre = signUpController.getEmail();
-
-
-            if(loginController.getEmail().isEmpty() && loginController.getPassword().isEmpty()) {
-                User existingUserByEmail = sqlUserDAO.findUserByEmail(emailPasswordRegistre);
-                User existingUserByUsername = sqlUserDAO.findUserByUsername(emailPasswordRegistre);
-                if (existingUserByEmail != null) {
-                    sqlUserDAO.deleteUser(existingUserByEmail);
-                }else{
-                    sqlUserDAO.deleteUser(existingUserByUsername);
-                }
-            }else{
-                User existingUserByEmail = sqlUserDAO.findUserByEmail(emailNameLogin);
-                User existingUserByUsername = sqlUserDAO.findUserByUsername(emailNameLogin);
-                if (existingUserByEmail != null) {
-                    sqlUserDAO.deleteUser(existingUserByEmail);
-                }else{
-                    sqlUserDAO.deleteUser(existingUserByUsername);
-                }
-
-            }
-
-            JOptionPane.showMessageDialog(
-                    getScene().addAccesButton(),
-                    "Account successfully deleted.",
-                    "Deletion Successful",
-                    JOptionPane.INFORMATION_MESSAGE
-            );
-
+            manageUser.deleteUser();
+            messages.deleteUser();
+            loginController.clearUserData();
             mainController.nextScene(Scenes.MENU);
         }
-        mainController.nextScene(Scenes.MENU);
+
     }
+
+
 }

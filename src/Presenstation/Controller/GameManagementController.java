@@ -2,26 +2,43 @@ package Presenstation.Controller;
 
 import Business.Entidades.Game;
 import Business.Entidades.User;
+import Business.ManageGame;
+import Business.ManageStatics;
+import Business.ManageUser;
 import Persistence.GameDAO;
 import Persistence.sql.SQLGameDAO;
 import Persistence.sql.SQLUserDAO;
-import Presenstation.View.GameManagementScene;
-import Presenstation.View.LoginScene;
-import Presenstation.View.Scene;
-import Presenstation.View.Scenes;
+import Presenstation.Messages;
+import Presenstation.View.Grafica.Grafica;
+import Presenstation.View.Scenes.GameManagementScene;
+import Presenstation.View.Scenes.Scene;
+import Presenstation.View.Scenes.Scenes;
+
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
+import java.util.ArrayList;
+import java.util.List;
 
 public class GameManagementController extends Controller {
     private LoginController loginController;
     private SignUpController signUpController;
-    private SQLUserDAO sqlUserDAO = new SQLUserDAO();
+    private ManageStatics manageStatics;
+    private ManageUser manageUser;
+    private Messages messages;
+    private ManageGame manageGame;
+    private GameController gameController;
+    private Grafica grafica;
 
-    public GameManagementController(Scene view, MainController mainController, LoginController loginController, SignUpController signUpController) {
+    public GameManagementController(Scene view, MainController mainController, LoginController loginController, SignUpController signUpController, ManageUser manageUser, ManageGame manageGame, GameController gameController) {
         super(view, mainController);
         this.loginController = loginController;
         this.signUpController = signUpController;
+        this.manageStatics = new ManageStatics();
+        this.manageUser = manageUser;
+        this.messages = new Messages();
+        this.manageGame = manageGame;
+        this.gameController = gameController;
     }
 
     public GameManagementScene getScene() {
@@ -38,93 +55,72 @@ public class GameManagementController extends Controller {
             mainController.nextScene(Scenes.MENU);
         }else if (e.getActionCommand().equalsIgnoreCase("DELETE")) {
             mainController.resetLogin();
-            loginController.clearUserData();
             deleteUser();
+
+
         }else if (e.getActionCommand().equalsIgnoreCase("CREATE_GAME")) {
             mainController.resetGameCreation();
+
             mainController.nextScene(Scenes.GAME_CREATION);
         } else if (e.getActionCommand().equalsIgnoreCase("RESUME")) {
+            mainController.resetGame();
             Game selectedGame = getScene().getSelectedGame();
             if (selectedGame != null) {
-                mainController.resumeGame(selectedGame); // ← Esto lo implementaremos ahora
+                grafica = new Grafica(new ArrayList<>());
+                gameController.iniciarRegistroCafes(selectedGame, grafica);
+                mainController.resumeGame(selectedGame);
+
+
             } else {
-                JOptionPane.showMessageDialog(null, "Selecciona una partida primero.");
+                messages.seleccionaPartida();
             }
+        }else if (e.getActionCommand().equals("STADISTICAS")) {
+            Game selectedGame = getScene().getSelectedGame();
+            mostrarGraficaDeCafes(selectedGame.getId());
         }
-
-        //Implementar els botons DELETEGAME
-
-
 
     }
     public void deleteUser() {
-        int confirm = JOptionPane.showConfirmDialog(
-                getScene().addAccesButton(),
-                "Are you sure you want to delete your account?",
-                "Confirm Deletion",
-                JOptionPane.YES_NO_OPTION,
-                JOptionPane.WARNING_MESSAGE
-        );
+        int confirm = messages.confirmDelete();
 
         if (confirm == JOptionPane.YES_OPTION) {
 
-            String emailNameLogin = loginController.getEmail();
-            String emailPasswordRegistre = signUpController.getEmail();
-
-
-            if(loginController.getEmail().isEmpty() && loginController.getPassword().isEmpty()) {
-                User existingUserByEmail = sqlUserDAO.findUserByEmail(emailPasswordRegistre);
-                User existingUserByUsername = sqlUserDAO.findUserByUsername(emailPasswordRegistre);
-                if (existingUserByEmail != null) {
-                    sqlUserDAO.deleteUser(existingUserByEmail);
-                }else{
-                    sqlUserDAO.deleteUser(existingUserByUsername);
-                }
-            }else{
-                User existingUserByEmail = sqlUserDAO.findUserByEmail(emailNameLogin);
-                User existingUserByUsername = sqlUserDAO.findUserByUsername(emailNameLogin);
-                if (existingUserByEmail != null) {
-                    sqlUserDAO.deleteUser(existingUserByEmail);
-                }else{
-                    sqlUserDAO.deleteUser(existingUserByUsername);
-                }
-
-            }
-
-            JOptionPane.showMessageDialog(
-                    getScene().addAccesButton(),
-                    "Account successfully deleted.",
-                    "Deletion Successful",
-                    JOptionPane.INFORMATION_MESSAGE
-            );
-
+            manageUser.deleteUser();
+            messages.deleteUser();
+            loginController.clearUserData();
             mainController.nextScene(Scenes.MENU);
         }
-        mainController.nextScene(Scenes.MENU);
+
     }
 
-    public LoginController getLoginController() {
-        return loginController;
+    public User getUser() {
+
+        return manageUser.getCurrentUser();
     }
 
     public void deleteSelectedGame() {
+
         Game selectedGame = getScene().getSelectedGame();
+
         if (selectedGame != null) {
-            int confirm = JOptionPane.showConfirmDialog(
-                    getScene().getPanel(),  // <- aquí está el cambio
-                    "Are you sure you want to delete the selected game?",
-                    "Confirm Deletion",
-                    JOptionPane.YES_NO_OPTION,
-                    JOptionPane.WARNING_MESSAGE
-            );
+            int confirm = messages.deleteGame();
+
 
             if (confirm == JOptionPane.YES_OPTION) {
-                GameDAO sqlGameDAO = new SQLGameDAO();
-                sqlGameDAO.deleteGame(selectedGame);
-                JOptionPane.showMessageDialog(getScene().getPanel(), "Game deleted successfully.");
+                manageGame.deleteGameSelected(selectedGame);
+                messages.deleteGameSucces();
             }
         } else {
-            JOptionPane.showMessageDialog(getScene().getPanel(), "Please select a game to delete.");
+            messages.seleccionaPartida();
+
         }
+        mainController.resetGameManagement();
+        mainController.nextScene(Scenes.GAME_MANAGEMENT);
+    }
+    public void mostrarGraficaDeCafes(int idPartida) {
+        manageStatics.mostrarGraficaCafes(idPartida);
+    }
+    public List<Game> getAllGames() {
+       return manageGame.getAllGames();
     }
 }

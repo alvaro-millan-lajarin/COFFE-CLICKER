@@ -1,12 +1,8 @@
 package Business.Entidades;
 
-import Presenstation.Controller.GameController;
-
-import java.time.Instant;
-import java.util.HashMap;
-
 public class Generator extends Thread {
-    private int id;
+    private int id =0;
+    private int idGame;
     private String nombre;
     private double precio;
     private Double cafeSeg;//cantidad_cafe/tiempo
@@ -16,25 +12,27 @@ public class Generator extends Thread {
     private Integer multiplicador;
     private Integer costMultiplicador;
 
-    public Generator(int id, String nombre, double precio, Double cafeSeg, double tiempoGeneracion, double incrementCost,Integer costMultiplicador, Integer mutiplicador,Game game) {
+    public Generator(int id, String nombre, double precio, Double cafeSeg, double tiempoGeneracion, double incrementCost,Integer costMultiplicador, Integer mutiplicador,int idGame) {
 
         this.id = id;
         this.nombre = nombre;
         this.precio = precio;
         this.cafeSeg = cafeSeg;
-        this.game = game;
+
         this.tiempoGeneracion = tiempoGeneracion;
         this.incrementCost = incrementCost;
         this.multiplicador = mutiplicador;
         this.costMultiplicador = costMultiplicador;
+        this.idGame = idGame;
 
     }
+
     @Override
     public void run() {
         double acumulador = 0.0;
 
         while (!Thread.currentThread().isInterrupted()) {
-            acumulador += cafeSeg * tiempoGeneracion;
+            acumulador = acumulador + (cafeSeg * tiempoGeneracion);
 
             int cafesEnteros = (int) acumulador;
 
@@ -108,5 +106,12 @@ public class Generator extends Thread {
 
     public void setCostMultiplicador(Integer costMultiplicador) {
         this.costMultiplicador = costMultiplicador;
+    }
+
+    public int getIdGame() {
+        return idGame;
+    }
+    public void setGame(Game game) {
+        this.game = game;
     }
 }

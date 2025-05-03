@@ -1,35 +1,43 @@
 package Presenstation.Controller;
 
 import Business.Entidades.Game;
+import Business.Entidades.Pair;
 import Business.Entidades.User;
 import Business.ManageGame;
+import Business.ManageUser;
 import Persistence.sql.SQLGameDAO;
 import Persistence.sql.SQLUserDAO;
-import Presenstation.View.GameScene;
-import Presenstation.View.Scene;
-import Presenstation.View.Scenes;
+import Presenstation.Messages;
+import Presenstation.View.Grafica.Grafica;
+import Presenstation.View.Scenes.GameScene;
+import Presenstation.View.Scenes.Scene;
+import Presenstation.View.Scenes.Scenes;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
-import java.lang.reflect.Array;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 public class GameController extends Controller {
     private LoginController loginController;
     private SignUpController signUpController;
-    private SQLUserDAO sqlUserDAO = new SQLUserDAO();
     private ManageGame manageGame;
-    private SQLGameDAO sqlGameDAO = new SQLGameDAO();
-    private Game game;
 
 
-    //private TablaGeneradorsDisponibles tablaGeneradorsDisponibles = new TablaGeneradorsDisponibles();
-    public GameController(Scene view, MainController mainController, LoginController loginController, SignUpController signUpController, ManageGame manageGame) {
+    private Messages messages = new Messages();
+    private ManageUser manageUser;
+
+    private Timer historicoTimer;
+    private LocalDateTime sessionStartTime;
+
+
+    public GameController(Scene view, MainController mainController, LoginController loginController, SignUpController signUpController, ManageGame manageGame, ManageUser manageUser) {
         super(view, mainController);
         this.loginController = loginController;
         this.signUpController = signUpController;
         this.manageGame = manageGame;
-        this.game = manageGame.getGame();
+
+        this.manageUser = manageUser;
     }
 
     public GameScene getScene() {
@@ -41,7 +49,7 @@ public class GameController extends Controller {
     public void actionPerformed(ActionEvent e) {
         if (e.getActionCommand().equalsIgnoreCase("MORE_COFFE")) {
             manageGame.increaseNumCafes();
-            sqlGameDAO.updateGame(manageGame.getGame());
+            manageGame.updateGame();
             getScene().addCoffe(manageGame.getGame().getNumCafes());
         }else if (e.getActionCommand().equalsIgnoreCase("LOGOUT")) {
             mainController.resetLogin();
@@ -61,8 +69,11 @@ public class GameController extends Controller {
             compraCafeGod();
 
         }else if(e.getActionCommand().equalsIgnoreCase("GAME_MANAGEMENT")){
-            mainController.resetGameManagement();
 
+            manageGame.updateGame();
+            manageGame.updateGenerators();
+            mainController.resetGameManagement();
+            detenerRegistroCafes();
             mainController.nextScene(Scenes.GAME_MANAGEMENT);
         }else if (e.getActionCommand().equalsIgnoreCase("CafeteraMejora")) {
             cafeteraMejora();
@@ -81,71 +92,32 @@ public class GameController extends Controller {
     }
 
     public void deleteUser() {
-        int confirm = JOptionPane.showConfirmDialog(
-                getScene().addAccesButton(),
-                "Are you sure you want to delete your account?",
-                "Confirm Deletion",
-                JOptionPane.YES_NO_OPTION,
-                JOptionPane.WARNING_MESSAGE
-        );
+        int confirm = messages.confirmDelete();
 
         if (confirm == JOptionPane.YES_OPTION) {
-
-            String emailNameLogin = loginController.getEmail();
-            String emailPasswordRegistre = signUpController.getEmail();
-
-
-            if(loginController.getEmail().isEmpty() && loginController.getPassword().isEmpty()) {
-                User existingUserByEmail = sqlUserDAO.findUserByEmail(emailPasswordRegistre);
-                User existingUserByUsername = sqlUserDAO.findUserByUsername(emailPasswordRegistre);
-                if (existingUserByEmail != null) {
-                    sqlUserDAO.deleteUser(existingUserByEmail);
-                }else{
-                    sqlUserDAO.deleteUser(existingUserByUsername);
-                }
-            }else{
-                User existingUserByEmail = sqlUserDAO.findUserByEmail(emailNameLogin);
-                User existingUserByUsername = sqlUserDAO.findUserByUsername(emailNameLogin);
-                if (existingUserByEmail != null) {
-                    sqlUserDAO.deleteUser(existingUserByEmail);
-                }else{
-                    sqlUserDAO.deleteUser(existingUserByUsername);
-                }
-
-            }
-
-            JOptionPane.showMessageDialog(
-                    getScene().addAccesButton(),
-                    "Account successfully deleted.",
-                    "Deletion Successful",
-                    JOptionPane.INFORMATION_MESSAGE
-            );
-
+            manageUser.deleteUser();
+            messages.deleteUser();
+            loginController.clearUserData();
             mainController.nextScene(Scenes.MENU);
         }
-        mainController.nextScene(Scenes.MENU);
     }
     public ManageGame getManageGame() {
         return manageGame;
 
     }
     public void notEnoughtCoffe() {
-        JOptionPane.showMessageDialog(
-                getScene().addAccesButton(),
-                "Need to generate more coffe",
-                "Need more coffes",
-                JOptionPane.INFORMATION_MESSAGE
-        );
+        messages.needCoffe();
     }
     public void compraCafetera() {
         if(manageGame.enughtCoffeCafeteria()){
 
             manageGame.restarCafe("cafetera");//restar cafe
-            manageGame.startGeneratorCafetera();
-            manageGame.addCafetera("Cafetera");//añades la cantidad de cafetera
+            manageGame.startGeneratorCafetera();//encender generador
+
             manageGame.updatePriceCoffe("cafetera");
 
-            sqlGameDAO.updateGame(manageGame.getGame());
+            manageGame.updateGame();
+            manageGame.updateGenerators();
             updateTablas();
 
 
@@ -155,10 +127,16 @@ public class GameController extends Controller {
     }
     public void compraCafeteraCheta() {
         if(manageGame.enughtCoffeCheta()){
-            manageGame.startGeneratorCafeteraCheta();
             manageGame.restarCafe("CafeCheta");
-            manageGame.addCafetera("CafeCheta");
-            sqlGameDAO.updateGame(manageGame.getGame());
+            manageGame.startGeneratorCafeteraCheta();
+
+
+            //manageGame.addCafetera("CafeCheta");
+            manageGame.updatePriceCoffe("CafeCheta");
+            //manageGame.updatePriceCoffeChetaBaseDatos("CafeCheta");
+
+            manageGame.updateGame();
+            manageGame.updateGenerators();
             updateTablas();
         }else{
             notEnoughtCoffe();
@@ -168,33 +146,41 @@ public class GameController extends Controller {
         if(manageGame.enughtCoffeGod()){
             manageGame.startGeneratorCafeteraGod();
             manageGame.restarCafe("CafeGod");
-            manageGame.addCafetera("CafeGod");
-            sqlGameDAO.updateGame(manageGame.getGame());
+
+            //manageGame.addCafetera("CafeGod");
+            manageGame.updatePriceCoffe("CafeGod");
+            //manageGame.updatePriceCoffeGodBaseDatos("CafeGod");
+
+            manageGame.updateGame();
+            manageGame.updateGenerators();
             updateTablas();
         }else{
             notEnoughtCoffe();
         }
     }
     public void updateTablas(){
-        ArrayList<Integer> quantitats= manageGame.getQuantitas();
-        ArrayList<String> proudccioUnitat = manageGame.getProduccionsUnitat();
-        ArrayList<Integer> precioBase = manageGame.getPreciosBase();
 
-        //tabla generators
-        //proudccioUnitat = manageGame.getProduccionsUnitat();
-        //quantitats = manageGame.getQuantitas();
-       // precioBase = manageGame.getPreciosBase();
+
+        ArrayList<Integer> quantitats= manageGame.getQuantitas();
+        ArrayList<String> proudccioUnitat = manageGame.getProduccionsUnitat();//falla
+        ArrayList<Integer> precioBase = manageGame.getPreciosBase();//
 
         //tabla millores
-        ArrayList<Integer> costMultiplicadores = manageGame.getCostMultplicadors();
+        ArrayList<Integer> costMultiplicadores = manageGame.getCostMultplicadors();//falla
         ArrayList<Integer> multiplicadores = manageGame.getMultplicadors();
+
+
+
         getScene().updateTablas(quantitats, proudccioUnitat,precioBase, costMultiplicadores, multiplicadores);
     }
+
+
     public void cafeteraMejora() {
         if(manageGame.enoughtCoffeMejoraCafetera()){
             manageGame.restarCafeMejora("cafetera");
             manageGame.mejorarCafetera();
-            sqlGameDAO.updateGame(manageGame.getGame());
+            manageGame.updateGame();
+            manageGame.updateGenerators();
             updateTablas();
         }else{
             notEnoughtCoffe();
@@ -205,8 +191,9 @@ public class GameController extends Controller {
         if(manageGame.enoughtCoffeMejoraCheta()){
             manageGame.restarCafeMejora("CafeCheta");
             manageGame.mejorarCheta();
-            sqlGameDAO.updateGame(manageGame.getGame());
+            manageGame.updateGame();
             updateTablas();
+            manageGame.updateGenerators();
         }else{
             notEnoughtCoffe();
         }
@@ -215,7 +202,8 @@ public class GameController extends Controller {
         if(manageGame.enoughtCoffeMejoraGod()){
             manageGame.restarCafeMejora("cafeGod");
             manageGame.mejorarGod();
-            sqlGameDAO.updateGame(manageGame.getGame());
+            manageGame.updateGame();
+            manageGame.updateGenerators();
             updateTablas();
 
         }else{
@@ -225,18 +213,39 @@ public class GameController extends Controller {
     }
 
     public void deleteCurrentGame() {
-        Game currentGame = manageGame.getGame();
-        if (currentGame != null) {
-
-            sqlGameDAO.deleteGame(currentGame);
-            manageGame.setGame(null);
-        }
-
-
+        manageGame.deleteGameSelected(manageGame.getGame());
+        mainController.resetGameManagement();
+        mainController.nextScene(Scenes.GAME_MANAGEMENT);
     }
 
     public void goToGameManagementScene() {
         mainController.nextScene(Scenes.GAME_MANAGEMENT);
     }
+    public void detenerRegistroCafes() {
+        if (historicoTimer != null && historicoTimer.isRunning()) {
+            System.out.println("Deteniendo el timer...");
+            historicoTimer.stop();
+        }else {
+            System.out.println("Timer ya detenido o nulo");
+        }
+    }
+    public void iniciarRegistroCafes(Game partidaActual, Grafica grafica) {
+        detenerRegistroCafes();
+        sessionStartTime = LocalDateTime.now();
 
+        historicoTimer = new Timer(60_000, e -> {
+            int cafesActuales = partidaActual.getNumCafes();
+            LocalDateTime ahora = LocalDateTime.now();
+
+
+            manageGame.logCafeHistorico(partidaActual.getId(), cafesActuales);
+
+
+            grafica.getHistorico().add(new Pair<>(ahora, cafesActuales));
+            grafica.repaint();
+        });
+
+        grafica.setStartTime(sessionStartTime);
+        historicoTimer.start();
+    }
 }

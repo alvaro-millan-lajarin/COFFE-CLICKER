@@ -1,7 +1,7 @@
-package Presenstation.View;
+package Presenstation.View.Scenes;
 
 import Presenstation.Controller.MenuController;
-import Presenstation.JImagePanel;
+import Presenstation.View.Image.JImagePanel;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;

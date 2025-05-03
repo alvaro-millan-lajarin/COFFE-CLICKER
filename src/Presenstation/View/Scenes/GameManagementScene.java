@@ -1,14 +1,10 @@
-package Presenstation.View;
+package Presenstation.View.Scenes;
 
 import Business.Entidades.Game;
 import Business.Entidades.User;
 import Persistence.sql.SQLGameDAO;
 import Persistence.sql.SQLUserDAO;
 import Presenstation.Controller.GameManagementController;
-import Presenstation.Controller.MenuController;
-import Presenstation.Controller.SignUpController;
-import Presenstation.JImagePanel;
-import Presenstation.View.WriteText.Text;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -70,19 +66,15 @@ public class GameManagementScene extends Scene {
     }
 
     public JPanel centerPanel() {
-        SQLGameDAO sqlGameDAO = new SQLGameDAO();
-        List<Game> games = sqlGameDAO.getAllGames();
-
-        String userOrEmail = gameManagementController.getLoginController().getEmail();
-        String password = gameManagementController.getLoginController().getPassword();
-
-        SQLUserDAO sqlUserDAO = new SQLUserDAO();
-        User existingUserByEmail = sqlUserDAO.findUserByEmail(userOrEmail);
+        List<Game> games = gameManagementController.getAllGames();
+        User user = new User();
+        user = gameManagementController.getUser();
 
         ArrayList<Game> gamesUser = new ArrayList<>();
-        if (existingUserByEmail != null && existingUserByEmail.getPassword().equals(password)) {
+
+        if (user != null) {
             for (Game game : games) {
-                if (game.getIdUser() == existingUserByEmail.getId()) {
+                if (game.getIdUser() == user.getId()) {
                     gamesUser.add(game);
                 }
             }
@@ -156,6 +148,7 @@ public class GameManagementScene extends Scene {
         JPanel preguntasYRespuestas = new JPanel(new GridLayout(4,1));
         JButton but_resume = new JButton("RESUME");
         JButton but_del = new JButton("DELETE");
+        preguntasYRespuestas.add(botonStadisticas());
 
         but_resume.setActionCommand("RESUME");
         but_resume.addActionListener(gameManagementController);
@@ -201,5 +194,11 @@ public class GameManagementScene extends Scene {
 
     public Game getSelectedGame() {
         return selectedGame;
+    }
+    public JButton botonStadisticas() {
+        JButton botonStadisticas = new JButton("Stadisticas");
+        botonStadisticas.addActionListener(gameManagementController);
+        botonStadisticas.setActionCommand("STADISTICAS");
+        return botonStadisticas;
     }
 }

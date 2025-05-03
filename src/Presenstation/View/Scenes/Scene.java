@@ -1,4 +1,4 @@
-package Presenstation.View;
+package Presenstation.View.Scenes;
 import javax.swing.*;
 
 public class Scene {
