@@ -238,10 +238,7 @@ public class Game {
             generator.setMultiplicador(generator.getMultiplicador()+1);
             generator.setCostMultiplicador(generator.getCostMultiplicador()*2);
 
-            //GodCostMultiplicador = generator.getCostMultiplicador()*2;
-            //cafeteriaGodMultiplicador = generator.getMultiplicador()+1;
             generator.setCafeSeg(generator.getCafeSeg()*generator.getMultiplicador());
-
 
         }
     }
@@ -303,18 +300,6 @@ public class Game {
         return generadoresGod;
     }
 
-
-
-
-
-
-    public Integer getCafeteriaMultiplicador() {
-        return cafeteriaMultiplicador;
-    }
-
-    public Integer getCafeteriaCostMultiplicador() {
-        return cafeteriaCostMultiplicador;
-    }
 
 
     public void setGeneradoresCafetera(List<Generator> generadoresCafetera) {
