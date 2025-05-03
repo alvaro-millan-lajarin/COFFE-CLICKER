@@ -273,17 +273,46 @@ public class Game {
     }
     public ArrayList<Integer> getCostMultplicadors() {
         ArrayList<Integer> costMultplicadors = new ArrayList<>();
-        costMultplicadors.add(cafeteriaCostMultiplicador);
-        costMultplicadors.add(chetaCostMultiplicador);
-        costMultplicadors.add(GodCostMultiplicador);
+        int costMultplicadorCafetera = 10;
+        int costMultplicadorCheta = 150;
+        int costMultplicadrGod = 2000;
+
+        if(!getGeneradoresCafetera().isEmpty()){
+            costMultplicadorCafetera = getGeneradoresCafetera().getFirst().getCostMultiplicador();
+        }
+        if(!getGeneradoresChetas().isEmpty()){
+            costMultplicadorCheta = getGeneradoresChetas().getFirst().getCostMultiplicador();
+        }
+
+        if(!getGeneradoresGod().isEmpty()){
+            costMultplicadrGod = getGeneradoresGod().getFirst().getCostMultiplicador();
+        }
+        costMultplicadors.add(costMultplicadorCafetera);
+        costMultplicadors.add(costMultplicadorCheta);
+        costMultplicadors.add(costMultplicadrGod);
+
         return costMultplicadors;
     }
     public ArrayList<Integer> getMultplicadors() {
-        ArrayList<Integer> Multplicadors = new ArrayList<>();
-        Multplicadors.add(cafeteriaMultiplicador);
-        Multplicadors.add(cafeteriaChetaMultiplicador);
-        Multplicadors.add(cafeteriaGodMultiplicador);
-        return Multplicadors;
+        ArrayList<Integer> multplicadors = new ArrayList<>();
+        int multplicadorCafetera = 1;
+        int multplicadorCheta = 1;
+        int multiplicadorGod = 1;
+
+        if(!getGeneradoresCafetera().isEmpty()){
+            multplicadorCafetera = getGeneradoresCafetera().getFirst().getMultiplicador();
+        }
+        if(!getGeneradoresChetas().isEmpty()){
+            multplicadorCheta = getGeneradoresChetas().getFirst().getMultiplicador();
+        }
+
+        if(!getGeneradoresGod().isEmpty()){
+            multiplicadorGod = getGeneradoresGod().getFirst().getMultiplicador();
+        }
+        multplicadors.add(multplicadorCafetera);
+        multplicadors.add(multplicadorCheta);
+        multplicadors.add(multiplicadorGod);
+        return multplicadors;
     }
 
     public void inicialitzarGeneradors() {

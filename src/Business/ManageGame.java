@@ -200,10 +200,11 @@ public class ManageGame {
     }
     public ArrayList<Integer> getCostMultplicadors(){
 
+
         return game.getCostMultplicadors();
     }
     public ArrayList<Integer> getMultplicadors(){
-        return game.getMultplicadors();
+       return game.getMultplicadors();
     }
     public boolean enoughtCoffeMejoraCafetera(){
         if(game.getNumCafes()>= game.getCostMultplicadors().get(0)){
