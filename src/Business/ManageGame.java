@@ -41,11 +41,6 @@ public class ManageGame {
     public void addBasicGenerator() {
         sqlGeneratorDAO.addBasicGenerators(this.game.getId());
     }
-    public void addCafetera(String cafetera) {
-        Generator cafeteria = new Generator(1,cafetera, game.getCafeteriaPrecio(), game.getCafeteriaCafeSeg(), game.getCafeteriaTiempoGeneracion(), 1.07, game.getCafeteriaCostMultiplicador(), game.getCafeteriaMultiplicador(),game.getId());
-        game.addCafetera(cafetera);
-        //sqlGeneratorDAO.incrementarNumeroCafeterasPorNombre(cafetera);
-    }
     public ArrayList<Integer> getQuantitas() {
         ArrayList<Integer> quantitats = new ArrayList<>();
         quantitats.add(game.getGeneradoresCafetera().size());

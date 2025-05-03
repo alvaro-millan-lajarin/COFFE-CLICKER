@@ -90,41 +90,20 @@ public class Game {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
     public int getIdUser() {
         return idUser;
-    }
-
-    public void setIdUser(int idUser) {
-
-        this.idUser = idUser;
     }
 
     public String getNombre() {
         return nombre;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
     public LocalDateTime getFechaCreacion() {
         return fechaCreacion;
     }
 
-    public void setFechaCreacion(LocalDateTime fechaCreacion) {
-        this.fechaCreacion = fechaCreacion;
-    }
-
     public LocalDateTime getFechaModificacion() {
         return fechaModificacion;
-    }
-
-    public void setFechaModificacion(LocalDateTime fechaModificacion) {
-        this.fechaModificacion = fechaModificacion;
     }
 
     public int getNumCafes() {
@@ -146,16 +125,7 @@ public class Game {
         this.numCafes = this.numCafes + coffes;
         if (onCafeChanged != null) onCafeChanged.accept(this.numCafes);
     }
-    public void addCafetera(String cafetera) {
-        if(cafetera.equals("Cafetera") ){
-            quantitatsGeneredors.set(0, quantitatsGeneredors.get(0) + 1);
-        } else if (cafetera.equals("CafeCheta") ) {
-            quantitatsGeneredors.set(1, quantitatsGeneredors.get(1) + 1);
-        } else if (cafetera.equals("CafeGod")) {
-            quantitatsGeneredors.set(2, quantitatsGeneredors.get(2) + 1);
-        }
 
-    }
 
     public ArrayList<Integer> getQuantitats(){
         return quantitatsGeneredors;
@@ -203,12 +173,6 @@ public class Game {
         return cafeteriaGodPrecio;
     }
 
-
-
-
-    public void setCafeteriaGodPrecio() {
-        this.cafeteriaGodPrecio = 2000 * Math.pow(1.12, generadoresGod.get(2).getPrecio());
-    }
     public ArrayList<Integer> getPreciosBase() {
         ArrayList<Integer> preciosBase = new ArrayList<>();
         preciosBase.add((int) (cafeteriaPrecio));
@@ -221,12 +185,7 @@ public class Game {
             generator.setMultiplicador(generator.getMultiplicador()+1);
             generator.setCostMultiplicador(generator.getCostMultiplicador()*2);
 
-            //cafeteriaCostMultiplicador = generator.getCostMultiplicador()*2;
-            //cafeteriaMultiplicador = generator.getMultiplicador()+1;
             generator.setCafeSeg(generator.getCafeSeg()*generator.getMultiplicador());
-
-
-
         }
     }
     public void mejorarCheta(){
@@ -234,11 +193,7 @@ public class Game {
             generator.setMultiplicador(generator.getMultiplicador()+1);
             generator.setCostMultiplicador(generator.getCostMultiplicador()*2);
 
-            //chetaCostMultiplicador = generator.getCostMultiplicador()*2;
-            //cafeteriaChetaMultiplicador = generator.getMultiplicador()+1;
             generator.setCafeSeg(generator.getCafeSeg()*generator.getMultiplicador());
-
-
         }
     }
 
@@ -315,16 +270,8 @@ public class Game {
         return multplicadors;
     }
 
-    public void inicialitzarGeneradors() {
-        for (int i = 0; i < quantitatsGeneredors.get(0); i++) startGeneratorCafetera();
-        for (int i = 0; i < quantitatsGeneredors.get(1); i++) startGeneratorCafeteraCheta();
-        for (int i = 0; i < quantitatsGeneredors.get(2); i++) startGeneratorCafeteraGod();
-    }
-
-    public void updateGame(){
 
 
-    }
     public List<Generator> getGeneradoresCafetera() {
         return generadoresCafetera;
     }
@@ -337,9 +284,6 @@ public class Game {
         return generadoresGod;
     }
 
-    public ArrayList<Integer> getQuantitatsGeneredors() {
-        return quantitatsGeneredors;
-    }
 
     public double getCafeteriaCafeSeg() {
         return cafeteriaCafeSeg;
@@ -349,21 +293,7 @@ public class Game {
         return cafeteriaTiempoGeneracion;
     }
 
-    public double getCafeteriaChetaCafeSeg() {
-        return cafeteriaChetaCafeSeg;
-    }
 
-    public double getCafeteriaChetaTiempoGeneracion() {
-        return cafeteriaChetaTiempoGeneracion;
-    }
-
-    public double getCafeteriaGodCafeSeg() {
-        return cafeteriaGodCafeSeg;
-    }
-
-    public double getCafeteriaGodTiempoGeneracion() {
-        return cafeteriaGodTiempoGeneracion;
-    }
 
     public Integer getCafeteriaMultiplicador() {
         return cafeteriaMultiplicador;
@@ -373,25 +303,6 @@ public class Game {
         return cafeteriaCostMultiplicador;
     }
 
-    public Integer getCafeteriaChetaMultiplicador() {
-        return cafeteriaChetaMultiplicador;
-    }
-
-    public Integer getChetaCostMultiplicador() {
-        return chetaCostMultiplicador;
-    }
-
-    public Integer getCafeteriaGodMultiplicador() {
-        return cafeteriaGodMultiplicador;
-    }
-
-    public Integer getGodCostMultiplicador() {
-        return GodCostMultiplicador;
-    }
-
-    public Consumer<Integer> getOnCafeChanged() {
-        return onCafeChanged;
-    }
 
     public void setGeneradoresCafetera(List<Generator> generadoresCafetera) {
         this.generadoresCafetera = generadoresCafetera;
