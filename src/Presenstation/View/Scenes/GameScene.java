@@ -22,10 +22,8 @@ import javax.swing.Timer;
 public class GameScene extends Scene {
     private GameController gameController;
     private MainController mainController;
-    private Scene scene;
     public final static String GAME_MANAGEMENT = "GAME_MANAGEMENT";
 
-    private Text name;
     private Integer n_cafes = 0;
     private JLabel numCafesLabel;
 
@@ -40,7 +38,6 @@ public class GameScene extends Scene {
 
         jPanel = new JImagePanel("data/game.jpg");
         jPanel.setLayout(new BorderLayout(50, 20));
-        //jPanel.setBackground(imagePanel);
 
         jPanel.add(topPanel(), BorderLayout.NORTH);
 
@@ -169,6 +166,7 @@ public class GameScene extends Scene {
         JImagePanel imagePanel = new JImagePanel("data/cafe_clickar.png");
         imagePanel.setPreferredSize(new Dimension(200, 200));
         imagePanel.setOpaque(false);
+
         imagenCafe.add(imagePanel);
         imagenCafe.addActionListener(gameController);
         imagenCafe.setActionCommand("MORE_COFFE");
@@ -233,10 +231,10 @@ public class GameScene extends Scene {
         jPanel.revalidate();
         jPanel.repaint();
     }
-
-
-
-
+    public void updateGameScene(){
+        jPanel.revalidate();
+        jPanel.repaint();
+    }
     public JButton addBotonFinishGame() {
         JButton finishGameButton = new JButton("Finish Game");
         finishGameButton.setActionCommand("FINISHGAME");

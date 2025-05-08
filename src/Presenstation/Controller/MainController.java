@@ -62,6 +62,8 @@ public class MainController {
         gameScene.setController(gameController);
         staticsScene.setController(staticsController);
 
+        manageGame.setGameController(gameController);
+
 
 
     }

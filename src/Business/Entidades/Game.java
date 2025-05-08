@@ -1,5 +1,8 @@
 package Business.Entidades;
 
+import Business.ManageGame;
+import Presenstation.Controller.GameController;
+
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -39,17 +42,19 @@ public class Game {
     private double cafeteriaGodPrecio = 2000; // Precio de la cafetería God
     private Integer cafeteriaGodMultiplicador = 1;
     private Integer GodCostMultiplicador = 2000;
+    private ManageGame  manageGame;
 
-    private java.util.function.Consumer<Integer> onCafeChanged;
 
 
-    public Game(int id, int idUser, String nombre, LocalDateTime fechaCreacion, LocalDateTime fechaModificacion, int numCafes) {
+
+    public Game(int id, int idUser, String nombre, LocalDateTime fechaCreacion, LocalDateTime fechaModificacion, int numCafes, ManageGame manageGame) {
         this.id = id;
         this.idUser = idUser;
         this.nombre = nombre;
         this.fechaCreacion = fechaCreacion;
         this.fechaModificacion = fechaModificacion;
         this.numCafes = numCafes;
+        this.manageGame = manageGame;
 
 
     }
@@ -121,17 +126,26 @@ public class Game {
     public void setNumCafes(int numCafes) {
 
         this.numCafes = numCafes;
-        if (onCafeChanged != null) onCafeChanged.accept(this.numCafes);
+
+        if(manageGame != null){
+            manageGame.updateGameScene();
+        }
+
     }
 
     public void increaseNumCafes(){
 
         this.numCafes++;
-        if (onCafeChanged != null) onCafeChanged.accept(this.numCafes);
+        if(manageGame != null){
+            manageGame.updateGameScene();
+        }
+
     }
     public synchronized void addNumCafes(Integer coffes){
         this.numCafes = this.numCafes + coffes;
-        if (onCafeChanged != null) onCafeChanged.accept(this.numCafes);
+        if(manageGame != null){
+            manageGame.updateGameScene();
+        }
     }
 
 
@@ -290,5 +304,8 @@ public class Game {
 
     public void setGeneradoresGod(List<Generator> generadoresGod) {
         this.generadoresGod = generadoresGod;
+    }
+    public void setManageGame(ManageGame manageGame) {
+        this.manageGame = manageGame;
     }
 }

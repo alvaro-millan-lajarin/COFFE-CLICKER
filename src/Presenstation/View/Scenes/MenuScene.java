@@ -21,7 +21,7 @@ public class MenuScene extends Scene {
         jPanel.setLayout(new BorderLayout(50, 20));
         jPanel.setBackground(new Color(210, 180, 140));
 
-        JPanel centerPanel = new JPanel(new GridLayout(1, 2, 100, 20));
+        JPanel centerPanel = new JPanel(new GridLayout(1, 2, 50, 20));
 
         jPanel.add(addTitle("COFFE CLICKER"), BorderLayout.NORTH);
         jPanel.add(makeCenterPanel(centerPanel), BorderLayout.CENTER);
@@ -32,35 +32,49 @@ public class MenuScene extends Scene {
 
     }
     public JPanel makeCenterPanel(JPanel centerPanel) {
-        JPanel panelIzquierdo = new JPanel(new GridBagLayout());
+        JPanel panel = new JPanel(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();
-        gbc.gridx = 0;
-        gbc.gridy = 0;
-        gbc.insets = new Insets(10, 10, 10, 10);
+
+
+        JPanel panelIzquierdo = new JPanel(new GridBagLayout());
+        GridBagConstraints innerGbc = new GridBagConstraints();
+        innerGbc.gridx = 0;
+        innerGbc.gridy = 0;
+        innerGbc.insets = new Insets(10, 10, 10, 10);
 
         JButton signUp = new JButton("SIGN UP");
         signUp.setPreferredSize(new Dimension(200, 120));
         signUp.setActionCommand(SIGNUP);
         signUp.addActionListener(menuController);
+        panelIzquierdo.add(signUp, innerGbc);
 
+        innerGbc.gridy++;
         JButton login = new JButton("LOGIN");
         login.setPreferredSize(new Dimension(200, 120));
         login.setActionCommand(LOGIN);
         login.addActionListener(menuController);
-        panelIzquierdo.add(signUp, gbc);
-        gbc.gridy++;
-        panelIzquierdo.add(login, gbc);
+        panelIzquierdo.add(login, innerGbc);
 
         panelIzquierdo.setOpaque(false);
-        centerPanel.add(panelIzquierdo);
 
-        JImagePanel image = new JImagePanel("data/cafeteria.png");
+
+        gbc.gridx = 0;
+        gbc.weightx = 0.3;
+        gbc.fill = GridBagConstraints.BOTH;
+        panel.add(panelIzquierdo, gbc);
+
+
+        gbc.gridx = 1;
+        gbc.weightx = 0.7;
+        JImagePanel image = new JImagePanel("data/fondo3.jpg");
         image.setOpaque(false);
-        centerPanel.add(image);
-        centerPanel.setOpaque(false);
+        image.setLayout(new BorderLayout());
+        panel.add(image, gbc);
 
-        return centerPanel;
+        panel.setOpaque(false);
+        return panel;
     }
+
 
     public JPanel addTitle(String message) {
         JPanel panel = new JPanel();

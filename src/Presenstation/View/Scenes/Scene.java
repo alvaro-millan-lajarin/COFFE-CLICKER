@@ -1,8 +1,10 @@
 package Presenstation.View.Scenes;
+import Presenstation.View.Image.JImagePanel;
+
 import javax.swing.*;
 
 public class Scene {
-    protected JPanel jPanel;
+    protected JImagePanel jPanel;
     private JFrame mainFrame;
 
     private final static int WIDTH = 1100;
@@ -15,7 +17,7 @@ public class Scene {
         //mainFrame.addWindowListener(new WindowController(mainController, this));
         //mainFrame.setBackground(Color.decode(BACKGROUND));
         mainFrame.setResizable(false);
-        jPanel = new JPanel();
+        jPanel = new JImagePanel("data/fondoGlobal4.jpg");
     }
 
     public JPanel getPanel() {
