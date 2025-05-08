@@ -5,11 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f9bbb50b-3eaf-412a-ab58-ecb07cf93455" name="Changes" comment="unused functions">
-      <change beforePath="$PROJECT_DIR$/src/Business/Entidades/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Business/Entidades/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Business/ManageStatics.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Business/ManageStatics.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Presenstation/Controller/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presenstation/Controller/GameController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Presenstation/Messages.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presenstation/Messages.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Presenstation/View/Scenes/GameScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presenstation/View/Scenes/GameScene.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Presenstation/Controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presenstation/Controller/MainController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -115,15 +111,7 @@
       <workItem from="1743689183082" duration="265000" />
       <workItem from="1743689452923" duration="5970000" />
       <workItem from="1743758267674" duration="4963000" />
-      <workItem from="1746711311955" duration="2200000" />
-    </task>
-    <task id="LOCAL-00014" summary="cantidad cafeteras">
-      <option name="closed" value="true" />
-      <created>1744042174227</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1744042174227</updated>
+      <workItem from="1746711311955" duration="3409000" />
     </task>
     <task id="LOCAL-00015" summary="generators">
       <option name="closed" value="true" />
@@ -509,7 +497,15 @@
       <option name="project" value="LOCAL" />
       <updated>1746712885228</updated>
     </task>
-    <option name="localTasksCounter" value="63" />
+    <task id="LOCAL-00063" summary="unused functions">
+      <option name="closed" value="true" />
+      <created>1746714923536</created>
+      <option name="number" value="00063" />
+      <option name="presentableId" value="LOCAL-00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1746714923536</updated>
+    </task>
+    <option name="localTasksCounter" value="64" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

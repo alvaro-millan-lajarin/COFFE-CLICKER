@@ -30,13 +30,13 @@ public class MainController {
     private StaticsController staticsController;
 
     private ManageGame manageGame;
-    private ManageStatics manageStatics;
+
     private ManageUser manageUser;
 
     public MainController() {
 
         manageGame = new ManageGame();
-        manageStatics = new ManageStatics();
+
         manageUser = new ManageUser();
 
         menuScene = new MenuScene();
