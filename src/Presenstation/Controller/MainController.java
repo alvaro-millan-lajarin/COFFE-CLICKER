@@ -14,12 +14,10 @@ public class MainController {
     private Scene scene;
     private SignUpScene signUpScene;
     private LoginScene loginScene;
-    private Game game;
     private GameManagementScene gameManagementScene;
     private GameCreationScene gameCreationScene;
     private GameScene gameScene;
     private StaticsScene staticsScene;
-
 
     private LoginController loginController;
     private SignUpController signUpController;
@@ -30,7 +28,6 @@ public class MainController {
     private StaticsController staticsController;
 
     private ManageGame manageGame;
-
     private ManageUser manageUser;
 
     public MainController() {
