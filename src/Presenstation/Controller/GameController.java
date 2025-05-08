@@ -218,9 +218,6 @@ public class GameController extends Controller {
         mainController.nextScene(Scenes.GAME_MANAGEMENT);
     }
 
-    public void goToGameManagementScene() {
-        mainController.nextScene(Scenes.GAME_MANAGEMENT);
-    }
     public void detenerRegistroCafes() {
         if (historicoTimer != null && historicoTimer.isRunning()) {
             System.out.println("Deteniendo el timer...");

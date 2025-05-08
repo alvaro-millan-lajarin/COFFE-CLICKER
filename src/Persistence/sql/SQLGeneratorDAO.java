@@ -13,27 +13,6 @@ import java.util.List;
 public class SQLGeneratorDAO implements GeneratorDAO {
 
 
-    @Override
-    public void addGenerator(Generator generator) {
-        String query = "INSERT INTO Generador(id_partida, nombre, precio, cafes_seg, multiplicador, tiempo_generacion, cost_multiplicador, increment_cost) VALUES ('" +
-                generator.getIdGame() + "', '" +
-                generator.getNombre() + "', '" +
-                generator.getPrecio() + "', '" +
-                generator.getCafeSeg() + "', '" +
-                generator.getMultiplicador() + "', '" +
-                generator.getTiempoGeneracion() + "', '" +
-                generator.getCostMultiplicador() + "', '" +
-                generator.getIncrementCost() + "')";
-
-        SQLConnector.getInstance().insertQuery(query);
-    }
-    public void incrementarNumeroCafeterasPorNombre(String nombre) {
-        String query = "UPDATE Generador " +
-                "SET numero_cafeteras = numero_cafeteras + 1 " +
-                "WHERE nombre = '" + nombre + "'";
-
-        SQLConnector.getInstance().insertQuery(query);
-    }
 
     public void addBasicGenerators(int idPartida) {
         SQLConnector connector = SQLConnector.getInstance();
@@ -74,49 +53,6 @@ public class SQLGeneratorDAO implements GeneratorDAO {
         SQLConnector.getInstance().insertQuery(query);
     }
 
-    public void addBasicGenerators(){
-
-    }
-
-    @Override
-    public void deleteGenerator(Generator generator) {
-        String query = "DELETE FROM Generador WHERE id_generador = '" + generator.getId() + "'";
-        SQLConnector.getInstance().deleteQuery(query);
-    }
-
-    @Override
-    public Generator getGenerator(int id) {
-        return null;
-    }
-
-   /* @Override
-    public Generator getGenerator(int id) {
-        String query = "SELECT * FROM Generador WHERE id_generador = '" + id + "'";
-        var rs = SQLConnector.getInstance().selectQuery(query);
-
-        try {
-            if (rs != null && rs.next()) {
-                int idGame = rs.getInt("id_game");
-                SQLGameDAO gameDAO = new SQLGameDAO();
-                Game game = gameDAO.getGame(idGame);
-
-                return new Generator(
-                        rs.getInt("id_generador"),
-                        rs.getString("nombre"),
-                        rs.getDouble("precio"),
-                        rs.getDouble("cafes_seg"),
-                        rs.getDouble("tiempoGeneracion"),
-                        rs.getDouble("incrementCost"),
-                        rs.getInt("multiplicador"),
-                        game
-                );
-            }
-        } catch (Exception e) {
-            System.err.println("Error retrieving generator: " + e.getMessage());
-        }
-
-        return null;
-    }*/
    public int numeroGenerador(Generator generator) {
        String query = "SELECT numero_cafeteras FROM Generador WHERE nombre = '" + generator.getNombre() +
                "' AND id_partida = '" + generator.getIdGame() + "'";
@@ -164,33 +100,5 @@ public class SQLGeneratorDAO implements GeneratorDAO {
         return generators;
 
     }
-
-
-
-
-    //Stoy - 10
-    /*@Override
-    public List<Generator> getAllGenerators() {
-        String query = "SELECT * FROM Generador";
-        var rs = SQLConnector.getInstance().selectQuery(query);
-        List<Generator> generators = new java.util.ArrayList<>();
-
-        try {
-            while (rs != null && rs.next()) {
-                Generator generator = new Generator(
-                        rs.getInt("id_generador"),
-                        rs.getString("nombre"),
-                        rs.getDouble("precio"),
-                        rs.getDouble("cafes_seg"),
-                        game
-                );
-                generators.add(generator);
-            }
-        } catch (Exception e) {
-            System.err.println("Error retrieving generators: " + e.getMessage());
-        }
-
-        return generators;
-    }*/
 
 }

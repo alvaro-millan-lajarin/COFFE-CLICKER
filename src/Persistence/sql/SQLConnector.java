@@ -34,23 +34,6 @@ public class SQLConnector {
         return instance;
     }
 
-    private SQLConnector(String username, String password, String ip, int port, String database) {
-        this.username = username;
-        this.password = password;
-        this.url = "jdbc:mysql://" + ip + ":" + port + "/" + database;
-    }
-
-    public void connect() {
-        try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            conn = DriverManager.getConnection(url, username, password);
-        } catch(SQLException e) {
-            System.err.println("Couldn't connect to --> " + url + " (" + e.getMessage() + ")");
-        } catch (ClassNotFoundException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
     public void insertQuery(String query){
         try {
             Statement s = conn.createStatement();
@@ -93,19 +76,6 @@ public class SQLConnector {
             System.err.println("Problem when selecting data --> " + e.getSQLState() + " (" + e.getMessage() + ")");
         }
         return rs;
-    }
-
-    public void disconnect(){
-        try {
-            conn.close();
-        } catch (SQLException e) {
-            System.err.println("Problem when closing the connection --> " + e.getSQLState() + " (" + e.getMessage() + ")");
-        }
-    }
-
-
-    public Connection getConnection() {
-        return conn;
     }
 
 

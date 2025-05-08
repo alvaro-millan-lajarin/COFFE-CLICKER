@@ -17,16 +17,6 @@ public class SQLUserDAO implements UserDAO {
 
 
     @Override
-    public void updateUser(User user) {
-        String query = "UPDATE User SET nombre_usuario = '" + user.getUsername() +
-                "', email = '" + user.getEmail() +
-                "', contrasena = '" + user.getPassword() +
-                "' WHERE id_usuario = '" + user.getId() + "'";
-
-        SQLConnector.getInstance().updateQuery(query);
-    }
-
-    @Override
     public void deleteUser(User user) {
         // Paso 1: Obtener las partidas del usuario
         String selectPartidas = "SELECT id_partida FROM Partida WHERE id_usuario = '" + user.getId() + "'";
@@ -96,26 +86,5 @@ public class SQLUserDAO implements UserDAO {
         return null;
     }
 
-    @Override
-    public List<User> findAllUsers() {
-        String query = "SELECT * FROM User";
-        var rs = SQLConnector.getInstance().selectQuery(query);
-        List<User> users = new java.util.ArrayList<>();
 
-        try {
-            while (rs != null && rs.next()) {
-                User user = new User(
-                        rs.getInt("id_usuario"),
-                        rs.getString("nombre_usuario"),
-                        rs.getString("email"),
-                        rs.getString("contrasena")
-                );
-                users.add(user);
-            }
-        } catch (Exception e) {
-            System.err.println("Error retrieving all users: " + e.getMessage());
-        }
-
-        return users;
-    }
 }

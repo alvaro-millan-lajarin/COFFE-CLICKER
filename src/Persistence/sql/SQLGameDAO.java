@@ -71,13 +71,6 @@ public class SQLGameDAO implements GameDAO {
     }
 
 
-    private String listToString(List<Integer> list) {
-        return list.stream().map(String::valueOf).collect(Collectors.joining(","));
-    }
-    private String listToStringDoubles(List<Integer> list) {
-        return list.stream().map(String::valueOf).collect(Collectors.joining(","));
-    }
-
     public void logCafeHistorico(int id, int numCafes) {
         try {
             System.out.println("Intentando registrar café para partida ID: " + id);
