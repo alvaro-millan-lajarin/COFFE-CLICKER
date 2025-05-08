@@ -4,29 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f9bbb50b-3eaf-412a-ab58-ecb07cf93455" name="Changes" comment="unused functions">
-      <change afterPath="$PROJECT_DIR$/data/cafelitos.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/caffeRaro.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/fondo3.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/fondoCafe.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/fondoGlobal.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/fondoGlobal2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/fondoGlobal3.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/fondoGlobal4.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/muchoCoffe.jpeg" afterDir="false" />
+    <list default="true" id="f9bbb50b-3eaf-412a-ab58-ecb07cf93455" name="Changes" comment="mas visual">
+      <change afterPath="$PROJECT_DIR$/data/2025.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/inicio.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/salle2025.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Business/Entidades/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Business/Entidades/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Business/ManageGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Business/ManageGame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Persistence/sql/SQLGameDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Persistence/sql/SQLGameDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Presenstation/Controller/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presenstation/Controller/GameController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Presenstation/Controller/GameCreationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presenstation/Controller/GameCreationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Presenstation/Controller/GameManagementController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presenstation/Controller/GameManagementController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Presenstation/Controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presenstation/Controller/MainController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Presenstation/View/Scenes/GameManagementScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presenstation/View/Scenes/GameManagementScene.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Presenstation/View/Scenes/GameScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presenstation/View/Scenes/GameScene.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Presenstation/View/Scenes/MenuScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presenstation/View/Scenes/MenuScene.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Presenstation/View/Scenes/Scene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presenstation/View/Scenes/Scene.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Presenstation/View/WriteText/Text.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presenstation/View/WriteText/Text.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -132,15 +115,7 @@
       <workItem from="1743689183082" duration="265000" />
       <workItem from="1743689452923" duration="5970000" />
       <workItem from="1743758267674" duration="4963000" />
-      <workItem from="1746711311955" duration="16951000" />
-    </task>
-    <task id="LOCAL-00017" summary="actulizar tabla disponibles">
-      <option name="closed" value="true" />
-      <created>1744189356470</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1744189356470</updated>
+      <workItem from="1746711311955" duration="17726000" />
     </task>
     <task id="LOCAL-00018" summary="actulizar tabla disponibles">
       <option name="closed" value="true" />
@@ -526,7 +501,15 @@
       <option name="project" value="LOCAL" />
       <updated>1746715826241</updated>
     </task>
-    <option name="localTasksCounter" value="66" />
+    <task id="LOCAL-00066" summary="mas visual">
+      <option name="closed" value="true" />
+      <created>1746734529716</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1746734529716</updated>
+    </task>
+    <option name="localTasksCounter" value="67" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -556,7 +539,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="resume, signup, delete.." />
     <MESSAGE value="arreglo deletes" />
     <MESSAGE value="correccion graficca" />
     <MESSAGE value="correccion estructura" />
@@ -581,7 +563,8 @@
     <MESSAGE value="correccion funciones sin usar" />
     <MESSAGE value="correccion base de datos update" />
     <MESSAGE value="unused functions" />
-    <option name="LAST_COMMIT_MESSAGE" value="unused functions" />
+    <MESSAGE value="mas visual" />
+    <option name="LAST_COMMIT_MESSAGE" value="mas visual" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

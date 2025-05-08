@@ -66,7 +66,7 @@ public class MenuScene extends Scene {
 
         gbc.gridx = 1;
         gbc.weightx = 0.7;
-        JImagePanel image = new JImagePanel("data/fondo3.jpg");
+        JImagePanel image = new JImagePanel("data/inicio.png");
         image.setOpaque(false);
         image.setLayout(new BorderLayout());
         panel.add(image, gbc);
