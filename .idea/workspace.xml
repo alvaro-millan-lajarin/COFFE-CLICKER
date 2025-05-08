@@ -4,12 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f9bbb50b-3eaf-412a-ab58-ecb07cf93455" name="Changes" comment="mas visual">
-      <change afterPath="$PROJECT_DIR$/data/2025.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/inicio.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/salle2025.png" afterDir="false" />
+    <list default="true" id="f9bbb50b-3eaf-412a-ab58-ecb07cf93455" name="Changes" comment="mejor viual">
+      <change afterPath="$PROJECT_DIR$/data/tazaParaClicar.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Presenstation/View/Scenes/MenuScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presenstation/View/Scenes/MenuScene.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Presenstation/View/Scenes/GameScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presenstation/View/Scenes/GameScene.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -115,15 +113,7 @@
       <workItem from="1743689183082" duration="265000" />
       <workItem from="1743689452923" duration="5970000" />
       <workItem from="1743758267674" duration="4963000" />
-      <workItem from="1746711311955" duration="17726000" />
-    </task>
-    <task id="LOCAL-00018" summary="actulizar tabla disponibles">
-      <option name="closed" value="true" />
-      <created>1744210639546</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1744210639546</updated>
+      <workItem from="1746711311955" duration="20219000" />
     </task>
     <task id="LOCAL-00019" summary="game creation modificacion">
       <option name="closed" value="true" />
@@ -509,7 +499,15 @@
       <option name="project" value="LOCAL" />
       <updated>1746734529716</updated>
     </task>
-    <option name="localTasksCounter" value="67" />
+    <task id="LOCAL-00067" summary="mejor viual">
+      <option name="closed" value="true" />
+      <created>1746735399849</created>
+      <option name="number" value="00067" />
+      <option name="presentableId" value="LOCAL-00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1746735399850</updated>
+    </task>
+    <option name="localTasksCounter" value="68" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -539,7 +537,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="arreglo deletes" />
     <MESSAGE value="correccion graficca" />
     <MESSAGE value="correccion estructura" />
     <MESSAGE value="correccion estructura user" />
@@ -564,7 +561,8 @@
     <MESSAGE value="correccion base de datos update" />
     <MESSAGE value="unused functions" />
     <MESSAGE value="mas visual" />
-    <option name="LAST_COMMIT_MESSAGE" value="mas visual" />
+    <MESSAGE value="mejor viual" />
+    <option name="LAST_COMMIT_MESSAGE" value="mejor viual" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -144,9 +144,7 @@ public class GameScene extends Scene {
         cafesDisponibles.add(nameLabel);
         cafesDisponibles.add(numCafesLabel);
         cafesDisponibles.add(addVacio());
-        cafesDisponibles.add(addVacio());//prueba
-        cafesDisponibles.add(addVacio());
-        cafesDisponibles.add(addVacio());
+
 
         panelIzquierdo.add(cafesDisponibles);
 
@@ -160,14 +158,27 @@ public class GameScene extends Scene {
 
 
     public JPanel panelParaImagen(){
-        JPanel panel = new JPanel(new GridLayout(1, 3));
+        JPanel panel = new JPanel(new FlowLayout(FlowLayout.CENTER));
 
         JButton imagenCafe = new JButton();
-        JImagePanel imagePanel = new JImagePanel("data/cafe_clickar.png");
-        imagePanel.setPreferredSize(new Dimension(200, 200));
+        imagenCafe.setMinimumSize(new Dimension(200, 100));
+        imagenCafe.setPreferredSize(new Dimension(200, 100));
+        imagenCafe.setMaximumSize(new Dimension(200, 100));
+
+        imagenCafe.setContentAreaFilled(false);
+        imagenCafe.setFocusPainted(false);
+        imagenCafe.setOpaque(false);
+        imagenCafe.setForeground(Color.BLACK);
+        imagenCafe.setFont(new Font("Arial", Font.BOLD, 16));
+
+        JImagePanel imagePanel = new JImagePanel("data/tazaParaClicar.png");
+        imagePanel.setPreferredSize(new Dimension(200, 100));
+        imagePanel.setMaximumSize(new Dimension(400, 80));
+        imagePanel.setLayout(new BorderLayout());
+        imagePanel.add(imagenCafe, BorderLayout.CENTER);
         imagePanel.setOpaque(false);
 
-        imagenCafe.add(imagePanel);
+
         imagenCafe.addActionListener(gameController);
         imagenCafe.setActionCommand("MORE_COFFE");
         imagenCafe.setOpaque(false);
@@ -176,7 +187,7 @@ public class GameScene extends Scene {
         imagenCafe.setFocusPainted(false);
 
         panel.add(addVacio());
-        panel.add(imagenCafe);
+        panel.add(imagePanel);
         panel.add(addVacio());
         panel.setOpaque(false);
         return panel;
