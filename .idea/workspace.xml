@@ -4,8 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f9bbb50b-3eaf-412a-ab58-ecb07cf93455" name="Changes" comment="mejor viual">
-      <change afterPath="$PROJECT_DIR$/data/tazaParaClicar.png" afterDir="false" />
+    <list default="true" id="f9bbb50b-3eaf-412a-ab58-ecb07cf93455" name="Changes" comment="mejor viual tema game">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Presenstation/View/Scenes/GameScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presenstation/View/Scenes/GameScene.java" afterDir="false" />
     </list>
@@ -113,15 +112,7 @@
       <workItem from="1743689183082" duration="265000" />
       <workItem from="1743689452923" duration="5970000" />
       <workItem from="1743758267674" duration="4963000" />
-      <workItem from="1746711311955" duration="20219000" />
-    </task>
-    <task id="LOCAL-00019" summary="game creation modificacion">
-      <option name="closed" value="true" />
-      <created>1744212083114</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1744212083114</updated>
+      <workItem from="1746711311955" duration="20992000" />
     </task>
     <task id="LOCAL-00020" summary="borrar clases inecesarias">
       <option name="closed" value="true" />
@@ -507,7 +498,15 @@
       <option name="project" value="LOCAL" />
       <updated>1746735399850</updated>
     </task>
-    <option name="localTasksCounter" value="68" />
+    <task id="LOCAL-00068" summary="mejor viual tema game">
+      <option name="closed" value="true" />
+      <created>1746737964444</created>
+      <option name="number" value="00068" />
+      <option name="presentableId" value="LOCAL-00068" />
+      <option name="project" value="LOCAL" />
+      <updated>1746737964444</updated>
+    </task>
+    <option name="localTasksCounter" value="69" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -537,7 +536,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="correccion graficca" />
     <MESSAGE value="correccion estructura" />
     <MESSAGE value="correccion estructura user" />
     <MESSAGE value="nueva clase para errores" />
@@ -562,7 +560,8 @@
     <MESSAGE value="unused functions" />
     <MESSAGE value="mas visual" />
     <MESSAGE value="mejor viual" />
-    <option name="LAST_COMMIT_MESSAGE" value="mejor viual" />
+    <MESSAGE value="mejor viual tema game" />
+    <option name="LAST_COMMIT_MESSAGE" value="mejor viual tema game" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -580,6 +579,11 @@
           <url>file://$PROJECT_DIR$/src/Presenstation/Controller/GameCreationController.java</url>
           <line>65</line>
           <option name="timeStamp" value="102" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Presenstation/View/Scenes/GameScene.java</url>
+          <line>174</line>
+          <option name="timeStamp" value="103" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

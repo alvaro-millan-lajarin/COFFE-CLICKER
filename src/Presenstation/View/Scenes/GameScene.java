@@ -71,7 +71,7 @@ public class GameScene extends Scene {
     public void setController(GameController gameController) {
         this.gameController = gameController;
 
-        initialitzate();
+        //initialitzate();
     }
     public JPanel topPanel() {
         JPanel topPanel = new JPanel(new GridLayout(1, 6));
@@ -253,6 +253,5 @@ public class GameScene extends Scene {
 
         return finishGameButton;
     }
-
 
 }
