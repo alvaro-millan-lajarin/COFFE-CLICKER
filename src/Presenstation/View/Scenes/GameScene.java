@@ -239,17 +239,9 @@ public class GameScene extends Scene {
 
     public JButton addBotonFinishGame() {
         JButton finishGameButton = new JButton("Finish Game");
-        finishGameButton.addActionListener(e -> {
-            int confirm = JOptionPane.showConfirmDialog(null,
-                    "¿Estás seguro de que quieres finalizar y eliminar este juego?",
-                    "Confirmar", JOptionPane.YES_NO_OPTION);
+        finishGameButton.setActionCommand("FINISHGAME");
+        finishGameButton.addActionListener(gameController);
 
-            if (confirm == JOptionPane.YES_OPTION) {
-
-                gameController.deleteCurrentGame();
-
-            }
-        });
         return finishGameButton;
     }
 

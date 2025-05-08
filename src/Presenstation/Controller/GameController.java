@@ -84,6 +84,12 @@ public class GameController extends Controller {
         } else if (e.getActionCommand().equalsIgnoreCase("CafeGodMejora")) {
             godMejora();
 
+        }else if (e.getActionCommand().equalsIgnoreCase("FINISHGAME")) {
+            int confirm = messages.deleteGame();
+
+            if (confirm == JOptionPane.YES_OPTION) {
+                deleteCurrentGame();
+            }
         }
     }
     @Override

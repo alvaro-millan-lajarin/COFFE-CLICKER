@@ -2,6 +2,7 @@ package Business;
 
 import Business.Entidades.Pair;
 import Persistence.sql.SQLGameDAO;
+import Presenstation.Messages;
 import Presenstation.View.Grafica.Grafica;
 import com.mysql.cj.conf.ConnectionUrlParser;
 
@@ -12,7 +13,7 @@ import java.util.List;
 public class ManageStatics {
 
     private final SQLGameDAO sqlGameDAO;
-
+    private final Messages messages = new Messages();
     public ManageStatics() {
         sqlGameDAO = new SQLGameDAO();
     }
@@ -22,7 +23,8 @@ public class ManageStatics {
         List<Pair<LocalDateTime, Integer>> historico = sqlGameDAO.getHistoricoCafes(idPartida);
 
         if (historico.isEmpty()) {
-            JOptionPane.showMessageDialog(null, "No hay datos para graficar.");
+            messages.noHayDatosGraficar();
+
             return;
         }
 

@@ -125,6 +125,7 @@ public class MainController {
     public JFrame getMainFrame() {
         return scene.getMainFrame();
     }
+
     public void resetLogin() {
 
         loginScene = null;

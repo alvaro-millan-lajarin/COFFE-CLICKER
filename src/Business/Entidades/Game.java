@@ -193,14 +193,6 @@ public class Game {
         }
         return precio;
     }
-
-    public ArrayList<Integer> getPreciosBase() {
-        ArrayList<Integer> preciosBase = new ArrayList<>();
-        preciosBase.add((int) (cafeteriaPrecio));
-        preciosBase.add((int)(cafeteriaChetaPrecio));
-        preciosBase.add((int)(cafeteriaGodPrecio));
-        return preciosBase;
-    }
     public void mejorarCafetera(){
         for(Generator generator : generadoresCafetera){
             generator.setMultiplicador(generator.getMultiplicador()+1);

@@ -141,4 +141,7 @@ public class Messages {
                 JOptionPane.WARNING_MESSAGE
         );
     }
+    public void noHayDatosGraficar(){
+        JOptionPane.showMessageDialog(null, "No hay datos para graficar.");
+    }
 }
