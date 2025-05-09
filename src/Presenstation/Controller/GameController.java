@@ -251,4 +251,7 @@ public class GameController extends Controller {
         grafica.setStartTime(sessionStartTime);
         historicoTimer.start();
     }
+    public void updateGameScene() {
+        getScene().updateGameScene();
+    }
 }

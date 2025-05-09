@@ -14,7 +14,6 @@ import Presenstation.View.WriteText.Text;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import javax.swing.Timer;
 
@@ -25,7 +24,6 @@ public class GameScene extends Scene {
     private Scene scene;
     public final static String GAME_MANAGEMENT = "GAME_MANAGEMENT";
 
-    private Text name;
     private Integer n_cafes = 0;
     private JLabel numCafesLabel;
 
@@ -147,7 +145,7 @@ public class GameScene extends Scene {
         cafesDisponibles.add(nameLabel);
         cafesDisponibles.add(numCafesLabel);
         cafesDisponibles.add(addVacio());
-        cafesDisponibles.add(addVacio());//prueba
+        cafesDisponibles.add(addVacio());
         cafesDisponibles.add(addVacio());
         cafesDisponibles.add(addVacio());
 
@@ -163,24 +161,29 @@ public class GameScene extends Scene {
 
 
     public JPanel panelParaImagen(){
-        JPanel panel = new JPanel(new GridLayout(1, 3));
-
         JButton imagenCafe = new JButton();
-        JImagePanel imagePanel = new JImagePanel("data/cafe_clickar.png");
-        imagePanel.setPreferredSize(new Dimension(200, 200));
+        JImagePanel imagePanel = new JImagePanel("data/tazaParaClicar.png");
         imagePanel.setOpaque(false);
-        imagenCafe.add(imagePanel);
-        imagenCafe.addActionListener(gameController);
-        imagenCafe.setActionCommand("MORE_COFFE");
+
+        imagenCafe.setLayout(new BorderLayout());
+        imagenCafe.add(imagePanel, BorderLayout.CENTER);
+
+
         imagenCafe.setOpaque(false);
         imagenCafe.setContentAreaFilled(false);
         imagenCafe.setBorderPainted(false);
         imagenCafe.setFocusPainted(false);
 
-        panel.add(addVacio());
-        panel.add(imagenCafe);
-        panel.add(addVacio());
+
+        imagenCafe.setPreferredSize(new Dimension(200, 200));
+
+        imagenCafe.setActionCommand("MORE_COFFE");
+        imagenCafe.addActionListener(gameController);
+
+        JPanel panel = new JPanel();
         panel.setOpaque(false);
+        panel.add(imagenCafe);
+
         return panel;
     }
     public JPanel addAccesButton(){
@@ -244,6 +247,9 @@ public class GameScene extends Scene {
 
         return finishGameButton;
     }
-
+    public void updateGameScene(){
+        jPanel.revalidate();
+        jPanel.repaint();
+    }
 
 }

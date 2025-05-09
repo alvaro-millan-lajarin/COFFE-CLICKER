@@ -59,10 +59,11 @@ public class GameCreationController extends Controller {
                 }
             }
             LocalDateTime fechaYHoraActual = LocalDateTime.now();
-            game = new Game(1,manageUser.getCurrentUser().getId(),nombreGame,fechaYHoraActual,fechaYHoraActual,0);
+            game = new Game(1,manageUser.getCurrentUser().getId(),nombreGame,fechaYHoraActual,fechaYHoraActual,0, manageGame);
             manageGame.addGame(game);
             manageGame.setGame(game);
             manageGame.addBasicGenerator();
+            game.setManageGame(manageGame);
 
             grafica = new Grafica(new ArrayList<>());
             gameController.iniciarRegistroCafes(game, grafica);

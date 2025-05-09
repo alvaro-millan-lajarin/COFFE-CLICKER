@@ -8,6 +8,7 @@ import Persistence.sql.SQLGameDAO;
 import Persistence.sql.SQLGeneratorDAO;
 import Persistence.sql.SQLStatisticDAO;
 import Persistence.sql.SQLUserDAO;
+import Presenstation.Controller.GameController;
 import Presenstation.View.Scenes.Scenes;
 
 import java.util.ArrayList;
@@ -18,6 +19,7 @@ public class ManageGame {
     private SQLGameDAO sqlGameDAO = new SQLGameDAO();
     private SQLGeneratorDAO sqlGeneratorDAO = new SQLGeneratorDAO();
     private SQLStatisticDAO sqlStatisticDAO = new SQLStatisticDAO();
+    private GameController gameController;
 
 
 
@@ -358,6 +360,12 @@ public class ManageGame {
     }
     public void logCafeHistorico(int cafesActuales, int chetasActuales){
         sqlGameDAO.logCafeHistorico(game.getId(), game.getNumCafes());
+    }
+    public void updateGameScene(){
+        gameController.updateGameScene();
+    }
+    public void setGameController(GameController gameController) {
+        this.gameController = gameController;
     }
 }
 

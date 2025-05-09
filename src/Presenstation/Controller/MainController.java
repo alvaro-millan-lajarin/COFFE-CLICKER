@@ -62,6 +62,8 @@ public class MainController {
         gameScene.setController(gameController);
         staticsScene.setController(staticsController);
 
+        manageGame.setGameController(gameController);
+
 
 
     }
@@ -89,6 +91,7 @@ public class MainController {
                     gameCreationScene.apply(scene.getMainFrame());
                 break;
             case GAME:
+                gameScene.setController(gameController);
                 gameScene.apply(scene.getMainFrame());
                 break;
             case STATICS:

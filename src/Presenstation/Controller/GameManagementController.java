@@ -76,7 +76,13 @@ public class GameManagementController extends Controller {
             }
         }else if (e.getActionCommand().equals("STADISTICAS")) {
             Game selectedGame = getScene().getSelectedGame();
-            mostrarGraficaDeCafes(selectedGame.getId());
+            if (selectedGame != null) {
+                mostrarGraficaDeCafes(selectedGame.getId());
+            } else {
+                messages.seleccionaPartida();
+            }
+
+
         }
 
     }

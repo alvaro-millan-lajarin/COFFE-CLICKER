@@ -13,6 +13,8 @@ public class Text {
         panelText = new JPanel(new GridLayout(2,1));
         label = new JLabel(text);
         label.setOpaque(false);
+        label.setForeground(Color.WHITE);
+        label.setFont(new Font("Apple casual", Font.BOLD, 20));
         if(passwordOrText.equals("text")) {
             field = new JTextField(20);
             createText();
