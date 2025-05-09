@@ -14,7 +14,6 @@ import Presenstation.View.WriteText.Text;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import javax.swing.Timer;
 
@@ -22,6 +21,7 @@ import javax.swing.Timer;
 public class GameScene extends Scene {
     private GameController gameController;
     private MainController mainController;
+    private Scene scene;
     public final static String GAME_MANAGEMENT = "GAME_MANAGEMENT";
 
     private Integer n_cafes = 0;
@@ -38,6 +38,7 @@ public class GameScene extends Scene {
 
         jPanel = new JImagePanel("data/game.jpg");
         jPanel.setLayout(new BorderLayout(50, 20));
+        //jPanel.setBackground(imagePanel);
 
         jPanel.add(topPanel(), BorderLayout.NORTH);
 
@@ -71,7 +72,7 @@ public class GameScene extends Scene {
     public void setController(GameController gameController) {
         this.gameController = gameController;
 
-        //initialitzate();
+        initialitzate();
     }
     public JPanel topPanel() {
         JPanel topPanel = new JPanel(new GridLayout(1, 6));
@@ -144,7 +145,9 @@ public class GameScene extends Scene {
         cafesDisponibles.add(nameLabel);
         cafesDisponibles.add(numCafesLabel);
         cafesDisponibles.add(addVacio());
-
+        cafesDisponibles.add(addVacio());
+        cafesDisponibles.add(addVacio());
+        cafesDisponibles.add(addVacio());
 
         panelIzquierdo.add(cafesDisponibles);
 
@@ -158,38 +161,29 @@ public class GameScene extends Scene {
 
 
     public JPanel panelParaImagen(){
-        JPanel panel = new JPanel(new FlowLayout(FlowLayout.CENTER));
-
         JButton imagenCafe = new JButton();
-        imagenCafe.setMinimumSize(new Dimension(200, 100));
-        imagenCafe.setPreferredSize(new Dimension(200, 100));
-        imagenCafe.setMaximumSize(new Dimension(200, 100));
-
-        imagenCafe.setContentAreaFilled(false);
-        imagenCafe.setFocusPainted(false);
-        imagenCafe.setOpaque(false);
-        imagenCafe.setForeground(Color.BLACK);
-        imagenCafe.setFont(new Font("Arial", Font.BOLD, 16));
-
         JImagePanel imagePanel = new JImagePanel("data/tazaParaClicar.png");
-        imagePanel.setPreferredSize(new Dimension(200, 100));
-        imagePanel.setMaximumSize(new Dimension(400, 80));
-        imagePanel.setLayout(new BorderLayout());
-        imagePanel.add(imagenCafe, BorderLayout.CENTER);
         imagePanel.setOpaque(false);
 
+        imagenCafe.setLayout(new BorderLayout());
+        imagenCafe.add(imagePanel, BorderLayout.CENTER);
 
-        imagenCafe.addActionListener(gameController);
-        imagenCafe.setActionCommand("MORE_COFFE");
+
         imagenCafe.setOpaque(false);
         imagenCafe.setContentAreaFilled(false);
         imagenCafe.setBorderPainted(false);
         imagenCafe.setFocusPainted(false);
 
-        panel.add(addVacio());
-        panel.add(imagePanel);
-        panel.add(addVacio());
+
+        imagenCafe.setPreferredSize(new Dimension(200, 200));
+
+        imagenCafe.setActionCommand("MORE_COFFE");
+        imagenCafe.addActionListener(gameController);
+
+        JPanel panel = new JPanel();
         panel.setOpaque(false);
+        panel.add(imagenCafe);
+
         return panel;
     }
     public JPanel addAccesButton(){
@@ -242,16 +236,20 @@ public class GameScene extends Scene {
         jPanel.revalidate();
         jPanel.repaint();
     }
-    public void updateGameScene(){
-        jPanel.revalidate();
-        jPanel.repaint();
-    }
+
+
+
+
     public JButton addBotonFinishGame() {
         JButton finishGameButton = new JButton("Finish Game");
         finishGameButton.setActionCommand("FINISHGAME");
         finishGameButton.addActionListener(gameController);
 
         return finishGameButton;
+    }
+    public void updateGameScene(){
+        jPanel.revalidate();
+        jPanel.repaint();
     }
 
 }

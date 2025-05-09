@@ -91,6 +91,7 @@ public class MainController {
                     gameCreationScene.apply(scene.getMainFrame());
                 break;
             case GAME:
+                gameScene.setController(gameController);
                 gameScene.apply(scene.getMainFrame());
                 break;
             case STATICS:
