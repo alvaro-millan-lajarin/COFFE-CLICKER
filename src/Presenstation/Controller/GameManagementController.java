@@ -67,8 +67,10 @@ public class GameManagementController extends Controller {
             Game selectedGame = getScene().getSelectedGame();
             if (selectedGame != null) {
                 grafica = new Grafica(new ArrayList<>());
-                gameController.iniciarRegistroCafes(selectedGame, grafica);
                 mainController.resumeGame(selectedGame);
+                gameController = mainController.getGameController();
+                gameController.iniciarRegistroCafes(selectedGame, grafica);
+
 
 
             } else {

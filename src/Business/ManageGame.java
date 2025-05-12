@@ -35,7 +35,7 @@ public class ManageGame {
 
 
         game.increaseNumCafes();
-        sqlGameDAO.logCafeHistorico(game.getId(), game.getNumCafes());
+        //sqlGameDAO.logCafeHistorico(game.getId(), game.getNumCafes());
     }
     public void setGame(Game game) {
         this.game = getGameBaseDeDatos(game);

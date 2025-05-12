@@ -3,6 +3,7 @@ package Presenstation.View.Grafica;
 
 
 import Business.Entidades.Pair;
+import Business.ManageStatics;
 
 import javax.swing.*;
 import java.awt.*;
@@ -13,6 +14,7 @@ import java.util.List;
 public class Grafica extends JPanel {
     private final List<Pair<LocalDateTime, Integer>> historico;
     private LocalDateTime startTime;
+    private ManageStatics manageStatics = new ManageStatics();
 
     public Grafica(List<Pair<LocalDateTime, Integer>> historico) {
         this.historico = historico;
@@ -41,7 +43,8 @@ public class Grafica extends JPanel {
 
 
         int maxCafe = historico.stream().mapToInt(Pair::getValue).max().orElse(1);
-        long totalSeconds = 20 * 60; // 20 minutos fijos
+        long totalMinutes = historico.size() - 1; // ya no fijas 20 minutos
+
 
 
 
@@ -50,14 +53,15 @@ public class Grafica extends JPanel {
             Pair<LocalDateTime, Integer> prev = historico.get(i - 1);
             Pair<LocalDateTime, Integer> curr = historico.get(i);
 
-            long t1 = Duration.between(startTime, prev.getKey()).getSeconds();
-            long t2 = Duration.between(startTime, curr.getKey()).getSeconds();
+            long t1 = i - 1; // minuto i-1
+            long t2 = i;     // minuto i
 
 
-            int x1 = padding + (int) ((t1 / (double) totalSeconds) * width);
+
+            int x1 = padding + (int) ((t1 / (double) totalMinutes) * width);
             int y1 = getHeight() - padding - (int) ((prev.getValue() / (double) maxCafe) * height);
 
-            int x2 = padding + (int) ((t2 / (double) totalSeconds) * width);
+            int x2 = padding + (int) ((t2 / (double) totalMinutes) * width);
             int y2 = getHeight() - padding - (int) ((curr.getValue() / (double) maxCafe) * height);
 
             g2.drawLine(x1, y1, x2, y2);
@@ -75,13 +79,13 @@ public class Grafica extends JPanel {
 
 
         // Mostrar ticks cada 1 minuto (hasta 20)
-        int maxMinutes = 20;
-        for (int i = 1; i <= maxMinutes; i++) {
-            int seconds = i * 60;
-            int x = padding + (int) ((seconds / (double) totalSeconds) * width);
+        int maxMinutes = (int) totalMinutes;
+        for (int i = 0; i <= maxMinutes; i++) {
+            int x = padding + (int) ((i / (double) totalMinutes) * width);
             g2.drawLine(x, getHeight() - padding - 5, x, getHeight() - padding + 5);
             g2.drawString(i + "m", x - 10, getHeight() - padding + 20);
         }
+
 
 
 
@@ -90,9 +94,9 @@ public class Grafica extends JPanel {
 
 
         g2.drawString("Máx cafés: " + maxCafe, getWidth() - 120, padding - 10);
-        String tiempoStr = totalSeconds > 60
-                ? String.format("Tiempo aprox: %.1f min", totalSeconds / 60.0)
-                : String.format("Tiempo aprox: %d seg", totalSeconds);
+        String tiempoStr = totalMinutes > 60
+                ? String.format("Tiempo aprox: %.1f min", totalMinutes / 60.0)
+                : String.format("Tiempo aprox: %d seg", totalMinutes);
         g2.drawString(tiempoStr, getWidth() - 160, getHeight() - padding + 40);
     }
     public List<Pair<LocalDateTime, Integer>> getHistorico() {
@@ -101,6 +105,7 @@ public class Grafica extends JPanel {
     public void setStartTime(LocalDateTime startTime) {
         this.startTime = startTime;
     }
+
 
 
 
