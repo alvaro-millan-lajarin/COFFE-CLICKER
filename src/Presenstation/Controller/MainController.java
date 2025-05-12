@@ -171,4 +171,7 @@ public class MainController {
         gameScene.setController(gameController);
 
     }
+    public GameController getGameController() {
+        return gameController;
+    }
 }

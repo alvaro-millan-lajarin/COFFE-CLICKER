@@ -69,11 +69,11 @@ public class GameController extends Controller {
             compraCafeGod();
 
         }else if(e.getActionCommand().equalsIgnoreCase("GAME_MANAGEMENT")){
-
+            detenerRegistroCafes();
             manageGame.updateGame();
             manageGame.updateGenerators();
             mainController.resetGameManagement();
-            detenerRegistroCafes();
+
             mainController.nextScene(Scenes.GAME_MANAGEMENT);
         }else if (e.getActionCommand().equalsIgnoreCase("CafeteraMejora")) {
             cafeteraMejora();
@@ -225,15 +225,19 @@ public class GameController extends Controller {
     }
 
     public void detenerRegistroCafes() {
+
         if (historicoTimer != null && historicoTimer.isRunning()) {
             System.out.println("Deteniendo el timer...");
             historicoTimer.stop();
+            historicoTimer = null;
         }else {
+
             System.out.println("Timer ya detenido o nulo");
         }
     }
     public void iniciarRegistroCafes(Game partidaActual, Grafica grafica) {
-        detenerRegistroCafes();
+        System.out.println("Iniciando timer");
+
         sessionStartTime = LocalDateTime.now();
 
         historicoTimer = new Timer(60_000, e -> {
@@ -248,7 +252,7 @@ public class GameController extends Controller {
             grafica.repaint();
         });
 
-        grafica.setStartTime(sessionStartTime);
+        //grafica.setStartTime(sessionStartTime);
         historicoTimer.start();
     }
     public void updateGameScene() {

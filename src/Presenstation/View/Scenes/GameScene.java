@@ -59,7 +59,7 @@ public class GameScene extends Scene {
             addCoffe(cafesActuales);
         }
 
-        // 🕒 Inicia un timer para actualizar numCafesLabel cada 1 segundo
+        // Inicia un timer para actualizar numCafesLabel cada 1 segundo
         updateTimer = new Timer(1000, e -> {
             if (gameController != null && gameController.getManageGame().getGame() != null) {
                 int cafesActuales = gameController.getManageGame().getGame().getNumCafes();
