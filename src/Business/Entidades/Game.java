@@ -42,19 +42,19 @@ public class Game {
     private double cafeteriaGodPrecio = 2000; // Precio de la cafetería God
     private Integer cafeteriaGodMultiplicador = 1;
     private Integer GodCostMultiplicador = 2000;
-    private ManageGame  manageGame;
 
 
 
 
-    public Game(int id, int idUser, String nombre, LocalDateTime fechaCreacion, LocalDateTime fechaModificacion, int numCafes, ManageGame manageGame) {
+
+    public Game(int id, int idUser, String nombre, LocalDateTime fechaCreacion, LocalDateTime fechaModificacion, int numCafes) {
         this.id = id;
         this.idUser = idUser;
         this.nombre = nombre;
         this.fechaCreacion = fechaCreacion;
         this.fechaModificacion = fechaModificacion;
         this.numCafes = numCafes;
-        this.manageGame = manageGame;
+
 
 
     }
@@ -291,7 +291,5 @@ public class Game {
     public void setGeneradoresGod(List<Generator> generadoresGod) {
         this.generadoresGod = generadoresGod;
     }
-    public void setManageGame(ManageGame manageGame) {
-        this.manageGame = manageGame;
-    }
+
 }
