@@ -15,37 +15,6 @@ public class Statistic {
         this.fechaSave = fechaSave;
     }
 
-    // Getters
-    public int getId_Estadisticas() {
-        return id_Estadisticas;
-    }
 
-    public int getIdPartida() {
-        return id_Partida;
-    }
 
-    public int getNumCafes() {
-        return numCafes;
-    }
-
-    public LocalDateTime getFechaSave() {
-        return fechaSave;
-    }
-
-    // Setters
-    public void setId_Estadisticas(int id_Estadisticas) {
-        this.id_Estadisticas = id_Estadisticas;
-    }
-
-    public void setIdPartida(int idPartida) {
-        this.id_Partida = idPartida;
-    }
-
-    public void setNumCafes(int numCafes) {
-        this.numCafes = numCafes;
-    }
-
-    public void setFechaSave(LocalDateTime fechaSave) {
-        this.fechaSave = fechaSave;
-    }
 }

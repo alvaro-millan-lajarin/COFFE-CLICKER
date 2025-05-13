@@ -54,7 +54,7 @@ public class GameController extends Controller {
             manageGame.increaseNumCafes();
             manageGame.updateGame();
 
-           // getScene().addCoffe(manageGame.getGame().getNumCafes());
+
         }else if (e.getActionCommand().equalsIgnoreCase("LOGOUT")) {
             mainController.resetLogin();
             stopThreads();
@@ -146,9 +146,9 @@ public class GameController extends Controller {
             manageGame.startGeneratorCafeteraCheta();
 
 
-            //manageGame.addCafetera("CafeCheta");
+
             manageGame.updatePriceCoffe("CafeCheta");
-            //manageGame.updatePriceCoffeChetaBaseDatos("CafeCheta");
+
 
             manageGame.updateGame();
             manageGame.updateGenerators();
@@ -162,9 +162,9 @@ public class GameController extends Controller {
             manageGame.startGeneratorCafeteraGod();
             manageGame.restarCafe("CafeGod");
 
-            //manageGame.addCafetera("CafeGod");
+
             manageGame.updatePriceCoffe("CafeGod");
-            //manageGame.updatePriceCoffeGodBaseDatos("CafeGod");
+
 
             manageGame.updateGame();
             manageGame.updateGenerators();

@@ -2,6 +2,7 @@ package Business;
 
 import Business.Entidades.Pair;
 import Persistence.sql.SQLGameDAO;
+import Persistence.sql.SQLStatisticDAO;
 import Presenstation.Messages;
 import Presenstation.View.Grafica.Grafica;
 import com.mysql.cj.conf.ConnectionUrlParser;
@@ -12,15 +13,14 @@ import java.util.List;
 
 public class ManageStatics {
 
-    private final SQLGameDAO sqlGameDAO;
+    private final SQLStatisticDAO sqlStatisticDAO = new SQLStatisticDAO();
     private final Messages messages = new Messages();
-    public ManageStatics() {
-        sqlGameDAO = new SQLGameDAO();
-    }
+
+
 
     public void mostrarGraficaCafes(int idPartida) {
         // 1. Obtener datos del histórico
-        List<Pair<LocalDateTime, Integer>> historico = sqlGameDAO.getHistoricoCafes(idPartida);
+        List<Pair<LocalDateTime, Integer>> historico = sqlStatisticDAO.getHistoricoCafes(idPartida);
 
         if (historico.isEmpty()) {
             messages.noHayDatosGraficar();

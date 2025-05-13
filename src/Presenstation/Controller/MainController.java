@@ -78,12 +78,12 @@ public class MainController {
             case LOGIN:
                 loginScene.clearUserData();
                 loginScene.apply(this.getMainFrame());
-                //loginController.run();
+
                 break;
             case SIGNUP:
-                //scene.showVisible();
+
                 signUpScene.apply(scene.getMainFrame());
-                //signUpController.run();
+
                 break;
             case GAME_MANAGEMENT:
                     gameManagementScene.apply(scene.getMainFrame());
@@ -129,7 +129,7 @@ public class MainController {
     public void run() {
         scene.showVisible();
         menuScene.apply(scene.getMainFrame());
-        //musicPlayer.play();
+
     }
     public JFrame getMainFrame() {
         return scene.getMainFrame();

@@ -14,8 +14,6 @@ public class Scene {
         mainFrame = new JFrame();
         mainFrame.setSize(WIDTH, HEIGHT);
         mainFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        //mainFrame.addWindowListener(new WindowController(mainController, this));
-        //mainFrame.setBackground(Color.decode(BACKGROUND));
         mainFrame.setResizable(false);
         jPanel = new JImagePanel("data/fondoGlobal4.jpg");
     }
@@ -32,7 +30,7 @@ public class Scene {
             mainFrame.setUndecorated(false);
         }
         mainFrame.setExtendedState(JFrame.NORMAL);
-        //mainFrame.setSize(MainView.WIDTH, MainView.HEIGHT);
+
         mainFrame.getContentPane().add(jPanel);
         mainFrame.revalidate();
         mainFrame.repaint();

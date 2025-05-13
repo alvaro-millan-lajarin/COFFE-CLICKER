@@ -69,7 +69,6 @@ public class GameCreationController extends Controller {
             updateGrafica.start();
             gameController.setUpdateGrafica(updateGrafica);
 
-            //gameController.iniciarRegistroCafes(manageGame.getGame(), grafica);
 
             mainController.nextScene(Scenes.GAME);
 

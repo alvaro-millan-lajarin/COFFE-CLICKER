@@ -37,7 +37,6 @@ public class GameScene extends Scene {
 
         jPanel = new JImagePanel("data/game.jpg");
         jPanel.setLayout(new BorderLayout(50, 20));
-        //jPanel.setBackground(imagePanel);
 
         jPanel.add(topPanel(), BorderLayout.NORTH);
 

@@ -51,7 +51,7 @@ public class GameManagementController extends Controller {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getActionCommand().equalsIgnoreCase("LOGOUT")) {
-            //loginController.clearUserData();
+
             mainController.resetLogin();
             mainController.nextScene(Scenes.MENU);
         }else if (e.getActionCommand().equalsIgnoreCase("DELETE")) {
@@ -74,7 +74,7 @@ public class GameManagementController extends Controller {
                 UpdateGrafica updateGrafica = new UpdateGrafica(manageGame, grafica);
                 updateGrafica.start();
                 gameController.setUpdateGrafica(updateGrafica);
-                //gameController.iniciarRegistroCafes(selectedGame, grafica);
+
 
 
 

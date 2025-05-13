@@ -64,7 +64,7 @@ public class StaticsScene extends Scene {
         center.setLayout(new BoxLayout(center, BoxLayout.X_AXIS));
 
 
-        //center.add(estadisticas());
+
 
         center.setOpaque(false);
         return center;

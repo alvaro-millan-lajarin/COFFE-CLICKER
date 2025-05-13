@@ -387,7 +387,7 @@ public class ManageGame {
         game.setGeneradoresGod(generatorsGod);
     }
     public void logCafeHistorico(int cafesActuales, int chetasActuales){
-        sqlGameDAO.logCafeHistorico(game.getId(), game.getNumCafes());
+        sqlStatisticDAO.logCafeHistorico(game.getId(), game.getNumCafes());
     }
 
     public void setGameController(GameController gameController) {
