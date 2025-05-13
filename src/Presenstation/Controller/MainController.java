@@ -2,8 +2,8 @@ package Presenstation.Controller;
 
 import Business.Entidades.Game;
 import Business.ManageGame;
-import Business.ManageStatics;
 import Business.ManageUser;
+import Presenstation.View.Refresh.UpdateGame;
 import Presenstation.View.Scenes.*;
 
 import javax.swing.*;
@@ -18,6 +18,7 @@ public class MainController {
     private GameCreationScene gameCreationScene;
     private GameScene gameScene;
     private StaticsScene staticsScene;
+    private UpdateGame updateGame;
 
     private LoginController loginController;
     private SignUpController signUpController;
@@ -93,6 +94,9 @@ public class MainController {
             case GAME:
                 gameScene.setController(gameController);
                 gameScene.apply(scene.getMainFrame());
+                updateGame = new UpdateGame(gameScene);
+                updateGame.start();
+
                 break;
             case STATICS:
                 staticsScene.apply(scene.getMainFrame());
@@ -113,6 +117,9 @@ public class MainController {
 
         gameScene.apply(getMainFrame());
         gameController.updateTablas();
+        updateGame = new UpdateGame(gameScene);
+        updateGame.start();
+
 
     }
 

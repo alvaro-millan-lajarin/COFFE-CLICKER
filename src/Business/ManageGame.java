@@ -33,9 +33,8 @@ public class ManageGame {
 
     public void increaseNumCafes() {
 
-
         game.increaseNumCafes();
-        //sqlGameDAO.logCafeHistorico(game.getId(), game.getNumCafes());
+
     }
     public void setGame(Game game) {
         this.game = getGameBaseDeDatos(game);
@@ -361,9 +360,7 @@ public class ManageGame {
     public void logCafeHistorico(int cafesActuales, int chetasActuales){
         sqlGameDAO.logCafeHistorico(game.getId(), game.getNumCafes());
     }
-    public void updateGameScene(){
-        gameController.updateGameScene();
-    }
+
     public void setGameController(GameController gameController) {
         this.gameController = gameController;
     }

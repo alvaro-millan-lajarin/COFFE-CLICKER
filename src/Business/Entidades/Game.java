@@ -124,28 +124,14 @@ public class Game {
     }
 
     public void setNumCafes(int numCafes) {
-
         this.numCafes = numCafes;
-
-        if(manageGame != null){
-            manageGame.updateGameScene();
-        }
-
     }
 
     public void increaseNumCafes(){
-
         this.numCafes++;
-        if(manageGame != null){
-            manageGame.updateGameScene();
-        }
-
     }
     public synchronized void addNumCafes(Integer coffes){
         this.numCafes = this.numCafes + coffes;
-        if(manageGame != null){
-            manageGame.updateGameScene();
-        }
     }
 
 

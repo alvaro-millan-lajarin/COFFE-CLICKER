@@ -31,7 +31,7 @@ public class GameScene extends Scene {
     private TableBotigaMillores tableBotigaMillores;
     private TableGeneradorsDisponibles tableGeneradorsDisponibles;
 
-    private Timer updateTimer;
+
 
 
     public void initialitzate() {
@@ -53,20 +53,6 @@ public class GameScene extends Scene {
         initialitzate();
         super.apply(mainFrame);
         mainFrame.setTitle("Game");
-
-        if (gameController != null && gameController.getManageGame().getGame() != null) {
-            int cafesActuales = gameController.getManageGame().getGame().getNumCafes();
-            addCoffe(cafesActuales);
-        }
-
-        // Inicia un timer para actualizar numCafesLabel cada 1 segundo
-        updateTimer = new Timer(1000, e -> {
-            if (gameController != null && gameController.getManageGame().getGame() != null) {
-                int cafesActuales = gameController.getManageGame().getGame().getNumCafes();
-                addCoffe(cafesActuales);
-            }
-        });
-        updateTimer.start();
     }
 
     public void setController(GameController gameController) {
@@ -222,12 +208,7 @@ public class GameScene extends Scene {
         panel.setBorder(new EmptyBorder(20, 0, 0, 0));
         return panel;
     }
-    public void addCoffe(int numCafes){
 
-        numCafesLabel.setText(String.valueOf(numCafes));
-        jPanel.revalidate();
-        jPanel.repaint();
-    }
     public void updateTablas(ArrayList<Integer> quantitats, ArrayList<String> proudccioUnitat, ArrayList<Integer> precioBase, ArrayList<Integer> costMultiplicadores, ArrayList<Integer> multiplicadores) {
         tableGeneradorsDisponibles.setUpdateValores(quantitats,proudccioUnitat, multiplicadores);
         tableBotigaGenerators.setUpdateValores(precioBase, proudccioUnitat);
@@ -248,6 +229,7 @@ public class GameScene extends Scene {
         return finishGameButton;
     }
     public void updateGameScene(){
+        numCafesLabel.setText(String.valueOf(gameController.getNumCoffesDisponibles()));
         jPanel.revalidate();
         jPanel.repaint();
     }
