@@ -2,13 +2,12 @@ package Presenstation.Controller;
 
 import Business.Entidades.Game;
 import Business.Entidades.Pair;
-import Business.Entidades.User;
 import Business.ManageGame;
 import Business.ManageUser;
-import Persistence.sql.SQLGameDAO;
-import Persistence.sql.SQLUserDAO;
 import Presenstation.Messages;
 import Presenstation.View.Grafica.Grafica;
+import Presenstation.View.Refresh.UpdateGame;
+import Presenstation.View.Refresh.UpdateGrafica;
 import Presenstation.View.Scenes.GameScene;
 import Presenstation.View.Scenes.Scene;
 import Presenstation.View.Scenes.Scenes;
@@ -22,13 +21,16 @@ public class GameController extends Controller {
     private LoginController loginController;
     private SignUpController signUpController;
     private ManageGame manageGame;
+    private UpdateGame updateGame;
 
 
     private Messages messages = new Messages();
     private ManageUser manageUser;
 
-    private Timer historicoTimer;
-    private LocalDateTime sessionStartTime;
+
+
+
+    private UpdateGrafica updateGrafica;
 
 
     public GameController(Scene view, MainController mainController, LoginController loginController, SignUpController signUpController, ManageGame manageGame, ManageUser manageUser) {
@@ -36,6 +38,7 @@ public class GameController extends Controller {
         this.loginController = loginController;
         this.signUpController = signUpController;
         this.manageGame = manageGame;
+
 
         this.manageUser = manageUser;
     }
@@ -50,12 +53,16 @@ public class GameController extends Controller {
         if (e.getActionCommand().equalsIgnoreCase("MORE_COFFE")) {
             manageGame.increaseNumCafes();
             manageGame.updateGame();
-            getScene().addCoffe(manageGame.getGame().getNumCafes());
+
+
         }else if (e.getActionCommand().equalsIgnoreCase("LOGOUT")) {
             mainController.resetLogin();
+            stopThreads();
+
             mainController.nextScene(Scenes.MENU);
         }else if (e.getActionCommand().equalsIgnoreCase("DELETE")) {
             mainController.resetLogin();
+            stopThreads();
             loginController.clearUserData();
             deleteUser();
 
@@ -69,11 +76,11 @@ public class GameController extends Controller {
             compraCafeGod();
 
         }else if(e.getActionCommand().equalsIgnoreCase("GAME_MANAGEMENT")){
-            detenerRegistroCafes();
+
             manageGame.updateGame();
             manageGame.updateGenerators();
             mainController.resetGameManagement();
-
+            stopThreads();
             mainController.nextScene(Scenes.GAME_MANAGEMENT);
         }else if (e.getActionCommand().equalsIgnoreCase("CafeteraMejora")) {
             cafeteraMejora();
@@ -89,6 +96,7 @@ public class GameController extends Controller {
 
             if (confirm == JOptionPane.YES_OPTION) {
                 deleteCurrentGame();
+                manageGame.stopGenerators();
             }
         }
     }
@@ -124,6 +132,7 @@ public class GameController extends Controller {
 
             manageGame.updateGame();
             manageGame.updateGenerators();
+
             updateTablas();
 
 
@@ -137,9 +146,9 @@ public class GameController extends Controller {
             manageGame.startGeneratorCafeteraCheta();
 
 
-            //manageGame.addCafetera("CafeCheta");
+
             manageGame.updatePriceCoffe("CafeCheta");
-            //manageGame.updatePriceCoffeChetaBaseDatos("CafeCheta");
+
 
             manageGame.updateGame();
             manageGame.updateGenerators();
@@ -153,9 +162,9 @@ public class GameController extends Controller {
             manageGame.startGeneratorCafeteraGod();
             manageGame.restarCafe("CafeGod");
 
-            //manageGame.addCafetera("CafeGod");
+
             manageGame.updatePriceCoffe("CafeGod");
-            //manageGame.updatePriceCoffeGodBaseDatos("CafeGod");
+
 
             manageGame.updateGame();
             manageGame.updateGenerators();
@@ -224,38 +233,18 @@ public class GameController extends Controller {
         mainController.nextScene(Scenes.GAME_MANAGEMENT);
     }
 
-    public void detenerRegistroCafes() {
-
-        if (historicoTimer != null && historicoTimer.isRunning()) {
-            System.out.println("Deteniendo el timer...");
-            historicoTimer.stop();
-            historicoTimer = null;
-        }else {
-
-            System.out.println("Timer ya detenido o nulo");
-        }
+   public void setupdateGame(UpdateGame updateGame) {
+        this.updateGame = updateGame;
+   }
+    public int getNumCoffesDisponibles(){
+           return manageGame.getGame().getNumCafes();
     }
-    public void iniciarRegistroCafes(Game partidaActual, Grafica grafica) {
-        System.out.println("Iniciando timer");
-
-        sessionStartTime = LocalDateTime.now();
-
-        historicoTimer = new Timer(60_000, e -> {
-            int cafesActuales = partidaActual.getNumCafes();
-            LocalDateTime ahora = LocalDateTime.now();
-
-
-            manageGame.logCafeHistorico(partidaActual.getId(), cafesActuales);
-
-
-            grafica.getHistorico().add(new Pair<>(ahora, cafesActuales));
-            grafica.repaint();
-        });
-
-        //grafica.setStartTime(sessionStartTime);
-        historicoTimer.start();
+    public void setUpdateGrafica(UpdateGrafica updateGrafica){
+        this.updateGrafica = updateGrafica;
     }
-    public void updateGameScene() {
-        getScene().updateGameScene();
+    public void stopThreads(){
+        manageGame.stopGenerators();
+        updateGrafica.interrupt();
+        updateGame.interrupt();
     }
 }

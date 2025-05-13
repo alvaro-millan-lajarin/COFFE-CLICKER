@@ -2,8 +2,8 @@ package Presenstation.Controller;
 
 import Business.Entidades.Game;
 import Business.ManageGame;
-import Business.ManageStatics;
 import Business.ManageUser;
+import Presenstation.View.Refresh.UpdateGame;
 import Presenstation.View.Scenes.*;
 
 import javax.swing.*;
@@ -18,6 +18,7 @@ public class MainController {
     private GameCreationScene gameCreationScene;
     private GameScene gameScene;
     private StaticsScene staticsScene;
+    private UpdateGame updateGame;
 
     private LoginController loginController;
     private SignUpController signUpController;
@@ -77,12 +78,12 @@ public class MainController {
             case LOGIN:
                 loginScene.clearUserData();
                 loginScene.apply(this.getMainFrame());
-                //loginController.run();
+
                 break;
             case SIGNUP:
-                //scene.showVisible();
+
                 signUpScene.apply(scene.getMainFrame());
-                //signUpController.run();
+
                 break;
             case GAME_MANAGEMENT:
                     gameManagementScene.apply(scene.getMainFrame());
@@ -93,6 +94,10 @@ public class MainController {
             case GAME:
                 gameScene.setController(gameController);
                 gameScene.apply(scene.getMainFrame());
+                updateGame = new UpdateGame(gameScene);
+                updateGame.start();
+                gameController.setupdateGame(updateGame);
+
                 break;
             case STATICS:
                 staticsScene.apply(scene.getMainFrame());
@@ -113,6 +118,10 @@ public class MainController {
 
         gameScene.apply(getMainFrame());
         gameController.updateTablas();
+        updateGame = new UpdateGame(gameScene);
+        updateGame.start();
+        gameController.setupdateGame(updateGame);
+
 
     }
 
@@ -120,7 +129,7 @@ public class MainController {
     public void run() {
         scene.showVisible();
         menuScene.apply(scene.getMainFrame());
-        //musicPlayer.play();
+
     }
     public JFrame getMainFrame() {
         return scene.getMainFrame();

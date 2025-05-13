@@ -10,6 +10,7 @@ import Persistence.sql.SQLGameDAO;
 import Persistence.sql.SQLUserDAO;
 import Presenstation.Messages;
 import Presenstation.View.Grafica.Grafica;
+import Presenstation.View.Refresh.UpdateGrafica;
 import Presenstation.View.Scenes.GameManagementScene;
 import Presenstation.View.Scenes.Scene;
 import Presenstation.View.Scenes.Scenes;
@@ -50,7 +51,7 @@ public class GameManagementController extends Controller {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getActionCommand().equalsIgnoreCase("LOGOUT")) {
-            //loginController.clearUserData();
+
             mainController.resetLogin();
             mainController.nextScene(Scenes.MENU);
         }else if (e.getActionCommand().equalsIgnoreCase("DELETE")) {
@@ -69,7 +70,11 @@ public class GameManagementController extends Controller {
                 grafica = new Grafica(new ArrayList<>());
                 mainController.resumeGame(selectedGame);
                 gameController = mainController.getGameController();
-                gameController.iniciarRegistroCafes(selectedGame, grafica);
+
+                UpdateGrafica updateGrafica = new UpdateGrafica(manageGame, grafica);
+                updateGrafica.start();
+                gameController.setUpdateGrafica(updateGrafica);
+
 
 
 

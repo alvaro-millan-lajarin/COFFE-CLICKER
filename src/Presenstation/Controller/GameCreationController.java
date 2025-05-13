@@ -1,13 +1,11 @@
 package Presenstation.Controller;
 
 import Business.Entidades.Game;
-import Business.Entidades.User;
 import Business.ManageGame;
 import Business.ManageUser;
-import Persistence.sql.SQLGameDAO;
-import Persistence.sql.SQLUserDAO;
 import Presenstation.Messages;
 import Presenstation.View.Grafica.Grafica;
+import Presenstation.View.Refresh.UpdateGrafica;
 import Presenstation.View.Scenes.GameCreationScene;
 import Presenstation.View.Scenes.Scene;
 import Presenstation.View.Scenes.Scenes;
@@ -27,6 +25,7 @@ public class GameCreationController extends Controller {
     private ManageUser manageUser;
     private Grafica grafica;
     private GameController gameController;
+    private UpdateGrafica updateGrafica;
 
     public GameCreationController(Scene view, MainController mainController, LoginController loginController, SignUpController signUpController, ManageGame manageGame, ManageUser manageUser, GameController gameController) {
 
@@ -66,7 +65,10 @@ public class GameCreationController extends Controller {
             game.setManageGame(manageGame);
 
             grafica = new Grafica(new ArrayList<>());
-            gameController.iniciarRegistroCafes(manageGame.getGame(), grafica);
+            updateGrafica = new UpdateGrafica(manageGame, grafica);
+            updateGrafica.start();
+            gameController.setUpdateGrafica(updateGrafica);
+
 
             mainController.nextScene(Scenes.GAME);
 

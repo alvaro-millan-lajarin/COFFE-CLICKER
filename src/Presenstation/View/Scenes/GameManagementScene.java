@@ -227,11 +227,6 @@ public class GameManagementScene extends Scene {
 
 
 
-        //separacion
-        //imagePanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));   // Margen interna
-        //imagePanel2.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
-
-
         preguntasYRespuestas.add(botonStadisticas());
         preguntasYRespuestas.add(Box.createVerticalStrut(10));
         preguntasYRespuestas.add(imagePanel); // Agregar el JImagePanel en lugar del botón
