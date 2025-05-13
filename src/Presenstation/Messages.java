@@ -142,6 +142,6 @@ public class Messages {
         );
     }
     public void noHayDatosGraficar(){
-        JOptionPane.showMessageDialog(null, "No hay datos para graficar.");
+        JOptionPane.showMessageDialog(null, "Necesitas estar mas tiempo en la partida.");
     }
 }

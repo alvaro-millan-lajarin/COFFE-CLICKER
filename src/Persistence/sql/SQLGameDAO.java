@@ -59,8 +59,7 @@ public class SQLGameDAO implements GameDAO {
                         rs.getString("nombre_partida"),
                         rs.getTimestamp("fecha_creacion").toLocalDateTime(),
                         rs.getTimestamp("fecha_ultimo_save").toLocalDateTime(),
-                        rs.getInt("num_cafes"),
-                        null
+                        rs.getInt("num_cafes")
                 );
                 games.add(game);
             }
