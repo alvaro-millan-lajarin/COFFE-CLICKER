@@ -4,15 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f9bbb50b-3eaf-412a-ab58-ecb07cf93455" name="Changes" comment="grafica correcto funcionamiento">
-      <change afterPath="$PROJECT_DIR$/src/Presenstation/View/Refresh/UpdateGame.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Presenstation/View/Refresh/UpdateGrafica.java" afterDir="false" />
+    <list default="true" id="f9bbb50b-3eaf-412a-ab58-ecb07cf93455" name="Changes" comment="borro timers, ahora solo threads">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Business/Entidades/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Business/Entidades/Game.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Business/ManageGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Business/ManageGame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Presenstation/Controller/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presenstation/Controller/GameController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Presenstation/Controller/GameCreationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presenstation/Controller/GameCreationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Presenstation/Controller/GameManagementController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presenstation/Controller/GameManagementController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Presenstation/Controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presenstation/Controller/MainController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Presenstation/View/Scenes/GameScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presenstation/View/Scenes/GameScene.java" afterDir="false" />
     </list>
@@ -121,14 +117,6 @@
       <workItem from="1743689452923" duration="5970000" />
       <workItem from="1743758267674" duration="4963000" />
       <workItem from="1746711311955" duration="24425000" />
-    </task>
-    <task id="LOCAL-00022" summary="icrementar costes formula">
-      <option name="closed" value="true" />
-      <created>1744221243224</created>
-      <option name="number" value="00022" />
-      <option name="presentableId" value="LOCAL-00022" />
-      <option name="project" value="LOCAL" />
-      <updated>1744221243224</updated>
     </task>
     <task id="LOCAL-00023" summary="icrementar costes formula">
       <option name="closed" value="true" />
@@ -514,7 +502,15 @@
       <option name="project" value="LOCAL" />
       <updated>1747054391039</updated>
     </task>
-    <option name="localTasksCounter" value="71" />
+    <task id="LOCAL-00071" summary="borro timers, ahora solo threads">
+      <option name="closed" value="true" />
+      <created>1747148078025</created>
+      <option name="number" value="00071" />
+      <option name="presentableId" value="LOCAL-00071" />
+      <option name="project" value="LOCAL" />
+      <updated>1747148078025</updated>
+    </task>
+    <option name="localTasksCounter" value="72" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -544,7 +540,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="correccion estructura user" />
     <MESSAGE value="nueva clase para errores" />
     <MESSAGE value="seguir la estructuar correcta y mas mensajes" />
     <MESSAGE value="seguir la estructuar correcta, mas mensajes y delete game" />
@@ -569,20 +564,12 @@
     <MESSAGE value="mejor viual" />
     <MESSAGE value="mejor viual tema game" />
     <MESSAGE value="grafica correcto funcionamiento" />
-    <option name="LAST_COMMIT_MESSAGE" value="grafica correcto funcionamiento" />
+    <MESSAGE value="borro timers, ahora solo threads" />
+    <option name="LAST_COMMIT_MESSAGE" value="borro timers, ahora solo threads" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/Business/ManageGame.java</url>
-          <line>309</line>
-          <properties class="Business.ManageGame" method="setGeneradores">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="94" />
-        </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Presenstation/Controller/GameCreationController.java</url>
           <line>64</line>

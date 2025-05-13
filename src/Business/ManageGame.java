@@ -282,6 +282,7 @@ public class ManageGame {
             Integer numeroCafeteras = game.getGeneradoresCafetera().size();
 
             sqlGeneratorDAO.updateGenerator("Cafetera",priceCafetera, cafesSegCafetera, multiplicador, tiempoGeneracion, costMultiplicador, incrementCost, numeroCafeteras, game.getId());
+
         }
 
         if(!game.getGeneradoresChetas().isEmpty()){
@@ -294,6 +295,7 @@ public class ManageGame {
             Integer numeroCafeterasCheta = game.getGeneradoresChetas().size();
 
             sqlGeneratorDAO.updateGenerator("CafeCheta",priceCafeteraCheta, cafesSegCafeteraCheta, multiplicadorCheta, tiempoGeneracionCheta, costMultiplicadorCheta, incrementCostCheta, numeroCafeterasCheta, game.getId());
+
         }
         if(!game.getGeneradoresGod().isEmpty()){
             double priceGod = game.getGeneradoresGod().get(0).getPrecio();
@@ -305,6 +307,33 @@ public class ManageGame {
             Integer numeroCafeterasGod = game.getGeneradoresGod().size();
 
             sqlGeneratorDAO.updateGenerator("CafeGod",priceGod, cafesSegGod, multiplicadorGod, tiempoGeneracionGod, costMultiplicadorGod, incrementCostGod, numeroCafeterasGod, game.getId());
+
+        }
+
+
+    }
+
+    public void stopGenerators(){
+        stopGeneratorsCafetera();
+        stopGeneratorsCheta();
+        stopGeneratorsGod();
+    }
+    public void stopGeneratorsCafetera(){
+        for(Generator generator : game.getGeneradoresCafetera()){
+            generator.interrupt();
+
+        }
+    }
+    public void stopGeneratorsCheta(){
+        for(Generator generator : game.getGeneradoresChetas()){
+            generator.interrupt();
+
+        }
+    }
+    public void stopGeneratorsGod(){
+        for(Generator generator : game.getGeneradoresGod()){
+            generator.interrupt();
+
         }
     }
     public void setGeneradores(){

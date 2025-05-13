@@ -96,6 +96,7 @@ public class MainController {
                 gameScene.apply(scene.getMainFrame());
                 updateGame = new UpdateGame(gameScene);
                 updateGame.start();
+                gameController.setupdateGame(updateGame);
 
                 break;
             case STATICS:
@@ -119,6 +120,7 @@ public class MainController {
         gameController.updateTablas();
         updateGame = new UpdateGame(gameScene);
         updateGame.start();
+        gameController.setupdateGame(updateGame);
 
 
     }

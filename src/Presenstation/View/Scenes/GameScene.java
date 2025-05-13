@@ -3,7 +3,7 @@ package Presenstation.View.Scenes;
 import Business.Entidades.Game;
 import Business.Entidades.Pair;
 import Presenstation.Controller.GameController;
-import Presenstation.Controller.MainController;
+
 import Presenstation.View.Grafica.Grafica;
 import Presenstation.View.Image.JImagePanel;
 import Presenstation.View.Table.TableBotigaGenerators;
@@ -15,13 +15,12 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.util.ArrayList;
-import javax.swing.Timer;
+
 
 
 public class GameScene extends Scene {
     private GameController gameController;
-    private MainController mainController;
-    private Scene scene;
+
     public final static String GAME_MANAGEMENT = "GAME_MANAGEMENT";
 
     private Integer n_cafes = 0;
@@ -188,9 +187,7 @@ public class GameScene extends Scene {
         return buttonPanel;
     }
 
-    public void setMainController(MainController mainController) {
-        this.mainController = mainController;
-    }
+
 
     public JPanel addVacio() {
         JPanel panel = new JPanel(new FlowLayout());
