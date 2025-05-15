@@ -4,9 +4,29 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f9bbb50b-3eaf-412a-ab58-ecb07cf93455" name="Changes" comment="pequeños ajustes">
+    <list default="true" id="f9bbb50b-3eaf-412a-ab58-ecb07cf93455" name="Changes" comment="mejores comentarios">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Business/Entidades/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Business/Entidades/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Business/ManageGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Business/ManageGame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Business/ManageStatics.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Business/ManageStatics.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Business/ManageUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Business/ManageUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Persistence/GameDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Persistence/GameDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Persistence/GeneratorDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Persistence/GeneratorDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Persistence/StatisticDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Persistence/StatisticDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Persistence/configJsonDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Persistence/configJsonDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Persistence/sql/SQLConnector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Persistence/sql/SQLConnector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Persistence/sql/SQLGameDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Persistence/sql/SQLGameDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Presenstation/Controller/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presenstation/Controller/GameController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Presenstation/Controller/GameCreationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presenstation/Controller/GameCreationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Presenstation/Controller/GameManagementController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presenstation/Controller/GameManagementController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Presenstation/Controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presenstation/Controller/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Presenstation/Controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presenstation/Controller/MainController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Presenstation/Messages.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presenstation/Messages.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Presenstation/View/Grafica/Grafica.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presenstation/View/Grafica/Grafica.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Presenstation/View/Refresh/UpdateGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Business/Refresh/UpdateGame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Presenstation/View/Refresh/UpdateGrafica.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Business/Refresh/UpdateGrafica.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Presenstation/View/Scenes/GameManagementScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presenstation/View/Scenes/GameManagementScene.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -113,14 +133,6 @@
       <workItem from="1743689452923" duration="5970000" />
       <workItem from="1743758267674" duration="4963000" />
       <workItem from="1746711311955" duration="24425000" />
-    </task>
-    <task id="LOCAL-00025" summary="icrementar costes formula">
-      <option name="closed" value="true" />
-      <created>1744699241577</created>
-      <option name="number" value="00025" />
-      <option name="presentableId" value="LOCAL-00025" />
-      <option name="project" value="LOCAL" />
-      <updated>1744699241577</updated>
     </task>
     <task id="LOCAL-00026" summary="Implementacio del boto resum, amb guarda de memoria stadistiques y Canvi en base de dades">
       <option name="closed" value="true" />
@@ -506,7 +518,15 @@
       <option name="project" value="LOCAL" />
       <updated>1747150732813</updated>
     </task>
-    <option name="localTasksCounter" value="74" />
+    <task id="LOCAL-00074" summary="mejores comentarios">
+      <option name="closed" value="true" />
+      <created>1747151137462</created>
+      <option name="number" value="00074" />
+      <option name="presentableId" value="LOCAL-00074" />
+      <option name="project" value="LOCAL" />
+      <updated>1747151137462</updated>
+    </task>
+    <option name="localTasksCounter" value="75" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -536,7 +556,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="seguir la estructuar correcta y mas mensajes" />
     <MESSAGE value="seguir la estructuar correcta, mas mensajes y delete game" />
     <MESSAGE value="game creation estructura" />
     <MESSAGE value="todo con la estructura por capas" />
@@ -561,6 +580,7 @@
     <MESSAGE value="grafica correcto funcionamiento" />
     <MESSAGE value="borro timers, ahora solo threads" />
     <MESSAGE value="pequeños ajustes" />
-    <option name="LAST_COMMIT_MESSAGE" value="pequeños ajustes" />
+    <MESSAGE value="mejores comentarios" />
+    <option name="LAST_COMMIT_MESSAGE" value="mejores comentarios" />
   </component>
 </project>

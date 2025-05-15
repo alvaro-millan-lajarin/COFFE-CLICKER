@@ -1,20 +1,16 @@
 package Presenstation.Controller;
 
-import Business.Entidades.Game;
-import Business.Entidades.Pair;
 import Business.ManageGame;
 import Business.ManageUser;
 import Presenstation.Messages;
-import Presenstation.View.Grafica.Grafica;
-import Presenstation.View.Refresh.UpdateGame;
-import Presenstation.View.Refresh.UpdateGrafica;
+import Business.Refresh.UpdateGame;
+import Business.Refresh.UpdateGrafica;
 import Presenstation.View.Scenes.GameScene;
 import Presenstation.View.Scenes.Scene;
 import Presenstation.View.Scenes.Scenes;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 public class GameController extends Controller {
@@ -92,17 +88,22 @@ public class GameController extends Controller {
             godMejora();
 
         }else if (e.getActionCommand().equalsIgnoreCase("FINISHGAME")) {
-            int confirm = messages.deleteGame();
+            manageGame.updateGame();
+            manageGame.updateGenerators();
+            mainController.resetGameManagement();
+            stopThreads();
+            finishGame();
 
-            if (confirm == JOptionPane.YES_OPTION) {
-                deleteCurrentGame();
-                manageGame.stopGenerators();
-            }
         }
     }
     @Override
     public GameScene getView() {
         return (GameScene) super.getView();
+    }
+    public void finishGame() {
+        manageGame.getGame().setFinished();
+        manageGame.setFinish();
+        mainController.nextScene(Scenes.GAME_MANAGEMENT);
     }
 
     public void deleteUser() {

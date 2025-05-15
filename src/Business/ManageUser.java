@@ -1,22 +1,28 @@
 package Business;
 
 import Business.Entidades.User;
+import Persistence.UserDAO;
 import Persistence.sql.SQLUserDAO;
 import Presenstation.Messages;
 import Presenstation.View.Scenes.Scene;
 
 public class ManageUser {
-    private SQLUserDAO sqlUserDAO = new SQLUserDAO();
+    private UserDAO userDAO;
     private User currentUser;
     private Messages messages = new Messages();
+    private final static int MAX_LENGTH = 50;
+
+    public ManageUser(UserDAO userDAO) {
+        this.userDAO = userDAO;
+    }
 
 
     public boolean userLoginCorrect(String userOrEmail, String password) {
         boolean flag = false;
 
-        currentUser = sqlUserDAO.findUserByEmail(userOrEmail);
+        currentUser = userDAO.findUserByEmail(userOrEmail);
         if (currentUser == null) {
-            currentUser = sqlUserDAO.findUserByUsername(userOrEmail);
+            currentUser = userDAO.findUserByUsername(userOrEmail);
         }
 
         if (currentUser != null && currentUser.getPassword().equals(password)) {
@@ -28,16 +34,16 @@ public class ManageUser {
     public boolean signUp(String name, String email, String password, Scene scene, String passwordConfirmation) {
         boolean flag = false;
         if(!ErroreOcurred(name , email, password, scene, passwordConfirmation)){
-            if(sqlUserDAO.findUserByEmail(email) == null && sqlUserDAO.findUserByUsername(name) == null){
+            if(userDAO.findUserByEmail(email) == null && userDAO.findUserByUsername(name) == null){
                 User user = new User();
                 user.setEmail(email);
                 user.setPassword(password);
                 user.setUsername(name);
-                sqlUserDAO.insertUser(user);
-                currentUser = sqlUserDAO.findUserByEmail(email);
+                userDAO.insertUser(user);
+                currentUser = userDAO.findUserByEmail(email);
                 flag = true;
             }else{
-                if(sqlUserDAO.findUserByEmail(email) != null){
+                if(userDAO.findUserByEmail(email) != null){
                     messages.emailAlreadyExists();
                 }else{
                     messages.usernameAlreadyExists();
@@ -49,6 +55,11 @@ public class ManageUser {
         return flag;
     }
     public boolean ErroreOcurred(String name, String email, String password, Scene scene, String password2) {
+
+        if (name.length() > MAX_LENGTH || email.length() > MAX_LENGTH || password.length() > MAX_LENGTH || password2.length() > MAX_LENGTH) {
+            System.out.println("❌ Error: Uno o más campos exceden el límite de " + MAX_LENGTH + " caracteres.");
+            return true;
+        }
         if (email == null || email.isEmpty()) {
             messages.emptyEmail();
             return true;
@@ -96,7 +107,7 @@ public class ManageUser {
         }
     }
     public void deleteUser() {
-        sqlUserDAO.deleteUser(currentUser);
+        userDAO.deleteUser(currentUser);
     }
     public User getCurrentUser() {
         return currentUser;

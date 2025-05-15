@@ -4,6 +4,14 @@ import javax.swing.*;
 
 public class Messages {
 
+    public void tooLong() {
+        JOptionPane.showMessageDialog(
+                null,
+                "El nombre de la partida es demasiado largo",
+                "Too Long",
+                JOptionPane.WARNING_MESSAGE
+        );
+    }
     public void emptyEmail(){
         JOptionPane.showMessageDialog(
                 null,
@@ -104,6 +112,17 @@ public class Messages {
     }
     public void seleccionaPartida(){
         JOptionPane.showMessageDialog(null, "Selecciona una partida primero.");
+    }
+    public void stadisticasNoDisponibles(){
+        JOptionPane.showMessageDialog(null, "Estadisticas no disponibles para partidas no finalizadas.");
+    }
+    public void gameFinishedCantResume(){
+        JOptionPane.showMessageDialog(
+                null,
+                "Game has ended, you cannot resume the game.",
+                "Game Finished",
+                JOptionPane.WARNING_MESSAGE
+        );
     }
     public int deleteGame(){
         return JOptionPane.showConfirmDialog(

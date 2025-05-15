@@ -5,7 +5,7 @@ import Business.ManageGame;
 import Business.ManageUser;
 import Presenstation.Messages;
 import Presenstation.View.Grafica.Grafica;
-import Presenstation.View.Refresh.UpdateGrafica;
+import Business.Refresh.UpdateGrafica;
 import Presenstation.View.Scenes.GameCreationScene;
 import Presenstation.View.Scenes.Scene;
 import Presenstation.View.Scenes.Scenes;
@@ -26,6 +26,7 @@ public class GameCreationController extends Controller {
     private Grafica grafica;
     private GameController gameController;
     private UpdateGrafica updateGrafica;
+    private final static int MAX_LENGTH = 50;
 
     public GameCreationController(Scene view, MainController mainController, LoginController loginController, SignUpController signUpController, ManageGame manageGame, ManageUser manageUser, GameController gameController) {
 
@@ -48,6 +49,10 @@ public class GameCreationController extends Controller {
 
 
             String nombreGame = getScene().getName();
+            if(nombreGame.length() > MAX_LENGTH){
+                messages.tooLong();
+                return;
+            }
 
             List<Game> games = manageGame.getAllGames();
             for (Game game : games) {
@@ -58,7 +63,7 @@ public class GameCreationController extends Controller {
                 }
             }
             LocalDateTime fechaYHoraActual = LocalDateTime.now();
-            game = new Game(1,manageUser.getCurrentUser().getId(),nombreGame,fechaYHoraActual,fechaYHoraActual,0);
+            game = new Game(1,manageUser.getCurrentUser().getId(),nombreGame,fechaYHoraActual,fechaYHoraActual,0, false);
             manageGame.addGame(game);
             manageGame.setGame(game);
             manageGame.addBasicGenerator();

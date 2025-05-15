@@ -17,7 +17,12 @@ public class SQLConnector {
         try {
             conn = DriverManager.getConnection(url, config.getAccesUserBD(), config.getPasswordBD());
         } catch (SQLException e) {
-            e.printStackTrace();
+            if (e.getMessage().contains("Unknown database")) {
+                System.err.println("⚠️ La base de datos '" + config.getNomBD() + "' no existe. ");
+            } else {
+                System.err.println("⚠️ Error al conectar con la base de datos: " + e.getMessage());
+            }
+            conn = null;
         }
     }
 
@@ -68,6 +73,10 @@ public class SQLConnector {
 
     public ResultSet selectQuery(String query){
         ResultSet rs = null;
+        if (conn == null) {
+            System.err.println("⚠️ No hay conexión a la base de datos. " );
+            return null;
+        }
         try {
             Statement s = conn.createStatement();
             rs = s.executeQuery(query);
@@ -77,6 +86,8 @@ public class SQLConnector {
         }
         return rs;
     }
-
+    public boolean isConnected() {
+        return conn != null;
+    }
 
 }

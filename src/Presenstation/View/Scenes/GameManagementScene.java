@@ -93,6 +93,43 @@ public class GameManagementScene extends Scene {
         leftPanel.setOpaque(false);
         leftPanel.setPreferredSize(new Dimension(300, 300));
 
+
+
+        JPanel rightPanel = new JPanel(new GridLayout(1, 2));
+        rightPanel.setOpaque(false);
+
+
+
+        JScrollPane scrollPane = new JScrollPane(partidasNoFinalizadas(gamesUser));
+        scrollPane.setPreferredSize(new Dimension(300, 300));
+        scrollPane.setOpaque(false);
+        scrollPane.getViewport().setOpaque(false);
+        TitledBorder border = BorderFactory.createTitledBorder("ACTIVE GAMES");
+        border.setTitleFont(new Font("Apple casual", Font.BOLD, 20));
+        border.setTitleColor(Color.WHITE);
+        scrollPane.setBorder(border);
+
+        JScrollPane scrollPane2 = new JScrollPane(partidasFinalizadas(gamesUser));
+        scrollPane2.setPreferredSize(new Dimension(300, 300));
+        scrollPane2.setOpaque(false);
+        scrollPane2.getViewport().setOpaque(false);
+        TitledBorder border2 = BorderFactory.createTitledBorder("FINISHED GAMES");
+        border2.setTitleFont(new Font("Apple casual", Font.BOLD, 20));
+        border2.setTitleColor(Color.WHITE);
+        scrollPane2.setBorder(border2);
+
+
+        rightPanel.add(scrollPane);
+        rightPanel.add(scrollPane2);
+
+        center.add(leftPanel);
+
+        center.add(Box.createRigidArea(new Dimension(20, 0)));
+        center.add(rightPanel);
+
+        return center;
+    }
+    public JPanel partidasNoFinalizadas(ArrayList<Game> gamesUser) {
         JPanel partidasPanel = new JPanel();
         partidasPanel.setLayout(new BoxLayout(partidasPanel, BoxLayout.Y_AXIS));
         partidasPanel.setOpaque(false);
@@ -107,46 +144,47 @@ public class GameManagementScene extends Scene {
         if (!gamesUser.isEmpty()) {
             for (int i = 0; i < gamesUser.size(); i++) {
                 Game game = gamesUser.get(i);
+                if(!game.isFinished()) {
+                    // Crear panel para el contenido del botón
+                    JPanel buttonContent = new JPanel();
 
-                // Crear panel para el contenido del botón
-                JPanel buttonContent = new JPanel();
+                    buttonContent.setLayout(new BoxLayout(buttonContent, BoxLayout.Y_AXIS));
+                    buttonContent.setOpaque(false);
 
-                buttonContent.setLayout(new BoxLayout(buttonContent, BoxLayout.Y_AXIS));
-                buttonContent.setOpaque(false);
+                    JLabel nameLabel = new JLabel("GAME: " + game.getNombre());
+                    nameLabel.setFont(new Font("Arial", Font.BOLD, 14));
+                    nameLabel.setAlignmentX(Component.LEFT_ALIGNMENT);
 
-                JLabel nameLabel = new JLabel("GAME: " + game.getNombre());
-                nameLabel.setFont(new Font("Arial", Font.BOLD, 14));
-                nameLabel.setAlignmentX(Component.LEFT_ALIGNMENT);
+                    JLabel cafesLabel = new JLabel("Cafes: " + game.getNumCafes());
+                    cafesLabel.setFont(new Font("Arial", Font.PLAIN, 10));
+                    cafesLabel.setAlignmentX(Component.LEFT_ALIGNMENT);
 
-                JLabel cafesLabel = new JLabel("Cafes: " + game.getNumCafes());
-                cafesLabel.setFont(new Font("Arial", Font.PLAIN, 10));
-                cafesLabel.setAlignmentX(Component.LEFT_ALIGNMENT);
+                    buttonContent.add(nameLabel);
+                    buttonContent.add(cafesLabel);
 
-                buttonContent.add(nameLabel);
-                buttonContent.add(cafesLabel);
-
-                JButton btn = new JButton();
+                    JButton btn = new JButton();
 
 
-                btn.setLayout(new BorderLayout());
-                btn.add(buttonContent, BorderLayout.CENTER);
-                btn.setAlignmentX(Component.LEFT_ALIGNMENT);
-                btn.setFocusPainted(false);
-                btn.setBackground(new Color(210, 140, 95)); // marrón claro
-                btn.setOpaque(true);
-                btn.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+                    btn.setLayout(new BorderLayout());
+                    btn.add(buttonContent, BorderLayout.CENTER);
+                    btn.setAlignmentX(Component.LEFT_ALIGNMENT);
+                    btn.setFocusPainted(false);
+                    btn.setBackground(new Color(210, 140, 95)); // marrón claro
+                    btn.setOpaque(true);
+                    btn.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 
-                btn.addActionListener(e -> {
-                    for (JButton b : botonesPartidas) {
-                        b.setBackground(new Color(210, 140, 95));
-                    }
-                    btn.setBackground(Color.ORANGE);
-                    selectedGame = game;
-                });
+                    btn.addActionListener(e -> {
+                        for (JButton b : botonesPartidas) {
+                            b.setBackground(new Color(210, 140, 95));
+                        }
+                        btn.setBackground(Color.ORANGE);
+                        selectedGame = game;
+                    });
 
-                botonesPartidas.add(btn);
-                partidasPanel.add(Box.createVerticalStrut(5));
-                partidasPanel.add(btn);
+                    botonesPartidas.add(btn);
+                    partidasPanel.add(Box.createVerticalStrut(5));
+                    partidasPanel.add(btn);
+                }
             }
         } else {
             JLabel noGamesLabel = new JLabel("NO GAMES SAVED");
@@ -156,23 +194,74 @@ public class GameManagementScene extends Scene {
             partidasPanel.add(Box.createVerticalStrut(100));
             partidasPanel.add(noGamesLabel);
         }
+        return partidasPanel;
+    }
+    public JPanel partidasFinalizadas(ArrayList<Game> gamesUser) {
+        JPanel partidasPanel = new JPanel();
+        partidasPanel.setLayout(new BoxLayout(partidasPanel, BoxLayout.Y_AXIS));
+        partidasPanel.setOpaque(false);
+        partidasPanel.removeAll();
+        partidasPanel.revalidate();
+        partidasPanel.repaint();
+
+        List<JButton> botonesPartidas = new ArrayList<>();
 
 
-        JScrollPane scrollPane = new JScrollPane(partidasPanel);
-        scrollPane.setPreferredSize(new Dimension(300, 300));
-        scrollPane.setOpaque(false);
-        scrollPane.getViewport().setOpaque(false);
-        TitledBorder border = BorderFactory.createTitledBorder("SELECT GAME");
-        border.setTitleFont(new Font("Apple casual", Font.BOLD, 20));
-        border.setTitleColor(Color.WHITE);
-        scrollPane.setBorder(border);
 
-        center.add(leftPanel);
+        if (!gamesUser.isEmpty()) {
+            for (int i = 0; i < gamesUser.size(); i++) {
+                Game game = gamesUser.get(i);
+                if(game.isFinished()) {
+                    // Crear panel para el contenido del botón
+                    JPanel buttonContent = new JPanel();
 
-        center.add(Box.createRigidArea(new Dimension(20, 0)));
-        center.add(scrollPane);
+                    buttonContent.setLayout(new BoxLayout(buttonContent, BoxLayout.Y_AXIS));
+                    buttonContent.setOpaque(false);
 
-        return center;
+                    JLabel nameLabel = new JLabel("GAME: " + game.getNombre());
+                    nameLabel.setFont(new Font("Arial", Font.BOLD, 14));
+                    nameLabel.setAlignmentX(Component.LEFT_ALIGNMENT);
+
+                    JLabel cafesLabel = new JLabel("Cafes: " + game.getNumCafes());
+                    cafesLabel.setFont(new Font("Arial", Font.PLAIN, 10));
+                    cafesLabel.setAlignmentX(Component.LEFT_ALIGNMENT);
+
+                    buttonContent.add(nameLabel);
+                    buttonContent.add(cafesLabel);
+
+                    JButton btn = new JButton();
+
+
+                    btn.setLayout(new BorderLayout());
+                    btn.add(buttonContent, BorderLayout.CENTER);
+                    btn.setAlignmentX(Component.LEFT_ALIGNMENT);
+                    btn.setFocusPainted(false);
+                    btn.setBackground(new Color(210, 140, 95)); // marrón claro
+                    btn.setOpaque(true);
+                    btn.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+
+                    btn.addActionListener(e -> {
+                        for (JButton b : botonesPartidas) {
+                            b.setBackground(new Color(210, 140, 95));
+                        }
+                        btn.setBackground(Color.ORANGE);
+                        selectedGame = game;
+                    });
+
+                    botonesPartidas.add(btn);
+                    partidasPanel.add(Box.createVerticalStrut(5));
+                    partidasPanel.add(btn);
+                }
+            }
+        } else {
+            JLabel noGamesLabel = new JLabel("NO GAMES SAVED");
+            noGamesLabel.setFont(new Font("Arial", Font.BOLD, 16));
+            noGamesLabel.setForeground(Color.GRAY);
+            noGamesLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+            partidasPanel.add(Box.createVerticalStrut(100));
+            partidasPanel.add(noGamesLabel);
+        }
+        return partidasPanel;
     }
 
     public JPanel botonesCentrales() {

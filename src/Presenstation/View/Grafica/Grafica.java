@@ -4,6 +4,7 @@ package Presenstation.View.Grafica;
 
 import Business.Entidades.Pair;
 import Business.ManageStatics;
+import Persistence.sql.SQLStatisticDAO;
 
 import javax.swing.*;
 import java.awt.*;
@@ -14,7 +15,7 @@ import java.util.List;
 public class Grafica extends JPanel {
     private final List<Pair<LocalDateTime, Integer>> historico;
     private LocalDateTime startTime;
-    private ManageStatics manageStatics = new ManageStatics();
+    private ManageStatics manageStatics = new ManageStatics(new SQLStatisticDAO());
 
     public Grafica(List<Pair<LocalDateTime, Integer>> historico) {
         this.historico = historico;
