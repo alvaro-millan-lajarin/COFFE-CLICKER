@@ -115,6 +115,8 @@ public class TableBotigaGenerators extends JPanel {
         // Update the model with new data
         DefaultTableModel model = (DefaultTableModel) table.getModel();
         model.setDataVector(data, new String[]{"Nom", "Cost", "Producció", "Increment cost"});
+        table.getColumn("Nom").setCellRenderer(new ButtonRenderer());
+
         model.fireTableDataChanged(); // Refresh the table to show updated data
     }
 

@@ -101,6 +101,7 @@ public class TableBotigaMillores extends JPanel {
         // Update the model with new data
         DefaultTableModel model = (DefaultTableModel) table.getModel();
         model.setDataVector(data, new String[]{"Nom", "Coste", "Multiplicador"});
+        table.getColumn("Nom").setCellRenderer(new ButtonRenderer());
         model.fireTableDataChanged(); // Refresh the table to show updated data
     }
 
