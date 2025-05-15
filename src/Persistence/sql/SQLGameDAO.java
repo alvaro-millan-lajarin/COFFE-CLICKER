@@ -59,7 +59,8 @@ public class SQLGameDAO implements GameDAO {
                         rs.getString("nombre_partida"),
                         rs.getTimestamp("fecha_creacion").toLocalDateTime(),
                         rs.getTimestamp("fecha_ultimo_save").toLocalDateTime(),
-                        rs.getInt("num_cafes")
+                        rs.getInt("num_cafes"),
+                        rs.getBoolean("finish")
                 );
                 games.add(game);
             }
@@ -70,6 +71,9 @@ public class SQLGameDAO implements GameDAO {
         return games;
     }
 
-
+    public void finishTrue(Game game) {
+        String query = "UPDATE Partida SET finish = TRUE WHERE id_partida = '" + game.getId() + "'";
+        SQLConnector.getInstance().updateQuery(query);
+    }
 
 }

@@ -11,4 +11,5 @@ public interface GameDAO {
     void updateGame(Game game);
     void deleteGame(Game game);
     List<Game> getAllGames();
+    void finishTrue(Game game);
 }

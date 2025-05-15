@@ -4,6 +4,8 @@ import Business.Entidades.Game;
 import Business.Entidades.Generator;
 import Business.Entidades.User;
 import Persistence.GameDAO;
+import Persistence.GeneratorDAO;
+import Persistence.StatisticDAO;
 import Persistence.sql.SQLGameDAO;
 import Persistence.sql.SQLGeneratorDAO;
 import Persistence.sql.SQLStatisticDAO;
@@ -16,16 +18,19 @@ import java.util.List;
 
 public class ManageGame {
     private Game game;
-    private SQLGameDAO sqlGameDAO = new SQLGameDAO();
-    private SQLGeneratorDAO sqlGeneratorDAO = new SQLGeneratorDAO();
-    private SQLStatisticDAO sqlStatisticDAO = new SQLStatisticDAO();
-    private GameController gameController;
+    private GameDAO gameDAO;
+    private GeneratorDAO generatorDAO;
+    private StatisticDAO statisticDAO;
 
 
 
 
-    public ManageGame() {
 
+
+    public ManageGame(GameDAO gameDAO, GeneratorDAO generatorDAO, StatisticDAO statisticDAO) {
+        this.gameDAO = gameDAO;
+        this.generatorDAO = generatorDAO;
+        this.statisticDAO = statisticDAO;
     }
     public Game getGame() {
         return game;
@@ -36,13 +41,16 @@ public class ManageGame {
         game.increaseNumCafes();
 
     }
+    public void setFinish(){
+        gameDAO.finishTrue(game);
+    }
     public void setGame(Game game) {
         this.game = getGameBaseDeDatos(game);
 
 
     }
     public void addBasicGenerator() {
-        sqlGeneratorDAO.addBasicGenerators(this.game.getId());
+        generatorDAO.addBasicGenerators(this.game.getId());
     }
     public ArrayList<Integer> getQuantitas() {
         ArrayList<Integer> quantitats = new ArrayList<>();
@@ -246,14 +254,14 @@ public class ManageGame {
     }
 
     public void deleteGameSelected(Game game) {
-        sqlStatisticDAO.deleteEstadisticasByPartidaId(game.getId());
-        sqlGameDAO.deleteGame(game);
+        statisticDAO.deleteEstadisticasByPartidaId(game.getId());
+        gameDAO.deleteGame(game);
     }
     public List<Game> getAllGames() {
-        return sqlGameDAO.getAllGames();
+        return gameDAO.getAllGames();
     }
     public void addGame(Game game) {
-        sqlGameDAO.addGame(game);
+        gameDAO.addGame(game);
     }
     public Game getGameBaseDeDatos(Game newGame) {
 
@@ -267,7 +275,7 @@ public class ManageGame {
 
     public void updateGame() {
 
-        sqlGameDAO.updateGame(getGame());
+        gameDAO.updateGame(getGame());
     }
 
     public void updateGenerators( ){
@@ -281,7 +289,7 @@ public class ManageGame {
             double incrementCost = game.getGeneradoresCafetera().get(0).getIncrementCost();
             Integer numeroCafeteras = game.getGeneradoresCafetera().size();
 
-            sqlGeneratorDAO.updateGenerator("Cafetera",priceCafetera, cafesSegCafetera, multiplicador, tiempoGeneracion, costMultiplicador, incrementCost, numeroCafeteras, game.getId());
+            generatorDAO.updateGenerator("Cafetera",priceCafetera, cafesSegCafetera, multiplicador, tiempoGeneracion, costMultiplicador, incrementCost, numeroCafeteras, game.getId());
 
         }
 
@@ -294,7 +302,7 @@ public class ManageGame {
             double incrementCostCheta = game.getGeneradoresChetas().get(0).getIncrementCost();
             Integer numeroCafeterasCheta = game.getGeneradoresChetas().size();
 
-            sqlGeneratorDAO.updateGenerator("CafeCheta",priceCafeteraCheta, cafesSegCafeteraCheta, multiplicadorCheta, tiempoGeneracionCheta, costMultiplicadorCheta, incrementCostCheta, numeroCafeterasCheta, game.getId());
+            generatorDAO.updateGenerator("CafeCheta",priceCafeteraCheta, cafesSegCafeteraCheta, multiplicadorCheta, tiempoGeneracionCheta, costMultiplicadorCheta, incrementCostCheta, numeroCafeterasCheta, game.getId());
 
         }
         if(!game.getGeneradoresGod().isEmpty()){
@@ -306,7 +314,7 @@ public class ManageGame {
             double incrementCostGod = game.getGeneradoresGod().get(0).getIncrementCost();
             Integer numeroCafeterasGod = game.getGeneradoresGod().size();
 
-            sqlGeneratorDAO.updateGenerator("CafeGod",priceGod, cafesSegGod, multiplicadorGod, tiempoGeneracionGod, costMultiplicadorGod, incrementCostGod, numeroCafeterasGod, game.getId());
+            generatorDAO.updateGenerator("CafeGod",priceGod, cafesSegGod, multiplicadorGod, tiempoGeneracionGod, costMultiplicadorGod, incrementCostGod, numeroCafeterasGod, game.getId());
 
         }
 
@@ -344,10 +352,10 @@ public class ManageGame {
         boolean chetasAdded = false;
         boolean godadded = false;
 
-        for(Generator generator : sqlGeneratorDAO.getAllGenerators()){
+        for(Generator generator : generatorDAO.getAllGenerators()){
             if(generator.getIdGame() == game.getId()){
                 if(generator.getNombre().equals("Cafetera") && !cafeteraAdded){
-                    int cantidadGenerador = sqlGeneratorDAO.numeroGenerador(generator);
+                    int cantidadGenerador = generatorDAO.numeroGenerador(generator);
 
                     for(int i = 0; i< cantidadGenerador; i++){
                         Generator nuevo = new Generator((int) generator.getId(), generator.getNombre(), generator.getPrecio(), generator.getCafeSeg(), generator.getTiempoGeneracion(), generator.getIncrementCost(), generator.getCostMultiplicador(), generator.getMultiplicador(), game.getId());
@@ -358,7 +366,7 @@ public class ManageGame {
                     cafeteraAdded = true;
                 }
                 if(generator.getNombre().equals("CafeCheta") && !chetasAdded){
-                    int cantidadGenerador = sqlGeneratorDAO.numeroGenerador(generator);
+                    int cantidadGenerador = generatorDAO.numeroGenerador(generator);
 
                     for(int i = 0; i< cantidadGenerador; i++){
                         Generator nuevo = new Generator((int) generator.getId(), generator.getNombre(), generator.getPrecio(), generator.getCafeSeg(), generator.getTiempoGeneracion(), generator.getIncrementCost(), generator.getCostMultiplicador(), generator.getMultiplicador(), game.getId());
@@ -369,7 +377,7 @@ public class ManageGame {
                     chetasAdded = true;
                 }
                 if(generator.getNombre().equals("CafeGod") && !godadded){
-                    int cantidadGenerador = sqlGeneratorDAO.numeroGenerador(generator);
+                    int cantidadGenerador = generatorDAO.numeroGenerador(generator);
 
                     for(int i = 0; i< cantidadGenerador; i++){
                         Generator nuevo = new Generator((int) generator.getId(), generator.getNombre(), generator.getPrecio(), generator.getCafeSeg(), generator.getTiempoGeneracion(), generator.getIncrementCost(), generator.getCostMultiplicador(), generator.getMultiplicador(), game.getId());
@@ -387,11 +395,9 @@ public class ManageGame {
         game.setGeneradoresGod(generatorsGod);
     }
     public void logCafeHistorico(int cafesActuales, int chetasActuales){
-        sqlStatisticDAO.logCafeHistorico(game.getId(), game.getNumCafes());
+        statisticDAO.logCafeHistorico(game.getId(), game.getNumCafes());
     }
 
-    public void setGameController(GameController gameController) {
-        this.gameController = gameController;
-    }
+
 }
 

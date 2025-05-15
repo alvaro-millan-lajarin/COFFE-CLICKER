@@ -1,4 +1,4 @@
-package Presenstation.View.Refresh;
+package Business.Refresh;
 
 import Presenstation.View.Scenes.GameScene;
 
@@ -15,7 +15,7 @@ public class UpdateGame extends Thread {
             gameScene.updateGameScene();
 
             try {
-                Thread.sleep((long) (10)); // de segundos a ms
+                Thread.sleep((10));
             } catch (InterruptedException e) {
                 Thread.currentThread().interrupt();
             }

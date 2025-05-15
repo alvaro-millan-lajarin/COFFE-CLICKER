@@ -5,12 +5,10 @@ import Business.Entidades.User;
 import Business.ManageGame;
 import Business.ManageStatics;
 import Business.ManageUser;
-import Persistence.GameDAO;
-import Persistence.sql.SQLGameDAO;
-import Persistence.sql.SQLUserDAO;
+import Persistence.sql.SQLStatisticDAO;
 import Presenstation.Messages;
 import Presenstation.View.Grafica.Grafica;
-import Presenstation.View.Refresh.UpdateGrafica;
+import Business.Refresh.UpdateGrafica;
 import Presenstation.View.Scenes.GameManagementScene;
 import Presenstation.View.Scenes.Scene;
 import Presenstation.View.Scenes.Scenes;
@@ -35,7 +33,7 @@ public class GameManagementController extends Controller {
         super(view, mainController);
         this.loginController = loginController;
         this.signUpController = signUpController;
-        this.manageStatics = new ManageStatics();
+        this.manageStatics = new ManageStatics(new SQLStatisticDAO());
         this.manageUser = manageUser;
         this.messages = new Messages();
         this.manageGame = manageGame;
@@ -66,6 +64,10 @@ public class GameManagementController extends Controller {
         } else if (e.getActionCommand().equalsIgnoreCase("RESUME")) {
             mainController.resetGame();
             Game selectedGame = getScene().getSelectedGame();
+            if( selectedGame.isFinished()){
+                messages.gameFinishedCantResume();
+                return;
+            }
             if (selectedGame != null) {
                 grafica = new Grafica(new ArrayList<>());
                 mainController.resumeGame(selectedGame);
@@ -75,18 +77,15 @@ public class GameManagementController extends Controller {
                 updateGrafica.start();
                 gameController.setUpdateGrafica(updateGrafica);
 
-
-
-
             } else {
                 messages.seleccionaPartida();
             }
         }else if (e.getActionCommand().equals("STADISTICAS")) {
             Game selectedGame = getScene().getSelectedGame();
-            if (selectedGame != null) {
+            if (selectedGame != null && selectedGame.isFinished()) {
                 mostrarGraficaDeCafes(selectedGame.getId());
             } else {
-                messages.seleccionaPartida();
+                messages.stadisticasNoDisponibles();
             }
 
 

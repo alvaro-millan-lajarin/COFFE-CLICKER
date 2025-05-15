@@ -16,7 +16,7 @@ public class Game {
     private LocalDateTime fechaCreacion;
     private LocalDateTime fechaModificacion;
     private int numCafes;
-
+    private boolean finished;
 
     private List<Generator> generadoresCafetera = new ArrayList<>();
     private List<Generator> generadoresChetas = new ArrayList<>();
@@ -47,13 +47,14 @@ public class Game {
 
 
 
-    public Game(int id, int idUser, String nombre, LocalDateTime fechaCreacion, LocalDateTime fechaModificacion, int numCafes) {
+    public Game(int id, int idUser, String nombre, LocalDateTime fechaCreacion, LocalDateTime fechaModificacion, int numCafes, boolean finished) {
         this.id = id;
         this.idUser = idUser;
         this.nombre = nombre;
         this.fechaCreacion = fechaCreacion;
         this.fechaModificacion = fechaModificacion;
         this.numCafes = numCafes;
+        this.finished = finished;
 
 
 
@@ -291,5 +292,10 @@ public class Game {
     public void setGeneradoresGod(List<Generator> generadoresGod) {
         this.generadoresGod = generadoresGod;
     }
-
+    public void setFinished() {
+        this.finished = true;
+    }
+    public boolean isFinished() {
+        return finished;
+    }
 }

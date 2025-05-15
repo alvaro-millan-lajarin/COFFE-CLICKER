@@ -3,7 +3,11 @@ package Presenstation.Controller;
 import Business.Entidades.Game;
 import Business.ManageGame;
 import Business.ManageUser;
-import Presenstation.View.Refresh.UpdateGame;
+import Business.Refresh.UpdateGame;
+import Persistence.sql.SQLGameDAO;
+import Persistence.sql.SQLGeneratorDAO;
+import Persistence.sql.SQLStatisticDAO;
+import Persistence.sql.SQLUserDAO;
 import Presenstation.View.Scenes.*;
 
 import javax.swing.*;
@@ -33,9 +37,9 @@ public class MainController {
 
     public MainController() {
 
-        manageGame = new ManageGame();
+        manageGame = new ManageGame(new SQLGameDAO(), new SQLGeneratorDAO(), new SQLStatisticDAO());
 
-        manageUser = new ManageUser();
+        manageUser = new ManageUser(new SQLUserDAO());
 
         menuScene = new MenuScene();
         scene = new Scene();
@@ -63,7 +67,7 @@ public class MainController {
         gameScene.setController(gameController);
         staticsScene.setController(staticsController);
 
-        manageGame.setGameController(gameController);
+
 
 
 

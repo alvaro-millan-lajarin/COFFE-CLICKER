@@ -1,6 +1,7 @@
 package Business;
 
 import Business.Entidades.Pair;
+import Persistence.StatisticDAO;
 import Persistence.sql.SQLGameDAO;
 import Persistence.sql.SQLStatisticDAO;
 import Presenstation.Messages;
@@ -13,14 +14,18 @@ import java.util.List;
 
 public class ManageStatics {
 
-    private final SQLStatisticDAO sqlStatisticDAO = new SQLStatisticDAO();
+    private final StatisticDAO statisticDAO;
     private final Messages messages = new Messages();
+
+    public ManageStatics(StatisticDAO statisticDAO) {
+        this.statisticDAO = statisticDAO;
+    }
 
 
 
     public void mostrarGraficaCafes(int idPartida) {
         // 1. Obtener datos del histórico
-        List<Pair<LocalDateTime, Integer>> historico = sqlStatisticDAO.getHistoricoCafes(idPartida);
+        List<Pair<LocalDateTime, Integer>> historico = statisticDAO.getHistoricoCafes(idPartida);
 
         if (historico.isEmpty()) {
             messages.noHayDatosGraficar();

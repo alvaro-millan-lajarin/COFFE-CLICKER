@@ -1,12 +1,10 @@
-package Presenstation.View.Refresh;
+package Business.Refresh;
 
 import Business.Entidades.Pair;
 import Business.ManageGame;
 import Presenstation.View.Grafica.Grafica;
-import Presenstation.View.Scenes.GameScene;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 
 public class UpdateGrafica extends Thread {
     private ManageGame manageGame;

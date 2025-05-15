@@ -10,6 +10,7 @@ public class configJsonDAO {
 public Config getConfigDAO() throws IOException {
     String[] config = new String[4];
     int ip = 0;
+
     BufferedReader br = new BufferedReader(new FileReader("data/config.json"));
 
     br.readLine();

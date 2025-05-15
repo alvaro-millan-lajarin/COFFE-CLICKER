@@ -16,6 +16,7 @@ public class LoginController extends Controller {
     private static final String GAME_MANAGEMENT = "GAME_MANAGEMENT";
     private ManageUser manageUser;
     private Messages messages = new Messages();
+    private final static int MAX_LENGTH = 50;
 
     public LoginController(Scene view, MainController mainController, ManageUser manageUser) {
         super(view, mainController);
@@ -35,9 +36,9 @@ public class LoginController extends Controller {
             String userOrEmail = getScene().getEmail();
             String password = getScene().getPassword();
 
-            manageUser.userLoginCorrect(userOrEmail, password);
+            //manageUser.userLoginCorrect(userOrEmail, password);
 
-            if (manageUser.userLoginCorrect(userOrEmail, password)) {
+            if (manageUser.userLoginCorrect(userOrEmail, password) && userOrEmail.length() < MAX_LENGTH && password.length() < MAX_LENGTH){
                 mainController.nextScene(Scenes.GAME_MANAGEMENT);
                 return;
             }
