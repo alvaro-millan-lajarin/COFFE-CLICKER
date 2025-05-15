@@ -23,10 +23,6 @@ public class ManageGame {
     private StatisticDAO statisticDAO;
 
 
-
-
-
-
     public ManageGame(GameDAO gameDAO, GeneratorDAO generatorDAO, StatisticDAO statisticDAO) {
         this.gameDAO = gameDAO;
         this.generatorDAO = generatorDAO;

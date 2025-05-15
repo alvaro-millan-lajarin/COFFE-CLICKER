@@ -222,6 +222,7 @@ public class TableGeneradorsDisponibles extends JPanel {
 
         DefaultTableModel model = (DefaultTableModel) table.getModel();
         model.setDataVector(data, new String[]{"Nom", "Quantitat", "Produccio unitat", "Produccio global", "% Produccio total"});
+        table.getColumn("Nom").setCellRenderer(new ButtonRenderer());
         model.fireTableDataChanged();
     }
 
