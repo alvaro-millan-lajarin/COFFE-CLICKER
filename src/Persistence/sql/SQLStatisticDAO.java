@@ -12,7 +12,7 @@ public class SQLStatisticDAO implements StatisticDAO {
 
     @Override
     public void deleteEstadisticasByPartidaId(int idPartida) {
-        String query = "DELETE FROM HistoricoCafes WHERE id_partida = '" + idPartida + "'";
+        String query = "DELETE FROM estadisticas WHERE id_partida = '" + idPartida + "'";
         SQLConnector.getInstance().deleteQuery(query);
     }
 
@@ -26,7 +26,7 @@ public class SQLStatisticDAO implements StatisticDAO {
 
             if (rs != null && rs.next()) {
                 System.out.println("Partida encontrada, procediendo a insertar...");
-                String query = "INSERT INTO HistoricoCafes (id_partida, timestamp, num_cafes) VALUES (" +
+                String query = "INSERT INTO estadisticas (id_partida, timestamp, num_cafes) VALUES (" +
                         id + ", CURRENT_TIMESTAMP, " + numCafes + ")";
                 SQLConnector.getInstance().insertQuery(query);
             } else {
@@ -40,7 +40,7 @@ public class SQLStatisticDAO implements StatisticDAO {
 
     public List<Pair<LocalDateTime, Integer>> getHistoricoCafes(int idPartida) {
         List<Pair<LocalDateTime, Integer>> historico = new ArrayList<>();
-        String query = "SELECT timestamp, num_cafes FROM HistoricoCafes WHERE id_partida = " + idPartida + " ORDER BY timestamp ASC";
+        String query = "SELECT timestamp, num_cafes FROM estadisticas WHERE id_partida = " + idPartida + " ORDER BY timestamp ASC";
         var rs = SQLConnector.getInstance().selectQuery(query);
 
         try {
