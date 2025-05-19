@@ -19,15 +19,10 @@ public class GameController extends Controller {
     private ManageGame manageGame;
     private UpdateGame updateGame;
 
-
     private Messages messages = new Messages();
     private ManageUser manageUser;
 
-
-
-
     private UpdateGrafica updateGrafica;
-
 
     public GameController(Scene view, MainController mainController, LoginController loginController, SignUpController signUpController, ManageGame manageGame, ManageUser manageUser) {
         super(view, mainController);
@@ -115,10 +110,6 @@ public class GameController extends Controller {
             loginController.clearUserData();
             mainController.nextScene(Scenes.MENU);
         }
-    }
-    public ManageGame getManageGame() {
-        return manageGame;
-
     }
     public void notEnoughtCoffe() {
         messages.needCoffe();
