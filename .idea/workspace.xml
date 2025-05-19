@@ -4,19 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f9bbb50b-3eaf-412a-ab58-ecb07cf93455" name="Changes" comment="arreglos estructura">
+    <list default="true" id="f9bbb50b-3eaf-412a-ab58-ecb07cf93455" name="Changes" comment="arreglos estructura, quitar herencia">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Presenstation/Controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presenstation/Controller/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Presenstation/Controller/GameCreationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presenstation/Controller/GameCreationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Presenstation/Controller/GameManagementController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presenstation/Controller/GameManagementController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Presenstation/Controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presenstation/Controller/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Presenstation/Controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presenstation/Controller/MainController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Presenstation/Controller/MenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presenstation/Controller/MenuController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Presenstation/Controller/SignUpController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presenstation/Controller/SignUpController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Presenstation/Controller/StaticsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presenstation/Controller/StaticsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Presenstation/View/Grafica/Grafica.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presenstation/View/Grafica/Grafica.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Presenstation/View/Table/TableBotigaGenerators.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presenstation/View/Table/TableBotigaGenerators.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Presenstation/View/Table/TableBotigaMillores.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presenstation/View/Table/TableBotigaMillores.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -123,23 +112,7 @@
       <workItem from="1743689452923" duration="5970000" />
       <workItem from="1743758267674" duration="4963000" />
       <workItem from="1746711311955" duration="24425000" />
-      <workItem from="1747673010765" duration="6372000" />
-    </task>
-    <task id="LOCAL-00031" summary="crear partida con sign up">
-      <option name="closed" value="true" />
-      <created>1745341820447</created>
-      <option name="number" value="00031" />
-      <option name="presentableId" value="LOCAL-00031" />
-      <option name="project" value="LOCAL" />
-      <updated>1745341820447</updated>
-    </task>
-    <task id="LOCAL-00032" summary="resume, signup, delete..">
-      <option name="closed" value="true" />
-      <created>1745346682816</created>
-      <option name="number" value="00032" />
-      <option name="presentableId" value="LOCAL-00032" />
-      <option name="project" value="LOCAL" />
-      <updated>1745346682816</updated>
+      <workItem from="1747673010765" duration="8196000" />
     </task>
     <task id="LOCAL-00033" summary="arreglo deletes">
       <option name="closed" value="true" />
@@ -517,7 +490,23 @@
       <option name="project" value="LOCAL" />
       <updated>1747677954701</updated>
     </task>
-    <option name="localTasksCounter" value="80" />
+    <task id="LOCAL-00080" summary="arreglos estructura, quitar herencia">
+      <option name="closed" value="true" />
+      <created>1747679674269</created>
+      <option name="number" value="00080" />
+      <option name="presentableId" value="LOCAL-00080" />
+      <option name="project" value="LOCAL" />
+      <updated>1747679674269</updated>
+    </task>
+    <task id="LOCAL-00081" summary="arreglos estructura, quitar herencia">
+      <option name="closed" value="true" />
+      <created>1747679791719</created>
+      <option name="number" value="00081" />
+      <option name="presentableId" value="LOCAL-00081" />
+      <option name="project" value="LOCAL" />
+      <updated>1747679791719</updated>
+    </task>
+    <option name="localTasksCounter" value="82" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -547,7 +536,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="revisar base de datos generadores" />
     <MESSAGE value="game desde 0" />
     <MESSAGE value="en local sin base de datos game funciona" />
     <MESSAGE value="ya funciona la base de datos con game" />
@@ -572,22 +560,7 @@
     <MESSAGE value="arreglo estructura" />
     <MESSAGE value="organizacion" />
     <MESSAGE value="arreglos estructura" />
-    <option name="LAST_COMMIT_MESSAGE" value="arreglos estructura" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Business/Entidades/Game.java</url>
-          <line>48</line>
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Business/Entidades/Game.java</url>
-          <line>47</line>
-          <option name="timeStamp" value="5" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="arreglos estructura, quitar herencia" />
+    <option name="LAST_COMMIT_MESSAGE" value="arreglos estructura, quitar herencia" />
   </component>
 </project>

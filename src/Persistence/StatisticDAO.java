@@ -3,7 +3,6 @@ package Persistence;
 
 
 import Business.Entidades.Pair;
-import Business.Entidades.Statistic;
 
 import java.time.LocalDateTime;
 import java.util.List;
