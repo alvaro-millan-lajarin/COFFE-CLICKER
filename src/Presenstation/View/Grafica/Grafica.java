@@ -14,12 +14,10 @@ import java.util.List;
 
 public class Grafica extends JPanel {
     private final List<Pair<LocalDateTime, Integer>> historico;
-    private LocalDateTime startTime;
-    private ManageStatics manageStatics = new ManageStatics(new SQLStatisticDAO());
+
 
     public Grafica(List<Pair<LocalDateTime, Integer>> historico) {
         this.historico = historico;
-        this.startTime = historico.isEmpty() ? LocalDateTime.now() : historico.get(0).getKey();
         setPreferredSize(new Dimension(600, 400));
     }
 
@@ -79,7 +77,7 @@ public class Grafica extends JPanel {
         }
 
 
-        // Mostrar ticks cada 1 minuto (hasta 20)
+        // Mostrar ticks cada 1 minuto
         int maxMinutes = (int) totalMinutes;
         for (int i = 0; i <= maxMinutes; i++) {
             int x = padding + (int) ((i / (double) totalMinutes) * width);
@@ -103,9 +101,7 @@ public class Grafica extends JPanel {
     public List<Pair<LocalDateTime, Integer>> getHistorico() {
         return historico;
     }
-    public void setStartTime(LocalDateTime startTime) {
-        this.startTime = startTime;
-    }
+
 
 
 

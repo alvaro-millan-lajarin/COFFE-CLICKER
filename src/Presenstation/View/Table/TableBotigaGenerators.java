@@ -14,6 +14,7 @@ import java.util.ArrayList;
 
 public class TableBotigaGenerators extends JPanel {
     private JTable table;
+
     public TableBotigaGenerators(GameController gameController) {
         setLayout(new BorderLayout());
 
@@ -112,12 +113,12 @@ public class TableBotigaGenerators extends JPanel {
                 {"CafeGod", precioBase.get(2), produccionUnitat.get(2), 1.12}
         };
 
-        // Update the model with new data
+
         DefaultTableModel model = (DefaultTableModel) table.getModel();
         model.setDataVector(data, new String[]{"Nom", "Cost", "Producció", "Increment cost"});
         table.getColumn("Nom").setCellRenderer(new ButtonRenderer());
 
-        model.fireTableDataChanged(); // Refresh the table to show updated data
+        model.fireTableDataChanged();
     }
 
 }

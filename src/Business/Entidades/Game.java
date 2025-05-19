@@ -1,15 +1,18 @@
 package Business.Entidades;
 
+
+
 import Business.ManageGame;
-import Presenstation.Controller.GameController;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.HashMap;
+
 import java.util.List;
-import java.util.function.Consumer;
+
 
 public class Game {
+
+    private ManageGame manageGame;
     private int id;
     private int idUser;
     private String nombre;
@@ -18,32 +21,9 @@ public class Game {
     private int numCafes;
     private boolean finished;
 
-    private List<Generator> generadoresCafetera = new ArrayList<>();
-    private List<Generator> generadoresChetas = new ArrayList<>();
-    private List<Generator> generadoresGod = new ArrayList<>();
-
-    //VARIABLE GENERADORES AL PRINCIPIO
-    private double cafeteriaCafeSeg = 0.2;
-    private double cafeteriaTiempoGeneracion = 1;
-    private double cafeteriaChetaCafeSeg = 0.5;
-    private double cafeteriaChetaTiempoGeneracion = 0.7;
-    private double cafeteriaGodCafeSeg = 30;
-    private double cafeteriaGodTiempoGeneracion = 1.3;
-
-    // Nuevas variables para el precio y multiplicador
-    private double cafeteriaPrecio = 10; // Precio de la cafetería básica
-    private Integer cafeteriaMultiplicador = 1; // Multiplicador de la cafetería básica
-    private Integer cafeteriaCostMultiplicador = 10;
-
-    private double cafeteriaChetaPrecio = 150; // Precio de la cafetería cheta
-    private Integer cafeteriaChetaMultiplicador = 1; // Multiplicador de la cafetería cheta
-    private Integer chetaCostMultiplicador = 150;
-
-    private double cafeteriaGodPrecio = 2000; // Precio de la cafetería God
-    private Integer cafeteriaGodMultiplicador = 1;
-    private Integer GodCostMultiplicador = 2000;
-
-
+    private List<Generator> generadoresCafetera;
+    private List<Generator> generadoresChetas;
+    private List<Generator> generadoresGod;
 
 
 
@@ -55,46 +35,27 @@ public class Game {
         this.fechaModificacion = fechaModificacion;
         this.numCafes = numCafes;
         this.finished = finished;
-
-
+        this.manageGame = new ManageGame();
+        this.generadoresCafetera = new ArrayList<>();
+        this.generadoresChetas = new ArrayList<>();
+        this.generadoresGod = new ArrayList<>();
 
     }
     public void startGeneratorCafetera() {
-        if(!generadoresCafetera.isEmpty()){
-            cafeteriaPrecio = generadoresCafetera.getFirst().getPrecio();
-            cafeteriaCafeSeg = generadoresCafetera.getFirst().getCafeSeg();
-            cafeteriaTiempoGeneracion = generadoresCafetera.getFirst().getTiempoGeneracion();
-            cafeteriaCostMultiplicador = generadoresCafetera.getFirst().getCostMultiplicador();
-            cafeteriaMultiplicador = generadoresCafetera.getFirst().getMultiplicador();
-        }
 
-        Generator cafeteria = new Generator(1, "cafeteria",cafeteriaPrecio,cafeteriaCafeSeg , cafeteriaTiempoGeneracion,1.07,cafeteriaCostMultiplicador, cafeteriaMultiplicador,this.getId());
+        Generator cafeteria = manageGame.getCafeteraBaseDeDatos(getId(), "Cafetera");
         cafeteria.setGame(this);
         generadoresCafetera.add(cafeteria);
         cafeteria.start();
     }
     public void startGeneratorCafeteraCheta() {
-        if(!generadoresChetas.isEmpty()){
-            cafeteriaChetaPrecio = generadoresChetas.getFirst().getPrecio();
-            cafeteriaChetaCafeSeg = generadoresChetas.getFirst().getCafeSeg();
-            cafeteriaChetaTiempoGeneracion = generadoresChetas.getFirst().getTiempoGeneracion();
-            chetaCostMultiplicador = generadoresChetas.getFirst().getCostMultiplicador();
-            cafeteriaChetaMultiplicador = generadoresChetas.getFirst().getMultiplicador();
-        }
-        Generator cafeteriaCheta = new Generator(2, "cafeteriaCheta",cafeteriaChetaPrecio, cafeteriaChetaCafeSeg, cafeteriaChetaTiempoGeneracion,1.15,chetaCostMultiplicador, cafeteriaChetaMultiplicador,this.getId());
+        Generator cafeteriaCheta = manageGame.getCafeteraBaseDeDatos(getId(), "CafeCheta");
         cafeteriaCheta.setGame(this);
         generadoresChetas.add(cafeteriaCheta);
         cafeteriaCheta.start();
     }
     public void startGeneratorCafeteraGod() {
-        if(!generadoresGod.isEmpty()){
-            cafeteriaGodPrecio = generadoresGod.getFirst().getPrecio();
-            cafeteriaGodCafeSeg = generadoresGod.getFirst().getCafeSeg();
-            cafeteriaGodTiempoGeneracion = generadoresGod.getFirst().getTiempoGeneracion();
-            GodCostMultiplicador = generadoresGod.getFirst().getCostMultiplicador();
-            cafeteriaGodMultiplicador = generadoresGod.getFirst().getMultiplicador();
-        }
-        Generator cafeteriaGod = new Generator(3, "cafeteriaGod",cafeteriaGodPrecio, cafeteriaGodCafeSeg, cafeteriaGodTiempoGeneracion,1.12,GodCostMultiplicador, cafeteriaGodMultiplicador,this.getId());
+        Generator cafeteriaGod = manageGame.getCafeteraBaseDeDatos(getId(), "CafeGod");
         cafeteriaGod.setGame(this);
         generadoresGod.add(cafeteriaGod);
         cafeteriaGod.start();

@@ -18,15 +18,15 @@ import java.util.List;
 
 public class ManageGame {
     private Game game;
-    private GameDAO gameDAO;
-    private GeneratorDAO generatorDAO;
-    private StatisticDAO statisticDAO;
+    private final GameDAO gameDAO;
+    private final GeneratorDAO generatorDAO;
+    private final StatisticDAO statisticDAO;
 
 
-    public ManageGame(GameDAO gameDAO, GeneratorDAO generatorDAO, StatisticDAO statisticDAO) {
-        this.gameDAO = gameDAO;
-        this.generatorDAO = generatorDAO;
-        this.statisticDAO = statisticDAO;
+    public ManageGame() {
+        this.gameDAO = new SQLGameDAO();
+        this.generatorDAO = new SQLGeneratorDAO();
+        this.statisticDAO = new SQLStatisticDAO();
     }
     public Game getGame() {
         return game;
@@ -277,44 +277,16 @@ public class ManageGame {
     public void updateGenerators( ){
 
         if(!game.getGeneradoresCafetera().isEmpty()){
-            double priceCafetera = game.getGeneradoresCafetera().get(0).getPrecio();
-            double cafesSegCafetera = game.getGeneradoresCafetera().get(0).getCafeSeg();
-            Integer multiplicador = game.getGeneradoresCafetera().get(0).getMultiplicador();
-            double tiempoGeneracion = game.getGeneradoresCafetera().get(0).getTiempoGeneracion();
-            Integer costMultiplicador = game.getGeneradoresCafetera().get(0).getCostMultiplicador();
-            double incrementCost = game.getGeneradoresCafetera().get(0).getIncrementCost();
-            Integer numeroCafeteras = game.getGeneradoresCafetera().size();
-
-            generatorDAO.updateGenerator("Cafetera",priceCafetera, cafesSegCafetera, multiplicador, tiempoGeneracion, costMultiplicador, incrementCost, numeroCafeteras, game.getId());
-
+            generatorDAO.updateGenerator(game.getGeneradoresCafetera().getFirst(), game.getId(), game.getGeneradoresCafetera().size());
         }
 
         if(!game.getGeneradoresChetas().isEmpty()){
-            double priceCafeteraCheta = game.getGeneradoresChetas().get(0).getPrecio();
-            double cafesSegCafeteraCheta = game.getGeneradoresChetas().get(0).getCafeSeg();
-            Integer multiplicadorCheta = game.getGeneradoresChetas().get(0).getMultiplicador();
-            double tiempoGeneracionCheta = game.getGeneradoresChetas().get(0).getTiempoGeneracion();
-            Integer costMultiplicadorCheta = game.getGeneradoresChetas().get(0).getCostMultiplicador();
-            double incrementCostCheta = game.getGeneradoresChetas().get(0).getIncrementCost();
-            Integer numeroCafeterasCheta = game.getGeneradoresChetas().size();
-
-            generatorDAO.updateGenerator("CafeCheta",priceCafeteraCheta, cafesSegCafeteraCheta, multiplicadorCheta, tiempoGeneracionCheta, costMultiplicadorCheta, incrementCostCheta, numeroCafeterasCheta, game.getId());
+            generatorDAO.updateGenerator(game.getGeneradoresChetas().getFirst(), game.getId(), game.getGeneradoresChetas().size());
 
         }
         if(!game.getGeneradoresGod().isEmpty()){
-            double priceGod = game.getGeneradoresGod().get(0).getPrecio();
-            double cafesSegGod = game.getGeneradoresGod().get(0).getCafeSeg();
-            Integer multiplicadorGod = game.getGeneradoresGod().get(0).getMultiplicador();
-            double tiempoGeneracionGod = game.getGeneradoresGod().get(0).getTiempoGeneracion();
-            Integer costMultiplicadorGod = game.getGeneradoresGod().get(0).getCostMultiplicador();
-            double incrementCostGod = game.getGeneradoresGod().get(0).getIncrementCost();
-            Integer numeroCafeterasGod = game.getGeneradoresGod().size();
-
-            generatorDAO.updateGenerator("CafeGod",priceGod, cafesSegGod, multiplicadorGod, tiempoGeneracionGod, costMultiplicadorGod, incrementCostGod, numeroCafeterasGod, game.getId());
-
+            generatorDAO.updateGenerator(game.getGeneradoresGod().getFirst(), game.getId(), game.getGeneradoresGod().size());
         }
-
-
     }
 
     public void stopGenerators(){
@@ -393,7 +365,11 @@ public class ManageGame {
     public void logCafeHistorico(int cafesActuales, int chetasActuales){
         statisticDAO.logCafeHistorico(game.getId(), game.getNumCafes());
     }
-
-
+    public Generator getCafeteraBaseDeDatos(int gameId, String nombreCafetera){
+        return generatorDAO.getGenerator(gameId, nombreCafetera);
+    }
+    public void logout(){
+        game = null;
+    }
 }
 

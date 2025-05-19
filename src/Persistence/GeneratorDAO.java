@@ -10,10 +10,9 @@ public interface GeneratorDAO {
 
     void addBasicGenerators(int idPartida);
     List<Generator> getAllGenerators();
-    void updateGenerator(String nombre, double precio, double cafesSeg, int multiplicador,
-                         double tiempoGeneracion, int costMultiplicador, double incrementCost,
-                         int numeroCafeteras, int idPartida);
+    void updateGenerator(Generator generator, int idPartida, int numeroCafeteras);
     int numeroGenerador(Generator generator);
+    Generator getGenerator(int idPartida, String nombre);
 
 
 }

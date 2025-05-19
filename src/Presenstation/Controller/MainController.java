@@ -4,9 +4,6 @@ import Business.Entidades.Game;
 import Business.ManageGame;
 import Business.ManageUser;
 import Business.Refresh.UpdateGame;
-import Persistence.sql.SQLGameDAO;
-import Persistence.sql.SQLGeneratorDAO;
-import Persistence.sql.SQLStatisticDAO;
 import Persistence.sql.SQLUserDAO;
 import Presenstation.View.Scenes.*;
 
@@ -32,13 +29,12 @@ public class MainController {
     private GameController gameController;
     private StaticsController staticsController;
 
-    private ManageGame manageGame;
-    private ManageUser manageUser;
+    private final ManageGame manageGame;
+    private final ManageUser manageUser;
 
     public MainController() {
 
-        manageGame = new ManageGame(new SQLGameDAO(), new SQLGeneratorDAO(), new SQLStatisticDAO());
-
+        manageGame = new ManageGame();
         manageUser = new ManageUser(new SQLUserDAO());
 
         menuScene = new MenuScene();
@@ -57,7 +53,7 @@ public class MainController {
         gameManagementController = new GameManagementController(gameManagementScene, this, loginController, signUpController, manageUser, manageGame, gameController);
         gameCreationController = new GameCreationController(gameCreationScene, this, loginController, signUpController, manageGame, manageUser, gameController);
         gameController = new GameController(gameScene, this, loginController, signUpController,manageGame, manageUser);
-        staticsController = new StaticsController(staticsScene, this, manageUser);
+        staticsController = new StaticsController( this);
 
         menuScene.setController(menuController);
         signUpScene.setController(signUpController);
@@ -67,27 +63,21 @@ public class MainController {
         gameScene.setController(gameController);
         staticsScene.setController(staticsController);
 
-
-
-
-
     }
     public void nextScene(Scenes scenes) {
         scene.clean();
 
         switch (scenes) {
             case MENU:
-                menuController.run();
+                //menuController.run();
+                menuScene.apply(scene.getMainFrame());
                 break;
             case LOGIN:
                 loginScene.clearUserData();
                 loginScene.apply(this.getMainFrame());
-
                 break;
             case SIGNUP:
-
                 signUpScene.apply(scene.getMainFrame());
-
                 break;
             case GAME_MANAGEMENT:
                     gameManagementScene.apply(scene.getMainFrame());
@@ -101,12 +91,10 @@ public class MainController {
                 updateGame = new UpdateGame(gameScene);
                 updateGame.start();
                 gameController.setupdateGame(updateGame);
-
                 break;
             case STATICS:
                 staticsScene.apply(scene.getMainFrame());
                 break;
-
         }
     }
 
@@ -125,8 +113,6 @@ public class MainController {
         updateGame = new UpdateGame(gameScene);
         updateGame.start();
         gameController.setupdateGame(updateGame);
-
-
     }
 
 
@@ -140,16 +126,16 @@ public class MainController {
     }
 
     public void resetLogin() {
+        manageUser.logout();
+        manageGame.logout();
 
         loginScene = null;
         loginController = null;
 
-
         signUpScene = null;
         signUpController = null;
 
-        System.gc();
-
+        //System.gc();
 
         loginScene = new LoginScene();
         loginController = new LoginController(loginScene, this, manageUser);

@@ -7,13 +7,15 @@ import Presenstation.Messages;
 import Presenstation.View.Scenes.Scene;
 
 public class ManageUser {
-    private UserDAO userDAO;
+    private final UserDAO userDAO;
     private User currentUser;
-    private Messages messages = new Messages();
+    private final Messages messages;
     private final static int MAX_LENGTH = 50;
 
     public ManageUser(UserDAO userDAO) {
+
         this.userDAO = userDAO;
+        messages = new Messages();
     }
 
 
@@ -113,5 +115,7 @@ public class ManageUser {
         return currentUser;
     }
 
-
+    public void logout() {
+        this.currentUser = null;
+    }
 }

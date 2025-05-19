@@ -3,14 +3,18 @@ package Presenstation.Controller;
 import Business.ManageUser;
 import Presenstation.View.Scenes.Scene;
 import Presenstation.View.Scenes.Scenes;
+import Presenstation.View.Scenes.StaticsScene;
 
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-public class StaticsController extends Controller {
+public class StaticsController implements ActionListener {
 
-    public StaticsController(Scene view, MainController mainController, ManageUser manageUser) {
+    private final MainController mainController;
 
-        super(view, mainController);
+    public StaticsController( MainController mainController) {
+
+        this.mainController = mainController;
     }
 
     @Override

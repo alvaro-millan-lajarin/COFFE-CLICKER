@@ -12,10 +12,10 @@ public class LoginScene extends Scene {
     private LoginController loginController;
     public final static String GAME_MANAGEMENT = "GAME_MANAGEMENT";
 
-    private Text email;
     private Text password;
     private Text name;
-    private Text passwordAgain;
+
+
 
     public void initialitzate() {
         jPanel.setLayout(new BorderLayout(50, 20));

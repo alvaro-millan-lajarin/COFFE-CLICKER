@@ -3,31 +3,35 @@ package Presenstation.Controller;
 import Business.Entidades.User;
 import Business.ManageGame;
 import Business.ManageUser;
-import Persistence.sql.SQLUserDAO;
+
 import Presenstation.Messages;
 import Presenstation.View.Scenes.LoginScene;
-import Presenstation.View.Scenes.Scene;
+
 import Presenstation.View.Scenes.Scenes;
 
-import javax.swing.*;
-import java.awt.event.ActionEvent;
 
-public class LoginController extends Controller {
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class LoginController implements ActionListener {
     private static final String GAME_MANAGEMENT = "GAME_MANAGEMENT";
+    private MainController mainController;
     private ManageUser manageUser;
-    private Messages messages = new Messages();
+    private LoginScene loginScene;
+    private final Messages messages;
     private final static int MAX_LENGTH = 50;
 
-    public LoginController(Scene view, MainController mainController, ManageUser manageUser) {
-        super(view, mainController);
+    public LoginController(LoginScene view, MainController mainController, ManageUser manageUser) {
+
         this.manageUser = manageUser;
+        this.loginScene = view;
+        this.mainController = mainController;
+        messages = new Messages();
     }
 
     public LoginScene getScene() {
-
-        return (LoginScene) super.getView();
+        return loginScene;
     }
-
     @Override
     public void actionPerformed(ActionEvent e) {
 
@@ -35,15 +39,11 @@ public class LoginController extends Controller {
             mainController.resetGameManagement();
             String userOrEmail = getScene().getEmail();
             String password = getScene().getPassword();
-
-            //manageUser.userLoginCorrect(userOrEmail, password);
-
             if (manageUser.userLoginCorrect(userOrEmail, password) && userOrEmail.length() < MAX_LENGTH && password.length() < MAX_LENGTH){
                 mainController.nextScene(Scenes.GAME_MANAGEMENT);
                 return;
             }
             messages.incorrectLogin();
-
         }
     }
 

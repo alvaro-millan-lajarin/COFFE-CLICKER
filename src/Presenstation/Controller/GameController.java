@@ -11,37 +11,36 @@ import Presenstation.View.Scenes.Scenes;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-public class GameController extends Controller {
+public class GameController implements ActionListener {
     private LoginController loginController;
     private SignUpController signUpController;
     private ManageGame manageGame;
     private UpdateGame updateGame;
 
-
     private Messages messages = new Messages();
     private ManageUser manageUser;
 
-
-
-
     private UpdateGrafica updateGrafica;
+    private GameScene gameScene;
+    private MainController mainController;
 
+    public GameController(GameScene view, MainController mainController, LoginController loginController, SignUpController signUpController, ManageGame manageGame, ManageUser manageUser) {
 
-    public GameController(Scene view, MainController mainController, LoginController loginController, SignUpController signUpController, ManageGame manageGame, ManageUser manageUser) {
-        super(view, mainController);
         this.loginController = loginController;
         this.signUpController = signUpController;
         this.manageGame = manageGame;
 
-
         this.manageUser = manageUser;
+        this.gameScene = view;
+        this.mainController = mainController;
     }
 
     public GameScene getScene() {
 
-        return (GameScene) super.getView();
+        return gameScene;
     }
 
     @Override
@@ -96,10 +95,7 @@ public class GameController extends Controller {
 
         }
     }
-    @Override
-    public GameScene getView() {
-        return (GameScene) super.getView();
-    }
+
     public void finishGame() {
         manageGame.getGame().setFinished();
         manageGame.setFinish();
@@ -115,10 +111,6 @@ public class GameController extends Controller {
             loginController.clearUserData();
             mainController.nextScene(Scenes.MENU);
         }
-    }
-    public ManageGame getManageGame() {
-        return manageGame;
-
     }
     public void notEnoughtCoffe() {
         messages.needCoffe();

@@ -16,33 +16,37 @@ import Presenstation.View.Scenes.Scenes;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GameManagementController extends Controller {
-    private LoginController loginController;
-    private SignUpController signUpController;
-    private ManageStatics manageStatics;
-    private ManageUser manageUser;
-    private Messages messages;
-    private ManageGame manageGame;
+public class GameManagementController implements ActionListener {
+    private final LoginController loginController;
+
+    private final ManageStatics manageStatics;
+    private final ManageUser manageUser;
+    private final Messages messages;
+    private final ManageGame manageGame;
     private GameController gameController;
     private Grafica grafica;
+    private final GameManagementScene gameManagementScene;
+    private MainController mainController;
 
-    public GameManagementController(Scene view, MainController mainController, LoginController loginController, SignUpController signUpController, ManageUser manageUser, ManageGame manageGame, GameController gameController) {
-        super(view, mainController);
+    public GameManagementController(GameManagementScene gameManagementScene, MainController mainController, LoginController loginController, SignUpController signUpController, ManageUser manageUser, ManageGame manageGame, GameController gameController) {
+
         this.loginController = loginController;
-        this.signUpController = signUpController;
         this.manageStatics = new ManageStatics(new SQLStatisticDAO());
         this.manageUser = manageUser;
         this.messages = new Messages();
         this.manageGame = manageGame;
         this.gameController = gameController;
+        this.gameManagementScene = gameManagementScene;
+        this.mainController = mainController;
     }
 
     public GameManagementScene getScene() {
 
-        return (GameManagementScene) super.getView();
+        return gameManagementScene;
     }
 
 

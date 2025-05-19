@@ -98,11 +98,11 @@ public class TableBotigaMillores extends JPanel {
                 {"CafeGod", costMultiplicadores.get(2), "x"+multiplicadoress.get(2)},
         };
 
-        // Update the model with new data
+
         DefaultTableModel model = (DefaultTableModel) table.getModel();
         model.setDataVector(data, new String[]{"Nom", "Coste", "Multiplicador"});
         table.getColumn("Nom").setCellRenderer(new ButtonRenderer());
-        model.fireTableDataChanged(); // Refresh the table to show updated data
+        model.fireTableDataChanged();
     }
 
     class ButtonRenderer extends JButton implements TableCellRenderer {
