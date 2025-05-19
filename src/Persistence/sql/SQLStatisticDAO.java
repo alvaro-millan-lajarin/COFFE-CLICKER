@@ -2,10 +2,8 @@ package Persistence.sql;
 
 import Business.Entidades.Pair;
 import Persistence.StatisticDAO;
-import Business.Entidades.Statistic;
 
 
-import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
