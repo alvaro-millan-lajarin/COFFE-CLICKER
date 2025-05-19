@@ -7,9 +7,6 @@ import java.sql.*;
 
 public class SQLConnector {
     private static SQLConnector instance = null;
-    private String username;
-    private String password;
-    private String url;
     private Connection conn;
 
     private SQLConnector(Config config) {
@@ -18,9 +15,9 @@ public class SQLConnector {
             conn = DriverManager.getConnection(url, config.getAccesUserBD(), config.getPasswordBD());
         } catch (SQLException e) {
             if (e.getMessage().contains("Unknown database")) {
-                System.err.println("⚠️ La base de datos '" + config.getNomBD() + "' no existe. ");
+                System.err.println(" La base de datos '" + config.getNomBD() + "' no existe. ");
             } else {
-                System.err.println("⚠️ Error al conectar con la base de datos: " + e.getMessage());
+                System.err.println(" Error al conectar con la base de datos: " + e.getMessage());
             }
             conn = null;
         }
@@ -74,7 +71,7 @@ public class SQLConnector {
     public ResultSet selectQuery(String query){
         ResultSet rs = null;
         if (conn == null) {
-            System.err.println("⚠️ No hay conexión a la base de datos. " );
+            System.err.println(" No hay conexión a la base de datos. " );
             return null;
         }
         try {
