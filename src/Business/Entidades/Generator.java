@@ -68,14 +68,6 @@ public class Generator extends Thread {
     }
 
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
     public void setPrecio(double precio) {
         this.precio = precio;
     }
@@ -89,6 +81,7 @@ public class Generator extends Thread {
     }
 
     public double getTiempoGeneracion() {
+
         return tiempoGeneracion;
     }
 

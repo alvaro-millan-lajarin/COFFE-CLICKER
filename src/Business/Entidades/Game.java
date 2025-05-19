@@ -103,7 +103,7 @@ public class Game {
 
         // Cafeteras normales
         if (!generadoresCafetera.isEmpty()) {
-            Generator g = generadoresCafetera.get(0);
+            Generator g = generadoresCafetera.getFirst();
             produccions.add(String.format("%.2f cafès / %.2f s", g.getCafeSeg(), g.getTiempoGeneracion()));
         } else {
             produccions.add("0,20 cafès / 1,00 s");
@@ -111,7 +111,7 @@ public class Game {
 
         // Cafeteras chetas
         if (!generadoresChetas.isEmpty()) {
-            Generator g = generadoresChetas.get(0);
+            Generator g = generadoresChetas.getFirst();
             produccions.add(String.format("%.2f cafès / %.2f s", g.getCafeSeg(), g.getTiempoGeneracion()));
         } else {
             produccions.add("0,50 cafès / 0,70 s");
@@ -119,7 +119,7 @@ public class Game {
 
         // Cafeteras god
         if (!generadoresGod.isEmpty()) {
-            Generator g = generadoresGod.get(0);
+            Generator g = generadoresGod.getFirst();
             produccions.add(String.format("%.2f cafès / %.2f s", g.getCafeSeg(), g.getTiempoGeneracion()));
         } else {
             produccions.add("30 cafès / 1,3 s");
