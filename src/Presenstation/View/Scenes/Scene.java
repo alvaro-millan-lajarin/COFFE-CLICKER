@@ -18,9 +18,6 @@ public class Scene {
         jPanel = new JImagePanel("data/fondoGlobal4.jpg");
     }
 
-    public JPanel getPanel() {
-        return jPanel;
-    }
     public void initialitzate() {
 
     }
@@ -41,9 +38,11 @@ public class Scene {
     }
 
     public JFrame getMainFrame() {
+
         return mainFrame;
     }
     public void clean() {
+
         mainFrame.getContentPane().removeAll();
     }
 }

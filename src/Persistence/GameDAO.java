@@ -3,6 +3,7 @@ package Persistence;
 
 
 import Business.Entidades.Game;
+import Business.Entidades.Generator;
 
 import java.util.List;
 
@@ -12,4 +13,5 @@ public interface GameDAO {
     void deleteGame(Game game);
     List<Game> getAllGames();
     void finishTrue(Game game);
+
 }

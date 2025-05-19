@@ -17,6 +17,7 @@ public class LoginScene extends Scene {
     private Text name;
     private Text passwordAgain;
 
+
     public void initialitzate() {
         jPanel.setLayout(new BorderLayout(50, 20));
         jPanel.setBackground(new Color(210, 180, 140));

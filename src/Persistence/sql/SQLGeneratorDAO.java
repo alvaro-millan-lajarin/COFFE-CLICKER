@@ -36,19 +36,17 @@ public class SQLGeneratorDAO implements GeneratorDAO {
         SQLConnector.getInstance().insertQuery(query);
     }
 
-    public void updateGenerator(String nombre, double precio, double cafesSeg, int multiplicador,
-                                double tiempoGeneracion, int costMultiplicador, double incrementCost,
-                                int numeroCafeteras, int idPartida) {
+    public void updateGenerator(Generator generator, int idPartida, int numeroCafeteras) {
 
         String query = "UPDATE Generador SET " +
-                "precio = '" + precio + "', " +
-                "cafes_seg = '" + cafesSeg + "', " +
-                "multiplicador = '" + multiplicador + "', " +
-                "tiempo_generacion = '" + tiempoGeneracion + "', " +
-                "cost_multiplicador = '" + costMultiplicador + "', " +
-                "increment_cost = '" + incrementCost + "', " +
+                "precio = '" + generator.getPrecio() + "', " +
+                "cafes_seg = '" + generator.getCafeSeg() + "', " +
+                "multiplicador = '" + generator.getMultiplicador() + "', " +
+                "tiempo_generacion = '" + generator.getTiempoGeneracion() + "', " +
+                "cost_multiplicador = '" + generator.getCostMultiplicador() + "', " +
+                "increment_cost = '" + generator.getIncrementCost() + "', " +
                 "numero_cafeteras = '" + numeroCafeteras + "' " +
-                "WHERE nombre = '" + nombre + "' AND id_partida = '" + idPartida + "'";
+                "WHERE nombre = '" + generator.getNombre() + "' AND id_partida = '" + idPartida + "'";
 
         SQLConnector.getInstance().insertQuery(query);
     }
@@ -100,5 +98,29 @@ public class SQLGeneratorDAO implements GeneratorDAO {
         return generators;
 
     }
+    public Generator getGenerator(int idPartida, String nombre) {
+        String query = "SELECT * FROM Generador WHERE id_partida = '" + idPartida + "' AND nombre = '" + nombre + "'";
+        ResultSet resultSet = SQLConnector.getInstance().selectQuery(query);
+
+        try {
+            if (resultSet != null && resultSet.next()) {
+                int id = resultSet.getInt("id_generador");
+                double precio = resultSet.getDouble("precio");
+                double cafeSeg = resultSet.getDouble("cafes_seg");
+                int multiplicador = resultSet.getInt("multiplicador");
+                double tiempoGeneracion = resultSet.getDouble("tiempo_generacion");
+                int costMultiplicador = resultSet.getInt("cost_multiplicador");
+                double incrementCost = resultSet.getDouble("increment_cost");
+
+
+                return new Generator(id, nombre, precio, cafeSeg, tiempoGeneracion, incrementCost, costMultiplicador, multiplicador, idPartida);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return null; // Si no se encuentra ningún generador
+    }
+
 
 }
