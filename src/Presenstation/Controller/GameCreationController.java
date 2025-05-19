@@ -7,8 +7,11 @@ import Presenstation.Messages;
 import Presenstation.View.Grafica.Grafica;
 import Business.Refresh.UpdateGrafica;
 import Presenstation.View.Scenes.GameCreationScene;
+import Presenstation.View.Scenes.GameManagementScene;
 import Presenstation.View.Scenes.Scene;
 import Presenstation.View.Scenes.Scenes;
+
+import java.awt.event.ActionListener;
 import java.time.LocalDateTime;
 
 import javax.swing.*;
@@ -16,31 +19,32 @@ import java.awt.event.ActionEvent;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GameCreationController extends Controller {
+public class GameCreationController implements ActionListener {
     private LoginController loginController;
-    private SignUpController signUpController;
     private Game game;
-    private ManageGame manageGame;
-    private Messages messages = new Messages();
-    private ManageUser manageUser;
+    private final ManageGame manageGame;
+    private final Messages messages = new Messages();
+    private final ManageUser manageUser;
     private Grafica grafica;
-    private GameController gameController;
+    private final GameController gameController;
     private UpdateGrafica updateGrafica;
     private final static int MAX_LENGTH = 50;
+    private final GameCreationScene gameCreationScene;
+    private final MainController mainController;
 
-    public GameCreationController(Scene view, MainController mainController, LoginController loginController, SignUpController signUpController, ManageGame manageGame, ManageUser manageUser, GameController gameController) {
+    public GameCreationController(GameCreationScene view, MainController mainController, LoginController loginController, SignUpController signUpController, ManageGame manageGame, ManageUser manageUser, GameController gameController) {
 
-        super(view, mainController);
+        this.gameCreationScene = view;
         this.loginController = loginController;
-        this.signUpController = signUpController;
         this.manageGame = manageGame;
         this.manageUser = manageUser;
         this.gameController = gameController;
+        this.mainController = mainController;
 
     }
     public GameCreationScene getScene() {
 
-        return (GameCreationScene) super.getView();
+        return gameCreationScene;
     }
 
     @Override

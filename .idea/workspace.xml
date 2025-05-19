@@ -4,17 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f9bbb50b-3eaf-412a-ab58-ecb07cf93455" name="Changes" comment="tablas colores">
+    <list default="true" id="f9bbb50b-3eaf-412a-ab58-ecb07cf93455" name="Changes" comment="arreglos estructura">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Business/Entidades/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Business/Entidades/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Business/ManageGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Business/ManageGame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Business/ManageUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Business/ManageUser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Persistence/GameDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Persistence/GameDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Persistence/GeneratorDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Persistence/GeneratorDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Persistence/sql/SQLGeneratorDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Persistence/sql/SQLGeneratorDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Presenstation/Controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presenstation/Controller/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Presenstation/Controller/GameCreationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presenstation/Controller/GameCreationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Presenstation/Controller/GameManagementController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presenstation/Controller/GameManagementController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Presenstation/Controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presenstation/Controller/LoginController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Presenstation/Controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presenstation/Controller/MainController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Presenstation/View/Scenes/LoginScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presenstation/View/Scenes/LoginScene.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Presenstation/View/Scenes/Scene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presenstation/View/Scenes/Scene.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Presenstation/Controller/MenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presenstation/Controller/MenuController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Presenstation/Controller/SignUpController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presenstation/Controller/SignUpController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Presenstation/Controller/StaticsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presenstation/Controller/StaticsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Presenstation/View/Grafica/Grafica.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presenstation/View/Grafica/Grafica.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Presenstation/View/Table/TableBotigaGenerators.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presenstation/View/Table/TableBotigaGenerators.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Presenstation/View/Table/TableBotigaMillores.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presenstation/View/Table/TableBotigaMillores.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -121,31 +123,7 @@
       <workItem from="1743689452923" duration="5970000" />
       <workItem from="1743758267674" duration="4963000" />
       <workItem from="1746711311955" duration="24425000" />
-      <workItem from="1747673010765" duration="4555000" />
-    </task>
-    <task id="LOCAL-00028" summary="estadisticas">
-      <option name="closed" value="true" />
-      <created>1745329510123</created>
-      <option name="number" value="00028" />
-      <option name="presentableId" value="LOCAL-00028" />
-      <option name="project" value="LOCAL" />
-      <updated>1745329510123</updated>
-    </task>
-    <task id="LOCAL-00029" summary="delete gmaes">
-      <option name="closed" value="true" />
-      <created>1745332952784</created>
-      <option name="number" value="00029" />
-      <option name="presentableId" value="LOCAL-00029" />
-      <option name="project" value="LOCAL" />
-      <updated>1745332952784</updated>
-    </task>
-    <task id="LOCAL-00030" summary="comprobar id">
-      <option name="closed" value="true" />
-      <created>1745334305899</created>
-      <option name="number" value="00030" />
-      <option name="presentableId" value="LOCAL-00030" />
-      <option name="project" value="LOCAL" />
-      <updated>1745334305899</updated>
+      <workItem from="1747673010765" duration="6372000" />
     </task>
     <task id="LOCAL-00031" summary="crear partida con sign up">
       <option name="closed" value="true" />
@@ -515,7 +493,31 @@
       <option name="project" value="LOCAL" />
       <updated>1747318178958</updated>
     </task>
-    <option name="localTasksCounter" value="77" />
+    <task id="LOCAL-00077" summary="arreglo estructura">
+      <option name="closed" value="true" />
+      <created>1747677754559</created>
+      <option name="number" value="00077" />
+      <option name="presentableId" value="LOCAL-00077" />
+      <option name="project" value="LOCAL" />
+      <updated>1747677754559</updated>
+    </task>
+    <task id="LOCAL-00078" summary="organizacion">
+      <option name="closed" value="true" />
+      <created>1747677894124</created>
+      <option name="number" value="00078" />
+      <option name="presentableId" value="LOCAL-00078" />
+      <option name="project" value="LOCAL" />
+      <updated>1747677894124</updated>
+    </task>
+    <task id="LOCAL-00079" summary="arreglos estructura">
+      <option name="closed" value="true" />
+      <created>1747677954701</created>
+      <option name="number" value="00079" />
+      <option name="presentableId" value="LOCAL-00079" />
+      <option name="project" value="LOCAL" />
+      <updated>1747677954701</updated>
+    </task>
+    <option name="localTasksCounter" value="80" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -545,9 +547,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="todo con la estructura por capas" />
-    <MESSAGE value="arreglando game, para que tenga los generdores en la base de datos" />
-    <MESSAGE value="generadores update Precio" />
     <MESSAGE value="revisar base de datos generadores" />
     <MESSAGE value="game desde 0" />
     <MESSAGE value="en local sin base de datos game funciona" />
@@ -570,7 +569,10 @@
     <MESSAGE value="mejores comentarios" />
     <MESSAGE value="finish game e interficies" />
     <MESSAGE value="tablas colores" />
-    <option name="LAST_COMMIT_MESSAGE" value="tablas colores" />
+    <MESSAGE value="arreglo estructura" />
+    <MESSAGE value="organizacion" />
+    <MESSAGE value="arreglos estructura" />
+    <option name="LAST_COMMIT_MESSAGE" value="arreglos estructura" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

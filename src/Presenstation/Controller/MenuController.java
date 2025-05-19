@@ -1,16 +1,22 @@
 package Presenstation.Controller;
 
+import Presenstation.View.Scenes.MenuScene;
 import Presenstation.View.Scenes.Scene;
 import Presenstation.View.Scenes.Scenes;
 
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-public class MenuController extends Controller {
+public class MenuController implements ActionListener {
     private static final String LOGIN = "LOGIN";
     private static final String SIGNUP = "SIGNUP";
+    private final MainController mainController;
 
-    public MenuController(Scene view, MainController mainController) {
-        super(view, mainController);
+
+    public MenuController(MenuScene menuScene, MainController mainController) {
+
+        this.mainController = mainController;
+
     }
 
     @Override

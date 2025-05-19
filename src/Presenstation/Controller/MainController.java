@@ -53,7 +53,7 @@ public class MainController {
         gameManagementController = new GameManagementController(gameManagementScene, this, loginController, signUpController, manageUser, manageGame, gameController);
         gameCreationController = new GameCreationController(gameCreationScene, this, loginController, signUpController, manageGame, manageUser, gameController);
         gameController = new GameController(gameScene, this, loginController, signUpController,manageGame, manageUser);
-        staticsController = new StaticsController(staticsScene, this, manageUser);
+        staticsController = new StaticsController( this);
 
         menuScene.setController(menuController);
         signUpScene.setController(signUpController);
@@ -69,7 +69,8 @@ public class MainController {
 
         switch (scenes) {
             case MENU:
-                menuController.run();
+                //menuController.run();
+                menuScene.apply(scene.getMainFrame());
                 break;
             case LOGIN:
                 loginScene.clearUserData();
