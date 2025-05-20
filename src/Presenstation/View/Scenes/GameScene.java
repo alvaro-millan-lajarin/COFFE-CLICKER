@@ -23,7 +23,7 @@ import java.util.ArrayList;
  */
 public class GameScene extends Scene {
     private GameController gameController;
-    public final static String GAME_MANAGEMENT = "GAME_MANAGEMENT";
+    private final static String GAME_MANAGEMENT = "GAME_MANAGEMENT";
     private Integer n_cafes = 0;
     private JLabel numCafesLabel;
     private TableBotigaGenerators tableBotigaGenerators;

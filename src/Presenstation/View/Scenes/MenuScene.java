@@ -12,8 +12,8 @@ import java.awt.*;
  * Permite al usuario acceder a las opciones de registro o inicio de sesión.
  */
 public class MenuScene extends Scene {
-    public final static String SIGNUP = "SIGNUP";
-    public final static String LOGIN = "LOGIN";
+    private final static String SIGNUP = "SIGNUP";
+    private final static String LOGIN = "LOGIN";
     private MenuController menuController;
 
     /**

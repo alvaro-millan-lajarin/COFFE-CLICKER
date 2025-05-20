@@ -15,7 +15,7 @@ import java.awt.*;
  */
 public class SignUpScene extends Scene{
     private SignUpController signUpController;
-    public final static String SIGNUP = "SIGNUP";
+    private final static String SIGNUP = "SIGNUP";
     private Text email;
     private Text password;
     private Text name;
