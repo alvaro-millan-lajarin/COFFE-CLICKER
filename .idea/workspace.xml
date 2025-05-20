@@ -4,16 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f9bbb50b-3eaf-412a-ab58-ecb07cf93455" name="Changes" comment="base de datos corregir nombre">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="f9bbb50b-3eaf-412a-ab58-ecb07cf93455" name="Changes" comment="correccion">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Business/ManageStatics.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Business/ManageStatics.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Presenstation/View/Scenes/GameManagementScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presenstation/View/Scenes/GameManagementScene.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Presenstation/View/Scenes/GameScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presenstation/View/Scenes/GameScene.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Presenstation/View/Scenes/LoginScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presenstation/View/Scenes/LoginScene.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Presenstation/View/Scenes/MenuScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presenstation/View/Scenes/MenuScene.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Presenstation/View/Scenes/SignUpScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presenstation/View/Scenes/SignUpScene.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Presenstation/View/Scenes/StaticsScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presenstation/View/Scenes/StaticsScene.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,6 +57,7 @@
     "Repository.Attach.Sources": "false",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "arreglosEstructura",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/arnau/OneDrive/Escritorio/mysql-connector-java-8.0.23.jar",
@@ -121,14 +114,6 @@
       <workItem from="1743758267674" duration="4963000" />
       <workItem from="1746711311955" duration="24425000" />
       <workItem from="1747673010765" duration="9650000" />
-    </task>
-    <task id="LOCAL-00035" summary="correccion graficca">
-      <option name="closed" value="true" />
-      <created>1745408880689</created>
-      <option name="number" value="00035" />
-      <option name="presentableId" value="LOCAL-00035" />
-      <option name="project" value="LOCAL" />
-      <updated>1745408880689</updated>
     </task>
     <task id="LOCAL-00036" summary="correccion graficca">
       <option name="closed" value="true" />
@@ -514,7 +499,15 @@
       <option name="project" value="LOCAL" />
       <updated>1747683721093</updated>
     </task>
-    <option name="localTasksCounter" value="84" />
+    <task id="LOCAL-00084" summary="correccion">
+      <option name="closed" value="true" />
+      <created>1747743097807</created>
+      <option name="number" value="00084" />
+      <option name="presentableId" value="LOCAL-00084" />
+      <option name="project" value="LOCAL" />
+      <updated>1747743097807</updated>
+    </task>
+    <option name="localTasksCounter" value="85" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -544,7 +537,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="en local sin base de datos game funciona" />
     <MESSAGE value="ya funciona la base de datos con game" />
     <MESSAGE value="limpiar funciones no utilizadas" />
     <MESSAGE value="revisar estadisticas" />
@@ -569,6 +561,7 @@
     <MESSAGE value="arreglos estructura" />
     <MESSAGE value="arreglos estructura, quitar herencia" />
     <MESSAGE value="base de datos corregir nombre" />
-    <option name="LAST_COMMIT_MESSAGE" value="base de datos corregir nombre" />
+    <MESSAGE value="correccion" />
+    <option name="LAST_COMMIT_MESSAGE" value="correccion" />
   </component>
 </project>
