@@ -13,7 +13,7 @@ import java.awt.*;
  */
 public class StaticsScene extends Scene {
     private StaticsController staticsController;
-    public final static String BACK = "BACK";
+    private final static String BACK = "BACK";
     private Grafica grafica;
 
     /**

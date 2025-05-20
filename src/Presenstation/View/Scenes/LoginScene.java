@@ -14,7 +14,7 @@ import java.awt.*;
  */
 public class LoginScene extends Scene {
     private LoginController loginController;
-    public final static String GAME_MANAGEMENT = "GAME_MANAGEMENT";
+    private final static String GAME_MANAGEMENT = "GAME_MANAGEMENT";
     private Text password;
     private Text name;
 

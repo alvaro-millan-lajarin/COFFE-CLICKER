@@ -6,7 +6,7 @@ import Persistence.sql.SQLGameDAO;
 import Persistence.sql.SQLStatisticDAO;
 import Presenstation.Messages;
 import Presenstation.View.Grafica.Grafica;
-import com.mysql.cj.conf.ConnectionUrlParser;
+
 
 import javax.swing.*;
 import java.time.LocalDateTime;

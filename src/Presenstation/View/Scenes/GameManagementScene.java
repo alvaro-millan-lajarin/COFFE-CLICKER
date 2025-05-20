@@ -21,8 +21,8 @@ import java.util.List;
 public class GameManagementScene extends Scene {
     private GameManagementController gameManagementController;
     private Game selectedGame;
-    public final static String DELETE = "DELETE";
-    public final static String LOGOUT = "LOGOUT";
+    private final static String DELETE = "DELETE";
+    private final static String LOGOUT = "LOGOUT";
 
     /**
      * Inicializa la estructura del panel principal, distribuyendo las secciones (título, centro, botones).
