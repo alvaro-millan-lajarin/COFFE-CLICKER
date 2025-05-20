@@ -1,5 +1,4 @@
 package Presenstation.View.Table;
-
 import Presenstation.Controller.GameController;
 
 import javax.swing.*;
@@ -12,8 +11,18 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
+/**
+ * Panel que muestra una tabla con las mejoras disponibles para los generadores.
+ * Permite al usuario activar mejoras mediante botones en la columna de nombre.
+ */
 public class TableBotigaMillores extends JPanel {
     private JTable table;
+
+    /**
+     * Constructor del panel de tabla de mejoras.
+     *
+     * @param gameController Controlador del juego que gestiona las acciones al pulsar en los botones de mejora.
+     */
     public TableBotigaMillores(GameController gameController) {
         setLayout(new BorderLayout());
 
@@ -85,6 +94,13 @@ public class TableBotigaMillores extends JPanel {
 
         setOpaque(false);
     }
+
+    /**
+     * Actualiza los valores de la tabla de mejoras.
+     *
+     * @param costMultiplicadores Lista con los costes de mejora actualizados para cada tipo de generador.
+     * @param multiplicadores     Lista con los multiplicadores actuales, se incrementan visualmente en la tabla.
+     */
     public void setUpdateValores(ArrayList<Integer> costMultiplicadores, ArrayList<Integer> multiplicadores) {
         ArrayList<Integer> multiplicadoress = new ArrayList<>();
         multiplicadoress.add(multiplicadores.get(0)+1);
@@ -105,7 +121,13 @@ public class TableBotigaMillores extends JPanel {
         model.fireTableDataChanged();
     }
 
+    /**
+     * Clase interna que actúa como renderizador para mostrar botones en las celdas de la columna "Nom".
+     */
     class ButtonRenderer extends JButton implements TableCellRenderer {
+        /**
+         * Contructor clase interna
+         */
         public ButtonRenderer() {
             setOpaque(true);
             setBackground(new Color(245, 222, 179));
@@ -114,6 +136,17 @@ public class TableBotigaMillores extends JPanel {
             setFont(new Font("Arial", Font.PLAIN, 10));
         }
 
+        /**
+         * Personaliza la celda de la tabla para mostrarse como un botón.
+         *
+         * @param table      Tabla a la que pertenece la celda.
+         * @param value      Valor que se mostrará en la celda.
+         * @param isSelected Si la celda está seleccionada.
+         * @param hasFocus   Si la celda tiene foco.
+         * @param row        Fila de la celda.
+         * @param column     Columna de la celda.
+         * @return Componente que se renderizará (el botón).
+         */
         @Override
         public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
             setText(value.toString());

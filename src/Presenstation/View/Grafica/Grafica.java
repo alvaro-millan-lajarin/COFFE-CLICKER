@@ -1,7 +1,4 @@
 package Presenstation.View.Grafica;
-
-
-
 import Business.Entidades.Pair;
 import Business.ManageStatics;
 import Persistence.sql.SQLStatisticDAO;
@@ -12,16 +9,28 @@ import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.List;
 
+/**
+ * Componente Swing que representa una gráfica de evolución del número de cafés a lo largo del tiempo.
+ * Utiliza coordenadas temporales para el eje X y número de cafés para el eje Y.
+ */
 public class Grafica extends JPanel {
     private final List<Pair<LocalDateTime, Integer>> historico;
 
-
+    /**
+     * Constructor de la gráfica.
+     *
+     * @param historico Lista de pares (fecha/hora, número de cafés) que representa el histórico a graficar.
+     */
     public Grafica(List<Pair<LocalDateTime, Integer>> historico) {
         this.historico = historico;
         setPreferredSize(new Dimension(600, 400));
     }
 
-
+    /**
+     * Método sobrescrito de JPanel que pinta la gráfica en pantalla.
+     *
+     * @param g Contexto gráfico proporcionado por Swing.
+     */
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
@@ -44,9 +53,6 @@ public class Grafica extends JPanel {
         int maxCafe = historico.stream().mapToInt(Pair::getValue).max().orElse(1);
         long totalMinutes = historico.size() - 1; // ya no fijas 20 minutos
 
-
-
-
         g2.setColor(Color.BLUE);
         for (int i = 1; i < historico.size(); i++) {
             Pair<LocalDateTime, Integer> prev = historico.get(i - 1);
@@ -54,8 +60,6 @@ public class Grafica extends JPanel {
 
             long t1 = i - 1; // minuto i-1
             long t2 = i;     // minuto i
-
-
 
             int x1 = padding + (int) ((t1 / (double) totalMinutes) * width);
             int y1 = getHeight() - padding - (int) ((prev.getValue() / (double) maxCafe) * height);
@@ -66,7 +70,6 @@ public class Grafica extends JPanel {
             g2.drawLine(x1, y1, x2, y2);
         }
 
-
         g2.setColor(Color.DARK_GRAY);
         int yTicks = 5;
         for (int i = 0; i <= yTicks; i++) {
@@ -76,17 +79,12 @@ public class Grafica extends JPanel {
             g2.drawString(String.valueOf(value), padding - 40, y + 5); // label
         }
 
-
-        // Mostrar ticks cada 1 minuto
         int maxMinutes = (int) totalMinutes;
         for (int i = 0; i <= maxMinutes; i++) {
             int x = padding + (int) ((i / (double) totalMinutes) * width);
             g2.drawLine(x, getHeight() - padding - 5, x, getHeight() - padding + 5);
             g2.drawString(i + "m", x - 10, getHeight() - padding + 20);
         }
-
-
-
 
         g2.drawString("Tiempo", getWidth() / 2, getHeight() - 10);
         g2.drawString("Número de cafés", 10, padding - 10);
@@ -98,6 +96,12 @@ public class Grafica extends JPanel {
                 : String.format("Tiempo aprox: %d seg", totalMinutes);
         g2.drawString(tiempoStr, getWidth() - 160, getHeight() - padding + 40);
     }
+
+    /**
+     * Devuelve la lista de datos históricos utilizados para dibujar la gráfica.
+     *
+     * @return Lista de pares (fecha/hora, cafés).
+     */
     public List<Pair<LocalDateTime, Integer>> getHistorico() {
         return historico;
     }

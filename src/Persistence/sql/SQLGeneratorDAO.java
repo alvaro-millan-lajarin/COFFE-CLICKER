@@ -10,10 +10,17 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Clase que implementa el acceso a los datos de los generadores mediante SQL.
+ * Permite insertar, actualizar y recuperar generadores desde la base de datos.
+ */
 public class SQLGeneratorDAO implements GeneratorDAO {
 
-
-
+    /**
+     * Inserta los tres generadores básicos (Cafetera, Cheta, God) en la base de datos para una partida.
+     *
+     * @param idPartida ID de la partida a la que se asocian los generadores.
+     */
     public void addBasicGenerators(int idPartida) {
         SQLConnector connector = SQLConnector.getInstance();
 
@@ -31,11 +38,13 @@ public class SQLGeneratorDAO implements GeneratorDAO {
         connector.insertQuery(query3);
     }
 
-    public void updateGeneratorPrice(String nombre, double precio) {
-        String query = "UPDATE Generador SET precio = '" + precio + "' WHERE nombre = '" + nombre + "'";
-        SQLConnector.getInstance().insertQuery(query);
-    }
-
+    /**
+     * Actualiza los datos de un generador específico en la base de datos.
+     *
+     * @param generator Generador con los datos a actualizar.
+     * @param idPartida ID de la partida asociada.
+     * @param numeroCafeteras Número de unidades del generador.
+     */
     public void updateGenerator(Generator generator, int idPartida, int numeroCafeteras) {
 
         String query = "UPDATE Generador SET " +
@@ -51,6 +60,12 @@ public class SQLGeneratorDAO implements GeneratorDAO {
         SQLConnector.getInstance().insertQuery(query);
     }
 
+    /**
+     * Devuelve el número de generadores de un tipo específico asociados a una partida.
+     *
+     * @param generator Generador del cual se quiere saber el número de unidades.
+     * @return Número de generadores, o 0 si no se encuentra o hay error.
+     */
    public int numeroGenerador(Generator generator) {
        String query = "SELECT numero_cafeteras FROM Generador WHERE nombre = '" + generator.getNombre() +
                "' AND id_partida = '" + generator.getIdGame() + "'";
@@ -65,11 +80,15 @@ public class SQLGeneratorDAO implements GeneratorDAO {
            System.err.println("Error al obtener el número de cafeteras: " + e.getMessage());
        }
 
-       return 0; // o -1 si quieres indicar que no se encontró
+       return 0;
    }
 
+    /**
+     * Recupera todos los generadores almacenados en la base de datos.
+     *
+     * @return Lista de generadores existentes.
+     */
     @Override
-
     public List<Generator> getAllGenerators() {
         List<Generator> generators = new ArrayList<>();
 
@@ -98,6 +117,15 @@ public class SQLGeneratorDAO implements GeneratorDAO {
         return generators;
 
     }
+
+
+    /**
+     * Recupera un generador específico según su nombre e ID de partida.
+     *
+     * @param idPartida ID de la partida asociada.
+     * @param nombre Nombre del generador.
+     * @return Objeto Generator correspondiente, o null si no se encuentra.
+     */
     public Generator getGenerator(int idPartida, String nombre) {
         String query = "SELECT * FROM Generador WHERE id_partida = '" + idPartida + "' AND nombre = '" + nombre + "'";
         ResultSet resultSet = SQLConnector.getInstance().selectQuery(query);
@@ -119,7 +147,7 @@ public class SQLGeneratorDAO implements GeneratorDAO {
             e.printStackTrace();
         }
 
-        return null; // Si no se encuentra ningún generador
+        return null;
     }
 
 

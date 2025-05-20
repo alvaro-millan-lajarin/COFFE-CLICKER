@@ -9,8 +9,16 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * Implementación de GameDAO que accede a los datos de partidas usando SQL y MySQL.
+ */
 public class SQLGameDAO implements GameDAO {
 
+    /**
+     * Inserta una nueva partida en la base de datos.
+     *
+     * @param game Partida a insertar.
+     */
     public void addGame(Game game) {
         String query = "INSERT INTO Partida(id_usuario, nombre_partida, fecha_creacion, fecha_ultimo_save, num_cafes) VALUES ('" +
                 game.getIdUser() + "', '" +
@@ -22,7 +30,11 @@ public class SQLGameDAO implements GameDAO {
         SQLConnector.getInstance().insertQuery(query);
     }
 
-
+    /**
+     * Actualiza los datos de una partida existente en la base de datos.
+     *
+     * @param game Partida con los nuevos datos.
+     */
     @Override
     public void updateGame(Game game) {
         String query = "UPDATE Partida SET " +
@@ -37,14 +49,22 @@ public class SQLGameDAO implements GameDAO {
         SQLConnector.getInstance().updateQuery(query);
     }
 
+    /**
+     * Elimina una partida de la base de datos según su nombre.
+     *
+     * @param game Partida a eliminar.
+     */
     @Override
     public void deleteGame(Game game) {
         String query = "DELETE FROM Partida WHERE nombre_partida = '" + game.getNombre() + "'";
         SQLConnector.getInstance().deleteQuery(query);
     }
 
-
-
+    /**
+     * Recupera todas las partidas almacenadas en la base de datos.
+     *
+     * @return Lista de partidas encontradas.
+     */
     @Override
     public List<Game> getAllGames() {
         String query = "SELECT * FROM Partida";
@@ -71,6 +91,11 @@ public class SQLGameDAO implements GameDAO {
         return games;
     }
 
+    /**
+     * Marca como finalizada una partida en la base de datos.
+     *
+     * @param game Partida a marcar como finalizada.
+     */
     public void finishTrue(Game game) {
         String query = "UPDATE Partida SET finish = TRUE WHERE id_partida = '" + game.getId() + "'";
         SQLConnector.getInstance().updateQuery(query);

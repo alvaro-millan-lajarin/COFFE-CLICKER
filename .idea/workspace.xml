@@ -5,7 +5,53 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f9bbb50b-3eaf-412a-ab58-ecb07cf93455" name="Changes" comment="base de datos corregir nombre">
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/mysql_connector_java_8_0_23.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Business/Entidades/Config.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Business/Entidades/Config.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Business/Entidades/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Business/Entidades/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Business/Entidades/Generator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Business/Entidades/Generator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Business/Entidades/Pair.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Business/Entidades/Pair.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Business/Entidades/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Business/Entidades/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Business/ManageGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Business/ManageGame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Business/ManageStatics.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Business/ManageStatics.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Business/ManageUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Business/ManageUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Business/Refresh/UpdateGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Business/Refresh/UpdateGame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Business/Refresh/UpdateGrafica.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Business/Refresh/UpdateGrafica.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Persistence/GameDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Persistence/GameDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Persistence/GeneratorDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Persistence/GeneratorDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Persistence/StatisticDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Persistence/StatisticDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Persistence/UserDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Persistence/UserDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Persistence/configJsonDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Persistence/configJsonDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Persistence/sql/SQLConnector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Persistence/sql/SQLConnector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Persistence/sql/SQLGameDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Persistence/sql/SQLGameDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Persistence/sql/SQLGeneratorDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Persistence/sql/SQLGeneratorDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Persistence/sql/SQLStatisticDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Persistence/sql/SQLStatisticDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Persistence/sql/SQLUserDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Persistence/sql/SQLUserDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Presenstation/Controller/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presenstation/Controller/GameController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Presenstation/Controller/GameCreationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presenstation/Controller/GameCreationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Presenstation/Controller/GameManagementController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presenstation/Controller/GameManagementController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Presenstation/Controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presenstation/Controller/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Presenstation/Controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presenstation/Controller/MainController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Presenstation/Controller/MenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presenstation/Controller/MenuController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Presenstation/Controller/SignUpController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presenstation/Controller/SignUpController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Presenstation/Controller/StaticsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presenstation/Controller/StaticsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Presenstation/Messages.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presenstation/Messages.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Presenstation/View/Grafica/Grafica.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presenstation/View/Grafica/Grafica.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Presenstation/View/Image/JImagePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presenstation/View/Image/JImagePanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Presenstation/View/Scenes/GameCreationScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presenstation/View/Scenes/GameCreationScene.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Presenstation/View/Scenes/GameManagementScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presenstation/View/Scenes/GameManagementScene.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Presenstation/View/Scenes/GameScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presenstation/View/Scenes/GameScene.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Presenstation/View/Scenes/LoginScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presenstation/View/Scenes/LoginScene.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Presenstation/View/Scenes/MenuScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presenstation/View/Scenes/MenuScene.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Presenstation/View/Scenes/Scene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presenstation/View/Scenes/Scene.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Presenstation/View/Scenes/Scenes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presenstation/View/Scenes/Scenes.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Presenstation/View/Scenes/SignUpScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presenstation/View/Scenes/SignUpScene.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Presenstation/View/Scenes/StaticsScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presenstation/View/Scenes/StaticsScene.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Presenstation/View/Table/TableBotigaGenerators.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presenstation/View/Table/TableBotigaGenerators.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Presenstation/View/Table/TableBotigaMillores.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presenstation/View/Table/TableBotigaMillores.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Presenstation/View/Table/TableGeneradorsDisponibles.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presenstation/View/Table/TableGeneradorsDisponibles.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,12 +79,12 @@
     &quot;assignee&quot;: &quot;alvaromill&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/arnau-pujol/DPOO-S2.git&quot;,
-    &quot;accountId&quot;: &quot;c1ffab62-838e-4f51-b9c3-6be7cdb18fcc&quot;
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/arnau-pujol/DPOO-S2.git",
+    "accountId": "e2ca6d98-8a73-4753-b502-ed6c2725bc0a"
   }
-}</component>
+}]]></component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 4
 }</component>
@@ -57,7 +103,7 @@
     "Repository.Attach.Sources": "false",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "arreglosEstructura",
+    "git-widget-placeholder": "newDev",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/arnau/OneDrive/Escritorio/mysql-connector-java-8.0.23.jar",
     "node.js.detected.package.eslint": "true",
@@ -94,8 +140,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9823dce3aa75-a94e463ab2e7-intellij.indexing.shared.core-IU-243.25659.59" />
-        <option value="bundled-js-predefined-d6986cc7102b-1632447f56bf-JavaScript-IU-243.25659.59" />
+        <option value="bundled-jdk-9823dce3aa75-b114ca120d71-intellij.indexing.shared.core-IU-242.21829.142" />
+        <option value="bundled-js-predefined-d6986cc7102b-7c0b70fcd90d-JavaScript-IU-242.21829.142" />
       </set>
     </attachedChunks>
   </component>

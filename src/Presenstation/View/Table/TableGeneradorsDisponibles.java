@@ -11,6 +11,10 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
+/**
+ * Clase que representa una tabla de resumen con los generadores disponibles.
+ * Muestra la cantidad, producción por unidad, producción global y el porcentaje de producción total.
+ */
 public class TableGeneradorsDisponibles extends JPanel {
     private ArrayList<String> quantitats;
     private ArrayList<String> produccioUnitat;
@@ -18,6 +22,11 @@ public class TableGeneradorsDisponibles extends JPanel {
     private ArrayList<String> produccioGlobal;
     private JTable table;
 
+    /**
+     * Constructor que inicializa la tabla con valores por defecto y asigna el controlador.
+     *
+     * @param gameController Controlador del juego que maneja eventos sobre esta tabla.
+     */
     public TableGeneradorsDisponibles(GameController gameController) {
         inicializarValores();
 
@@ -91,6 +100,10 @@ public class TableGeneradorsDisponibles extends JPanel {
         setOpaque(false);
     }
 
+    /**
+     * Inicializa los valores por defecto de todas las listas asociadas a la tabla.
+     * Establece todo en "0" para evitar valores nulos al renderizar.
+     */
     public void inicializarValores() {
         quantitats = new ArrayList<>();
         produccioUnitat = new ArrayList<>();
@@ -113,46 +126,14 @@ public class TableGeneradorsDisponibles extends JPanel {
         produccioGlobal.add("0");
     }
 
-    public void setValores(ArrayList<Integer> quantitatsInput, ArrayList<String> produccioUnitatInput) {
-        this.quantitats = new ArrayList<>();
-        this.produccioUnitat = new ArrayList<>(produccioUnitatInput);
-        this.produccioTotal = new ArrayList<>();
-        this.produccioGlobal = new ArrayList<>();
-
-        ArrayList<Double> produccionsTotals = new ArrayList<>();
-        double sumaTotal = 0.0;
-
-
-        for (int i = 0; i < quantitatsInput.size(); i++) {
-            int quantitat = quantitatsInput.get(i);
-            String prodUnit = produccioUnitatInput.get(i);
-
-
-            String[] parts = prodUnit.split(" ");
-            double cicles = Double.parseDouble(parts[0]);
-            String temps = parts[1].replace("s", "").replace("/", ""); // por si hay espacios o formato raro
-            double segons = Double.parseDouble(temps);
-
-
-            double produccioPerUnitat = cicles / segons;
-
-
-            double total = produccioPerUnitat * quantitat;
-            produccionsTotals.add(total);
-            sumaTotal += total;
-
-
-            this.quantitats.add(String.valueOf(quantitat));
-            this.produccioTotal.add(String.format("%.2f c/s", total));
-        }
-
-
-        for (double total : produccionsTotals) {
-            double percentatge = (total / sumaTotal) * 100;
-            this.produccioGlobal.add(String.format("%.1f %%", percentatge));
-        }
-    }
-
+    /**
+     * Actualiza todos los valores de la tabla (cantidad, producción unitaria, global y % total).
+     * Realiza los cálculos internos basándose en las unidades y los multiplicadores actuales.
+     *
+     * @param quantitatsInput        Lista con las cantidades de cada generador.
+     * @param proudccioUnitatInput   Lista con las producciones unitarias en texto.
+     * @param multiplicadoresInput   Lista con los multiplicadores de cada generador (no usados directamente).
+     */
     public void setUpdateValores(ArrayList<Integer> quantitatsInput, ArrayList<String> proudccioUnitatInput, ArrayList<Integer> multiplicadoresInput) {
 
 
@@ -227,8 +208,13 @@ public class TableGeneradorsDisponibles extends JPanel {
     }
 
 
-
+    /**
+     * Renderiza los botones en la columna "Nom" de la tabla como celdas interactivas estilizadas.
+     */
     class ButtonRenderer extends JButton implements TableCellRenderer {
+        /**
+         * Constructor clase interna
+         */
         public ButtonRenderer() {
             setOpaque(true);
             setBackground(new Color(245, 222, 179));
@@ -237,6 +223,17 @@ public class TableGeneradorsDisponibles extends JPanel {
             setFont(new Font("Arial", Font.PLAIN, 10));
         }
 
+        /**
+         * Método sobrescrito que proporciona el botón estilizado para renderizar en la celda.
+         *
+         * @param table      Tabla objetivo.
+         * @param value      Texto del botón.
+         * @param isSelected Si está seleccionada la celda.
+         * @param hasFocus   Si la celda tiene foco.
+         * @param row        Fila.
+         * @param column     Columna.
+         * @return Componente renderizado.
+         */
         @Override
         public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
             setText(value.toString());

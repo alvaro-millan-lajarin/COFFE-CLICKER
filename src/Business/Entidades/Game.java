@@ -26,7 +26,17 @@ public class Game {
     private List<Generator> generadoresGod;
 
 
-
+    /**
+     * Constructor de la clase Game.
+     *
+     * @param id Identificador único de la partida.
+     * @param idUser Identificador del usuario propietario de la partida.
+     * @param nombre Nombre de la partida.
+     * @param fechaCreacion Fecha en la que se creó la partida.
+     * @param fechaModificacion Fecha en la que se modificó por última vez.
+     * @param numCafes Número de cafés acumulados.
+     * @param finished Indica si la partida ha finalizado.
+     */
     public Game(int id, int idUser, String nombre, LocalDateTime fechaCreacion, LocalDateTime fechaModificacion, int numCafes, boolean finished) {
         this.id = id;
         this.idUser = idUser;
@@ -41,6 +51,10 @@ public class Game {
         this.generadoresGod = new ArrayList<>();
 
     }
+
+    /**
+     * Inicia un generador tipo Cafetera, lo configura y lo arranca.
+     */
     public void startGeneratorCafetera() {
 
         Generator cafeteria = manageGame.getCafeteraBaseDeDatos(getId(), "Cafetera");
@@ -48,12 +62,20 @@ public class Game {
         generadoresCafetera.add(cafeteria);
         cafeteria.start();
     }
+
+    /**
+     * Inicia un generador tipo Cafetera Cheta, lo configura y lo arranca.
+     */
     public void startGeneratorCafeteraCheta() {
         Generator cafeteriaCheta = manageGame.getCafeteraBaseDeDatos(getId(), "CafeCheta");
         cafeteriaCheta.setGame(this);
         generadoresChetas.add(cafeteriaCheta);
         cafeteriaCheta.start();
     }
+
+    /**
+     * Inicia un generador tipo Cafetera God, lo configura y lo arranca.
+     */
     public void startGeneratorCafeteraGod() {
         Generator cafeteriaGod = manageGame.getCafeteraBaseDeDatos(getId(), "CafeGod");
         cafeteriaGod.setGame(this);
@@ -61,43 +83,90 @@ public class Game {
         cafeteriaGod.start();
     }
 
+    /**
+     * Devuelve el ID de la partida.
+     *
+     * @return ID de la partida.
+     */
     public int getId() {
         return id;
     }
 
+    /**
+     * Devuelve el ID del usuario propietario de la partida.
+     *
+     * @return ID del usuario.
+     */
     public int getIdUser() {
         return idUser;
     }
 
+    /**
+     * Devuelve el nombre de la partida.
+     *
+     * @return Nombre de la partida.
+     */
     public String getNombre() {
         return nombre;
     }
 
+    /**
+     * Devuelve la fecha de creación de la partida.
+     *
+     * @return Fecha de creación.
+     */
     public LocalDateTime getFechaCreacion() {
         return fechaCreacion;
     }
 
+    /**
+     * Devuelve la fecha de la última modificación de la partida.
+     *
+     * @return Fecha de modificación.
+     */
     public LocalDateTime getFechaModificacion() {
         return fechaModificacion;
     }
 
+    /**
+     * Devuelve el número actual de cafés acumulados.
+     *
+     * @return Número de cafés.
+     */
     public int getNumCafes() {
         return numCafes;
     }
 
+    /**
+     * Establece el número actual de cafés acumulados.
+     *
+     * @param numCafes Nuevo valor de cafés.
+     */
     public void setNumCafes(int numCafes) {
         this.numCafes = numCafes;
     }
 
+    /**
+     * Incrementa en 1 el número de cafés acumulados.
+     */
     public void increaseNumCafes(){
         this.numCafes++;
     }
+
+    /**
+     * Añade una cantidad específica de cafés al total.
+     *
+     * @param coffes Número de cafés a añadir.
+     */
     public synchronized void addNumCafes(Integer coffes){
         this.numCafes = this.numCafes + coffes;
     }
 
-
-
+    /**
+     * Devuelve la producción por segundo y tiempo de generación de cada tipo de cafetera.
+     *
+     * @return Lista con descripciones formateadas de la producción por tipo.
+     */
     public ArrayList<String> getProduccionsUnitat() {
         ArrayList<String> produccions = new ArrayList<>();
 
@@ -128,7 +197,11 @@ public class Game {
         return produccions;
     }
 
-
+    /**
+     * Devuelve el precio actual de una Cafetera normal.
+     *
+     * @return Precio de la primera cafetera o valor por defecto.
+     */
     public double getCafeteriaPrecio() {
         int precio = 10;
         if(!generadoresCafetera.isEmpty()){
@@ -138,6 +211,11 @@ public class Game {
 
     }
 
+    /**
+     * Devuelve el precio actual de una Cafetera Cheta.
+     *
+     * @return Precio de la primera cafetera cheta o valor por defecto.
+     */
     public double getCafeteriaChetaPrecio() {
         int precio = 150;
 
@@ -147,6 +225,11 @@ public class Game {
         return precio;
     }
 
+    /**
+     * Devuelve el precio actual de una Cafetera God.
+     *
+     * @return Precio de la primera cafetera god o valor por defecto.
+     */
     public double getCafeteriaGodPrecio() {
         int precio = 2000;
 
@@ -155,6 +238,10 @@ public class Game {
         }
         return precio;
     }
+
+    /**
+     * Mejora todas las cafeteras normales incrementando su multiplicador y su coste de mejora.
+     */
     public void mejorarCafetera(){
         for(Generator generator : generadoresCafetera){
             generator.setMultiplicador(generator.getMultiplicador()+1);
@@ -163,6 +250,10 @@ public class Game {
             generator.setCafeSeg(generator.getCafeSeg()*generator.getMultiplicador());
         }
     }
+
+    /**
+     * Mejora todas las cafeteras Cheta incrementando su multiplicador y su coste de mejora.
+     */
     public void mejorarCheta(){
         for (Generator generator: generadoresChetas){
             generator.setMultiplicador(generator.getMultiplicador()+1);
@@ -172,6 +263,9 @@ public class Game {
         }
     }
 
+    /**
+     * Mejora todas las cafeteras God incrementando su multiplicador y su coste de mejora.
+     */
     public void mejorarGod(){
 
         for(Generator generator: generadoresGod){
@@ -182,6 +276,12 @@ public class Game {
 
         }
     }
+
+    /**
+     * Devuelve los costes actuales de mejora (costMultiplicador) de cada tipo de cafetera.
+     *
+     * @return Lista con los tres costes: Cafetera, Cheta, God.
+     */
     public ArrayList<Integer> getCostMultplicadors() {
         ArrayList<Integer> costMultplicadors = new ArrayList<>();
         int costMultplicadorCafetera = 10;
@@ -204,6 +304,12 @@ public class Game {
 
         return costMultplicadors;
     }
+
+    /**
+     * Devuelve los multiplicadores actuales de cada tipo de cafetera.
+     *
+     * @return Lista con los tres multiplicadores: Cafetera, Cheta, God.
+     */
     public ArrayList<Integer> getMultplicadors() {
         ArrayList<Integer> multplicadors = new ArrayList<>();
         int multplicadorCafetera = 1;
@@ -226,36 +332,72 @@ public class Game {
         return multplicadors;
     }
 
-
-
+    /**
+     * Devuelve la lista de generadores tipo Cafetera.
+     *
+     * @return Lista de generadores Cafetera.
+     */
     public List<Generator> getGeneradoresCafetera() {
         return generadoresCafetera;
     }
 
+    /**
+     * Devuelve la lista de generadores tipo Cheta.
+     *
+     * @return Lista de generadores Cheta.
+     */
     public List<Generator> getGeneradoresChetas() {
         return generadoresChetas;
     }
 
+    /**
+     * Devuelve la lista de generadores tipo God.
+     *
+     * @return Lista de generadores God.
+     */
     public List<Generator> getGeneradoresGod() {
         return generadoresGod;
     }
 
-
-
+    /**
+     * Establece la lista de generadores tipo Cafetera.
+     *
+     * @param generadoresCafetera Lista de generadores a asignar.
+     */
     public void setGeneradoresCafetera(List<Generator> generadoresCafetera) {
         this.generadoresCafetera = generadoresCafetera;
     }
 
+    /**
+     * Establece la lista de generadores tipo Cheta.
+     *
+     * @param generadoresChetas Lista de generadores a asignar.
+     */
     public void setGeneradoresChetas(List<Generator> generadoresChetas) {
         this.generadoresChetas = generadoresChetas;
     }
 
+    /**
+     * Establece la lista de generadores tipo God.
+     *
+     * @param generadoresGod Lista de generadores a asignar.
+     */
     public void setGeneradoresGod(List<Generator> generadoresGod) {
         this.generadoresGod = generadoresGod;
     }
+
+    /**
+     * Marca la partida como finalizada.
+     */
     public void setFinished() {
         this.finished = true;
     }
+
+    /**
+     * Indica si la partida está finalizada.
+     *
+     * @return true si la partida ha finalizado, false en caso contrario.
+     */
     public boolean isFinished() {
         return finished;
     }

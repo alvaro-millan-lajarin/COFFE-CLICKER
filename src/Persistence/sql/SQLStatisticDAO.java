@@ -8,14 +8,31 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Implementación de StatisticDAO que accede a los datos estadísticos de las partidas
+ * mediante sentencias SQL sobre una base de datos MySQL.
+ */
 public class SQLStatisticDAO implements StatisticDAO {
 
+    /**
+     * Elimina todas las estadísticas asociadas a una partida específica.
+     *
+     * @param idPartida ID de la partida cuyas estadísticas se eliminarán.
+     */
     @Override
     public void deleteEstadisticasByPartidaId(int idPartida) {
         String query = "DELETE FROM estadisticas WHERE id_partida = '" + idPartida + "'";
         SQLConnector.getInstance().deleteQuery(query);
     }
 
+    /**
+     * Registra en la base de datos el número actual de cafés junto con la fecha y hora,
+     * como parte del histórico de una partida.
+     * Solo realiza la operación si la partida existe.
+     *
+     * @param id ID de la partida.
+     * @param numCafes Número de cafés actuales a registrar.
+     */
     public void logCafeHistorico(int id, int numCafes) {
         try {
             System.out.println("Intentando registrar café para partida ID: " + id);
@@ -38,6 +55,12 @@ public class SQLStatisticDAO implements StatisticDAO {
         }
     }
 
+    /**
+     * Obtiene el histórico de cafés registrados para una partida, ordenado por fecha.
+     *
+     * @param idPartida ID de la partida.
+     * @return Lista de pares (fecha, número de cafés) del histórico.
+     */
     public List<Pair<LocalDateTime, Integer>> getHistoricoCafes(int idPartida) {
         List<Pair<LocalDateTime, Integer>> historico = new ArrayList<>();
         String query = "SELECT timestamp, num_cafes FROM estadisticas WHERE id_partida = " + idPartida + " ORDER BY timestamp ASC";

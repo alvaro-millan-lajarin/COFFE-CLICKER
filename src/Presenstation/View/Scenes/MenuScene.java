@@ -7,16 +7,28 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
 
+/**
+ * Escena principal del menú de inicio del juego.
+ * Permite al usuario acceder a las opciones de registro o inicio de sesión.
+ */
 public class MenuScene extends Scene {
     public final static String SIGNUP = "SIGNUP";
     public final static String LOGIN = "LOGIN";
     private MenuController menuController;
 
+    /**
+     * Asigna el controlador del menú y prepara la interfaz.
+     *
+     * @param menuController Controlador que gestiona las acciones del menú.
+     */
     public void setController(MenuController menuController) {
         this.menuController = menuController;
         initialitzate();
     }
 
+    /**
+     * Inicializa la estructura visual de la escena, incluyendo botones y título.
+     */
     public void initialitzate() {
         jPanel.setLayout(new BorderLayout(50, 20));
         jPanel.setBackground(new Color(210, 180, 140));
@@ -31,10 +43,16 @@ public class MenuScene extends Scene {
 
 
     }
+
+    /**
+     * Crea el panel central con los botones de SIGN UP y LOGIN, y una imagen decorativa.
+     *
+     * @param centerPanel Panel base que se completará.
+     * @return JPanel con los elementos centrales del menú.
+     */
     public JPanel makeCenterPanel(JPanel centerPanel) {
         JPanel panel = new JPanel(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();
-
 
         JPanel panelIzquierdo = new JPanel(new GridBagLayout());
         GridBagConstraints innerGbc = new GridBagConstraints();
@@ -57,12 +75,10 @@ public class MenuScene extends Scene {
 
         panelIzquierdo.setOpaque(false);
 
-
         gbc.gridx = 0;
         gbc.weightx = 0.3;
         gbc.fill = GridBagConstraints.BOTH;
         panel.add(panelIzquierdo, gbc);
-
 
         gbc.gridx = 1;
         gbc.weightx = 0.7;
@@ -75,7 +91,12 @@ public class MenuScene extends Scene {
         return panel;
     }
 
-
+    /**
+     * Crea el panel del título con estilo.
+     *
+     * @param message Texto a mostrar como título.
+     * @return JPanel con el título.
+     */
     public JPanel addTitle(String message) {
         JPanel panel = new JPanel();
         JLabel label = new JLabel(message);
@@ -86,14 +107,25 @@ public class MenuScene extends Scene {
         panel.setBorder(new EmptyBorder(20, 0, 0, 0));
         return panel;
     }
+
+    /**
+     * Aplica esta escena al JFrame principal y define su título.
+     *
+     * @param mainFrame Ventana principal de la aplicación.
+     */
     public void apply(JFrame mainFrame) {
         initialitzate();
         super.apply(mainFrame);
         mainFrame.setTitle("Menu");
     }
+
+    /**
+     * Crea un panel vacío transparente utilizado como espaciador.
+     *
+     * @return JPanel vacío.
+     */
     public JPanel addVacio() {
         JPanel panel = new JPanel(new FlowLayout());
-
         panel.setOpaque(false);
         return panel;
     }

@@ -5,10 +5,19 @@ import Persistence.configJsonDAO;
 
 import java.sql.*;
 
+/**
+ * Clase que gestiona la conexión a la base de datos MySQL.
+ * Implementa el patrón Singleton y ofrece métodos básicos para ejecutar consultas SQL.
+ */
 public class SQLConnector {
     private static SQLConnector instance = null;
     private Connection conn;
 
+    /**
+     * Constructor privado que establece la conexión a partir de una configuración dada.
+     *
+     * @param config Objeto de configuración con los datos de conexión.
+     */
     private SQLConnector(Config config) {
         String url = "jdbc:mysql://" + config.getPortConexionBD() + ":" + config.getIpBD() + "/" + config.getNomBD();
         try {
@@ -23,6 +32,12 @@ public class SQLConnector {
         }
     }
 
+    /**
+     * Devuelve la instancia única de SQLConnector.
+     * Si no existe, la crea usando la configuración del archivo JSON.
+     *
+     * @return Instancia única de SQLConnector.
+     */
     public static SQLConnector getInstance() {
         if (instance == null) {
             try {
@@ -36,6 +51,11 @@ public class SQLConnector {
         return instance;
     }
 
+    /**
+     * Ejecuta una consulta SQL de inserción (INSERT).
+     *
+     * @param query Consulta SQL a ejecutar.
+     */
     public void insertQuery(String query){
         try {
             Statement s = conn.createStatement();
@@ -46,6 +66,11 @@ public class SQLConnector {
         }
     }
 
+    /**
+     * Ejecuta una consulta SQL de actualización (UPDATE).
+     *
+     * @param query Consulta SQL a ejecutar.
+     */
     public void updateQuery(String query){
         try {
             Statement s = conn.createStatement();
@@ -56,8 +81,11 @@ public class SQLConnector {
         }
     }
 
-
-
+    /**
+     * Ejecuta una consulta SQL de eliminación (DELETE).
+     *
+     * @param query Consulta SQL a ejecutar.
+     */
     public void deleteQuery(String query){
         try {
             Statement s = conn.createStatement();
@@ -68,6 +96,12 @@ public class SQLConnector {
         }
     }
 
+    /**
+     * Ejecuta una consulta SQL de selección (SELECT) y devuelve el resultado.
+     *
+     * @param query Consulta SQL a ejecutar.
+     * @return ResultSet con los datos seleccionados, o null si hubo error.
+     */
     public ResultSet selectQuery(String query){
         ResultSet rs = null;
         if (conn == null) {
@@ -83,6 +117,12 @@ public class SQLConnector {
         }
         return rs;
     }
+
+    /**
+     * Indica si la conexión a la base de datos está activa.
+     *
+     * @return true si hay conexión, false en caso contrario.
+     */
     public boolean isConnected() {
         return conn != null;
     }

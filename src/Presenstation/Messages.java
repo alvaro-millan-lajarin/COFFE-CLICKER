@@ -2,8 +2,15 @@ package Presenstation;
 
 import javax.swing.*;
 
+/**
+ * Clase que agrupa todos los diálogos de mensajes mostrados al usuario mediante JOptionPane.
+ * Incluye advertencias, confirmaciones e información general del flujo de la aplicación.
+ */
 public class Messages {
 
+    /**
+     * Muestra un mensaje de advertencia si el nombre de la partida es demasiado largo.
+     */
     public void tooLong() {
         JOptionPane.showMessageDialog(
                 null,
@@ -12,6 +19,10 @@ public class Messages {
                 JOptionPane.WARNING_MESSAGE
         );
     }
+
+    /**
+     * Muestra un mensaje indicando que el campo de correo está vacío.
+     */
     public void emptyEmail(){
         JOptionPane.showMessageDialog(
                 null,
@@ -21,6 +32,10 @@ public class Messages {
         );
 
     }
+
+    /**
+     * Muestra un mensaje indicando que el email ya está registrado en el sistema.
+     */
     public void emailAlreadyExists(){
         JOptionPane.showMessageDialog(
                 null,
@@ -29,6 +44,10 @@ public class Messages {
                 JOptionPane.WARNING_MESSAGE
         );
     }
+
+    /**
+     * Muestra un mensaje indicando que el nombre de usuario ya está en uso.
+     */
     public void usernameAlreadyExists(){
         JOptionPane.showMessageDialog(
                 null,
@@ -37,6 +56,10 @@ public class Messages {
                 JOptionPane.WARNING_MESSAGE
         );
     }
+
+    /**
+     * Muestra un mensaje de error cuando el email introducido no es válido (sin @).
+     */
     public void notValidEmail(){
         JOptionPane.showMessageDialog(
                 null,
@@ -45,6 +68,10 @@ public class Messages {
                 JOptionPane.WARNING_MESSAGE
         );
     }
+
+    /**
+     * Muestra un mensaje indicando que el campo de contraseña está vacío.
+     */
     public void emptyPassword(){
         JOptionPane.showMessageDialog(
                 null,
@@ -53,6 +80,10 @@ public class Messages {
                 JOptionPane.WARNING_MESSAGE
         );
     }
+
+    /**
+     * Muestra un mensaje indicando que la contraseña necesita al menos 8 caracteres.
+     */
     public void missingCharacters(){
         JOptionPane.showMessageDialog(
                 null,
@@ -61,6 +92,10 @@ public class Messages {
                 JOptionPane.WARNING_MESSAGE
         );
     }
+
+    /**
+     * Muestra un mensaje indicando que la contraseña debe contener al menos una letra mayúscula.
+     */
     public void missingCapitalLetters(){
         JOptionPane.showMessageDialog(
                 null,
@@ -69,6 +104,10 @@ public class Messages {
                 JOptionPane.WARNING_MESSAGE
         );
     }
+
+    /**
+     * Muestra un mensaje indicando que la contraseña debe contener al menos una letra minúscula.
+     */
     public void missingLowercaseLetters(){
         JOptionPane.showMessageDialog(
                 null,
@@ -77,6 +116,10 @@ public class Messages {
                 JOptionPane.WARNING_MESSAGE
         );
     }
+
+    /**
+     * Muestra un mensaje indicando que la contraseña debe contener al menos un número.
+     */
     public void missingNumber(){
         JOptionPane.showMessageDialog(
                 null,
@@ -85,6 +128,10 @@ public class Messages {
                 JOptionPane.WARNING_MESSAGE
         );
     }
+
+    /**
+     * Muestra un mensaje cuando la confirmación de contraseña no coincide con la original.
+     */
     public void dontMatch(){
         JOptionPane.showMessageDialog(
                 null,
@@ -93,6 +140,12 @@ public class Messages {
                 JOptionPane.WARNING_MESSAGE
         );
     }
+
+    /**
+     * Muestra un diálogo de confirmación para borrar la cuenta del usuario.
+     *
+     * @return JOptionPane.YES_OPTION si el usuario confirma; JOptionPane.NO_OPTION en caso contrario.
+     */
     public int confirmDelete(){
         return JOptionPane.showConfirmDialog(
                 null,
@@ -102,6 +155,10 @@ public class Messages {
                 JOptionPane.WARNING_MESSAGE
         );
     }
+
+    /**
+     * Muestra un mensaje de éxito al eliminar la cuenta del usuario.
+     */
     public void deleteUser(){
         JOptionPane.showMessageDialog(
                 null,
@@ -110,12 +167,24 @@ public class Messages {
                 JOptionPane.INFORMATION_MESSAGE
         );
     }
+
+    /**
+     * Muestra un mensaje pidiendo al usuario que seleccione una partida primero.
+     */
     public void seleccionaPartida(){
         JOptionPane.showMessageDialog(null, "Selecciona una partida primero.");
     }
+
+    /**
+     * Muestra un mensaje indicando que las estadísticas no están disponibles para partidas no finalizadas.
+     */
     public void stadisticasNoDisponibles(){
         JOptionPane.showMessageDialog(null, "Estadisticas no disponibles para partidas no finalizadas.");
     }
+
+    /**
+     * Muestra un mensaje indicando que la partida ha finalizado y no se puede reanudar.
+     */
     public void gameFinishedCantResume(){
         JOptionPane.showMessageDialog(
                 null,
@@ -124,6 +193,12 @@ public class Messages {
                 JOptionPane.WARNING_MESSAGE
         );
     }
+
+    /**
+     * Muestra un cuadro de confirmación para eliminar una partida seleccionada.
+     *
+     * @return JOptionPane.YES_OPTION si el usuario confirma; JOptionPane.NO_OPTION en caso contrario.
+     */
     public int deleteGame(){
         return JOptionPane.showConfirmDialog(
                 null,
@@ -133,9 +208,17 @@ public class Messages {
                 JOptionPane.WARNING_MESSAGE
         );
     }
+
+    /**
+     * Muestra un mensaje indicando que la partida se ha eliminado correctamente.
+     */
     public void deleteGameSucces(){
         JOptionPane.showMessageDialog(null, "Game deleted successfully.");
     }
+
+    /**
+     * Muestra un mensaje cuando el nombre de partida ya está en uso y se requiere otro.
+     */
     public void gameNameUsed(){
         JOptionPane.showMessageDialog(
                 null,
@@ -144,6 +227,10 @@ public class Messages {
                 JOptionPane.WARNING_MESSAGE
         );
     }
+
+    /**
+     * Muestra un mensaje indicando que no hay suficientes cafés para realizar una acción.
+     */
     public void needCoffe(){
         JOptionPane.showMessageDialog(
                 null,
@@ -152,6 +239,10 @@ public class Messages {
                 JOptionPane.INFORMATION_MESSAGE
         );
     }
+
+    /**
+     * Muestra un mensaje de error cuando el login es incorrecto (usuario o contraseña).
+     */
     public void incorrectLogin(){
         JOptionPane.showMessageDialog(
                 null,
@@ -160,6 +251,10 @@ public class Messages {
                 JOptionPane.WARNING_MESSAGE
         );
     }
+
+    /**
+     * Muestra un mensaje cuando no hay suficientes datos aún para generar una gráfica.
+     */
     public void noHayDatosGraficar(){
         JOptionPane.showMessageDialog(null, "Necesitas estar mas tiempo en la partida.");
     }

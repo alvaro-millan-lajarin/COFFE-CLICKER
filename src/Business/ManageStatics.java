@@ -12,31 +12,40 @@ import javax.swing.*;
 import java.time.LocalDateTime;
 import java.util.List;
 
+/**
+ * Clase encargada de gestionar la visualización de estadísticas del juego,
+ * como el histórico de cafés generados.
+ */
 public class ManageStatics {
 
     private final StatisticDAO statisticDAO;
     private final Messages messages = new Messages();
 
+    /**
+     * Constructor de ManageStatics.
+     *
+     * @param statisticDAO DAO que permite acceder a los datos estadísticos desde la base de datos.
+     */
     public ManageStatics(StatisticDAO statisticDAO) {
         this.statisticDAO = statisticDAO;
     }
 
-
-
+    /**
+     * Muestra una gráfica con el histórico de cafés generados por una partida.
+     * Si no hay datos, muestra un mensaje informativo.
+     *
+     * @param idPartida ID de la partida para la que se desea ver la gráfica.
+     */
     public void mostrarGraficaCafes(int idPartida) {
-        // 1. Obtener datos del histórico
         List<Pair<LocalDateTime, Integer>> historico = statisticDAO.getHistoricoCafes(idPartida);
 
         if (historico.isEmpty()) {
             messages.noHayDatosGraficar();
-
             return;
         }
 
-        // 2. Crear el panel de gráfica
         Grafica grafica = new Grafica(historico);
 
-        // 3. Mostrarlo en un JFrame
         JFrame frame = new JFrame("Histórico de Cafés");
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.getContentPane().add(grafica);

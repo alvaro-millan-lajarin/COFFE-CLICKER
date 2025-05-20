@@ -12,9 +12,18 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
+/**
+ * Panel que muestra una tabla con los generadores disponibles para comprar.
+ * Los nombres de los generadores actúan como botones que activan acciones en el controlador del juego.
+ */
 public class TableBotigaGenerators extends JPanel {
     private JTable table;
 
+    /**
+     * Constructor de la tabla de generadores.
+     *
+     * @param gameController Controlador del juego que gestiona las acciones al pulsar en los botones de la tabla.
+     */
     public TableBotigaGenerators(GameController gameController) {
         setLayout(new BorderLayout());
 
@@ -89,8 +98,13 @@ public class TableBotigaGenerators extends JPanel {
         setOpaque(false);
     }
 
-
+    /**
+     * Clase interna que actúa como renderizador para mostrar celdas de tipo botón en la columna de nombres.
+     */
     class ButtonRenderer extends JButton implements TableCellRenderer {
+        /**
+         * Constructor de la clase interna
+         */
         public ButtonRenderer() {
             setOpaque(true);
             setBackground(new Color(245, 222, 179));
@@ -99,12 +113,30 @@ public class TableBotigaGenerators extends JPanel {
             setFont(new Font("Arial", Font.PLAIN, 10));
         }
 
+        /**
+         * Personaliza la celda de la tabla para mostrarse como un botón.
+         *
+         * @param table      Tabla a la que pertenece la celda.
+         * @param value      Valor que se mostrará en la celda.
+         * @param isSelected Si la celda está seleccionada.
+         * @param hasFocus   Si la celda tiene foco.
+         * @param row        Fila de la celda.
+         * @param column     Columna de la celda.
+         * @return Componente que se renderizará (el botón).
+         */
         @Override
         public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
             setText(value.toString());
             return this;
         }
     }
+
+    /**
+     * Actualiza los valores de la tabla de generadores con nueva información de precios y producción.
+     *
+     * @param precioBase        Lista con los precios base actualizados de los generadores.
+     * @param produccionUnitat  Lista con las producciones por unidad de cada generador.
+     */
     public void setUpdateValores(ArrayList<Integer> precioBase, ArrayList<String> produccionUnitat) {
 
         Object[][] data = {
@@ -112,7 +144,6 @@ public class TableBotigaGenerators extends JPanel {
                 {"CafeCheta", precioBase.get(1), produccionUnitat.get(1), 1.15},
                 {"CafeGod", precioBase.get(2), produccionUnitat.get(2), 1.12}
         };
-
 
         DefaultTableModel model = (DefaultTableModel) table.getModel();
         model.setDataVector(data, new String[]{"Nom", "Cost", "Producció", "Increment cost"});

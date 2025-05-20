@@ -6,16 +6,30 @@ import Presenstation.View.Grafica.Grafica;
 
 import java.time.LocalDateTime;
 
+/**
+ * Hilo encargado de actualizar la gráfica de producción de café cada minuto.
+ * Registra el número de cafés actuales y actualiza la visualización histórica.
+ */
 public class UpdateGrafica extends Thread {
     private ManageGame manageGame;
     private Grafica grafica;
 
+    /**
+     * Constructor de la clase UpdateGrafica.
+     *
+     * @param manageGame Objeto que gestiona el estado de la partida.
+     * @param grafica Componente gráfico donde se representa el histórico de cafés.
+     */
     public UpdateGrafica(ManageGame manageGame, Grafica grafica) {
         this.manageGame = manageGame;
         this.grafica = grafica;
 
     }
 
+    /**
+     * Ejecuta el hilo que actualiza la gráfica cada 60 segundos.
+     * Registra el número de cafés actuales y añade el dato al histórico.
+     */
     @Override
     public void run() {
 
@@ -34,8 +48,5 @@ public class UpdateGrafica extends Thread {
             grafica.getHistorico().add(new Pair<>(ahora, cafesActuales));
             grafica.repaint();
         }
-    }
-    public void setGrafica(Grafica grafica) {
-        this.grafica = grafica;
     }
 }

@@ -5,8 +5,18 @@ import Business.Entidades.User;
 
 import java.util.List;
 
+
+
+/**
+ * Implementación de UserDAO que gestiona usuarios en una base de datos MySQL mediante SQL.
+ */
 public class SQLUserDAO implements UserDAO {
 
+    /**
+     * Inserta un nuevo usuario en la base de datos.
+     *
+     * @param user Usuario a insertar.
+     */
     @Override
     public void insertUser(User user) {
         String query = "INSERT INTO User(nombre_usuario, email, contrasena) VALUES ('" +
@@ -15,10 +25,13 @@ public class SQLUserDAO implements UserDAO {
         SQLConnector.getInstance().insertQuery(query);
     }
 
-
+    /**
+     * Elimina un usuario de la base de datos junto con sus partidas y registros históricos asociados.
+     *
+     * @param user Usuario a eliminar.
+     */
     @Override
     public void deleteUser(User user) {
-        // Paso 1: Obtener las partidas del usuario
         String selectPartidas = "SELECT id_partida FROM Partida WHERE id_usuario = '" + user.getId() + "'";
         var rs = SQLConnector.getInstance().selectQuery(selectPartidas);
 
@@ -34,7 +47,6 @@ public class SQLUserDAO implements UserDAO {
             System.err.println("Error retrieving partida IDs: " + e.getMessage());
         }
 
-        // Paso 3: Borrar partidas del usuario
         String deleteGames = "DELETE FROM Partida WHERE id_usuario = '" + user.getId() + "'";
         SQLConnector.getInstance().deleteQuery(deleteGames);
 
@@ -43,7 +55,12 @@ public class SQLUserDAO implements UserDAO {
         SQLConnector.getInstance().deleteQuery(deleteUser);
     }
 
-
+    /**
+     * Busca un usuario en la base de datos por su correo electrónico.
+     *
+     * @param email Email del usuario a buscar.
+     * @return Usuario encontrado o null si no existe.
+     */
     @Override
     public User findUserByEmail(String email) {
         String query = "SELECT * FROM User WHERE email = '" + email + "'";
@@ -65,6 +82,12 @@ public class SQLUserDAO implements UserDAO {
         return null;
     }
 
+    /**
+     * Busca un usuario en la base de datos por su nombre de usuario.
+     *
+     * @param username Nombre de usuario a buscar.
+     * @return Usuario encontrado o null si no existe.
+     */
     @Override
     public User findUserByUsername(String username) {
         String query = "SELECT * FROM User WHERE nombre_usuario = '" + username + "'";

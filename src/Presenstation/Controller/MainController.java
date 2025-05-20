@@ -9,7 +9,10 @@ import Presenstation.View.Scenes.*;
 
 import javax.swing.*;
 
-
+/**
+ * Controlador principal de la aplicación.
+ * Gestiona la navegación entre escenas, inicialización de controladores y lógica global del sistema.
+ */
 public class MainController {
     private MenuScene menuScene;
     private Scene scene;
@@ -20,7 +23,6 @@ public class MainController {
     private GameScene gameScene;
     private StaticsScene staticsScene;
     private UpdateGame updateGame;
-
     private LoginController loginController;
     private SignUpController signUpController;
     private MenuController menuController;
@@ -28,10 +30,12 @@ public class MainController {
     private GameCreationController gameCreationController;
     private GameController gameController;
     private StaticsController staticsController;
-
     private final ManageGame manageGame;
     private final ManageUser manageUser;
 
+    /**
+     * Constructor que inicializa todas las escenas, controladores y lógica del sistema.
+     */
     public MainController() {
 
         manageGame = new ManageGame();
@@ -64,6 +68,10 @@ public class MainController {
         staticsScene.setController(staticsController);
 
     }
+
+    /**
+     * Constructor que inicializa todas las escenas, controladores y lógica del sistema.
+     */
     public void nextScene(Scenes scenes) {
         scene.clean();
 
@@ -98,6 +106,11 @@ public class MainController {
         }
     }
 
+    /**
+     * Restaura una partida guardada, reinicia la escena de juego y sus generadores.
+     *
+     * @param game Partida a reanudar.
+     */
     public void resumeGame(Game game) {
 
         manageGame.setGame(game);
@@ -115,16 +128,27 @@ public class MainController {
         gameController.setupdateGame(updateGame);
     }
 
-
+    /**
+     * Inicia la aplicación mostrando la ventana principal y la escena del menú.
+     */
     public void run() {
         scene.showVisible();
         menuScene.apply(scene.getMainFrame());
 
     }
+
+    /**
+     * Devuelve el JFrame principal de la aplicación.
+     *
+     * @return Ventana principal (JFrame).
+     */
     public JFrame getMainFrame() {
         return scene.getMainFrame();
     }
 
+    /**
+     * Reinicia la escena y controlador de login, y borra la sesión actual.
+     */
     public void resetLogin() {
         manageUser.logout();
         manageGame.logout();
@@ -145,6 +169,10 @@ public class MainController {
         signUpController = new SignUpController(signUpScene, this, manageUser);
         signUpScene.setController(signUpController);
     }
+
+    /**
+     * Reinicia la escena y el controlador de creación de partidas.
+     */
     public void resetGameCreation() {
         gameCreationScene = null;
         gameCreationController = null;
@@ -153,6 +181,10 @@ public class MainController {
         gameCreationController= new GameCreationController(gameCreationScene,this,loginController,signUpController,manageGame, manageUser, gameController);
         gameCreationScene.setController(gameCreationController);
     }
+
+    /**
+     * Reinicia la escena y el controlador de gestión de partidas.
+     */
     public void resetGameManagement() {
         gameManagementScene = null;
         gameManagementController = null;
@@ -161,6 +193,10 @@ public class MainController {
         gameManagementController= new GameManagementController(gameManagementScene,this,loginController,signUpController, manageUser, manageGame, gameController);
         gameManagementScene.setController(gameManagementController);
     }
+
+    /**
+     * Reinicia la escena y el controlador de juego activo.
+     */
     public void resetGame(){
         gameScene = null;
         gameController = null;
@@ -170,6 +206,12 @@ public class MainController {
         gameScene.setController(gameController);
 
     }
+
+    /**
+     * Devuelve el controlador de juego actual.
+     *
+     * @return GameController en uso.
+     */
     public GameController getGameController() {
         return gameController;
     }

@@ -7,13 +7,18 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
-// Custom JPanel that renders an image in the background
+/**
+ * Panel personalizado que muestra una imagen como fondo.
+ * Extiende {@link JPanel} y permite renderizar una imagen escalada al tamaño del componente.
+ */
 public class JImagePanel extends JPanel {
-
-    // The image to render
     private BufferedImage image;
 
-    // Constructor with parameters
+    /**
+     * Constructor del panel de imagen.
+     *
+     * @param path Ruta del archivo de imagen a cargar.
+     */
     public JImagePanel(String path) {
         try {
             image = ImageIO.read(new File(path));
@@ -24,7 +29,11 @@ public class JImagePanel extends JPanel {
 
     }
 
-
+    /**
+     * Calcula el tamaño preferido del panel para mantener la proporción de la imagen.
+     *
+     * @return Dimensiones preferidas del panel.
+     */
     @Override
     public Dimension getPreferredSize() {
         Dimension preferred = super.getPreferredSize();
@@ -38,7 +47,11 @@ public class JImagePanel extends JPanel {
         return preferred;
     }
 
-    // Paint the image in the background, with the size the layout assigns to the panel
+    /**
+     * Pinta la imagen en el fondo del panel, escalándola al tamaño actual del componente.
+     *
+     * @param g Contexto gráfico para dibujar.
+     */
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);

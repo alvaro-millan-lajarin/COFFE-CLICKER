@@ -14,12 +14,19 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Escena encargada de mostrar las partidas del usuario, clasificadas en activas y finalizadas.
+ * Permite seleccionar, eliminar, reanudar partidas o acceder a estadísticas.
+ */
 public class GameManagementScene extends Scene {
     private GameManagementController gameManagementController;
     private Game selectedGame;
     public final static String DELETE = "DELETE";
     public final static String LOGOUT = "LOGOUT";
 
+    /**
+     * Inicializa la estructura del panel principal, distribuyendo las secciones (título, centro, botones).
+     */
     public void initialitzate() {
         jPanel.setLayout(new BorderLayout(50, 20));
         jPanel.setBackground(new Color(210, 180, 140));
@@ -31,17 +38,32 @@ public class GameManagementScene extends Scene {
         jPanel.add(addAccesButton(), BorderLayout.SOUTH);
     }
 
+    /**
+     * Aplica esta escena al JFrame principal y define el título de la ventana.
+     *
+     * @param mainFrame Ventana principal de la aplicación.
+     */
     public void apply(JFrame mainFrame) {
         initialitzate();
         super.apply(mainFrame);
         mainFrame.setTitle("Game management");
     }
 
+    /**
+     * Establece el controlador de la escena y reinicia el diseño.
+     *
+     * @param gameManagementController Controlador de gestión de partidas.
+     */
     public void setController(GameManagementController gameManagementController) {
         this.gameManagementController = gameManagementController;
         initialitzate();
     }
 
+    /**
+     * Crea el panel superior con el título y botones de acción (logout y eliminar cuenta).
+     *
+     * @return JPanel superior.
+     */
     public JPanel topPanel() {
         JPanel topPanel = new JPanel(new GridLayout(1, 5));
         topPanel.add(addVacio());
@@ -53,6 +75,11 @@ public class GameManagementScene extends Scene {
         return topPanel;
     }
 
+    /**
+     * Crea los botones de la parte superior derecha (logout y eliminar cuenta).
+     *
+     * @return JPanel con los botones.
+     */
     public JPanel addBotonesArribaDerecha() {
         JPanel botonesArribaDerecha = new JPanel(new GridLayout(2, 1));
         JButton delAcc_but = new JButton("Delete Account");
@@ -67,6 +94,11 @@ public class GameManagementScene extends Scene {
         return botonesArribaDerecha;
     }
 
+    /**
+     * Crea el panel central que contiene los botones de acciones y la lista de partidas activas/finalizadas.
+     *
+     * @return JPanel central.
+     */
     public JPanel centerPanel() {
         List<Game> games = gameManagementController.getAllGames();
         User user = new User();
@@ -93,12 +125,8 @@ public class GameManagementScene extends Scene {
         leftPanel.setOpaque(false);
         leftPanel.setPreferredSize(new Dimension(300, 300));
 
-
-
         JPanel rightPanel = new JPanel(new GridLayout(1, 2));
         rightPanel.setOpaque(false);
-
-
 
         JScrollPane scrollPane = new JScrollPane(partidasNoFinalizadas(gamesUser));
         scrollPane.setPreferredSize(new Dimension(300, 300));
@@ -118,17 +146,22 @@ public class GameManagementScene extends Scene {
         border2.setTitleColor(Color.WHITE);
         scrollPane2.setBorder(border2);
 
-
         rightPanel.add(scrollPane);
         rightPanel.add(scrollPane2);
 
         center.add(leftPanel);
-
         center.add(Box.createRigidArea(new Dimension(20, 0)));
         center.add(rightPanel);
 
         return center;
     }
+
+    /**
+     * Genera un panel con las partidas activas del usuario (no finalizadas).
+     *
+     * @param gamesUser Lista de partidas del usuario.
+     * @return JPanel con botones correspondientes a partidas activas.
+     */
     public JPanel partidasNoFinalizadas(ArrayList<Game> gamesUser) {
         JPanel partidasPanel = new JPanel();
         partidasPanel.setLayout(new BoxLayout(partidasPanel, BoxLayout.Y_AXIS));
@@ -139,13 +172,10 @@ public class GameManagementScene extends Scene {
 
         List<JButton> botonesPartidas = new ArrayList<>();
 
-
-
         if (!gamesUser.isEmpty()) {
             for (int i = 0; i < gamesUser.size(); i++) {
                 Game game = gamesUser.get(i);
                 if(!game.isFinished()) {
-                    // Crear panel para el contenido del botón
                     JPanel buttonContent = new JPanel();
 
                     buttonContent.setLayout(new BoxLayout(buttonContent, BoxLayout.Y_AXIS));
@@ -196,6 +226,13 @@ public class GameManagementScene extends Scene {
         }
         return partidasPanel;
     }
+
+    /**
+     * Genera un panel con las partidas finalizadas del usuario.
+     *
+     * @param gamesUser Lista de partidas del usuario.
+     * @return JPanel con botones correspondientes a partidas finalizadas.
+     */
     public JPanel partidasFinalizadas(ArrayList<Game> gamesUser) {
         JPanel partidasPanel = new JPanel();
         partidasPanel.setLayout(new BoxLayout(partidasPanel, BoxLayout.Y_AXIS));
@@ -206,13 +243,10 @@ public class GameManagementScene extends Scene {
 
         List<JButton> botonesPartidas = new ArrayList<>();
 
-
-
         if (!gamesUser.isEmpty()) {
             for (int i = 0; i < gamesUser.size(); i++) {
                 Game game = gamesUser.get(i);
                 if(game.isFinished()) {
-                    // Crear panel para el contenido del botón
                     JPanel buttonContent = new JPanel();
 
                     buttonContent.setLayout(new BoxLayout(buttonContent, BoxLayout.Y_AXIS));
@@ -230,7 +264,6 @@ public class GameManagementScene extends Scene {
                     buttonContent.add(cafesLabel);
 
                     JButton btn = new JButton();
-
 
                     btn.setLayout(new BorderLayout());
                     btn.add(buttonContent, BorderLayout.CENTER);
@@ -264,6 +297,11 @@ public class GameManagementScene extends Scene {
         return partidasPanel;
     }
 
+    /**
+     * Crea el conjunto de botones centrales: estadísticas, reanudar y eliminar partida.
+     *
+     * @return JPanel con botones de acción.
+     */
     public JPanel botonesCentrales() {
 
 
@@ -287,8 +325,6 @@ public class GameManagementScene extends Scene {
         imagePanel.setMaximumSize(new Dimension(400, 80));
         imagePanel.setLayout(new BorderLayout());
         imagePanel.add(but_resume, BorderLayout.CENTER);
-
-
 
         but_resume.setActionCommand("RESUME");
         but_resume.addActionListener(gameManagementController);
@@ -314,8 +350,6 @@ public class GameManagementScene extends Scene {
 
         but_del.addActionListener(e -> gameManagementController.deleteSelectedGame());
 
-
-
         preguntasYRespuestas.add(botonStadisticas());
         preguntasYRespuestas.add(Box.createVerticalStrut(10));
         preguntasYRespuestas.add(imagePanel); // Agregar el JImagePanel en lugar del botón
@@ -327,6 +361,11 @@ public class GameManagementScene extends Scene {
     }
 
 
+    /**
+     * Crea el botón inferior que permite crear una nueva partida.
+     *
+     * @return JPanel con el botón de creación.
+     */
     public JPanel addAccesButton(){
         JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
         buttonPanel.setOpaque(false);
@@ -343,12 +382,22 @@ public class GameManagementScene extends Scene {
         return buttonPanel;
     }
 
+    /**
+     * Crea un panel vacío transparente utilizado como espaciador.
+     *
+     * @return JPanel vacío.
+     */
     public JPanel addVacio() {
         JPanel panel = new JPanel(new FlowLayout());
         panel.setOpaque(false);
         return panel;
     }
 
+    /**
+     * Crea un panel vacío transparente utilizado como espaciador.
+     *
+     * @return JPanel vacío.
+     */
     public JPanel addTitle(String message) {
         JPanel panel = new JPanel();
         JLabel label = new JLabel(message);
@@ -360,9 +409,20 @@ public class GameManagementScene extends Scene {
         return panel;
     }
 
+    /**
+     * Crea un panel vacío transparente utilizado como espaciador.
+     *
+     * @return JPanel vacío.
+     */
     public Game getSelectedGame() {
         return selectedGame;
     }
+
+    /**
+     * Crea el botón de estadísticas con imagen de fondo.
+     *
+     * @return JImagePanel con el botón de estadísticas integrado.
+     */
     public JImagePanel botonStadisticas() {
         JButton botonStadisticas = new JButton("Stadisticas");
 

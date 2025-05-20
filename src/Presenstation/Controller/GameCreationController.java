@@ -19,6 +19,10 @@ import java.awt.event.ActionEvent;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Controlador encargado de gestionar la creación de partidas nuevas.
+ * Valida el nombre de la partida, inicializa los generadores y cambia a la escena de juego.
+ */
 public class GameCreationController implements ActionListener {
     private LoginController loginController;
     private Game game;
@@ -32,6 +36,18 @@ public class GameCreationController implements ActionListener {
     private final GameCreationScene gameCreationScene;
     private final MainController mainController;
 
+
+    /**
+     * Constructor del GameCreationController.
+     *
+     * @param view Escena de creación de partidas.
+     * @param mainController Controlador principal de navegación.
+     * @param loginController Controlador de login.
+     * @param signUpController Controlador de registro (no usado directamente aquí).
+     * @param manageGame Lógica de gestión del juego.
+     * @param manageUser Lógica de gestión de usuarios.
+     * @param gameController Controlador del juego.
+     */
     public GameCreationController(GameCreationScene view, MainController mainController, LoginController loginController, SignUpController signUpController, ManageGame manageGame, ManageUser manageUser, GameController gameController) {
 
         this.gameCreationScene = view;
@@ -42,11 +58,23 @@ public class GameCreationController implements ActionListener {
         this.mainController = mainController;
 
     }
+
+    /**
+     * Devuelve la escena de creación de partidas.
+     *
+     * @return Escena actual GameCreationScene.
+     */
     public GameCreationScene getScene() {
 
         return gameCreationScene;
     }
 
+
+    /**
+     * Maneja los eventos de acción en la escena de creación de partidas.
+     *
+     * @param e Evento de acción recibido.
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getActionCommand().equalsIgnoreCase("PLAY")) {
@@ -91,6 +119,10 @@ public class GameCreationController implements ActionListener {
 
         }
     }
+
+    /**
+     * Elimina el usuario actual tras confirmación y vuelve al menú principal.
+     */
     public void deleteUser() {
         int confirm = messages.confirmDelete();
 
@@ -100,8 +132,5 @@ public class GameCreationController implements ActionListener {
             loginController.clearUserData();
             mainController.nextScene(Scenes.MENU);
         }
-
     }
-
-
 }

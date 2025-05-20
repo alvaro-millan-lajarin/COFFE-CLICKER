@@ -20,9 +20,12 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Controlador de la escena de gestión de partidas.
+ * Permite crear, reanudar, eliminar partidas y consultar estadísticas.
+ */
 public class GameManagementController implements ActionListener {
     private final LoginController loginController;
-
     private final ManageStatics manageStatics;
     private final ManageUser manageUser;
     private final Messages messages;
@@ -32,6 +35,17 @@ public class GameManagementController implements ActionListener {
     private final GameManagementScene gameManagementScene;
     private MainController mainController;
 
+    /**
+     * Constructor de GameManagementController.
+     *
+     * @param gameManagementScene Escena de gestión de partidas.
+     * @param mainController Controlador principal.
+     * @param loginController Controlador de login.
+     * @param signUpController Controlador de registro (no usado directamente aquí).
+     * @param manageUser Lógica de usuarios.
+     * @param manageGame Lógica del juego.
+     * @param gameController Controlador de juego.
+     */
     public GameManagementController(GameManagementScene gameManagementScene, MainController mainController, LoginController loginController, SignUpController signUpController, ManageUser manageUser, ManageGame manageGame, GameController gameController) {
 
         this.loginController = loginController;
@@ -44,12 +58,21 @@ public class GameManagementController implements ActionListener {
         this.mainController = mainController;
     }
 
+    /**
+     * Devuelve la escena de gestión de partidas.
+     *
+     * @return GameManagementScene actual.
+     */
     public GameManagementScene getScene() {
-
         return gameManagementScene;
     }
 
 
+    /**
+     * Maneja los eventos de acción de la escena: logout, borrar usuario, crear partida, reanudar o ver estadísticas.
+     *
+     * @param e Evento de acción recibido.
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getActionCommand().equalsIgnoreCase("LOGOUT")) {
@@ -91,11 +114,12 @@ public class GameManagementController implements ActionListener {
             } else {
                 messages.stadisticasNoDisponibles();
             }
-
-
         }
-
     }
+
+    /**
+     * Elimina el usuario actual tras confirmación y vuelve al menú principal.
+     */
     public void deleteUser() {
         int confirm = messages.confirmDelete();
 
@@ -109,18 +133,23 @@ public class GameManagementController implements ActionListener {
 
     }
 
+    /**
+     * Devuelve el usuario actualmente logueado.
+     *
+     * @return Usuario actual.
+     */
     public User getUser() {
-
         return manageUser.getCurrentUser();
     }
 
+    /**
+     * Elimina la partida seleccionada tras confirmación del usuario.
+     */
     public void deleteSelectedGame() {
-
         Game selectedGame = getScene().getSelectedGame();
 
         if (selectedGame != null) {
             int confirm = messages.deleteGame();
-
 
             if (confirm == JOptionPane.YES_OPTION) {
                 manageGame.deleteGameSelected(selectedGame);
@@ -133,9 +162,21 @@ public class GameManagementController implements ActionListener {
         mainController.resetGameManagement();
         mainController.nextScene(Scenes.GAME_MANAGEMENT);
     }
+
+    /**
+     * Muestra la gráfica de evolución de cafés de la partida seleccionada.
+     *
+     * @param idPartida ID de la partida.
+     */
     public void mostrarGraficaDeCafes(int idPartida) {
         manageStatics.mostrarGraficaCafes(idPartida);
     }
+
+    /**
+     * Devuelve todas las partidas registradas.
+     *
+     * @return Lista de partidas.
+     */
     public List<Game> getAllGames() {
        return manageGame.getAllGames();
     }
