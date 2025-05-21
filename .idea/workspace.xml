@@ -4,15 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f9bbb50b-3eaf-412a-ab58-ecb07cf93455" name="Changes" comment="manageGame funciones">
+    <list default="true" id="f9bbb50b-3eaf-412a-ab58-ecb07cf93455" name="Changes" comment="funcines no usadas">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Business/Entidades/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Business/Entidades/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Business/ManageGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Business/ManageGame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Business/ManageGameGenerators.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Business/ManageGameGenerators.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Presenstation/Controller/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presenstation/Controller/GameController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Presenstation/Controller/GameCreationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presenstation/Controller/GameCreationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Presenstation/Controller/GameManagementController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presenstation/Controller/GameManagementController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Presenstation/Controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presenstation/Controller/MainController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Presenstation/Controller/SignUpController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presenstation/Controller/SignUpController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Presenstation/View/Scenes/GameManagementScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presenstation/View/Scenes/GameManagementScene.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -121,22 +119,6 @@
       <workItem from="1743758267674" duration="4963000" />
       <workItem from="1746711311955" duration="24425000" />
       <workItem from="1747673010765" duration="9650000" />
-    </task>
-    <task id="LOCAL-00039" summary="correccion estructura user">
-      <option name="closed" value="true" />
-      <created>1746180162083</created>
-      <option name="number" value="00039" />
-      <option name="presentableId" value="LOCAL-00039" />
-      <option name="project" value="LOCAL" />
-      <updated>1746180162083</updated>
-    </task>
-    <task id="LOCAL-00040" summary="nueva clase para errores">
-      <option name="closed" value="true" />
-      <created>1746182019674</created>
-      <option name="number" value="00040" />
-      <option name="presentableId" value="LOCAL-00040" />
-      <option name="project" value="LOCAL" />
-      <updated>1746182019674</updated>
     </task>
     <task id="LOCAL-00041" summary="seguir la estructuar correcta y mas mensajes">
       <option name="closed" value="true" />
@@ -514,13 +496,34 @@
       <option name="project" value="LOCAL" />
       <updated>1747834428458</updated>
     </task>
-    <option name="localTasksCounter" value="88" />
+    <task id="LOCAL-00088" summary="diferenciacin managers">
+      <option name="closed" value="true" />
+      <created>1747844206151</created>
+      <option name="number" value="00088" />
+      <option name="presentableId" value="LOCAL-00088" />
+      <option name="project" value="LOCAL" />
+      <updated>1747844206151</updated>
+    </task>
+    <task id="LOCAL-00089" summary="funcines no usadas">
+      <option name="closed" value="true" />
+      <created>1747844340882</created>
+      <option name="number" value="00089" />
+      <option name="presentableId" value="LOCAL-00089" />
+      <option name="project" value="LOCAL" />
+      <updated>1747844340882</updated>
+    </task>
+    <option name="localTasksCounter" value="90" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
+    <option name="OPEN_GENERIC_TABS">
+      <map>
+        <entry key="c7fbffd3-0e31-496f-bf1d-46b6d8053173" value="TOOL_WINDOW" />
+      </map>
+    </option>
     <option name="TAB_STATES">
       <map>
         <entry key="MAIN">
@@ -540,12 +543,15 @@
             </State>
           </value>
         </entry>
+        <entry key="c7fbffd3-0e31-496f-bf1d-46b6d8053173">
+          <value>
+            <State />
+          </value>
+        </entry>
       </map>
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="fallo nuevo signUp" />
-    <MESSAGE value="repasar estadisticas" />
     <MESSAGE value="arrreglo estadisticas" />
     <MESSAGE value="correccion multiplicadores" />
     <MESSAGE value="correccion funciones sin usar" />
@@ -569,6 +575,28 @@
     <MESSAGE value="solo seleccionar una partida" />
     <MESSAGE value="nuevos managers diferenciar funciones" />
     <MESSAGE value="manageGame funciones" />
-    <option name="LAST_COMMIT_MESSAGE" value="manageGame funciones" />
+    <MESSAGE value="diferenciacin managers" />
+    <MESSAGE value="funcines no usadas" />
+    <option name="LAST_COMMIT_MESSAGE" value="funcines no usadas" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Business/ManageUser.java</url>
+          <line>154</line>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/Business/ManageUser.java</url>
+          <line>153</line>
+          <properties class="Business.ManageUser" method="deleteUser">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

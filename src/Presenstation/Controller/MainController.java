@@ -63,7 +63,7 @@ public class MainController {
         menuController = new MenuController(menuScene, this);
         gameManagementController = new GameManagementController(gameManagementScene, this, loginController, signUpController, manageUser, manageGameGenerators, gameController, manageStatics, manageGame);
         gameCreationController = new GameCreationController(gameCreationScene, this, loginController, signUpController, manageGameGenerators, manageUser, gameController, manageStatics, manageGame);
-        gameController = new GameController(gameScene, this, loginController, signUpController, manageGameGenerators, manageUser, manageGame);
+        gameController = new GameController(gameScene, this, loginController, manageGameGenerators, manageUser, manageGame);
         staticsController = new StaticsController( this);
 
         menuScene.setController(menuController);
@@ -126,7 +126,7 @@ public class MainController {
         manageGame.setGame(gameNuevo);
 
         gameScene = new GameScene();
-        gameController = new GameController(gameScene, this, loginController, signUpController, manageGameGenerators, manageUser, manageGame);
+        gameController = new GameController(gameScene, this, loginController, manageGameGenerators, manageUser, manageGame);
 
         gameScene.setController(gameController);
 
@@ -159,7 +159,7 @@ public class MainController {
      * Reinicia la escena y controlador de login, y borra la sesión actual.
      */
     public void resetLogin() {
-        manageUser.logout();
+
         manageGame.logout();
 
         loginScene = null;
@@ -209,7 +209,7 @@ public class MainController {
         gameController = null;
 
         gameScene= new GameScene();
-        gameController= new GameController(gameScene,this,loginController,signUpController, manageGameGenerators, manageUser, manageGame);
+        gameController= new GameController(gameScene,this,loginController, manageGameGenerators, manageUser, manageGame);
         gameScene.setController(gameController);
 
     }

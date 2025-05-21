@@ -21,7 +21,7 @@ import java.util.ArrayList;
  */
 public class GameController implements ActionListener {
     private final LoginController loginController;
-    private SignUpController signUpController;
+
     private final ManageGameGenerators manageGameGenerators;
     private UpdateGame updateGame;
     private final Messages messages = new Messages();
@@ -38,14 +38,13 @@ public class GameController implements ActionListener {
      * @param view Vista del juego (GameScene).
      * @param mainController Controlador principal de la aplicación.
      * @param loginController Controlador de inicio de sesión.
-     * @param signUpController Controlador de registro.
      * @param manageGameGenerators Objeto de lógica de negocio para el juego.
      * @param manageUser Objeto de lógica de negocio para usuarios.
      */
-    public GameController(GameScene view, MainController mainController, LoginController loginController, SignUpController signUpController, ManageGameGenerators manageGameGenerators, ManageUser manageUser, ManageGame manageGame) {
+    public GameController(GameScene view, MainController mainController, LoginController loginController, ManageGameGenerators manageGameGenerators, ManageUser manageUser, ManageGame manageGame) {
 
         this.loginController = loginController;
-        this.signUpController = signUpController;
+
         this.manageGameGenerators = manageGameGenerators;
 
         this.manageUser = manageUser;
@@ -84,7 +83,7 @@ public class GameController implements ActionListener {
         }else if (e.getActionCommand().equalsIgnoreCase("DELETE")) {
             mainController.resetLogin();
             stopThreads();
-            loginController.clearUserData();
+            //loginController.clearUserData();
             deleteUser();
 
         }else if (e.getActionCommand().equalsIgnoreCase("Cafetera")) {

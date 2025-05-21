@@ -24,7 +24,7 @@ import java.util.List;
  * Valida el nombre de la partida, inicializa los generadores y cambia a la escena de juego.
  */
 public class GameCreationController implements ActionListener {
-    private LoginController loginController;
+    private final LoginController loginController;
     private Game game;
     private final ManageGameGenerators manageGameGenerators;
     private final Messages messages = new Messages();
