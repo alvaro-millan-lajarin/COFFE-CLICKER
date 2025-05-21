@@ -57,9 +57,7 @@ public class ManageGame {
      * Incrementa en 1 el número de cafés del juego actual.
      */
     public void increaseNumCafes() {
-
         game.increaseNumCafes();
-
     }
 
     /**

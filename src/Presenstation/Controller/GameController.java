@@ -1,5 +1,6 @@
 package Presenstation.Controller;
 
+import Business.ManageGame;
 import Business.ManageGameGenerators;
 import Business.ManageUser;
 import Presenstation.Messages;
@@ -27,6 +28,7 @@ public class GameController implements ActionListener {
     private UpdateGrafica updateGrafica;
     private final GameScene gameScene;
     private final MainController mainController;
+    private final ManageGame manageGame;
 
 
     /**
@@ -39,7 +41,7 @@ public class GameController implements ActionListener {
      * @param manageGameGenerators Objeto de lógica de negocio para el juego.
      * @param manageUser Objeto de lógica de negocio para usuarios.
      */
-    public GameController(GameScene view, MainController mainController, LoginController loginController, SignUpController signUpController, ManageGameGenerators manageGameGenerators, ManageUser manageUser) {
+    public GameController(GameScene view, MainController mainController, LoginController loginController, SignUpController signUpController, ManageGameGenerators manageGameGenerators, ManageUser manageUser, ManageGame manageGame) {
 
         this.loginController = loginController;
         this.signUpController = signUpController;
@@ -48,6 +50,7 @@ public class GameController implements ActionListener {
         this.manageUser = manageUser;
         this.gameScene = view;
         this.mainController = mainController;
+        this.manageGame = manageGame;
     }
 
     /**

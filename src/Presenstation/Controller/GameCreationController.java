@@ -1,6 +1,7 @@
 package Presenstation.Controller;
 
 import Business.Entidades.Game;
+import Business.ManageGame;
 import Business.ManageGameGenerators;
 import Business.ManageStatics;
 import Business.ManageUser;
@@ -35,6 +36,7 @@ public class GameCreationController implements ActionListener {
     private final GameCreationScene gameCreationScene;
     private final MainController mainController;
     private final ManageStatics manageStatics;
+    private final ManageGame manageGame;
 
 
     /**
@@ -48,7 +50,7 @@ public class GameCreationController implements ActionListener {
      * @param manageUser Lógica de gestión de usuarios.
      * @param gameController Controlador del juego.
      */
-    public GameCreationController(GameCreationScene view, MainController mainController, LoginController loginController, SignUpController signUpController, ManageGameGenerators manageGameGenerators, ManageUser manageUser, GameController gameController, ManageStatics manageStatics) {
+    public GameCreationController(GameCreationScene view, MainController mainController, LoginController loginController, SignUpController signUpController, ManageGameGenerators manageGameGenerators, ManageUser manageUser, GameController gameController, ManageStatics manageStatics, ManageGame manageGame) {
 
         this.gameCreationScene = view;
         this.loginController = loginController;
@@ -57,6 +59,7 @@ public class GameCreationController implements ActionListener {
         this.gameController = gameController;
         this.mainController = mainController;
         this.manageStatics = manageStatics;
+        this.manageGame = manageGame;
     }
 
     /**
@@ -98,6 +101,7 @@ public class GameCreationController implements ActionListener {
             game = new Game(1,manageUser.getCurrentUser().getId(),nombreGame,fechaYHoraActual,fechaYHoraActual,0, false);
             manageGameGenerators.addGame(game);
             manageGameGenerators.setGame(game);
+            manageGame.setGame(game);
 
             manageStatics.setGame(game);
 
