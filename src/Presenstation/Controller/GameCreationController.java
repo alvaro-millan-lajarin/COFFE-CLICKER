@@ -45,12 +45,11 @@ public class GameCreationController implements ActionListener {
      * @param view Escena de creación de partidas.
      * @param mainController Controlador principal de navegación.
      * @param loginController Controlador de login.
-     * @param signUpController Controlador de registro (no usado directamente aquí).
      * @param manageGameGenerators Lógica de gestión del juego.
      * @param manageUser Lógica de gestión de usuarios.
      * @param gameController Controlador del juego.
      */
-    public GameCreationController(GameCreationScene view, MainController mainController, LoginController loginController, SignUpController signUpController, ManageGameGenerators manageGameGenerators, ManageUser manageUser, GameController gameController, ManageStatics manageStatics, ManageGame manageGame) {
+    public GameCreationController(GameCreationScene view, MainController mainController, LoginController loginController, ManageGameGenerators manageGameGenerators, ManageUser manageUser, GameController gameController, ManageStatics manageStatics, ManageGame manageGame) {
 
         this.gameCreationScene = view;
         this.loginController = loginController;
