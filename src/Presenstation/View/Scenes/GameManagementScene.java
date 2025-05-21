@@ -23,6 +23,8 @@ public class GameManagementScene extends Scene {
     private Game selectedGame;
     private final static String DELETE = "DELETE";
     private final static String LOGOUT = "LOGOUT";
+    private final List<JButton> allGameButtons = new ArrayList<>();
+
 
     /**
      * Inicializa la estructura del panel principal, distribuyendo las secciones (título, centro, botones).
@@ -204,7 +206,7 @@ public class GameManagementScene extends Scene {
                     btn.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 
                     btn.addActionListener(e -> {
-                        for (JButton b : botonesPartidas) {
+                        for (JButton b : allGameButtons) {
                             b.setBackground(new Color(210, 140, 95));
                         }
                         btn.setBackground(Color.ORANGE);
@@ -212,6 +214,7 @@ public class GameManagementScene extends Scene {
                     });
 
                     botonesPartidas.add(btn);
+                    allGameButtons.add(btn);
                     partidasPanel.add(Box.createVerticalStrut(5));
                     partidasPanel.add(btn);
                 }
@@ -274,7 +277,7 @@ public class GameManagementScene extends Scene {
                     btn.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 
                     btn.addActionListener(e -> {
-                        for (JButton b : botonesPartidas) {
+                        for (JButton b : allGameButtons) {
                             b.setBackground(new Color(210, 140, 95));
                         }
                         btn.setBackground(Color.ORANGE);
@@ -282,6 +285,7 @@ public class GameManagementScene extends Scene {
                     });
 
                     botonesPartidas.add(btn);
+                    allGameButtons.add(btn);
                     partidasPanel.add(Box.createVerticalStrut(5));
                     partidasPanel.add(btn);
                 }

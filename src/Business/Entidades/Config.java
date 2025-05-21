@@ -13,7 +13,7 @@ public class Config {
      * Constructor de la clase Config.
      *
      * @param portConexion Puerto de conexión a la base de datos.
-     * @param ip Dirección IP de la base de datos.
+     * @param ip Dirección IP de la base de datos.y
      * @param nom Nombre de la base de datos.
      * @param acc Usuario de acceso a la base de datos.
      * @param pwd Contraseña del usuario.
