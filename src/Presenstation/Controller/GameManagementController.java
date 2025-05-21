@@ -2,7 +2,7 @@ package Presenstation.Controller;
 
 import Business.Entidades.Game;
 import Business.Entidades.User;
-import Business.ManageGame;
+import Business.ManageGameGenerators;
 import Business.ManageStatics;
 import Business.ManageUser;
 import Persistence.sql.SQLStatisticDAO;
@@ -10,7 +10,6 @@ import Presenstation.Messages;
 import Presenstation.View.Grafica.Grafica;
 import Business.Refresh.UpdateGrafica;
 import Presenstation.View.Scenes.GameManagementScene;
-import Presenstation.View.Scenes.Scene;
 import Presenstation.View.Scenes.Scenes;
 
 
@@ -29,7 +28,7 @@ public class GameManagementController implements ActionListener {
     private final ManageStatics manageStatics;
     private final ManageUser manageUser;
     private final Messages messages;
-    private final ManageGame manageGame;
+    private final ManageGameGenerators manageGameGenerators;
     private GameController gameController;
     private Grafica grafica;
     private final GameManagementScene gameManagementScene;
@@ -43,16 +42,16 @@ public class GameManagementController implements ActionListener {
      * @param loginController Controlador de login.
      * @param signUpController Controlador de registro (no usado directamente aquí).
      * @param manageUser Lógica de usuarios.
-     * @param manageGame Lógica del juego.
+     * @param manageGameGenerators Lógica del juego.
      * @param gameController Controlador de juego.
      */
-    public GameManagementController(GameManagementScene gameManagementScene, MainController mainController, LoginController loginController, SignUpController signUpController, ManageUser manageUser, ManageGame manageGame, GameController gameController) {
+    public GameManagementController(GameManagementScene gameManagementScene, MainController mainController, LoginController loginController, SignUpController signUpController, ManageUser manageUser, ManageGameGenerators manageGameGenerators, GameController gameController, ManageStatics manageStatics) {
 
         this.loginController = loginController;
-        this.manageStatics = new ManageStatics(new SQLStatisticDAO());
+        this.manageStatics = manageStatics;
         this.manageUser = manageUser;
         this.messages = new Messages();
-        this.manageGame = manageGame;
+        this.manageGameGenerators = manageGameGenerators;
         this.gameController = gameController;
         this.gameManagementScene = gameManagementScene;
         this.mainController = mainController;
@@ -100,7 +99,7 @@ public class GameManagementController implements ActionListener {
                 mainController.resumeGame(selectedGame);
                 gameController = mainController.getGameController();
 
-                UpdateGrafica updateGrafica = new UpdateGrafica(manageGame, grafica);
+                UpdateGrafica updateGrafica = new UpdateGrafica(manageGameGenerators, grafica, manageStatics);
                 updateGrafica.start();
                 gameController.setUpdateGrafica(updateGrafica);
 
@@ -152,7 +151,7 @@ public class GameManagementController implements ActionListener {
             int confirm = messages.deleteGame();
 
             if (confirm == JOptionPane.YES_OPTION) {
-                manageGame.deleteGameSelected(selectedGame);
+                manageGameGenerators.deleteGameSelected(selectedGame);
                 messages.deleteGameSucces();
             }
         } else {
@@ -178,6 +177,6 @@ public class GameManagementController implements ActionListener {
      * @return Lista de partidas.
      */
     public List<Game> getAllGames() {
-       return manageGame.getAllGames();
+       return manageGameGenerators.getAllGames();
     }
 }

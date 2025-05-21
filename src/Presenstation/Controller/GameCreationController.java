@@ -1,14 +1,13 @@
 package Presenstation.Controller;
 
 import Business.Entidades.Game;
-import Business.ManageGame;
+import Business.ManageGameGenerators;
+import Business.ManageStatics;
 import Business.ManageUser;
 import Presenstation.Messages;
 import Presenstation.View.Grafica.Grafica;
 import Business.Refresh.UpdateGrafica;
 import Presenstation.View.Scenes.GameCreationScene;
-import Presenstation.View.Scenes.GameManagementScene;
-import Presenstation.View.Scenes.Scene;
 import Presenstation.View.Scenes.Scenes;
 
 import java.awt.event.ActionListener;
@@ -26,7 +25,7 @@ import java.util.List;
 public class GameCreationController implements ActionListener {
     private LoginController loginController;
     private Game game;
-    private final ManageGame manageGame;
+    private final ManageGameGenerators manageGameGenerators;
     private final Messages messages = new Messages();
     private final ManageUser manageUser;
     private Grafica grafica;
@@ -35,6 +34,7 @@ public class GameCreationController implements ActionListener {
     private final static int MAX_LENGTH = 50;
     private final GameCreationScene gameCreationScene;
     private final MainController mainController;
+    private final ManageStatics manageStatics;
 
 
     /**
@@ -44,19 +44,19 @@ public class GameCreationController implements ActionListener {
      * @param mainController Controlador principal de navegación.
      * @param loginController Controlador de login.
      * @param signUpController Controlador de registro (no usado directamente aquí).
-     * @param manageGame Lógica de gestión del juego.
+     * @param manageGameGenerators Lógica de gestión del juego.
      * @param manageUser Lógica de gestión de usuarios.
      * @param gameController Controlador del juego.
      */
-    public GameCreationController(GameCreationScene view, MainController mainController, LoginController loginController, SignUpController signUpController, ManageGame manageGame, ManageUser manageUser, GameController gameController) {
+    public GameCreationController(GameCreationScene view, MainController mainController, LoginController loginController, SignUpController signUpController, ManageGameGenerators manageGameGenerators, ManageUser manageUser, GameController gameController, ManageStatics manageStatics) {
 
         this.gameCreationScene = view;
         this.loginController = loginController;
-        this.manageGame = manageGame;
+        this.manageGameGenerators = manageGameGenerators;
         this.manageUser = manageUser;
         this.gameController = gameController;
         this.mainController = mainController;
-
+        this.manageStatics = manageStatics;
     }
 
     /**
@@ -86,7 +86,7 @@ public class GameCreationController implements ActionListener {
                 return;
             }
 
-            List<Game> games = manageGame.getAllGames();
+            List<Game> games = manageGameGenerators.getAllGames();
             for (Game game : games) {
                 if (game.getNombre().equals(nombreGame) && game.getIdUser() == manageUser.getCurrentUser().getId()) {
                     messages.gameNameUsed();
@@ -96,13 +96,16 @@ public class GameCreationController implements ActionListener {
             }
             LocalDateTime fechaYHoraActual = LocalDateTime.now();
             game = new Game(1,manageUser.getCurrentUser().getId(),nombreGame,fechaYHoraActual,fechaYHoraActual,0, false);
-            manageGame.addGame(game);
-            manageGame.setGame(game);
-            manageGame.addBasicGenerator();
+            manageGameGenerators.addGame(game);
+            manageGameGenerators.setGame(game);
+
+            manageStatics.setGame(game);
+
+            manageGameGenerators.addBasicGenerator();
 
 
             grafica = new Grafica(new ArrayList<>());
-            updateGrafica = new UpdateGrafica(manageGame, grafica);
+            updateGrafica = new UpdateGrafica(manageGameGenerators, grafica, manageStatics);
             updateGrafica.start();
             gameController.setUpdateGrafica(updateGrafica);
 

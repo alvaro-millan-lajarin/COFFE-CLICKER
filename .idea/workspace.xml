@@ -4,9 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f9bbb50b-3eaf-412a-ab58-ecb07cf93455" name="Changes" comment="correccion">
+    <list default="true" id="f9bbb50b-3eaf-412a-ab58-ecb07cf93455" name="Changes" comment="solo seleccionar una partida">
+      <change afterPath="$PROJECT_DIR$/src/Business/ManageGameGenerators.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Business/Entidades/Config.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Business/Entidades/Config.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Business/Entidades/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Business/Entidades/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Business/ManageGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Business/ManageGame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Business/ManageStatics.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Business/ManageStatics.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Business/Refresh/UpdateGrafica.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Business/Refresh/UpdateGrafica.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Presenstation/Controller/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presenstation/Controller/GameController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Presenstation/Controller/GameCreationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presenstation/Controller/GameCreationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Presenstation/Controller/GameManagementController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presenstation/Controller/GameManagementController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Presenstation/Controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presenstation/Controller/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Presenstation/Controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presenstation/Controller/MainController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -115,14 +124,6 @@
       <workItem from="1743758267674" duration="4963000" />
       <workItem from="1746711311955" duration="24425000" />
       <workItem from="1747673010765" duration="9650000" />
-    </task>
-    <task id="LOCAL-00036" summary="correccion graficca">
-      <option name="closed" value="true" />
-      <created>1746175409973</created>
-      <option name="number" value="00036" />
-      <option name="presentableId" value="LOCAL-00036" />
-      <option name="project" value="LOCAL" />
-      <updated>1746175409973</updated>
     </task>
     <task id="LOCAL-00037" summary="correccion graficca">
       <option name="closed" value="true" />
@@ -508,7 +509,15 @@
       <option name="project" value="LOCAL" />
       <updated>1747743097807</updated>
     </task>
-    <option name="localTasksCounter" value="85" />
+    <task id="LOCAL-00085" summary="solo seleccionar una partida">
+      <option name="closed" value="true" />
+      <created>1747830252187</created>
+      <option name="number" value="00085" />
+      <option name="presentableId" value="LOCAL-00085" />
+      <option name="project" value="LOCAL" />
+      <updated>1747830252187</updated>
+    </task>
+    <option name="localTasksCounter" value="86" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -538,7 +547,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="ya funciona la base de datos con game" />
     <MESSAGE value="limpiar funciones no utilizadas" />
     <MESSAGE value="revisar estadisticas" />
     <MESSAGE value="fallo nuevo signUp" />
@@ -563,6 +571,7 @@
     <MESSAGE value="arreglos estructura, quitar herencia" />
     <MESSAGE value="base de datos corregir nombre" />
     <MESSAGE value="correccion" />
-    <option name="LAST_COMMIT_MESSAGE" value="correccion" />
+    <MESSAGE value="solo seleccionar una partida" />
+    <option name="LAST_COMMIT_MESSAGE" value="solo seleccionar una partida" />
   </component>
 </project>
