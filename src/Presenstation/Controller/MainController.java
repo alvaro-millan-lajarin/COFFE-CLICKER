@@ -17,14 +17,14 @@ import javax.swing.*;
  * Gestiona la navegación entre escenas, inicialización de controladores y lógica global del sistema.
  */
 public class MainController {
-    private MenuScene menuScene;
-    private Scene scene;
+    private final MenuScene menuScene;
+    private final Scene scene;
     private SignUpScene signUpScene;
     private LoginScene loginScene;
     private GameManagementScene gameManagementScene;
     private GameCreationScene gameCreationScene;
     private GameScene gameScene;
-    private StaticsScene staticsScene;
+    private final StaticsScene staticsScene;
     private UpdateGame updateGame;
     private LoginController loginController;
     private SignUpController signUpController;
@@ -84,7 +84,7 @@ public class MainController {
 
         switch (scenes) {
             case MENU:
-                //menuController.run();
+
                 menuScene.apply(scene.getMainFrame());
                 break;
             case LOGIN:
@@ -167,8 +167,6 @@ public class MainController {
 
         signUpScene = null;
         signUpController = null;
-
-        //System.gc();
 
         loginScene = new LoginScene();
         loginController = new LoginController(loginScene, this, manageUser);
