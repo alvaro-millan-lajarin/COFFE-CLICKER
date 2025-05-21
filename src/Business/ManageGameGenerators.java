@@ -19,7 +19,6 @@ public class ManageGameGenerators {
     private Game game;
     private final GameDAO gameDAO;
     private final GeneratorDAO generatorDAO;
-    private final StatisticDAO statisticDAO;
 
     /**
      * Constructor de ManageGame. Inicializa los DAOs para acceder a la base de datos.
@@ -27,7 +26,7 @@ public class ManageGameGenerators {
     public ManageGameGenerators() {
         this.gameDAO = new SQLGameDAO();
         this.generatorDAO = new SQLGeneratorDAO();
-        this.statisticDAO = new SQLStatisticDAO();
+
     }
 
     /**
@@ -39,21 +38,6 @@ public class ManageGameGenerators {
         return game;
     }
 
-    /**
-     * Incrementa en 1 el número de cafés del juego actual.
-     */
-    public void increaseNumCafes() {
-
-        game.increaseNumCafes();
-
-    }
-
-    /**
-     * Marca la partida como finalizada en la base de datos.
-     */
-    public void setFinish(){
-        gameDAO.finishTrue(game);
-    }
 
     /**
      * Establece el juego actual cargándolo desde la base de datos.
@@ -61,7 +45,7 @@ public class ManageGameGenerators {
      * @param game Partida seleccionada.
      */
     public void setGame(Game game) {
-        this.game = getGameBaseDeDatos(game);
+        this.game = game;
 
 
     }
@@ -183,30 +167,6 @@ public class ManageGameGenerators {
         }
     }
 
-    /**
-     * Resta el coste en cafés al jugador según el tipo de cafetera comprada.
-     *
-     * @param cafetera Nombre del tipo de cafetera ("cafetera", "CafeCheta", "cafeterGod").
-     */
-    public void restarCafe(String cafetera) {
-
-        Integer cafeActual = game.getNumCafes();
-        Double costeCafe =0.0;
-        switch (cafetera) {
-            case "cafetera":
-                costeCafe = game.getCafeteriaPrecio();
-                break;
-            case "CafeCheta":
-               costeCafe = game.getCafeteriaChetaPrecio();
-               break;
-            case "cafeterGod":
-                costeCafe = game.getCafeteriaGodPrecio();
-                break;
-        }
-
-        game.setNumCafes((int) (cafeActual-costeCafe));
-
-    }
 
     /**
      * Actualiza el precio de una cafetera según su tipo.
@@ -365,40 +325,6 @@ public class ManageGameGenerators {
         return false;
     }
 
-    /**
-     * Resta el café correspondiente al coste de mejora del tipo de cafetera indicado.
-     *
-     * @param cafetera Nombre del tipo de cafetera ("cafetera", "CafeCheta", "cafeGod").
-     */
-    public void restarCafeMejora(String cafetera) {
-
-        Integer cafeActual = game.getNumCafes();
-        Integer costeCafe =0;
-        switch (cafetera) {
-            case "cafetera":
-                costeCafe = game.getCostMultplicadors().get(0);
-                break;
-            case "CafeCheta":
-                costeCafe = game.getCostMultplicadors().get(1);
-                break;
-            case "cafeGod":
-                costeCafe = game.getCostMultplicadors().get(2);
-                break;
-        }
-
-        game.setNumCafes((int) (cafeActual-costeCafe));
-
-    }
-
-    /**
-     * Elimina la partida indicada y sus estadísticas asociadas de la base de datos.
-     *
-     * @param game Partida a eliminar.
-     */
-    public void deleteGameSelected(Game game) {
-        statisticDAO.deleteEstadisticasByPartidaId(game.getId());
-        gameDAO.deleteGame(game);
-    }
 
     /**
      * Devuelve una lista con todas las partidas almacenadas en la base de datos.
@@ -407,30 +333,6 @@ public class ManageGameGenerators {
      */
     public List<Game> getAllGames() {
         return gameDAO.getAllGames();
-    }
-
-    /**
-     * Añade una nueva partida a la base de datos.
-     *
-     * @param game Partida a añadir.
-     */
-    public void addGame(Game game) {
-        gameDAO.addGame(game);
-    }
-
-    /**
-     * Busca en la base de datos una partida que coincida por nombre e ID de usuario.
-     *
-     * @param newGame Partida a buscar.
-     * @return La partida encontrada o null si no existe.
-     */
-    public Game getGameBaseDeDatos(Game newGame) {
-        for (Game game : getAllGames()) {
-            if(game.getNombre().equals(newGame.getNombre()) && game.getIdUser() == newGame.getIdUser()) {
-                return game;
-            }
-        }
-        return null;
     }
 
     /**
@@ -563,11 +465,6 @@ public class ManageGameGenerators {
         return generatorDAO.getGenerator(gameId, nombreCafetera);
     }
 
-    /**
-     * Cierra la sesión actual, eliminando la referencia al juego en memoria.
-     */
-    public void logout(){
-        game = null;
-    }
+
 }
 

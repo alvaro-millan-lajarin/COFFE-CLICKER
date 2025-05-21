@@ -151,7 +151,7 @@ public class Game {
      */
     public void increaseNumCafes(){
         this.numCafes++;
-        System.out.println(numCafes);
+
     }
 
     /**

@@ -2,6 +2,7 @@ package Presenstation.Controller;
 
 import Business.Entidades.Game;
 import Business.Entidades.User;
+import Business.ManageGame;
 import Business.ManageGameGenerators;
 import Business.ManageStatics;
 import Business.ManageUser;
@@ -33,6 +34,7 @@ public class GameManagementController implements ActionListener {
     private Grafica grafica;
     private final GameManagementScene gameManagementScene;
     private MainController mainController;
+    private ManageGame manageGame;
 
     /**
      * Constructor de GameManagementController.
@@ -45,7 +47,7 @@ public class GameManagementController implements ActionListener {
      * @param manageGameGenerators Lógica del juego.
      * @param gameController Controlador de juego.
      */
-    public GameManagementController(GameManagementScene gameManagementScene, MainController mainController, LoginController loginController, SignUpController signUpController, ManageUser manageUser, ManageGameGenerators manageGameGenerators, GameController gameController, ManageStatics manageStatics) {
+    public GameManagementController(GameManagementScene gameManagementScene, MainController mainController, LoginController loginController, SignUpController signUpController, ManageUser manageUser, ManageGameGenerators manageGameGenerators, GameController gameController, ManageStatics manageStatics, ManageGame manageGame) {
 
         this.loginController = loginController;
         this.manageStatics = manageStatics;
@@ -55,6 +57,7 @@ public class GameManagementController implements ActionListener {
         this.gameController = gameController;
         this.gameManagementScene = gameManagementScene;
         this.mainController = mainController;
+        this.manageGame = manageGame;
     }
 
     /**
@@ -151,7 +154,7 @@ public class GameManagementController implements ActionListener {
             int confirm = messages.deleteGame();
 
             if (confirm == JOptionPane.YES_OPTION) {
-                manageGameGenerators.deleteGameSelected(selectedGame);
+                manageGame.deleteGameSelected(selectedGame);
                 messages.deleteGameSucces();
             }
         } else {

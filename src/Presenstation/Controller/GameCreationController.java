@@ -99,11 +99,13 @@ public class GameCreationController implements ActionListener {
             }
             LocalDateTime fechaYHoraActual = LocalDateTime.now();
             game = new Game(1,manageUser.getCurrentUser().getId(),nombreGame,fechaYHoraActual,fechaYHoraActual,0, false);
-            manageGameGenerators.addGame(game);
-            manageGameGenerators.setGame(game);
-            manageGame.setGame(game);
+            manageGame.addGame(game);
 
-            manageStatics.setGame(game);
+            Game gameNuevo = manageGame.getGameBaseDeDatos(game);
+            //Actualizamos el game a los manager
+            manageGameGenerators.setGame(gameNuevo);
+            manageGame.setGame(gameNuevo);
+            manageStatics.setGame(gameNuevo);
 
             manageGameGenerators.addBasicGenerator();
 

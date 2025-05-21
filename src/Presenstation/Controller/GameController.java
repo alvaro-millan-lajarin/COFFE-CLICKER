@@ -1,5 +1,6 @@
 package Presenstation.Controller;
 
+import Business.Entidades.Game;
 import Business.ManageGame;
 import Business.ManageGameGenerators;
 import Business.ManageUser;
@@ -70,8 +71,9 @@ public class GameController implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getActionCommand().equalsIgnoreCase("MORE_COFFE")) {
-            manageGameGenerators.increaseNumCafes();
-            manageGameGenerators.updateGame();
+
+            manageGame.increaseNumCafes();
+            manageGame.updateGame();
 
 
         }else if (e.getActionCommand().equalsIgnoreCase("LOGOUT")) {
@@ -124,8 +126,8 @@ public class GameController implements ActionListener {
      * Marca la partida como finalizada y cambia a la escena de gestión de partidas.
      */
     public void finishGame() {
-        manageGameGenerators.getGame().setFinished();
-        manageGameGenerators.setFinish();
+        manageGame.getGame().setFinished();
+        manageGame.setFinish();
         mainController.nextScene(Scenes.GAME_MANAGEMENT);
     }
 
@@ -155,7 +157,7 @@ public class GameController implements ActionListener {
      */
     public void compraCafetera() {
         if(manageGameGenerators.enughtCoffeCafeteria()){
-            manageGameGenerators.restarCafe("cafetera");//restar cafe
+            manageGame.restarCafe("cafetera");//restar cafe
             manageGameGenerators.startGeneratorCafetera();//encender generador
             manageGameGenerators.updatePriceCoffe("cafetera");
             manageGameGenerators.updateGame();
@@ -172,7 +174,7 @@ public class GameController implements ActionListener {
      */
     public void compraCafeteraCheta() {
         if(manageGameGenerators.enughtCoffeCheta()){
-            manageGameGenerators.restarCafe("CafeCheta");
+            manageGame.restarCafe("CafeCheta");
             manageGameGenerators.startGeneratorCafeteraCheta();
             manageGameGenerators.updatePriceCoffe("CafeCheta");
             manageGameGenerators.updateGame();
@@ -189,7 +191,7 @@ public class GameController implements ActionListener {
     public void compraCafeGod(){
         if(manageGameGenerators.enughtCoffeGod()){
             manageGameGenerators.startGeneratorCafeteraGod();
-            manageGameGenerators.restarCafe("CafeGod");
+            manageGame.restarCafe("CafeGod");
             manageGameGenerators.updatePriceCoffe("CafeGod");
             manageGameGenerators.updateGame();
             manageGameGenerators.updateGenerators();
@@ -219,7 +221,7 @@ public class GameController implements ActionListener {
      */
     public void cafeteraMejora() {
         if(manageGameGenerators.enoughtCoffeMejoraCafetera()){
-            manageGameGenerators.restarCafeMejora("cafetera");
+            manageGame.restarCafeMejora("cafetera");
             manageGameGenerators.mejorarCafetera();
             manageGameGenerators.updateGame();
             manageGameGenerators.updateGenerators();
@@ -235,7 +237,7 @@ public class GameController implements ActionListener {
      */
     public void chetaMejora() {
         if(manageGameGenerators.enoughtCoffeMejoraCheta()){
-            manageGameGenerators.restarCafeMejora("CafeCheta");
+            manageGame.restarCafeMejora("CafeCheta");
             manageGameGenerators.mejorarCheta();
             manageGameGenerators.updateGame();
             updateTablas();
@@ -250,7 +252,7 @@ public class GameController implements ActionListener {
      */
     public void godMejora() {
         if(manageGameGenerators.enoughtCoffeMejoraGod()){
-            manageGameGenerators.restarCafeMejora("cafeGod");
+            manageGame.restarCafeMejora("cafeGod");
             manageGameGenerators.mejorarGod();
             manageGameGenerators.updateGame();
             manageGameGenerators.updateGenerators();

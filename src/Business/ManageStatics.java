@@ -21,7 +21,6 @@ import java.util.List;
 public class ManageStatics {
     private Game game;
     private final StatisticDAO statisticDAO;
-    private final GameDAO gameDAO;
     private final Messages messages = new Messages();
 
     /**
@@ -31,7 +30,6 @@ public class ManageStatics {
      */
     public ManageStatics(StatisticDAO statisticDAO) {
         this.statisticDAO = statisticDAO;
-        this.gameDAO = new SQLGameDAO();
     }
 
     /**
@@ -70,29 +68,8 @@ public class ManageStatics {
      * @param game Partida seleccionada.
      */
     public void setGame(Game game) {
-        this.game = getGameBaseDeDatos(game);
+        this.game = game;
     }
-    /**
-     * Busca en la base de datos una partida que coincida por nombre e ID de usuario.
-     *
-     * @param newGame Partida a buscar.
-     * @return La partida encontrada o null si no existe.
-     */
-    public Game getGameBaseDeDatos(Game newGame) {
-        for (Game game : getAllGames()) {
-            if(game.getNombre().equals(newGame.getNombre()) && game.getIdUser() == newGame.getIdUser()) {
-                return game;
-            }
-        }
-        return null;
-    }
-    /**
-     * Devuelve una lista con todas las partidas almacenadas en la base de datos.
-     *
-     * @return Lista de partidas.
-     */
-    public List<Game> getAllGames() {
-        return gameDAO.getAllGames();
-    }
+
 
 }

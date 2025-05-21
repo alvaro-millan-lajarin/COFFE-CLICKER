@@ -61,7 +61,7 @@ public class MainController {
         loginController = new LoginController(loginScene, this, manageUser);
         signUpController = new SignUpController(signUpScene, this, manageUser);
         menuController = new MenuController(menuScene, this);
-        gameManagementController = new GameManagementController(gameManagementScene, this, loginController, signUpController, manageUser, manageGameGenerators, gameController, manageStatics);
+        gameManagementController = new GameManagementController(gameManagementScene, this, loginController, signUpController, manageUser, manageGameGenerators, gameController, manageStatics, manageGame);
         gameCreationController = new GameCreationController(gameCreationScene, this, loginController, signUpController, manageGameGenerators, manageUser, gameController, manageStatics, manageGame);
         gameController = new GameController(gameScene, this, loginController, signUpController, manageGameGenerators, manageUser, manageGame);
         staticsController = new StaticsController( this);
@@ -119,11 +119,11 @@ public class MainController {
      * @param game Partida a reanudar.
      */
     public void resumeGame(Game game) {
-
-        manageGameGenerators.setGame(game);
-        manageStatics.setGame(game);
+        Game gameNuevo = manageGame.getGameBaseDeDatos(game);
+        manageGameGenerators.setGame(gameNuevo);
+        manageStatics.setGame(gameNuevo);
         manageGameGenerators.setGeneradores();
-        manageGame.setGame(game);
+        manageGame.setGame(gameNuevo);
 
         gameScene = new GameScene();
         gameController = new GameController(gameScene, this, loginController, signUpController, manageGameGenerators, manageUser, manageGame);
@@ -160,7 +160,7 @@ public class MainController {
      */
     public void resetLogin() {
         manageUser.logout();
-        manageGameGenerators.logout();
+        manageGame.logout();
 
         loginScene = null;
         loginController = null;
@@ -199,7 +199,7 @@ public class MainController {
         gameManagementController = null;
 
         gameManagementScene= new GameManagementScene();
-        gameManagementController= new GameManagementController(gameManagementScene,this,loginController,signUpController, manageUser, manageGameGenerators, gameController, manageStatics);
+        gameManagementController= new GameManagementController(gameManagementScene,this,loginController,signUpController, manageUser, manageGameGenerators, gameController, manageStatics, manageGame);
         gameManagementScene.setController(gameManagementController);
     }
 

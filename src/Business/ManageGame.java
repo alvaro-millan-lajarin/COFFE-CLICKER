@@ -13,12 +13,11 @@ import java.util.List;
 public class ManageGame {
     private Game game;
     private final GameDAO gameDAO;
-    private final GeneratorDAO generatorDAO;
     private final StatisticDAO statisticDAO;
 
     public ManageGame() {
         this.gameDAO = new SQLGameDAO();
-        this.generatorDAO = new SQLGeneratorDAO();
+
         this.statisticDAO = new SQLStatisticDAO();
     }
     /**
@@ -27,7 +26,7 @@ public class ManageGame {
      * @param game Partida seleccionada.
      */
     public void setGame(Game game) {
-        this.game = getGameBaseDeDatos(game);
+        this.game = game;
 
 
     }
