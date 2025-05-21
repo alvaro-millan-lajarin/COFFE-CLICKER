@@ -30,7 +30,7 @@ public class SignUpController implements ActionListener {
      */
     public SignUpController(SignUpScene view, MainController mainController, ManageUser manageUser) {
         this.manageUser = manageUser;
-        signUpScene = view;
+        this.signUpScene = view;
         this.mainController = mainController;
 
     }

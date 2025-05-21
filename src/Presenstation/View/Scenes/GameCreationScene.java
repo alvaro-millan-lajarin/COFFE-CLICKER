@@ -14,11 +14,7 @@ import java.awt.*;
  */
 public class GameCreationScene extends Scene {
     private GameCreationController gameCreationController;
-    public final static String GAME_MANAGEMENT = "GAME_MANAGEMENT";
-    private Text email;
-    private Text password;
     private Text name;
-    private Text passwordAgain;
 
     /**
      * Inicializa el diseño principal del panel con los distintos bloques (título, centro, botones, etc.).

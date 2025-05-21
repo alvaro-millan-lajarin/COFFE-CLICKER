@@ -1,6 +1,8 @@
 package Business;
 
+import Business.Entidades.Game;
 import Business.Entidades.Pair;
+import Persistence.GameDAO;
 import Persistence.StatisticDAO;
 import Persistence.sql.SQLGameDAO;
 import Persistence.sql.SQLStatisticDAO;
@@ -17,7 +19,7 @@ import java.util.List;
  * como el histórico de cafés generados.
  */
 public class ManageStatics {
-
+    private Game game;
     private final StatisticDAO statisticDAO;
     private final Messages messages = new Messages();
 
@@ -53,4 +55,21 @@ public class ManageStatics {
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
     }
+    /**
+     * Registra el número actual de cafés como parte del histórico en la base de datos.
+     *
+     */
+    public void logCafeHistorico(){
+        statisticDAO.logCafeHistorico(game.getId(), game.getNumCafes());
+    }
+    /**
+     * Establece el juego actual cargándolo desde la base de datos.
+     *
+     * @param game Partida seleccionada.
+     */
+    public void setGame(Game game) {
+        this.game = game;
+    }
+
+
 }

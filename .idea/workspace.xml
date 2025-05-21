@@ -4,16 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f9bbb50b-3eaf-412a-ab58-ecb07cf93455" name="Changes" comment="base de datos corregir nombre">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="f9bbb50b-3eaf-412a-ab58-ecb07cf93455" name="Changes" comment="tamaño fijo partidas, reutilizar funciones">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Business/ManageStatics.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Business/ManageStatics.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Presenstation/View/Scenes/GameManagementScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presenstation/View/Scenes/GameManagementScene.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Presenstation/View/Scenes/GameScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presenstation/View/Scenes/GameScene.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Presenstation/View/Scenes/LoginScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presenstation/View/Scenes/LoginScene.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Presenstation/View/Scenes/MenuScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presenstation/View/Scenes/MenuScene.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Presenstation/View/Scenes/SignUpScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presenstation/View/Scenes/SignUpScene.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Presenstation/View/Scenes/StaticsScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presenstation/View/Scenes/StaticsScene.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Presenstation/Controller/GameCreationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presenstation/Controller/GameCreationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Presenstation/Controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presenstation/Controller/MainController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,6 +59,7 @@
     "Repository.Attach.Sources": "false",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "arreglosEstructura",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/arnau/OneDrive/Escritorio/mysql-connector-java-8.0.23.jar",
@@ -121,62 +116,6 @@
       <workItem from="1743758267674" duration="4963000" />
       <workItem from="1746711311955" duration="24425000" />
       <workItem from="1747673010765" duration="9650000" />
-    </task>
-    <task id="LOCAL-00035" summary="correccion graficca">
-      <option name="closed" value="true" />
-      <created>1745408880689</created>
-      <option name="number" value="00035" />
-      <option name="presentableId" value="LOCAL-00035" />
-      <option name="project" value="LOCAL" />
-      <updated>1745408880689</updated>
-    </task>
-    <task id="LOCAL-00036" summary="correccion graficca">
-      <option name="closed" value="true" />
-      <created>1746175409973</created>
-      <option name="number" value="00036" />
-      <option name="presentableId" value="LOCAL-00036" />
-      <option name="project" value="LOCAL" />
-      <updated>1746175409973</updated>
-    </task>
-    <task id="LOCAL-00037" summary="correccion graficca">
-      <option name="closed" value="true" />
-      <created>1746176485396</created>
-      <option name="number" value="00037" />
-      <option name="presentableId" value="LOCAL-00037" />
-      <option name="project" value="LOCAL" />
-      <updated>1746176485396</updated>
-    </task>
-    <task id="LOCAL-00038" summary="correccion estructura">
-      <option name="closed" value="true" />
-      <created>1746178888926</created>
-      <option name="number" value="00038" />
-      <option name="presentableId" value="LOCAL-00038" />
-      <option name="project" value="LOCAL" />
-      <updated>1746178888926</updated>
-    </task>
-    <task id="LOCAL-00039" summary="correccion estructura user">
-      <option name="closed" value="true" />
-      <created>1746180162083</created>
-      <option name="number" value="00039" />
-      <option name="presentableId" value="LOCAL-00039" />
-      <option name="project" value="LOCAL" />
-      <updated>1746180162083</updated>
-    </task>
-    <task id="LOCAL-00040" summary="nueva clase para errores">
-      <option name="closed" value="true" />
-      <created>1746182019674</created>
-      <option name="number" value="00040" />
-      <option name="presentableId" value="LOCAL-00040" />
-      <option name="project" value="LOCAL" />
-      <updated>1746182019674</updated>
-    </task>
-    <task id="LOCAL-00041" summary="seguir la estructuar correcta y mas mensajes">
-      <option name="closed" value="true" />
-      <created>1746184071810</created>
-      <option name="number" value="00041" />
-      <option name="presentableId" value="LOCAL-00041" />
-      <option name="project" value="LOCAL" />
-      <updated>1746184071810</updated>
     </task>
     <task id="LOCAL-00042" summary="seguir la estructuar correcta y mas mensajes">
       <option name="closed" value="true" />
@@ -514,13 +453,74 @@
       <option name="project" value="LOCAL" />
       <updated>1747683721093</updated>
     </task>
-    <option name="localTasksCounter" value="84" />
+    <task id="LOCAL-00084" summary="correccion">
+      <option name="closed" value="true" />
+      <created>1747743097807</created>
+      <option name="number" value="00084" />
+      <option name="presentableId" value="LOCAL-00084" />
+      <option name="project" value="LOCAL" />
+      <updated>1747743097807</updated>
+    </task>
+    <task id="LOCAL-00085" summary="solo seleccionar una partida">
+      <option name="closed" value="true" />
+      <created>1747830252187</created>
+      <option name="number" value="00085" />
+      <option name="presentableId" value="LOCAL-00085" />
+      <option name="project" value="LOCAL" />
+      <updated>1747830252187</updated>
+    </task>
+    <task id="LOCAL-00086" summary="nuevos managers diferenciar funciones">
+      <option name="closed" value="true" />
+      <created>1747833660884</created>
+      <option name="number" value="00086" />
+      <option name="presentableId" value="LOCAL-00086" />
+      <option name="project" value="LOCAL" />
+      <updated>1747833660884</updated>
+    </task>
+    <task id="LOCAL-00087" summary="manageGame funciones">
+      <option name="closed" value="true" />
+      <created>1747834428458</created>
+      <option name="number" value="00087" />
+      <option name="presentableId" value="LOCAL-00087" />
+      <option name="project" value="LOCAL" />
+      <updated>1747834428458</updated>
+    </task>
+    <task id="LOCAL-00088" summary="diferenciacin managers">
+      <option name="closed" value="true" />
+      <created>1747844206151</created>
+      <option name="number" value="00088" />
+      <option name="presentableId" value="LOCAL-00088" />
+      <option name="project" value="LOCAL" />
+      <updated>1747844206151</updated>
+    </task>
+    <task id="LOCAL-00089" summary="funcines no usadas">
+      <option name="closed" value="true" />
+      <created>1747844340882</created>
+      <option name="number" value="00089" />
+      <option name="presentableId" value="LOCAL-00089" />
+      <option name="project" value="LOCAL" />
+      <updated>1747844340882</updated>
+    </task>
+    <task id="LOCAL-00090" summary="tamaño fijo partidas, reutilizar funciones">
+      <option name="closed" value="true" />
+      <created>1747846462493</created>
+      <option name="number" value="00090" />
+      <option name="presentableId" value="LOCAL-00090" />
+      <option name="project" value="LOCAL" />
+      <updated>1747846462493</updated>
+    </task>
+    <option name="localTasksCounter" value="91" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
+    <option name="OPEN_GENERIC_TABS">
+      <map>
+        <entry key="c7fbffd3-0e31-496f-bf1d-46b6d8053173" value="TOOL_WINDOW" />
+      </map>
+    </option>
     <option name="TAB_STATES">
       <map>
         <entry key="MAIN">
@@ -540,17 +540,15 @@
             </State>
           </value>
         </entry>
+        <entry key="c7fbffd3-0e31-496f-bf1d-46b6d8053173">
+          <value>
+            <State />
+          </value>
+        </entry>
       </map>
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="en local sin base de datos game funciona" />
-    <MESSAGE value="ya funciona la base de datos con game" />
-    <MESSAGE value="limpiar funciones no utilizadas" />
-    <MESSAGE value="revisar estadisticas" />
-    <MESSAGE value="fallo nuevo signUp" />
-    <MESSAGE value="repasar estadisticas" />
-    <MESSAGE value="arrreglo estadisticas" />
     <MESSAGE value="correccion multiplicadores" />
     <MESSAGE value="correccion funciones sin usar" />
     <MESSAGE value="correccion base de datos update" />
@@ -569,6 +567,33 @@
     <MESSAGE value="arreglos estructura" />
     <MESSAGE value="arreglos estructura, quitar herencia" />
     <MESSAGE value="base de datos corregir nombre" />
-    <option name="LAST_COMMIT_MESSAGE" value="base de datos corregir nombre" />
+    <MESSAGE value="correccion" />
+    <MESSAGE value="solo seleccionar una partida" />
+    <MESSAGE value="nuevos managers diferenciar funciones" />
+    <MESSAGE value="manageGame funciones" />
+    <MESSAGE value="diferenciacin managers" />
+    <MESSAGE value="funcines no usadas" />
+    <MESSAGE value="tamaño fijo partidas, reutilizar funciones" />
+    <option name="LAST_COMMIT_MESSAGE" value="tamaño fijo partidas, reutilizar funciones" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Business/ManageUser.java</url>
+          <line>154</line>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/Business/ManageUser.java</url>
+          <line>153</line>
+          <properties class="Business.ManageUser" method="deleteUser">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

@@ -23,6 +23,8 @@ public class GameManagementScene extends Scene {
     private Game selectedGame;
     private final static String DELETE = "DELETE";
     private final static String LOGOUT = "LOGOUT";
+    private final List<JButton> allGameButtons = new ArrayList<>();
+
 
     /**
      * Inicializa la estructura del panel principal, distribuyendo las secciones (título, centro, botones).
@@ -128,7 +130,7 @@ public class GameManagementScene extends Scene {
         JPanel rightPanel = new JPanel(new GridLayout(1, 2));
         rightPanel.setOpaque(false);
 
-        JScrollPane scrollPane = new JScrollPane(partidasNoFinalizadas(gamesUser));
+        JScrollPane scrollPane = new JScrollPane(generarPanelPartidas(gamesUser, false));
         scrollPane.setPreferredSize(new Dimension(300, 300));
         scrollPane.setOpaque(false);
         scrollPane.getViewport().setOpaque(false);
@@ -137,7 +139,7 @@ public class GameManagementScene extends Scene {
         border.setTitleColor(Color.WHITE);
         scrollPane.setBorder(border);
 
-        JScrollPane scrollPane2 = new JScrollPane(partidasFinalizadas(gamesUser));
+        JScrollPane scrollPane2 = new JScrollPane(generarPanelPartidas(gamesUser,true));
         scrollPane2.setPreferredSize(new Dimension(300, 300));
         scrollPane2.setOpaque(false);
         scrollPane2.getViewport().setOpaque(false);
@@ -156,67 +158,60 @@ public class GameManagementScene extends Scene {
         return center;
     }
 
-    /**
-     * Genera un panel con las partidas activas del usuario (no finalizadas).
-     *
-     * @param gamesUser Lista de partidas del usuario.
-     * @return JPanel con botones correspondientes a partidas activas.
-     */
-    public JPanel partidasNoFinalizadas(ArrayList<Game> gamesUser) {
+    private JPanel generarPanelPartidas(List<Game> gamesUser, boolean finalizadas) {
         JPanel partidasPanel = new JPanel();
         partidasPanel.setLayout(new BoxLayout(partidasPanel, BoxLayout.Y_AXIS));
         partidasPanel.setOpaque(false);
-        partidasPanel.removeAll();
-        partidasPanel.revalidate();
-        partidasPanel.repaint();
 
-        List<JButton> botonesPartidas = new ArrayList<>();
+        boolean hayPartidas = false;
+        for (Game game : gamesUser) {
+            if (game.isFinished() == finalizadas) {
+                hayPartidas = true;
 
-        if (!gamesUser.isEmpty()) {
-            for (int i = 0; i < gamesUser.size(); i++) {
-                Game game = gamesUser.get(i);
-                if(!game.isFinished()) {
-                    JPanel buttonContent = new JPanel();
+                JPanel buttonContent = new JPanel();
+                buttonContent.setLayout(new BoxLayout(buttonContent, BoxLayout.Y_AXIS));
+                buttonContent.setOpaque(false);
 
-                    buttonContent.setLayout(new BoxLayout(buttonContent, BoxLayout.Y_AXIS));
-                    buttonContent.setOpaque(false);
+                JLabel nameLabel = new JLabel("GAME: " + game.getNombre());
+                nameLabel.setFont(new Font("Arial", Font.BOLD, 14));
+                nameLabel.setAlignmentX(Component.LEFT_ALIGNMENT);
 
-                    JLabel nameLabel = new JLabel("GAME: " + game.getNombre());
-                    nameLabel.setFont(new Font("Arial", Font.BOLD, 14));
-                    nameLabel.setAlignmentX(Component.LEFT_ALIGNMENT);
+                JLabel cafesLabel = new JLabel("Cafes: " + game.getNumCafes());
+                cafesLabel.setFont(new Font("Arial", Font.PLAIN, 10));
+                cafesLabel.setAlignmentX(Component.LEFT_ALIGNMENT);
 
-                    JLabel cafesLabel = new JLabel("Cafes: " + game.getNumCafes());
-                    cafesLabel.setFont(new Font("Arial", Font.PLAIN, 10));
-                    cafesLabel.setAlignmentX(Component.LEFT_ALIGNMENT);
+                buttonContent.add(nameLabel);
+                buttonContent.add(cafesLabel);
 
-                    buttonContent.add(nameLabel);
-                    buttonContent.add(cafesLabel);
+                JButton btn = new JButton();
+                btn.setLayout(new BorderLayout());
+                btn.add(buttonContent, BorderLayout.CENTER);
+                btn.setAlignmentX(Component.LEFT_ALIGNMENT);
+                btn.setFocusPainted(false);
+                btn.setBackground(new Color(210, 140, 95));
+                btn.setOpaque(true);
+                btn.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 
-                    JButton btn = new JButton();
+                Dimension fixedSize = new Dimension(300, 50);
+                btn.setPreferredSize(fixedSize);
+                btn.setMaximumSize(fixedSize);
+                btn.setMinimumSize(fixedSize);
 
+                btn.addActionListener(e -> {
+                    for (JButton b : allGameButtons) {
+                        b.setBackground(new Color(210, 140, 95));
+                    }
+                    btn.setBackground(Color.ORANGE);
+                    selectedGame = game;
+                });
 
-                    btn.setLayout(new BorderLayout());
-                    btn.add(buttonContent, BorderLayout.CENTER);
-                    btn.setAlignmentX(Component.LEFT_ALIGNMENT);
-                    btn.setFocusPainted(false);
-                    btn.setBackground(new Color(210, 140, 95)); // marrón claro
-                    btn.setOpaque(true);
-                    btn.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
-
-                    btn.addActionListener(e -> {
-                        for (JButton b : botonesPartidas) {
-                            b.setBackground(new Color(210, 140, 95));
-                        }
-                        btn.setBackground(Color.ORANGE);
-                        selectedGame = game;
-                    });
-
-                    botonesPartidas.add(btn);
-                    partidasPanel.add(Box.createVerticalStrut(5));
-                    partidasPanel.add(btn);
-                }
+                allGameButtons.add(btn);
+                partidasPanel.add(Box.createVerticalStrut(5));
+                partidasPanel.add(btn);
             }
-        } else {
+        }
+
+        if (!hayPartidas) {
             JLabel noGamesLabel = new JLabel("NO GAMES SAVED");
             noGamesLabel.setFont(new Font("Arial", Font.BOLD, 16));
             noGamesLabel.setForeground(Color.GRAY);
@@ -224,78 +219,10 @@ public class GameManagementScene extends Scene {
             partidasPanel.add(Box.createVerticalStrut(100));
             partidasPanel.add(noGamesLabel);
         }
+
         return partidasPanel;
     }
 
-    /**
-     * Genera un panel con las partidas finalizadas del usuario.
-     *
-     * @param gamesUser Lista de partidas del usuario.
-     * @return JPanel con botones correspondientes a partidas finalizadas.
-     */
-    public JPanel partidasFinalizadas(ArrayList<Game> gamesUser) {
-        JPanel partidasPanel = new JPanel();
-        partidasPanel.setLayout(new BoxLayout(partidasPanel, BoxLayout.Y_AXIS));
-        partidasPanel.setOpaque(false);
-        partidasPanel.removeAll();
-        partidasPanel.revalidate();
-        partidasPanel.repaint();
-
-        List<JButton> botonesPartidas = new ArrayList<>();
-
-        if (!gamesUser.isEmpty()) {
-            for (int i = 0; i < gamesUser.size(); i++) {
-                Game game = gamesUser.get(i);
-                if(game.isFinished()) {
-                    JPanel buttonContent = new JPanel();
-
-                    buttonContent.setLayout(new BoxLayout(buttonContent, BoxLayout.Y_AXIS));
-                    buttonContent.setOpaque(false);
-
-                    JLabel nameLabel = new JLabel("GAME: " + game.getNombre());
-                    nameLabel.setFont(new Font("Arial", Font.BOLD, 14));
-                    nameLabel.setAlignmentX(Component.LEFT_ALIGNMENT);
-
-                    JLabel cafesLabel = new JLabel("Cafes: " + game.getNumCafes());
-                    cafesLabel.setFont(new Font("Arial", Font.PLAIN, 10));
-                    cafesLabel.setAlignmentX(Component.LEFT_ALIGNMENT);
-
-                    buttonContent.add(nameLabel);
-                    buttonContent.add(cafesLabel);
-
-                    JButton btn = new JButton();
-
-                    btn.setLayout(new BorderLayout());
-                    btn.add(buttonContent, BorderLayout.CENTER);
-                    btn.setAlignmentX(Component.LEFT_ALIGNMENT);
-                    btn.setFocusPainted(false);
-                    btn.setBackground(new Color(210, 140, 95)); // marrón claro
-                    btn.setOpaque(true);
-                    btn.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
-
-                    btn.addActionListener(e -> {
-                        for (JButton b : botonesPartidas) {
-                            b.setBackground(new Color(210, 140, 95));
-                        }
-                        btn.setBackground(Color.ORANGE);
-                        selectedGame = game;
-                    });
-
-                    botonesPartidas.add(btn);
-                    partidasPanel.add(Box.createVerticalStrut(5));
-                    partidasPanel.add(btn);
-                }
-            }
-        } else {
-            JLabel noGamesLabel = new JLabel("NO GAMES SAVED");
-            noGamesLabel.setFont(new Font("Arial", Font.BOLD, 16));
-            noGamesLabel.setForeground(Color.GRAY);
-            noGamesLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
-            partidasPanel.add(Box.createVerticalStrut(100));
-            partidasPanel.add(noGamesLabel);
-        }
-        return partidasPanel;
-    }
 
     /**
      * Crea el conjunto de botones centrales: estadísticas, reanudar y eliminar partida.

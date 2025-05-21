@@ -2,7 +2,7 @@ package Business.Entidades;
 
 
 
-import Business.ManageGame;
+import Business.ManageGameGenerators;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -12,7 +12,7 @@ import java.util.List;
 
 public class Game {
 
-    private ManageGame manageGame;
+    private ManageGameGenerators manageGameGenerators;
     private int id;
     private int idUser;
     private String nombre;
@@ -45,7 +45,7 @@ public class Game {
         this.fechaModificacion = fechaModificacion;
         this.numCafes = numCafes;
         this.finished = finished;
-        this.manageGame = new ManageGame();
+        this.manageGameGenerators = new ManageGameGenerators();
         this.generadoresCafetera = new ArrayList<>();
         this.generadoresChetas = new ArrayList<>();
         this.generadoresGod = new ArrayList<>();
@@ -57,7 +57,7 @@ public class Game {
      */
     public void startGeneratorCafetera() {
 
-        Generator cafeteria = manageGame.getCafeteraBaseDeDatos(getId(), "Cafetera");
+        Generator cafeteria = manageGameGenerators.getCafeteraBaseDeDatos(getId(), "Cafetera");
         cafeteria.setGame(this);
         generadoresCafetera.add(cafeteria);
         cafeteria.start();
@@ -67,7 +67,7 @@ public class Game {
      * Inicia un generador tipo Cafetera Cheta, lo configura y lo arranca.
      */
     public void startGeneratorCafeteraCheta() {
-        Generator cafeteriaCheta = manageGame.getCafeteraBaseDeDatos(getId(), "CafeCheta");
+        Generator cafeteriaCheta = manageGameGenerators.getCafeteraBaseDeDatos(getId(), "CafeCheta");
         cafeteriaCheta.setGame(this);
         generadoresChetas.add(cafeteriaCheta);
         cafeteriaCheta.start();
@@ -77,7 +77,7 @@ public class Game {
      * Inicia un generador tipo Cafetera God, lo configura y lo arranca.
      */
     public void startGeneratorCafeteraGod() {
-        Generator cafeteriaGod = manageGame.getCafeteraBaseDeDatos(getId(), "CafeGod");
+        Generator cafeteriaGod = manageGameGenerators.getCafeteraBaseDeDatos(getId(), "CafeGod");
         cafeteriaGod.setGame(this);
         generadoresGod.add(cafeteriaGod);
         cafeteriaGod.start();
@@ -151,6 +151,7 @@ public class Game {
      */
     public void increaseNumCafes(){
         this.numCafes++;
+
     }
 
     /**

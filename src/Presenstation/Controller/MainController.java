@@ -2,8 +2,11 @@ package Presenstation.Controller;
 
 import Business.Entidades.Game;
 import Business.ManageGame;
+import Business.ManageGameGenerators;
+import Business.ManageStatics;
 import Business.ManageUser;
 import Business.Refresh.UpdateGame;
+import Persistence.sql.SQLStatisticDAO;
 import Persistence.sql.SQLUserDAO;
 import Presenstation.View.Scenes.*;
 
@@ -14,14 +17,14 @@ import javax.swing.*;
  * Gestiona la navegación entre escenas, inicialización de controladores y lógica global del sistema.
  */
 public class MainController {
-    private MenuScene menuScene;
-    private Scene scene;
+    private final MenuScene menuScene;
+    private final Scene scene;
     private SignUpScene signUpScene;
     private LoginScene loginScene;
     private GameManagementScene gameManagementScene;
     private GameCreationScene gameCreationScene;
     private GameScene gameScene;
-    private StaticsScene staticsScene;
+    private final StaticsScene staticsScene;
     private UpdateGame updateGame;
     private LoginController loginController;
     private SignUpController signUpController;
@@ -30,16 +33,20 @@ public class MainController {
     private GameCreationController gameCreationController;
     private GameController gameController;
     private StaticsController staticsController;
-    private final ManageGame manageGame;
+    private final ManageGameGenerators manageGameGenerators;
     private final ManageUser manageUser;
+    private final ManageStatics manageStatics;
+    private final ManageGame manageGame;
 
     /**
      * Constructor que inicializa todas las escenas, controladores y lógica del sistema.
      */
     public MainController() {
 
-        manageGame = new ManageGame();
+        manageGameGenerators = new ManageGameGenerators();
         manageUser = new ManageUser(new SQLUserDAO());
+        manageStatics = new ManageStatics(new SQLStatisticDAO());
+        manageGame = new ManageGame();
 
         menuScene = new MenuScene();
         scene = new Scene();
@@ -54,9 +61,9 @@ public class MainController {
         loginController = new LoginController(loginScene, this, manageUser);
         signUpController = new SignUpController(signUpScene, this, manageUser);
         menuController = new MenuController(menuScene, this);
-        gameManagementController = new GameManagementController(gameManagementScene, this, loginController, signUpController, manageUser, manageGame, gameController);
-        gameCreationController = new GameCreationController(gameCreationScene, this, loginController, signUpController, manageGame, manageUser, gameController);
-        gameController = new GameController(gameScene, this, loginController, signUpController,manageGame, manageUser);
+        gameManagementController = new GameManagementController(gameManagementScene, this, loginController, signUpController, manageUser, manageGameGenerators, gameController, manageStatics, manageGame);
+        gameCreationController = new GameCreationController(gameCreationScene, this, loginController, manageGameGenerators, manageUser, gameController, manageStatics, manageGame);
+        gameController = new GameController(gameScene, this, loginController, manageGameGenerators, manageUser, manageGame);
         staticsController = new StaticsController( this);
 
         menuScene.setController(menuController);
@@ -77,7 +84,7 @@ public class MainController {
 
         switch (scenes) {
             case MENU:
-                //menuController.run();
+
                 menuScene.apply(scene.getMainFrame());
                 break;
             case LOGIN:
@@ -112,12 +119,14 @@ public class MainController {
      * @param game Partida a reanudar.
      */
     public void resumeGame(Game game) {
-
-        manageGame.setGame(game);
-        manageGame.setGeneradores();
+        Game gameNuevo = manageGame.getGameBaseDeDatos(game);
+        manageGameGenerators.setGame(gameNuevo);
+        manageStatics.setGame(gameNuevo);
+        manageGameGenerators.setGeneradores();
+        manageGame.setGame(gameNuevo);
 
         gameScene = new GameScene();
-        gameController = new GameController(gameScene, this, loginController, signUpController, manageGame, manageUser);
+        gameController = new GameController(gameScene, this, loginController, manageGameGenerators, manageUser, manageGame);
 
         gameScene.setController(gameController);
 
@@ -150,7 +159,7 @@ public class MainController {
      * Reinicia la escena y controlador de login, y borra la sesión actual.
      */
     public void resetLogin() {
-        manageUser.logout();
+
         manageGame.logout();
 
         loginScene = null;
@@ -158,8 +167,6 @@ public class MainController {
 
         signUpScene = null;
         signUpController = null;
-
-        //System.gc();
 
         loginScene = new LoginScene();
         loginController = new LoginController(loginScene, this, manageUser);
@@ -178,7 +185,7 @@ public class MainController {
         gameCreationController = null;
 
         gameCreationScene= new GameCreationScene();
-        gameCreationController= new GameCreationController(gameCreationScene,this,loginController,signUpController,manageGame, manageUser, gameController);
+        gameCreationController= new GameCreationController(gameCreationScene,this,loginController, manageGameGenerators, manageUser, gameController, manageStatics, manageGame);
         gameCreationScene.setController(gameCreationController);
     }
 
@@ -190,7 +197,7 @@ public class MainController {
         gameManagementController = null;
 
         gameManagementScene= new GameManagementScene();
-        gameManagementController= new GameManagementController(gameManagementScene,this,loginController,signUpController, manageUser, manageGame, gameController);
+        gameManagementController= new GameManagementController(gameManagementScene,this,loginController,signUpController, manageUser, manageGameGenerators, gameController, manageStatics, manageGame);
         gameManagementScene.setController(gameManagementController);
     }
 
@@ -202,7 +209,7 @@ public class MainController {
         gameController = null;
 
         gameScene= new GameScene();
-        gameController= new GameController(gameScene,this,loginController,signUpController, manageGame, manageUser);
+        gameController= new GameController(gameScene,this,loginController, manageGameGenerators, manageUser, manageGame);
         gameScene.setController(gameController);
 
     }

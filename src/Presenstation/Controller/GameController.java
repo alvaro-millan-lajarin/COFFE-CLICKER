@@ -1,12 +1,13 @@
 package Presenstation.Controller;
 
+import Business.Entidades.Game;
 import Business.ManageGame;
+import Business.ManageGameGenerators;
 import Business.ManageUser;
 import Presenstation.Messages;
 import Business.Refresh.UpdateGame;
 import Business.Refresh.UpdateGrafica;
 import Presenstation.View.Scenes.GameScene;
-import Presenstation.View.Scenes.Scene;
 import Presenstation.View.Scenes.Scenes;
 
 import javax.swing.*;
@@ -19,15 +20,16 @@ import java.util.ArrayList;
  * como la compra y mejora de cafeteras, logout, eliminación de usuario y navegación de escenas.
  */
 public class GameController implements ActionListener {
-    private LoginController loginController;
-    private SignUpController signUpController;
-    private ManageGame manageGame;
+    private final LoginController loginController;
+
+    private final ManageGameGenerators manageGameGenerators;
     private UpdateGame updateGame;
-    private Messages messages = new Messages();
-    private ManageUser manageUser;
+    private final Messages messages = new Messages();
+    private final ManageUser manageUser;
     private UpdateGrafica updateGrafica;
-    private GameScene gameScene;
-    private MainController mainController;
+    private final GameScene gameScene;
+    private final MainController mainController;
+    private final ManageGame manageGame;
 
 
     /**
@@ -36,19 +38,19 @@ public class GameController implements ActionListener {
      * @param view Vista del juego (GameScene).
      * @param mainController Controlador principal de la aplicación.
      * @param loginController Controlador de inicio de sesión.
-     * @param signUpController Controlador de registro.
-     * @param manageGame Objeto de lógica de negocio para el juego.
+     * @param manageGameGenerators Objeto de lógica de negocio para el juego.
      * @param manageUser Objeto de lógica de negocio para usuarios.
      */
-    public GameController(GameScene view, MainController mainController, LoginController loginController, SignUpController signUpController, ManageGame manageGame, ManageUser manageUser) {
+    public GameController(GameScene view, MainController mainController, LoginController loginController, ManageGameGenerators manageGameGenerators, ManageUser manageUser, ManageGame manageGame) {
 
         this.loginController = loginController;
-        this.signUpController = signUpController;
-        this.manageGame = manageGame;
+
+        this.manageGameGenerators = manageGameGenerators;
 
         this.manageUser = manageUser;
         this.gameScene = view;
         this.mainController = mainController;
+        this.manageGame = manageGame;
     }
 
     /**
@@ -68,6 +70,7 @@ public class GameController implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getActionCommand().equalsIgnoreCase("MORE_COFFE")) {
+
             manageGame.increaseNumCafes();
             manageGame.updateGame();
 
@@ -80,7 +83,7 @@ public class GameController implements ActionListener {
         }else if (e.getActionCommand().equalsIgnoreCase("DELETE")) {
             mainController.resetLogin();
             stopThreads();
-            loginController.clearUserData();
+            //loginController.clearUserData();
             deleteUser();
 
         }else if (e.getActionCommand().equalsIgnoreCase("Cafetera")) {
@@ -94,8 +97,8 @@ public class GameController implements ActionListener {
 
         }else if(e.getActionCommand().equalsIgnoreCase("GAME_MANAGEMENT")){
 
-            manageGame.updateGame();
-            manageGame.updateGenerators();
+            manageGameGenerators.updateGame();
+            manageGameGenerators.updateGenerators();
             mainController.resetGameManagement();
             stopThreads();
             mainController.nextScene(Scenes.GAME_MANAGEMENT);
@@ -109,8 +112,8 @@ public class GameController implements ActionListener {
             godMejora();
 
         }else if (e.getActionCommand().equalsIgnoreCase("FINISHGAME")) {
-            manageGame.updateGame();
-            manageGame.updateGenerators();
+            manageGameGenerators.updateGame();
+            manageGameGenerators.updateGenerators();
             mainController.resetGameManagement();
             stopThreads();
             finishGame();
@@ -152,12 +155,12 @@ public class GameController implements ActionListener {
      * Compra una cafetera si hay suficiente café disponible.
      */
     public void compraCafetera() {
-        if(manageGame.enughtCoffeCafeteria()){
+        if(manageGameGenerators.enughtCoffeCafeteria()){
             manageGame.restarCafe("cafetera");//restar cafe
-            manageGame.startGeneratorCafetera();//encender generador
-            manageGame.updatePriceCoffe("cafetera");
-            manageGame.updateGame();
-            manageGame.updateGenerators();
+            manageGameGenerators.startGeneratorCafetera();//encender generador
+            manageGameGenerators.updatePriceCoffe("cafetera");
+            manageGameGenerators.updateGame();
+            manageGameGenerators.updateGenerators();
 
             updateTablas();
         }else{
@@ -169,12 +172,12 @@ public class GameController implements ActionListener {
      * Compra una cafetera Cheta si hay suficiente café disponible.
      */
     public void compraCafeteraCheta() {
-        if(manageGame.enughtCoffeCheta()){
+        if(manageGameGenerators.enughtCoffeCheta()){
             manageGame.restarCafe("CafeCheta");
-            manageGame.startGeneratorCafeteraCheta();
-            manageGame.updatePriceCoffe("CafeCheta");
-            manageGame.updateGame();
-            manageGame.updateGenerators();
+            manageGameGenerators.startGeneratorCafeteraCheta();
+            manageGameGenerators.updatePriceCoffe("CafeCheta");
+            manageGameGenerators.updateGame();
+            manageGameGenerators.updateGenerators();
             updateTablas();
         }else{
             notEnoughtCoffe();
@@ -185,12 +188,12 @@ public class GameController implements ActionListener {
      * Compra una cafetera God si hay suficiente café disponible.
      */
     public void compraCafeGod(){
-        if(manageGame.enughtCoffeGod()){
-            manageGame.startGeneratorCafeteraGod();
+        if(manageGameGenerators.enughtCoffeGod()){
+            manageGameGenerators.startGeneratorCafeteraGod();
             manageGame.restarCafe("CafeGod");
-            manageGame.updatePriceCoffe("CafeGod");
-            manageGame.updateGame();
-            manageGame.updateGenerators();
+            manageGameGenerators.updatePriceCoffe("CafeGod");
+            manageGameGenerators.updateGame();
+            manageGameGenerators.updateGenerators();
             updateTablas();
         }else{
             notEnoughtCoffe();
@@ -201,13 +204,13 @@ public class GameController implements ActionListener {
      * Cambia a la escena de gestión del juego, actualizando primero el estado del juego.
      */
     public void updateTablas(){
-        ArrayList<Integer> quantitats= manageGame.getQuantitas();
-        ArrayList<String> proudccioUnitat = manageGame.getProduccionsUnitat();//falla
-        ArrayList<Integer> precioBase = manageGame.getPreciosBase();//
+        ArrayList<Integer> quantitats= manageGameGenerators.getQuantitas();
+        ArrayList<String> proudccioUnitat = manageGameGenerators.getProduccionsUnitat();//falla
+        ArrayList<Integer> precioBase = manageGameGenerators.getPreciosBase();//
 
         //tabla millores
-        ArrayList<Integer> costMultiplicadores = manageGame.getCostMultplicadors();//falla
-        ArrayList<Integer> multiplicadores = manageGame.getMultplicadors();
+        ArrayList<Integer> costMultiplicadores = manageGameGenerators.getCostMultplicadors();//falla
+        ArrayList<Integer> multiplicadores = manageGameGenerators.getMultplicadors();
 
         getScene().updateTablas(quantitats, proudccioUnitat,precioBase, costMultiplicadores, multiplicadores);
     }
@@ -216,11 +219,11 @@ public class GameController implements ActionListener {
      * Mejora las cafeteras normales si hay suficiente café.
      */
     public void cafeteraMejora() {
-        if(manageGame.enoughtCoffeMejoraCafetera()){
+        if(manageGameGenerators.enoughtCoffeMejoraCafetera()){
             manageGame.restarCafeMejora("cafetera");
-            manageGame.mejorarCafetera();
-            manageGame.updateGame();
-            manageGame.updateGenerators();
+            manageGameGenerators.mejorarCafetera();
+            manageGameGenerators.updateGame();
+            manageGameGenerators.updateGenerators();
             updateTablas();
         }else{
             notEnoughtCoffe();
@@ -232,12 +235,12 @@ public class GameController implements ActionListener {
      * Mejora las cafeteras Cheta si hay suficiente café.
      */
     public void chetaMejora() {
-        if(manageGame.enoughtCoffeMejoraCheta()){
+        if(manageGameGenerators.enoughtCoffeMejoraCheta()){
             manageGame.restarCafeMejora("CafeCheta");
-            manageGame.mejorarCheta();
-            manageGame.updateGame();
+            manageGameGenerators.mejorarCheta();
+            manageGameGenerators.updateGame();
             updateTablas();
-            manageGame.updateGenerators();
+            manageGameGenerators.updateGenerators();
         }else{
             notEnoughtCoffe();
         }
@@ -247,11 +250,11 @@ public class GameController implements ActionListener {
      * Mejora las cafeteras God si hay suficiente café.
      */
     public void godMejora() {
-        if(manageGame.enoughtCoffeMejoraGod()){
+        if(manageGameGenerators.enoughtCoffeMejoraGod()){
             manageGame.restarCafeMejora("cafeGod");
-            manageGame.mejorarGod();
-            manageGame.updateGame();
-            manageGame.updateGenerators();
+            manageGameGenerators.mejorarGod();
+            manageGameGenerators.updateGame();
+            manageGameGenerators.updateGenerators();
             updateTablas();
 
         }else{
@@ -274,7 +277,7 @@ public class GameController implements ActionListener {
      * @return Número de cafés actuales.
      */
     public int getNumCoffesDisponibles(){
-           return manageGame.getGame().getNumCafes();
+           return manageGameGenerators.getGame().getNumCafes();
     }
 
     /**
@@ -290,7 +293,7 @@ public class GameController implements ActionListener {
      * Detiene todos los hilos activos: generadores, actualización de escena y gráfica.
      */
     public void stopThreads(){
-        manageGame.stopGenerators();
+        manageGameGenerators.stopGenerators();
         updateGrafica.interrupt();
         updateGame.interrupt();
     }

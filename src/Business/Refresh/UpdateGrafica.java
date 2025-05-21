@@ -1,7 +1,8 @@
 package Business.Refresh;
 
 import Business.Entidades.Pair;
-import Business.ManageGame;
+import Business.ManageGameGenerators;
+import Business.ManageStatics;
 import Presenstation.View.Grafica.Grafica;
 
 import java.time.LocalDateTime;
@@ -11,18 +12,20 @@ import java.time.LocalDateTime;
  * Registra el número de cafés actuales y actualiza la visualización histórica.
  */
 public class UpdateGrafica extends Thread {
-    private ManageGame manageGame;
-    private Grafica grafica;
+    private final ManageGameGenerators manageGameGenerators;
+    private final ManageStatics manageStatics;
+    private final Grafica grafica;
 
     /**
      * Constructor de la clase UpdateGrafica.
      *
-     * @param manageGame Objeto que gestiona el estado de la partida.
+     * @param manageGameGenerators Objeto que gestiona el estado de la partida.
      * @param grafica Componente gráfico donde se representa el histórico de cafés.
      */
-    public UpdateGrafica(ManageGame manageGame, Grafica grafica) {
-        this.manageGame = manageGame;
+    public UpdateGrafica(ManageGameGenerators manageGameGenerators, Grafica grafica, ManageStatics manageStatics) {
+        this.manageGameGenerators = manageGameGenerators;
         this.grafica = grafica;
+        this.manageStatics = manageStatics;
 
     }
 
@@ -42,9 +45,9 @@ public class UpdateGrafica extends Thread {
                 Thread.currentThread().interrupt();
                 break;
             }
-            int cafesActuales = manageGame.getGame().getNumCafes();
+            int cafesActuales = manageGameGenerators.getGame().getNumCafes();
             LocalDateTime ahora = LocalDateTime.now();
-            manageGame.logCafeHistorico(manageGame.getGame().getId(), cafesActuales);
+            manageStatics.logCafeHistorico();
             grafica.getHistorico().add(new Pair<>(ahora, cafesActuales));
             grafica.repaint();
         }
