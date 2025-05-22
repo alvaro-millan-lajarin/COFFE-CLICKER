@@ -295,7 +295,7 @@ public class ManageGameGenerators {
      * @return true si hay suficiente café, false en caso contrario.
      */
     public boolean enoughtCoffeMejoraCafetera(){
-        if(game.getNumCafes()>= game.getCostMultplicadors().get(0)){
+        if(game.getNumCafes()>= game.getCostMultplicadors().getFirst() && !game.getGeneradoresCafetera().isEmpty()){
             return true;
         }
         return false;
@@ -307,7 +307,7 @@ public class ManageGameGenerators {
      * @return true si hay suficiente café, false en caso contrario.
      */
     public boolean enoughtCoffeMejoraCheta(){
-        if(game.getNumCafes()>= game.getCostMultplicadors().get(1)){
+        if(game.getNumCafes()>= game.getCostMultplicadors().get(1) && !game.getGeneradoresChetas().isEmpty()){
             return true;
         }
         return false;
@@ -319,7 +319,7 @@ public class ManageGameGenerators {
      * @return true si hay suficiente café, false en caso contrario.
      */
     public boolean enoughtCoffeMejoraGod(){
-        if(game.getNumCafes()>= game.getCostMultplicadors().get(2)){
+        if(game.getNumCafes()>= game.getCostMultplicadors().get(2) && !game.getGeneradoresGod().isEmpty()){
             return true;
         }
         return false;

@@ -254,7 +254,18 @@ public class Messages {
     public void needCoffe(){
         JOptionPane.showMessageDialog(
                 null,
-                "Need to generate more coffe",
+                "Need to generate more coffe.",
+                "Need more coffes",
+                JOptionPane.INFORMATION_MESSAGE
+        );
+    }
+    /**
+     * Muestra un mensaje indicando que no hay suficientes cafés para realizar una acción.
+     */
+    public void needCoffeOrGenerator(){
+        JOptionPane.showMessageDialog(
+                null,
+                "Need to generate more coffe or buy generators",
                 "Need more coffes",
                 JOptionPane.INFORMATION_MESSAGE
         );

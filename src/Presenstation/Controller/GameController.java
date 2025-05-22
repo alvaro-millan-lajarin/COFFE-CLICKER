@@ -242,7 +242,7 @@ public class GameController implements ActionListener {
             manageGameGenerators.updateGenerators();
             updateTablas();
         }else{
-            notEnoughtCoffe();
+            messages.needCoffeOrGenerator();
         }
 
     }
@@ -258,7 +258,7 @@ public class GameController implements ActionListener {
             updateTablas();
             manageGameGenerators.updateGenerators();
         }else{
-            notEnoughtCoffe();
+            messages.needCoffeOrGenerator();
         }
     }
 
@@ -274,7 +274,7 @@ public class GameController implements ActionListener {
             updateTablas();
 
         }else{
-            notEnoughtCoffe();
+            messages.needCoffeOrGenerator();
         }
 
     }

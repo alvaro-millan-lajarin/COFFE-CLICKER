@@ -4,10 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f9bbb50b-3eaf-412a-ab58-ecb07cf93455" name="Changes" comment="tamaño fijo partidas, reutilizar funciones">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Business/Entidades/Config.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Business/Entidades/Config.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Presenstation/Controller/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presenstation/Controller/GameController.java" afterDir="false" />
+    <list default="true" id="f9bbb50b-3eaf-412a-ab58-ecb07cf93455" name="Changes" comment="confirmacion">
+      <change beforePath="$PROJECT_DIR$/src/Business/ManageGameGenerators.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Business/ManageGameGenerators.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Presenstation/Messages.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presenstation/Messages.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -117,14 +115,6 @@
       <workItem from="1743758267674" duration="4963000" />
       <workItem from="1746711311955" duration="24425000" />
       <workItem from="1747673010765" duration="9650000" />
-    </task>
-    <task id="LOCAL-00043" summary="seguir la estructuar correcta, mas mensajes y delete game">
-      <option name="closed" value="true" />
-      <created>1746184446458</created>
-      <option name="number" value="00043" />
-      <option name="presentableId" value="LOCAL-00043" />
-      <option name="project" value="LOCAL" />
-      <updated>1746184446458</updated>
     </task>
     <task id="LOCAL-00044" summary="game creation estructura">
       <option name="closed" value="true" />
@@ -510,7 +500,15 @@
       <option name="project" value="LOCAL" />
       <updated>1747853912649</updated>
     </task>
-    <option name="localTasksCounter" value="92" />
+    <task id="LOCAL-00092" summary="confirmacion">
+      <option name="closed" value="true" />
+      <created>1747908624398</created>
+      <option name="number" value="00092" />
+      <option name="presentableId" value="LOCAL-00092" />
+      <option name="project" value="LOCAL" />
+      <updated>1747908624398</updated>
+    </task>
+    <option name="localTasksCounter" value="93" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -550,7 +548,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="correccion multiplicadores" />
     <MESSAGE value="correccion funciones sin usar" />
     <MESSAGE value="correccion base de datos update" />
     <MESSAGE value="unused functions" />
@@ -575,7 +572,8 @@
     <MESSAGE value="diferenciacin managers" />
     <MESSAGE value="funcines no usadas" />
     <MESSAGE value="tamaño fijo partidas, reutilizar funciones" />
-    <option name="LAST_COMMIT_MESSAGE" value="tamaño fijo partidas, reutilizar funciones" />
+    <MESSAGE value="confirmacion" />
+    <option name="LAST_COMMIT_MESSAGE" value="confirmacion" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
