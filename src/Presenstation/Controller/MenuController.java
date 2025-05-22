@@ -19,10 +19,9 @@ public class MenuController implements ActionListener {
     /**
      * Constructor del MenuController.
      *
-     * @param menuScene Escena del menú (no se utiliza directamente en este controlador).
      * @param mainController Controlador principal de la aplicación.
      */
-    public MenuController(MenuScene menuScene, MainController mainController) {
+    public MenuController( MainController mainController) {
         this.mainController = mainController;
     }
 

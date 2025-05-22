@@ -13,8 +13,7 @@ import java.awt.*;
  */
 public class StaticsScene extends Scene {
     private StaticsController staticsController;
-    private final static String BACK = "BACK";
-    private Grafica grafica;
+
 
     /**
      * Asigna el controlador de estadísticas y reinicializa la escena.

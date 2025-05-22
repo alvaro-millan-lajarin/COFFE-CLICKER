@@ -24,7 +24,7 @@ import java.util.List;
  * Valida el nombre de la partida, inicializa los generadores y cambia a la escena de juego.
  */
 public class GameCreationController implements ActionListener {
-    private final LoginController loginController;
+
     private Game game;
     private final ManageGameGenerators manageGameGenerators;
     private final Messages messages = new Messages();
@@ -44,15 +44,14 @@ public class GameCreationController implements ActionListener {
      *
      * @param view Escena de creación de partidas.
      * @param mainController Controlador principal de navegación.
-     * @param loginController Controlador de login.
      * @param manageGameGenerators Lógica de gestión del juego.
      * @param manageUser Lógica de gestión de usuarios.
      * @param gameController Controlador del juego.
      */
-    public GameCreationController(GameCreationScene view, MainController mainController, LoginController loginController, ManageGameGenerators manageGameGenerators, ManageUser manageUser, GameController gameController, ManageStatics manageStatics, ManageGame manageGame) {
+    public GameCreationController(GameCreationScene view, MainController mainController, ManageGameGenerators manageGameGenerators, ManageUser manageUser, GameController gameController, ManageStatics manageStatics, ManageGame manageGame) {
 
         this.gameCreationScene = view;
-        this.loginController = loginController;
+
         this.manageGameGenerators = manageGameGenerators;
         this.manageUser = manageUser;
         this.gameController = gameController;
@@ -122,7 +121,7 @@ public class GameCreationController implements ActionListener {
             mainController.nextScene(Scenes.MENU);
         }else if (e.getActionCommand().equalsIgnoreCase("DELETE")) {
             mainController.resetLogin();
-            loginController.clearUserData();
+
             deleteUser();
 
         }
@@ -137,7 +136,7 @@ public class GameCreationController implements ActionListener {
         if (confirm == JOptionPane.YES_OPTION) {
             manageUser.deleteUser();
             messages.deleteUser();
-            loginController.clearUserData();
+
             mainController.nextScene(Scenes.MENU);
         }
     }
