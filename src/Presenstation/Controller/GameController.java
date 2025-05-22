@@ -87,6 +87,7 @@ public class GameController implements ActionListener {
             deleteUser();
 
         }else if (e.getActionCommand().equalsIgnoreCase("Cafetera")) {
+
             compraCafetera();
 
         }else if (e.getActionCommand().equalsIgnoreCase("CafeCheta")) {
@@ -103,13 +104,27 @@ public class GameController implements ActionListener {
             stopThreads();
             mainController.nextScene(Scenes.GAME_MANAGEMENT);
         }else if (e.getActionCommand().equalsIgnoreCase("CafeteraMejora")) {
-            cafeteraMejora();
+            int confirm = messages.confirmMejora();
+
+            if (confirm == JOptionPane.YES_OPTION) {
+                cafeteraMejora();
+            }
 
         }else if (e.getActionCommand().equalsIgnoreCase("CafeChetaMejora")) {
-            chetaMejora();
+            int confirm = messages.confirmMejora();
+
+            if (confirm == JOptionPane.YES_OPTION) {
+                chetaMejora();
+            }
+
 
         } else if (e.getActionCommand().equalsIgnoreCase("CafeGodMejora")) {
-            godMejora();
+            int confirm = messages.confirmMejora();
+
+            if (confirm == JOptionPane.YES_OPTION) {
+                godMejora();
+            }
+
 
         }else if (e.getActionCommand().equalsIgnoreCase("FINISHGAME")) {
             manageGameGenerators.updateGame();
@@ -156,6 +171,7 @@ public class GameController implements ActionListener {
      */
     public void compraCafetera() {
         if(manageGameGenerators.enughtCoffeCafeteria()){
+
             manageGame.restarCafe("cafetera");//restar cafe
             manageGameGenerators.startGeneratorCafetera();//encender generador
             manageGameGenerators.updatePriceCoffe("cafetera");

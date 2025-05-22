@@ -3,11 +3,11 @@ package Business.Entidades;
  * Clase que representa la configuración de conexión a una base de datos.
  */
 public class Config {
-    private String portConexionBD;
-    private int ipBD;
-    private String nomBD;
-    private String accesUserBD;
-    private String passwordBD;
+    private final String portConexionBD;
+    private final int ipBD;
+    private final String nomBD;
+    private final String accesUserBD;
+    private final String passwordBD;
 
     /**
      * Constructor de la clase Config.

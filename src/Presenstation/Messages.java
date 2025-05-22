@@ -1,5 +1,10 @@
 package Presenstation;
 
+import Business.Entidades.Game;
+import Business.ManageGame;
+import Persistence.GameDAO;
+import Persistence.sql.SQLGameDAO;
+
 import javax.swing.*;
 
 /**
@@ -7,6 +12,7 @@ import javax.swing.*;
  * Incluye advertencias, confirmaciones e información general del flujo de la aplicación.
  */
 public class Messages {
+
 
     /**
      * Muestra un mensaje de advertencia si el nombre de la partida es demasiado largo.
@@ -155,6 +161,20 @@ public class Messages {
                 JOptionPane.WARNING_MESSAGE
         );
     }
+    /**
+     * Muestra un diálogo de confirmación para borrar la cuenta del usuario.
+     *
+     * @return JOptionPane.YES_OPTION si el usuario confirma; JOptionPane.NO_OPTION en caso contrario.
+     */
+    public int confirmMejora(){
+        return JOptionPane.showConfirmDialog(
+                null,
+                "Are you sure you want to improve?",
+                "Confirm Improvement",
+                JOptionPane.YES_NO_OPTION,
+                JOptionPane.WARNING_MESSAGE
+        );
+    }
 
     /**
      * Muestra un mensaje de éxito al eliminar la cuenta del usuario.
@@ -258,4 +278,5 @@ public class Messages {
     public void noHayDatosGraficar(){
         JOptionPane.showMessageDialog(null, "Necesitas estar mas tiempo en la partida.");
     }
+
 }
