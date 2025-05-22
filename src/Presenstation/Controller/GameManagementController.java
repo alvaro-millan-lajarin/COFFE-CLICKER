@@ -25,7 +25,7 @@ import java.util.List;
  * Permite crear, reanudar, eliminar partidas y consultar estadísticas.
  */
 public class GameManagementController implements ActionListener {
-    private final LoginController loginController;
+
     private final ManageStatics manageStatics;
     private final ManageUser manageUser;
     private final Messages messages;
@@ -41,15 +41,13 @@ public class GameManagementController implements ActionListener {
      *
      * @param gameManagementScene Escena de gestión de partidas.
      * @param mainController Controlador principal.
-     * @param loginController Controlador de login.
-     * @param signUpController Controlador de registro (no usado directamente aquí).
      * @param manageUser Lógica de usuarios.
      * @param manageGameGenerators Lógica del juego.
      * @param gameController Controlador de juego.
      */
-    public GameManagementController(GameManagementScene gameManagementScene, MainController mainController, LoginController loginController, SignUpController signUpController, ManageUser manageUser, ManageGameGenerators manageGameGenerators, GameController gameController, ManageStatics manageStatics, ManageGame manageGame) {
+    public GameManagementController(GameManagementScene gameManagementScene, MainController mainController, ManageUser manageUser, ManageGameGenerators manageGameGenerators, GameController gameController, ManageStatics manageStatics, ManageGame manageGame) {
 
-        this.loginController = loginController;
+
         this.manageStatics = manageStatics;
         this.manageUser = manageUser;
         this.messages = new Messages();
@@ -129,7 +127,7 @@ public class GameManagementController implements ActionListener {
 
             manageUser.deleteUser();
             messages.deleteUser();
-            loginController.clearUserData();
+
             mainController.nextScene(Scenes.MENU);
         }
 

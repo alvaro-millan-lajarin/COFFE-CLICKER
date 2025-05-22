@@ -20,7 +20,7 @@ import java.util.ArrayList;
  * como la compra y mejora de cafeteras, logout, eliminación de usuario y navegación de escenas.
  */
 public class GameController implements ActionListener {
-    private final LoginController loginController;
+
 
     private final ManageGameGenerators manageGameGenerators;
     private UpdateGame updateGame;
@@ -37,13 +37,10 @@ public class GameController implements ActionListener {
      *
      * @param view Vista del juego (GameScene).
      * @param mainController Controlador principal de la aplicación.
-     * @param loginController Controlador de inicio de sesión.
      * @param manageGameGenerators Objeto de lógica de negocio para el juego.
      * @param manageUser Objeto de lógica de negocio para usuarios.
      */
-    public GameController(GameScene view, MainController mainController, LoginController loginController, ManageGameGenerators manageGameGenerators, ManageUser manageUser, ManageGame manageGame) {
-
-        this.loginController = loginController;
+    public GameController(GameScene view, MainController mainController, ManageGameGenerators manageGameGenerators, ManageUser manageUser, ManageGame manageGame) {
 
         this.manageGameGenerators = manageGameGenerators;
 
@@ -83,7 +80,6 @@ public class GameController implements ActionListener {
         }else if (e.getActionCommand().equalsIgnoreCase("DELETE")) {
             mainController.resetLogin();
             stopThreads();
-            //loginController.clearUserData();
             deleteUser();
 
         }else if (e.getActionCommand().equalsIgnoreCase("Cafetera")) {
@@ -154,7 +150,7 @@ public class GameController implements ActionListener {
         if (confirm == JOptionPane.YES_OPTION) {
             manageUser.deleteUser();
             messages.deleteUser();
-            loginController.clearUserData();
+
             mainController.nextScene(Scenes.MENU);
         }
     }

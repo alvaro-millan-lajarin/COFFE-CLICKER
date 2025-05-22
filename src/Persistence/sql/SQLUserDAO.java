@@ -40,7 +40,7 @@ public class SQLUserDAO implements UserDAO {
                 int partidaId = rs.getInt("id_partida");
 
                 // Paso 2: Borrar primero los registros dependientes de cada partida
-                String deleteHistorico = "DELETE FROM HistoricoCafes WHERE id_partida = '" + partidaId + "'";
+                String deleteHistorico = "DELETE FROM estadisticas WHERE id_partida = '" + partidaId + "'";
                 SQLConnector.getInstance().deleteQuery(deleteHistorico);
             }
         } catch (Exception e) {
