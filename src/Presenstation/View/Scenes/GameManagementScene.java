@@ -351,7 +351,7 @@ public class GameManagementScene extends Scene {
      * @return JImagePanel con el botón de estadísticas integrado.
      */
     public JImagePanel botonStadisticas() {
-        JButton botonStadisticas = new JButton("Stadisticas");
+        JButton botonStadisticas = new JButton("STATISTICS");
 
         botonStadisticas.setMinimumSize(new Dimension(100, 80));
         botonStadisticas.setPreferredSize(new Dimension(100, 80));
