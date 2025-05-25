@@ -106,7 +106,7 @@ public class LoginScene extends Scene {
         JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
         buttonPanel.setOpaque(false);
 
-        JButton accesButton = new JButton("ACCES");
+        JButton accesButton = new JButton("ACCESS");
         accesButton.setFont(new Font("Apple casual", Font.BOLD, 20));
         accesButton.setPreferredSize(new Dimension(150, 50));
         accesButton.setOpaque(false);

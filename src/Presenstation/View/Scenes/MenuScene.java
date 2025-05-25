@@ -35,7 +35,7 @@ public class MenuScene extends Scene {
 
         JPanel centerPanel = new JPanel(new GridLayout(1, 2, 50, 20));
 
-        jPanel.add(addTitle("COFFE CLICKER"), BorderLayout.NORTH);
+        jPanel.add(addTitle("COFFEE CLICKER"), BorderLayout.NORTH);
         jPanel.add(makeCenterPanel(centerPanel), BorderLayout.CENTER);
         jPanel.add(addVacio(), BorderLayout.EAST);
         jPanel.add(addVacio(), BorderLayout.WEST);
